@@ -337,26 +337,240 @@ Ben Matthews
 </div>
 
 </section>
-<section id="quarto" class="slide level2">
-<h2>Quarto</h2>
-<p>Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <a href="https://quarto.org/docs/presentations/" class="uri">https://quarto.org/docs/presentations/</a>.</p>
-</section>
-<section id="bullets" class="slide level2">
-<h2>Bullets</h2>
-<p>When you click the <strong>Render</strong> button a document will be generated that includes:</p>
+<section>
+<section id="welcome" class="title-slide slide level1 center">
+<h1>Welcome!</h1>
 <ul>
-<li>Content authored with markdown</li>
-<li>Output from executable code</li>
+<li>Who we are</li>
+<li><a href="https://github.com/benmatthewsed/ui-data-visualization-course/blob/master/course_outline.md">workshop outline</a></li>
+<li><a href="https://github.com/benmatthewsed/ui-data-visualization-course/blob/master/code_of_conduct.md">Code of conduct</a></li>
+<li><a href="https://github.com/benmatthewsed/ui-data-visualization-course/blob/master/course_outline.md#course-texts">Reference texts</a></li>
 </ul>
 </section>
-<section id="code" class="slide level2">
-<h2>Code</h2>
-<p>When you click the <strong>Render</strong> button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:</p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="learning-outcomes" class="title-slide slide level1 center">
+<h1>Learning outcomes</h1>
+<p>By the end of the workshop you will:</p>
+<ul>
+<li>Understand the main forms of criminological data</li>
+<li>Understand how data about crime and victimization can be understood using the General Linear Model (GLM)</li>
+<li>Be aware of issues that can arise in interpreting GLM coefficients due to measurement error, selection bias and omitted variables</li>
+<li>Be aware of ways to transform GLM coefficients into meaningful Derived Quantities of Interest (DQI)</li>
+<li>Understand ethical issues around how results from statistical methods fit to criminological data are discussed</li>
+</ul>
+</section>
+<section class="slide level2">
+
+</section>
+<section class="slide level2">
+
+<p>name: outline</p>
+</section></section>
+<section>
+<section id="course-outline" class="title-slide slide level1 center">
+<h1>Course outline</h1>
+<p><em>add this here</em></p>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="points-of-order" class="title-slide slide level1 center">
+<h1>Points of order</h1>
+<ul>
+<li><strong>Ask questions whenever</strong> <code>r emo::ji('thumbsup')</code> You can do this through the Teams chat facility <strong>{demo this now}</strong></li>
+<li>We’ve structured the sessions with regular breaks, but <strong>if you need to leave just leave</strong>!</li>
+<li>Materials will live online (<a href="https://benmatthewsed.github.io/statistical-methods-criminology-slides/statistical_methods_criminology.html#/title-slide">slides</a>,) so you can access them any time</li>
+<li><strong>“You’re not working from home, you’re at home during a crisis trying to work”</strong></li>
+<li>We want this time to be as useful for you guys as possible, so <strong>please let us know anything we can improve on</strong> between now and next week’s session</li>
+</ul>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="r-set-up" class="title-slide slide level1 center">
+<h1><code>R</code> set-up</h1>
+<ul>
+<li>You can follow along with the materials in a local installation of <code>R</code> and <code>RStudio</code> on your own computer</li>
+</ul>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="who-you-are" class="title-slide slide level1 center">
+<h1>Who you are</h1>
+<ul>
+<li>Your <strong>research interests</strong></li>
+<li><strong>Why</strong> this course?</li>
+<li>What do you want to <strong>achieve</strong>?</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<p>class: center, middle, inverse</p>
+</section></section>
+<section>
+<section id="before-we-begin" class="title-slide slide level1 center">
+<h1>Before we begin…</h1>
+
+</section>
+<section class="slide level2">
+
+</section></section>
+<section id="statistical-analysis-and-stories" class="title-slide slide level1 center">
+<h1>Statistical analysis and stories</h1>
+<ul>
+<li>This workshop is <em>also</em> about stories. Specifically:
+<ul>
+<li>The story of how the data in your spreadsheet came to exist</li>
+<li>The story you tell about these data based on statistical analysis</li>
+</ul></li>
+<li>I want to convince you that the first of these two stories should filter through into every decision you make during analysis, and so should determine the second</li>
+<li>You need to know how your data came about to be able to analyse it properly</li>
+</ul>
+<p>class: center, middle, inverse</p>
+</section>
+
+<section id="session-one-types-of-criminological-data" class="title-slide slide level1 center">
+<h1>Session One: Types of criminological data</h1>
+
+</section>
+
+<section>
+<section id="types-of-criminological-data" class="title-slide slide level1 center">
+<h1>Types of criminological data</h1>
+<ul>
+<li>Criminology as a ‘rendezvous discipline’ as David Downes said</li>
+<li>Criminological data could be
+<ul>
+<li>Adminsitrative data from the justice system (police, courts, prisons, probation… etc)</li>
+<li>Secondary survey data (e.g.&nbsp;victimization, offending, fear of crime… etc)</li>
+<li>Newspaper reports (e.g.&nbsp;collations of stories on police use of force or homicides)</li>
+<li>Social media data (e.g.&nbsp;fear of crime)</li>
+<li>‘Digital trace’ data from darknet drugs transactions</li>
+<li>…</li>
+</ul></li>
+</ul>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="key-types-of-criminological-data" class="title-slide slide level1 center">
+<h1>Key types of criminological data</h1>
+<ul>
+<li>Here we focus on police recorded crime and victimization surveys as common forms of criminological data</li>
+<li>If you are interested in another form of data, please do ask!</li>
+</ul>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="questions-to-ask-any-type-of-data" class="title-slide slide level1 center">
+<h1>Questions to ask any type of data</h1>
+<ul>
+<li>“Why has the data been collected (and collected in this way)?</li>
+<li>How has the data been collected and/or by whom or by what?</li>
+<li>What/who is included and what/who is excluded?</li>
+<li>What is the context for the data collection (routine activity, bespoke intervention, to meet a target)?</li>
+<li>Has the data been dis/aggregated or manipulated or cleaned in some other way to arrive at its present form?</li>
+<li>What are the relevant definitions and concepts that govern the data/data collection?”</li>
+</ul>
+<p><span class="citation" data-cites="8347e95e012d4212a5ee429a18ee592e">[@8347e95e012d4212a5ee429a18ee592e, p228-229]</span></p>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section id="how-does-an-event-become-a-crime-statistic" class="title-slide slide level1 center">
+<h1>How does an event become a crime statistic?</h1>
+<div class="quarto-figure quarto-figure-center" style="transform: rotate(90deg);">
+<figure>
+<p><embed data-src="resources/recorded_crime_flowchart.pdf"></p>
+<figcaption>Recorded crime</figcaption>
+</figure>
 </div>
-</div>
+</section>
+
+<section id="questions-to-ask-any-type-of-data-1" class="title-slide slide level1 center">
+<h1>Questions to ask any type of data</h1>
+<ul>
+<li>“Why has the data been collected (and collected in this way)?
+<ul>
+<li>Data collected as part of police reporting activity on crime levels</li>
+</ul></li>
+<li>How has the data been collected and/or by whom or by what?
+<ul>
+<li>https://www.gov.scot/publications/recorded-crime-scotland-2023-24/pages/17/</li>
+</ul></li>
+<li>What/who is included and what/who is excluded?
+<ul>
+<li>Excludes: crimes not reported and for which there was insufficient evidence</li>
+</ul></li>
+<li>What is the context for the data collection (routine activity, bespoke intervention, to meet a target)?
+<ul>
+<li>Depends? National statistics are routine collections, there are other data though https://www.law.ed.ac.uk/sites/default/files/2022-08/FPN%204th%20report%20-%20FINAL.pdf</li>
+</ul></li>
+<li>Has the data been dis/aggregated or manipulated or cleaned in some other way to arrive at its present form?
+<ul>
+<li>Recorded crime data bulletin - yes, cleaned and standardized</li>
+</ul></li>
+<li>What are the relevant definitions and concepts that govern the data/data collection?”
+<ul>
+<li>The current <a href="https://www.gov.scot/publications/scottish-crime-recording-standard-crime-recording-counting-rules-2/">Scottish Crime Recording Standard</a> is 550 pages long (!). I have not read it (and don’t intend to!)</li>
+</ul></li>
+</ul>
+</section>
+
+<section id="implications-of-this-story" class="title-slide slide level1 center">
+<h1>Implications of this story</h1>
+<ul>
+<li>Reporting on crime levels - incentives to reduce figures?
+<ul>
+<li>https://osr.statisticsauthority.gov.uk/publication/the-quality-of-police-recorded-crime-statistics-for-england-and-wales/</li>
+</ul></li>
+<li>Excludes incidents not reported (see dark figure of crime)</li>
+<li>Figures represent (unknown?) mix of behavioural and system effects
+<ul>
+<li>Urban areas have high police recorded crime rates because …
+<ul>
+<li>that’s where crime is?</li>
+<li>that’s where poverty and disadvantage are?</li>
+<li>that’s where disproportionate surveilance and punishment are?</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+
+<section id="population-or-super-population" class="title-slide slide level1 center">
+<h1>Population or super-population?</h1>
+<ul>
+<li>One reason people use inferential statistical models is to generalize from the data they have to a wider population. With recorded crime data, is this the whole population?</li>
+<li><span class="citation" data-cites="verlaan2024use">[@verlaan2024use]</span> outline two possible approaches to conceptualizing police recorded crime data: a population or superpopulation approach.</li>
+<li>Population approach: if you have police recorded crime data for Scotland in 2023 the data you have is all you could ever have. You don’t need to fit statistical models to generalize from the data you observe to a wider population because <em>there is no wider population</em>.</li>
+<li>Superpopulation approach: you can think of Scotland in 2023 as ‘drawn’ from from the population of the UK, or Europe, or the whole planet. Alternatively, data from Scotland from 2023 may be seen as a sample from Scotland from 2023 and 2024, or 2023-2030 and so on. You might also want to construct a counterfactual of what crime would have been like in Scotland in 2023 if unemployment was 5% lower or 5% higher Gelman (2011)</li>
+</ul>
+</section>
+
+<section id="dangers-of-inferential-statistics-with-recorded-crime-data" class="title-slide slide level1 center">
+<h1>Dangers of inferential statistics with recorded crime data</h1>
+<ul>
+<li><span class="citation" data-cites="verlaan2024use">[@verlaan2024use]</span> It wrongly leads people to assume that their results are generalizable</li>
+<li>It can lead people to undervalue actual observed differences in their data. For example, researchers may deny that an association between two variables exists in their dataset if it is not statistically significant</li>
+</ul>
+</section>
+
+<section id="dangers-of-not-using-inferential-statistics-with-recorded-crime-data" class="title-slide slide level1 center">
+<h1>Dangers of <em>not</em> using inferential statistics with recorded crime data</h1>
+<ul>
+<li>confidence intervals should be reported even when describing statistics from the full population, especially if the results are to be used to make predictions or inform policy. Importantly, even if <em>you</em> are not be interested in prediction or policy-making, you can’t control how others will use your results <span class="citation" data-cites="d.redelingsWhyConfidenceIntervals2012">[@d.redelingsWhyConfidenceIntervals2012]</span></li>
+<li>Different sized populations (e.g.&nbsp;local authorities) have different levels of variability <span class="citation" data-cites="spiegelhalterFunnelPlotsComparing2005">[@spiegelhalterFunnelPlotsComparing2005]</span>. Crime rates in small places will be more volatile - and so have more uncertainty - year-on-year than those from large areas</li>
+</ul>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
@@ -574,44 +788,6 @@ Ben Matthews
         ]
       });
     </script>
-    
-    <script>
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-      // slide changes (different for each slide format).
-      (function () {
-        // dispatch for htmlwidgets
-        function fireSlideEnter() {
-          const event = window.document.createEvent("Event");
-          event.initEvent("slideenter", true, true);
-          window.document.dispatchEvent(event);
-        }
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-          fireSlideEnter();
-
-          // dispatch for shiny
-          if (window.jQuery) {
-            if (previousSlide) {
-              window.jQuery(previousSlide).trigger("hidden");
-            }
-            if (currentSlide) {
-              window.jQuery(currentSlide).trigger("shown");
-            }
-          }
-        }
-
-        // hookup for slidy
-        if (window.w3c_slidy) {
-          window.w3c_slidy.add_observer(function (slide_num) {
-            // slide_num starts at position 1
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-          });
-        }
-
-      })();
-    </script>
-
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

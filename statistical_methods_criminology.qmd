@@ -4,23 +4,162 @@ author: "Ben Matthews"
 format: revealjs
 ---
 
-## Quarto
 
-Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <https://quarto.org/docs/presentations/>.
+# Welcome!
 
-## Bullets
-
-When you click the **Render** button a document will be generated that includes:
-
--   Content authored with markdown
--   Output from executable code
-
-## Code
-
-When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:
-
-```{r}
-1 + 1
-```
+- Who we are
+- [workshop outline](https://github.com/benmatthewsed/ui-data-visualization-course/blob/master/course_outline.md)
+- [Code of conduct](https://github.com/benmatthewsed/ui-data-visualization-course/blob/master/code_of_conduct.md)
+- [Reference texts](https://github.com/benmatthewsed/ui-data-visualization-course/blob/master/course_outline.md#course-texts)
 
 
+---
+
+# Learning outcomes
+
+By the end of the workshop you will:
+
+- Understand the main forms of criminological data 
+- Understand how data about crime and victimization can be understood using the General Linear Model (GLM)
+- Be aware of issues that can arise in interpreting GLM coefficients due to measurement error, selection bias and omitted variables
+- Be aware of ways to transform GLM coefficients into meaningful Derived Quantities of Interest (DQI)
+- Understand ethical issues around how results from statistical methods fit to criminological data are discussed
+
+--- 
+
+---
+
+name: outline
+
+# Course outline
+
+_add this here_
+
+
+---
+
+# Points of order
+
+- __Ask questions whenever__ `r emo::ji('thumbsup')` You can do this through the Teams chat facility __{demo this now}__
+- We've structured the sessions with regular breaks, but __if you need to leave just leave__!
+- Materials will live online ([slides](https://benmatthewsed.github.io/statistical-methods-criminology-slides/statistical_methods_criminology.html#/title-slide),) so you can access them any time
+- __"You're not working from home, you're at home during a crisis trying to work"__
+- We want this time to be as useful for you guys as possible, so __please let us know anything we can improve on__ between now and next week's session
+
+
+---
+
+# `R` set-up
+
+- You can follow along with the materials in a local installation of `R` and `RStudio` on your own computer
+
+
+---
+
+# Who you are
+
+- Your __research interests__
+- __Why__ this course?
+- What do you want to __achieve__?
+
+
+---
+
+class: center, middle, inverse
+
+# Before we begin...
+
+---
+
+# Statistical analysis and stories
+
+- This workshop is _also_ about stories. Specifically:
+  - The story of how the data in your spreadsheet came to exist
+  - The story you tell about these data based on statistical analysis
+- I want to convince you that the first of these two stories should filter through into every decision you make during analysis, and so should determine the second
+- You need to know how your data came about to be able to analyse it properly
+
+
+class: center, middle, inverse
+
+# Session One: Types of criminological data
+
+# Types of criminological data
+
+- Criminology as a 'rendezvous discipline' as David Downes said
+- Criminological data could be
+  - Adminsitrative data from the justice system (police, courts, prisons, probation... etc)
+  - Secondary survey data (e.g. victimization, offending, fear of crime... etc)
+  - Newspaper reports (e.g. collations of stories on police use of force or homicides)
+  - Social media data (e.g. fear of crime)
+  - 'Digital trace' data from darknet drugs transactions
+  - ...
+
+---
+
+# Key types of criminological data
+
+- Here we focus on police recorded crime and victimization surveys as common forms of criminological data
+- If you are interested in another form of data, please do ask!
+
+---
+
+# Questions to ask any type of data
+
+- "Why has the data been collected (and collected in this way)?
+- How has the data been collected and/or by whom or by what?
+- What/who is included and what/who is excluded?
+- What is the context for the data collection (routine activity, bespoke intervention, to meet a target)?
+- Has the data been dis/aggregated or manipulated or cleaned in some other way to arrive at its present form?
+- What are the relevant definitions and concepts that govern the data/data collection?"
+
+[@8347e95e012d4212a5ee429a18ee592e, p228-229]
+
+---
+
+# How does an event become a crime statistic?
+
+![Recorded crime](resources/recorded_crime_flowchart.pdf){style="transform: rotate(90deg);"}
+
+# Questions to ask any type of data
+
+- "Why has the data been collected (and collected in this way)?
+    - Data collected as part of police reporting activity on crime levels
+- How has the data been collected and/or by whom or by what?
+    - https://www.gov.scot/publications/recorded-crime-scotland-2023-24/pages/17/
+- What/who is included and what/who is excluded?
+    - Excludes: crimes not reported and for which there was insufficient evidence
+- What is the context for the data collection (routine activity, bespoke intervention, to meet a target)?
+    - Depends? National statistics are routine collections, there are other data though https://www.law.ed.ac.uk/sites/default/files/2022-08/FPN%204th%20report%20-%20FINAL.pdf
+- Has the data been dis/aggregated or manipulated or cleaned in some other way to arrive at its present form?
+    - Recorded crime data bulletin - yes, cleaned and standardized
+- What are the relevant definitions and concepts that govern the data/data collection?"
+  - The current [Scottish Crime Recording Standard](https://www.gov.scot/publications/scottish-crime-recording-standard-crime-recording-counting-rules-2/) is 550 pages long (!). I have not read it (and don't intend to!)
+
+
+# Implications of this story
+
+- Reporting on crime levels - incentives to reduce figures?
+    - https://osr.statisticsauthority.gov.uk/publication/the-quality-of-police-recorded-crime-statistics-for-england-and-wales/
+- Excludes incidents not reported (see dark figure of crime)
+- Figures represent (unknown?) mix of behavioural and system effects
+  - Urban areas have high police recorded crime rates because ...
+      - that's where crime is?
+      - that's where poverty and disadvantage are?
+      - that's where disproportionate surveilance and punishment are?
+      
+# Population or super-population?
+
+- One reason people use inferential statistical models is to generalize from the data they have to a wider population. With recorded crime data, is this the whole population?
+- [@verlaan2024use] outline two possible approaches to conceptualizing police recorded crime data: a population or superpopulation approach.
+- Population approach: if you have police recorded crime data for Scotland in 2023 the data you have is all you could ever have. You don't need to fit statistical models to generalize from the data you observe to a wider population because *there is no wider population*.
+- Superpopulation approach: you can think of Scotland in 2023 as 'drawn' from from the population of the UK, or Europe, or the whole planet. Alternatively, data from Scotland from 2023 may be seen as a sample from Scotland from 2023 and 2024, or 2023-2030 and so on. You might also want to construct a counterfactual of what crime would have been like in Scotland in 2023 if unemployment was 5% lower or 5% higher Gelman (2011)
+
+# Dangers of inferential statistics with recorded crime data
+- [@verlaan2024use] It wrongly leads people to assume that their results are generalizable
+- It can lead people to undervalue actual observed differences in their data. For example, researchers may deny that an association between two variables exists in their dataset if it is not statistically significant
+
+# Dangers of _not_ using inferential statistics with recorded crime data
+
+- confidence intervals should be reported even when describing statistics from the full population, especially if the results are to be used to make predictions or inform policy. Importantly, even if _you_ are not be interested in prediction or policy-making, you can't control how others will use your results [@d.redelingsWhyConfidenceIntervals2012]
+- Different sized populations (e.g. local authorities) have different levels of variability [@spiegelhalterFunnelPlotsComparing2005]. Crime rates in small places will be more volatile - and so have more uncertainty - year-on-year than those from large areas
