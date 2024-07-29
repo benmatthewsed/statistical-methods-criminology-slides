@@ -5,7 +5,7 @@ format: revealjs
 ---
 
 
-# Welcome!
+## Welcome!
 
 - Who we are
 - [workshop outline](https://github.com/benmatthewsed/ui-data-visualization-course/blob/master/course_outline.md)
@@ -15,7 +15,7 @@ format: revealjs
 
 ---
 
-# Learning outcomes
+## Learning outcomes
 
 By the end of the workshop you will:
 
@@ -31,14 +31,14 @@ By the end of the workshop you will:
 
 name: outline
 
-# Course outline
+## Course outline
 
 _add this here_
 
 
 ---
 
-# Points of order
+## Points of order
 
 - __Ask questions whenever__ `r emo::ji('thumbsup')` You can do this through the Teams chat facility __{demo this now}__
 - We've structured the sessions with regular breaks, but __if you need to leave just leave__!
@@ -49,14 +49,14 @@ _add this here_
 
 ---
 
-# `R` set-up
+## `R` set-up
 
 - You can follow along with the materials in a local installation of `R` and `RStudio` on your own computer
 
 
 ---
 
-# Who you are
+## Who you are
 
 - Your __research interests__
 - __Why__ this course?
@@ -67,11 +67,11 @@ _add this here_
 
 class: center, middle, inverse
 
-# Before we begin...
+## Before we begin...
 
 ---
 
-# Statistical analysis and stories
+## Statistical analysis and stories
 
 - This workshop is _also_ about stories. Specifically:
   - The story of how the data in your spreadsheet came to exist
@@ -79,12 +79,14 @@ class: center, middle, inverse
 - I want to convince you that the first of these two stories should filter through into every decision you make during analysis, and so should determine the second
 - You need to know how your data came about to be able to analyse it properly
 
-
+---
 class: center, middle, inverse
 
 # Session One: Types of criminological data
 
-# Types of criminological data
+---
+
+## Types of criminological data
 
 - Criminology as a 'rendezvous discipline' as David Downes said
 - Criminological data could be
@@ -97,14 +99,14 @@ class: center, middle, inverse
 
 ---
 
-# Key types of criminological data
+## Key types of criminological data
 
 - Here we focus on police recorded crime and victimization surveys as common forms of criminological data
 - If you are interested in another form of data, please do ask!
 
 ---
 
-# Questions to ask any type of data
+## Questions to ask any type of data
 
 - "Why has the data been collected (and collected in this way)?
 - How has the data been collected and/or by whom or by what?
@@ -117,11 +119,11 @@ class: center, middle, inverse
 
 ---
 
-# How does an event become a crime statistic?
+## How does an event become a crime statistic?
 
 ![Recorded crime](resources/recorded_crime_flowchart.pdf){style="transform: rotate(90deg);"}
 
-# Questions to ask any type of data
+## Questions to ask any type of data
 
 - "Why has the data been collected (and collected in this way)?
     - Data collected as part of police reporting activity on crime levels
@@ -136,8 +138,8 @@ class: center, middle, inverse
 - What are the relevant definitions and concepts that govern the data/data collection?"
   - The current [Scottish Crime Recording Standard](https://www.gov.scot/publications/scottish-crime-recording-standard-crime-recording-counting-rules-2/) is 550 pages long (!). I have not read it (and don't intend to!)
 
-
-# Implications of this story
+---
+## Implications of this story
 
 - Reporting on crime levels - incentives to reduce figures?
     - https://osr.statisticsauthority.gov.uk/publication/the-quality-of-police-recorded-crime-statistics-for-england-and-wales/
@@ -148,18 +150,115 @@ class: center, middle, inverse
       - that's where poverty and disadvantage are?
       - that's where disproportionate surveilance and punishment are?
       
-# Population or super-population?
+---   
+
+## Implications for analysis: Population or super-population?
 
 - One reason people use inferential statistical models is to generalize from the data they have to a wider population. With recorded crime data, is this the whole population?
-- [@verlaan2024use] outline two possible approaches to conceptualizing police recorded crime data: a population or superpopulation approach.
+-  outline two possible approaches to conceptualizing police recorded crime data: a population or superpopulation approach [@verlaan2024use]
 - Population approach: if you have police recorded crime data for Scotland in 2023 the data you have is all you could ever have. You don't need to fit statistical models to generalize from the data you observe to a wider population because *there is no wider population*.
 - Superpopulation approach: you can think of Scotland in 2023 as 'drawn' from from the population of the UK, or Europe, or the whole planet. Alternatively, data from Scotland from 2023 may be seen as a sample from Scotland from 2023 and 2024, or 2023-2030 and so on. You might also want to construct a counterfactual of what crime would have been like in Scotland in 2023 if unemployment was 5% lower or 5% higher Gelman (2011)
 
-# Dangers of inferential statistics with recorded crime data
-- [@verlaan2024use] It wrongly leads people to assume that their results are generalizable
+---
+
+## Dangers of inferential statistics with recorded crime data
+
+- It wrongly leads people to assume that their results are generalizable [@verlaan2024use]
 - It can lead people to undervalue actual observed differences in their data. For example, researchers may deny that an association between two variables exists in their dataset if it is not statistically significant
 
-# Dangers of _not_ using inferential statistics with recorded crime data
+---
+
+## Dangers of _not_ using inferential statistics with recorded crime data
 
 - confidence intervals should be reported even when describing statistics from the full population, especially if the results are to be used to make predictions or inform policy. Importantly, even if _you_ are not be interested in prediction or policy-making, you can't control how others will use your results [@d.redelingsWhyConfidenceIntervals2012]
 - Different sized populations (e.g. local authorities) have different levels of variability [@spiegelhalterFunnelPlotsComparing2005]. Crime rates in small places will be more volatile - and so have more uncertainty - year-on-year than those from large areas
+
+
+---
+
+# Survey data
+
+
+- In response to known issues with measuring levels of crime with administrative data, since the 1980s criminologists in some parts of the world have been surveying the public to ask about their levels of victimization.
+- Scottish Crime and Justice Survey​
+- Crime Survey for England and Wales​
+- Equivalents in other countries, primarily in Western Europe, North America and Australasia ​
+- Smaller geographical scale surveys such as The Mayor's Office for Policing And Crime (MOPAC) Survey in London
+
+---
+
+# Survey data: benefits
+
+- Typically ask people about their experiences of victimization in the last year​
+- Can measure crime that isn’t reported to the police​
+- Usually don’t ask about people’s offending behaviour​
+- Good for measuring common crimes, bad for measuring rare crimes
+
+---
+
+### Answering our key questions
+
+- "Why has the data been collected (and collected in this way)?
+    - Data collected as part of government reporting on experiences and attitudes of criminal justice
+- How has the data been collected and/or by whom or by what?
+    - Collected by professional survey agencies
+- What/who is included and what/who is excluded?
+    - Random sample of 12,000ish postcodes in Scotland are contacted to take part​(for 2020/21 survey it was 12,681 addresses)
+  - For those who agree, one adult (age 16 or over) in each household is randomly selected for interview​
+- Therefore, *by design* no:​
+  - Children​
+  - Homeless people​
+  - People living in communal establishments (e.g. students, people in prison)
+  - Also in practice may exclude those in 'fragile, disjointed households' [@carr-hillMissingMillionsMeasuring2013]
+  - For SCJS to be a measure of crime for all adults, not just all adults in private households, we need to make a key assumption that “the subset of the adult population not captured in the SCJS experience the same level of victimisation as adults in the household resident population”​
+
+But this excludes people, students, people in prison, and those living in refuges. However, “Domestic abuse is the main cause of women’s homelessness in Scotland… All women living in Women’s Aid refuges have experienced domestic abuse and many will have experienced other forms of crime”
+  
+  
+- What is the context for the data collection (routine activity, bespoke intervention, to meet a target)?
+    - Routine reporting
+- Has the data been dis/aggregated or manipulated or cleaned in some other way to arrive at its present form?
+    - When it gets to you it has usually been validated. Some information is also restricted, such as 'capping' counts of victimization - we'll talk about this later...
+- What are the relevant definitions and concepts that govern the data/data collection?"
+  - You can read the question wording online! But... the questions included can changes over time (https://www.sccjr.ac.uk/wp-content/uploads/2024/02/group-two_hackathon-output.pdf)
+  
+  
+---
+  
+## Implications for analysis: weighting
+
+- We almost certainly do want to do inferential statistics!
+
+- Surveys are very rarely random samples; most come with weights
+- Use the weights for descriptives to gross up to national populations
+- Different authorities have different perspectives on whether you should use sampling weights when fitting a statistical model - it may depend on the specifics of your survey
+- But, weights will only help adjust the data you see towards the target population in the survey design frame. Weighting cannot adjust for populations who are excluded from the survey by design.
+
+
+
+--- 
+
+
+class: center, middle, inverse
+
+# Recap:
+# Data provenance determines what types of analysis are appropriate for a given aim
+# Recorded crime and victimization surveys exclude some incidents/population groups by design
+# There are pros and cons of using inferential statistics with recorded crime data
+
+
+---
+
+
+# Practical
+
+- Describe SOI
+- Give examples from my thesis of being inconsistent
+
+- Do I need significance testing here?
+
+- What's the story of *your* crime data?
+
+
+
+---
