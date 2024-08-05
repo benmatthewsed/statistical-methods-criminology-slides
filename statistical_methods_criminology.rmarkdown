@@ -9,6 +9,7 @@ format:
     scrollable: true
 ---
 
+
 ## Welcome!
 
 - Who we are
@@ -259,6 +260,7 @@ But this excludes people, students, people in prison, and those living in refuge
 
 
 
+
 ---
 class: center, middle, inverse
 
@@ -266,6 +268,7 @@ class: center, middle, inverse
 
 
 ---
+
 
 ## Large worlds and small worlds
 
@@ -357,6 +360,7 @@ If you really want to you can just use a linear model for count data. This will 
 
 First, if you have small counts (say, if you were modelling homicides in Scotland) the uncertainty in the mean estimate may give you a confidence interval below zero:
 
+
 ```{r}
 library(dplyr)
 
@@ -387,6 +391,7 @@ glm(y ~ 1, # fit intercept only model with poisson outcome
          exp_conf_low = exp(conf_low))
 
 ```
+
 
 Here the confidence intervals are not properly expressing what we know to be true about our data (that it has to be positive). 
 
@@ -577,6 +582,7 @@ as it is unlikely that one can adequately measure all such confounders"
 
 - from their study they find:
 
+
 ```{r}
 
 # from table 2 in Sampson, Laub and Wimer, p 491 
@@ -588,6 +594,7 @@ evalues.RR(est = 0.572, lo = 0.511, hi = 0.640)
   bias_plot(0.572, xmax = 10)
 
 ```
+
 
 From this, the unmeasured confounder would have to be associated with an almost three-fold increase in the risk of offending, and must be almost three times more prevalent in those married than those not married, to explain the observed risk ratio.
 
@@ -662,6 +669,7 @@ Knox et al. (2020) suggest some technical fixes, but emphasise that - if we are 
 
 
 
+
 ---
 class: center, middle, inverse
 
@@ -669,6 +677,7 @@ class: center, middle, inverse
 
 
 ---
+
 
 ## Simulation
 
@@ -687,6 +696,7 @@ class: center, middle, inverse
 :::: {.columns}
 
 ::: {.column width="66%"}
+
 
 ```{r rnorm_sim_v1}
 library(tibble)
@@ -707,6 +717,7 @@ tibble(
 
 ```
 
+
 :::
 
 ::: {.column width="34%"}
@@ -725,6 +736,7 @@ Here we simulate a normally distributed random variable and plot its distributio
 :::: {.columns}
 
 ::: {.column width="66%"}
+
 
 ``` {r rnorm_sim_v2}
 var2 <- 
@@ -746,6 +758,7 @@ tibble(
 
 ```
 
+
 :::
 
 ::: {.column width="34%"}
@@ -766,6 +779,7 @@ We can see that they are uncorrelated (as we would expect)
 ::: {.column width="66%"}
 
 
+
 ```{r mvtnorm_sim}
 MASS::mvrnorm(
   n = 10000,
@@ -777,6 +791,7 @@ MASS::mvrnorm(
   geom_point() +
   geom_density_2d()
 ```
+
 
 :::
 
@@ -876,6 +891,7 @@ To calculate the ratio of victimization rates in years 1 and 2, Hunter and Tselo
 :::: {.columns}
 
 ::: {.column width="66%"}
+
 ```{r vid_fn, fig.show = 'hide'}
 #| echo: true
 
@@ -884,6 +900,7 @@ victim_divide <- function(base_y1, base_y2){
 }
 
 ```
+
 :::
 
 ::: {.column width="34%"}
@@ -899,6 +916,7 @@ This is what the VD formula looks like in `R`
 :::: {.columns}
 
 ::: {.column width="66%"}
+
 
 ```{r vd_prep}
 #| echo: true
@@ -925,6 +943,7 @@ dat <-
   mutate(vict = as.integer(n * prev))
 
 ```
+
 :::
 
 ::: {.column width="34%"}
@@ -941,6 +960,7 @@ You can find more info on the data and approach [here](https://osf.io/k8j9e/)
 
 ::: {.column width="66%"}
 
+
 ```{r vd_models}
 #| echo: true
 
@@ -955,6 +975,7 @@ model2015 <-
 family = "binomial",
 data = filter(dat, year == "2015"))
 ```
+
 
 :::
 
@@ -973,6 +994,7 @@ We can fit a simple regression model to the data in each year to calculate the l
 ::: {.column width="66%"}
 
 Model1 :
+
 ```{r vd_ests_2015}
 #| echo: true
 results_2015 <- 
@@ -982,7 +1004,9 @@ broom::tidy(model2015) |>
 results_2015
 ```
 
+
 Model 2:
+
 ```{r vd_ests_2020}
 #| echo: true
 
@@ -993,6 +1017,7 @@ broom::tidy(model2020) |>
 results_2020
 
 ```
+
 
 
 :::
@@ -1012,6 +1037,7 @@ Model 1 shows a statistically significant difference for men (compared to women)
 
 ::: {.column width="66%"}
 
+
 ```{r vd_calc}
 #| echo: true
 victim_divide(
@@ -1019,6 +1045,7 @@ victim_divide(
   base_y2 = results_2020$est[[2]]
   )
 ```
+
 
 
 :::
@@ -1034,3 +1061,4 @@ Victimiztion inequality fell by more than half!
 ---
 
 ## How much has victimization inequality changed?
+
