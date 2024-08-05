@@ -5,6 +5,7 @@ execute:
   echo: true
 format:
   revealjs:
+    theme: solarized
     smaller: true
     scrollable: true
 ---
