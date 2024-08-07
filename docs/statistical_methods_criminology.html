@@ -7,7 +7,7 @@
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.4.555">
 
   <meta name="author" content="Ben Matthews">
@@ -56,45 +56,65 @@
         -khtml-user-select: none; -moz-user-select: none;
         -ms-user-select: none; user-select: none;
         padding: 0 4px; width: 4em;
+        color: #aaaaaa;
       }
-    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
     div.sourceCode
-      { color: #f8f8f2;  }
+      { color: #003b4f; background-color: #f1f3f5; }
     @media screen {
     pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
     }
-    code span { color: #f8f8f2; } /* Normal */
-    code span.al { color: #f07178; background-color: #2a0f15; font-weight: bold; } /* Alert */
-    code span.an { color: #d4d0ab; } /* Annotation */
-    code span.at { color: #00e0e0; } /* Attribute */
-    code span.bn { color: #d4d0ab; } /* BaseN */
-    code span.bu { color: #abe338; } /* BuiltIn */
-    code span.cf { color: #ffa07a; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #abe338; } /* Char */
-    code span.cn { color: #ffd700; } /* Constant */
-    code span.co { color: #f8f8f2; font-style: italic; } /* Comment */
-    code span.cv { color: #ffd700; } /* CommentVar */
-    code span.do { color: #f8f8f2; } /* Documentation */
-    code span.dt { color: #ffa07a; } /* DataType */
-    code span.dv { color: #d4d0ab; } /* DecVal */
-    code span.er { color: #f07178; text-decoration: underline; } /* Error */
-    code span.ex { color: #00e0e0; font-weight: bold; } /* Extension */
-    code span.fl { color: #d4d0ab; } /* Float */
-    code span.fu { color: #ffa07a; } /* Function */
-    code span.im { color: #abe338; } /* Import */
-    code span.in { color: #d4d0ab; } /* Information */
-    code span.kw { color: #ffa07a; font-weight: bold; } /* Keyword */
-    code span.op { color: #ffa07a; } /* Operator */
-    code span.ot { color: #00e0e0; } /* Other */
-    code span.pp { color: #dcc6e0; } /* Preprocessor */
-    code span.re { color: #00e0e0; background-color: #f8f8f2; } /* RegionMarker */
-    code span.sc { color: #abe338; } /* SpecialChar */
-    code span.ss { color: #abe338; } /* SpecialString */
-    code span.st { color: #abe338; } /* String */
-    code span.va { color: #00e0e0; } /* Variable */
-    code span.vs { color: #abe338; } /* VerbatimString */
-    code span.wa { color: #dcc6e0; } /* Warning */
-  </style>
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+      margin-bottom: 0em;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
   <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto.css">
   <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -387,11 +407,11 @@
     }
   </style>
 </head>
-<body class="quarto-dark">
+<body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" class="quarto-title-block center">
+<section id="title-slide" data-background-color="#40666e" class="quarto-title-block center">
   <h1 class="title">Statistical Methods for Criminology</h1>
 
 <div class="quarto-title-authors">
@@ -430,7 +450,7 @@ Ben Matthews
 <section id="points-of-order" class="slide level2">
 <h2>Points of order</h2>
 <ul>
-<li><strong>Ask questions whenever</strong> 👍 You can do this through the Teams chat facility <strong>{demo this now}</strong></li>
+<li><strong>Ask questions whenever</strong> :thumbsup: You can do this through the Teams chat facility <strong>{demo this now}</strong></li>
 <li>We’ve structured the sessions with regular breaks, but <strong>if you need to leave just leave</strong>!</li>
 <li>Materials will live online (<a href="https://benmatthewsed.github.io/statistical-methods-criminology-slides/statistical_methods_criminology.html#/title-slide">slides</a>,) so you can access them any time</li>
 <li>We want this time to be as useful for you guys as possible, so <strong>please let us know anything we can improve on</strong> between now and next week’s session</li>
@@ -450,12 +470,10 @@ Ben Matthews
 <li>What do you want to <strong>achieve</strong>?</li>
 </ul>
 </section>
-<section class="slide level2">
+<section>
+<section id="before-we-begin" class="title-slide slide level1 center" data-background-color="#40666e">
+<h1>Before we begin…</h1>
 
-<p>class: center, middle, inverse</p>
-</section>
-<section id="before-we-begin" class="slide level2">
-<h2>Before we begin…</h2>
 </section>
 <section id="statistical-analysis-and-stories" class="slide level2">
 <h2>Statistical analysis and stories</h2>
@@ -472,7 +490,7 @@ Ben Matthews
 <section class="slide level2">
 
 <p>class: center, middle, inverse</p>
-</section>
+</section></section>
 <section>
 <section id="session-one-types-of-criminological-data" class="title-slide slide level1 center">
 <h1>Session One: Types of criminological data</h1>
@@ -510,7 +528,7 @@ Ben Matthews
 <li>Has the data been dis/aggregated or manipulated or cleaned in some other way to arrive at its present form?</li>
 <li>What are the relevant definitions and concepts that govern the data/data collection?”</li>
 </ul>
-<p><span class="citation" data-cites="8347e95e012d4212a5ee429a18ee592e">[@8347e95e012d4212a5ee429a18ee592e, p228-229]</span></p>
+<p><span class="citation" data-cites="8347e95e012d4212a5ee429a18ee592e">(<a href="#/references" role="doc-biblioref" onclick="">Keay and Towers 2024, p228–229</a>)</span></p>
 </section>
 <section id="how-does-an-event-become-a-crime-statistic" class="slide level2">
 <h2>How does an event become a crime statistic?</h2>
@@ -573,7 +591,7 @@ Ben Matthews
 <h2>Implications for analysis: Population or super-population?</h2>
 <ul>
 <li>One reason people use inferential statistical models is to generalize from the data they have to a wider population. With recorded crime data, is this the whole population?</li>
-<li>outline two possible approaches to conceptualizing police recorded crime data: a population or superpopulation approach <span class="citation" data-cites="verlaan2024use">[@verlaan2024use]</span></li>
+<li>outline two possible approaches to conceptualizing police recorded crime data: a population or superpopulation approach <span class="citation" data-cites="verlaan2024use">(<a href="#/references" role="doc-biblioref" onclick="">Verlaan and Langton 2024</a>)</span></li>
 <li>Population approach: if you have police recorded crime data for Scotland in 2023 the data you have is all you could ever have. You don’t need to fit statistical models to generalize from the data you observe to a wider population because <em>there is no wider population</em>.</li>
 <li>Superpopulation approach: you can think of Scotland in 2023 as ‘drawn’ from from the population of the UK, or Europe, or the whole planet. Alternatively, data from Scotland from 2023 may be seen as a sample from Scotland from 2023 and 2024, or 2023-2030 and so on. You might also want to construct a counterfactual of what crime would have been like in Scotland in 2023 if unemployment was 5% lower or 5% higher Gelman (2011)</li>
 </ul>
@@ -581,15 +599,15 @@ Ben Matthews
 <section id="dangers-of-inferential-statistics-with-recorded-crime-data" class="slide level2">
 <h2>Dangers of inferential statistics with recorded crime data</h2>
 <ul>
-<li>It wrongly leads people to assume that their results are generalizable <span class="citation" data-cites="verlaan2024use">[@verlaan2024use]</span></li>
+<li>It wrongly leads people to assume that their results are generalizable <span class="citation" data-cites="verlaan2024use">(<a href="#/references" role="doc-biblioref" onclick="">Verlaan and Langton 2024</a>)</span></li>
 <li>It can lead people to undervalue actual observed differences in their data. For example, researchers may deny that an association between two variables exists in their dataset if it is not statistically significant</li>
 </ul>
 </section>
 <section id="dangers-of-not-using-inferential-statistics-with-recorded-crime-data" class="slide level2">
 <h2>Dangers of <em>not</em> using inferential statistics with recorded crime data</h2>
 <ul>
-<li>confidence intervals should be reported even when describing statistics from the full population, especially if the results are to be used to make predictions or inform policy. Importantly, even if <em>you</em> are not be interested in prediction or policy-making, you can’t control how others will use your results <span class="citation" data-cites="d.redelingsWhyConfidenceIntervals2012">[@d.redelingsWhyConfidenceIntervals2012]</span></li>
-<li>Different sized populations (e.g.&nbsp;local authorities) have different levels of variability <span class="citation" data-cites="spiegelhalterFunnelPlotsComparing2005">[@spiegelhalterFunnelPlotsComparing2005]</span>. Crime rates in small places will be more volatile - and so have more uncertainty - year-on-year than those from large areas</li>
+<li>confidence intervals should be reported even when describing statistics from the full population, especially if the results are to be used to make predictions or inform policy. Importantly, even if <em>you</em> are not be interested in prediction or policy-making, you can’t control how others will use your results <span class="citation" data-cites="d.redelingsWhyConfidenceIntervals2012">(<a href="#/references" role="doc-biblioref" onclick="">D. Redelings et al. 2012</a>)</span></li>
+<li>Different sized populations (e.g.&nbsp;local authorities) have different levels of variability <span class="citation" data-cites="spiegelhalterFunnelPlotsComparing2005">(<a href="#/references" role="doc-biblioref" onclick="">Spiegelhalter 2005</a>)</span>. Crime rates in small places will be more volatile - and so have more uncertainty - year-on-year than those from large areas</li>
 </ul>
 </section>
 <section id="survey-data" class="slide level2">
@@ -633,7 +651,7 @@ Ben Matthews
 <li>Children​</li>
 <li>Homeless people​</li>
 <li>People living in communal establishments (e.g.&nbsp;students, people in prison)</li>
-<li>Also in practice may exclude those in ‘fragile, disjointed households’ <span class="citation" data-cites="carr-hillMissingMillionsMeasuring2013">[@carr-hillMissingMillionsMeasuring2013]</span></li>
+<li>Also in practice may exclude those in ‘fragile, disjointed households’ <span class="citation" data-cites="carr-hillMissingMillionsMeasuring2013">(<a href="#/references" role="doc-biblioref" onclick="">Carr-Hill 2013</a>)</span></li>
 <li>For SCJS to be a measure of crime for all adults, not just all adults in private households, we need to make a key assumption that “the subset of the adult population not captured in the SCJS experience the same level of victimisation as adults in the household resident population”​</li>
 </ul></li>
 </ul>
@@ -684,9 +702,14 @@ Ben Matthews
 
 </section>
 
-<section>
 <section id="there-are-pros-and-cons-of-using-inferential-statistics-with-recorded-crime-data" class="title-slide slide level1 center">
 <h1>There are pros and cons of using inferential statistics with recorded crime data</h1>
+
+</section>
+
+<section>
+<section id="break" class="title-slide slide level1 center" data-background-color="#666666">
+<h1>Break</h1>
 
 </section>
 <section class="slide level2">
@@ -864,10 +887,15 @@ y_i \sim &amp; {Poisson} (\lambda) \\
 <li><p>People disagree as to which is preferable</p></li>
 <li><p>Example of gun violence in Oakland: https://cao-94612.s3.amazonaws.com/documents/Oakland-Ceasefire-Evaluation-Final-Report-May-2019.pdf</p></li>
 </ul>
-<aside><ol class="aside-footnotes"><li id="fn1"><p>okay, strictly speaking there are different varieties of negative binomial model. So… flavours? <span class="citation" data-cites="hilbeModelingCountData2014">[@hilbeModelingCountData2014]</span></p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn1"><p>okay, strictly speaking there are different varieties of negative binomial model. So… flavours? <span class="citation" data-cites="hilbeModelingCountData2014">(<a href="#/references" role="doc-biblioref" onclick="">Hilbe 2014</a>)</span></p></li></ol></aside></section>
 <section id="practical-1" class="slide level2">
 <h2>Practical</h2>
 <p>In this practical we’ll fit some count models in R</p>
+</section></section>
+<section>
+<section id="break-1" class="title-slide slide level1 center" data-background-color="#666666">
+<h1>Break</h1>
+
 </section>
 <section class="slide level2">
 
@@ -1003,7 +1031,7 @@ E-values 2.891988    NA  2.50</code></pre>
 <section id="selection-effects" class="slide level2">
 <h2>Selection effects</h2>
 <p>Selection bias arises when there are people who we would have liked to observe in our study but we don’t observe them, and this lack of observation is related to their characteristics. Put another way, we can think of selection bias as affecting the rows of our dataset - there are some rows that are missing that we would like to see.</p>
-<p><span class="citation" data-cites="greenlandSensitivityAnalysisBias2014">[@greenlandSensitivityAnalysisBias2014]</span></p>
+<p><span class="citation" data-cites="greenlandSensitivityAnalysisBias2014">(<a href="#/references" role="doc-biblioref" onclick="">Greenland 2014</a>)</span></p>
 <p>In the Knox and colleagues example, this would require knowing the numbers of people who were observed by police but not stopped, in order to calculate the probabilities of selection into the stop dataset. However, we don’t know this - and it is hard to imagine a scenario where an analyst of an police administrative dataset <em>would</em> know this.</p>
 <p>Even if we <em>do</em> know this for our particular dataset, there is no guarantee that selection into the data would hold in every case that we might want to generalize our results to. As such we’d need to consider how differences between the study populations may have affected response and selection (e.g.&nbsp;would selection probabilities from a US study map onto a study in Manchester? How about one in Glasgow?)</p>
 <p>Imagine that we want to know whether police are racially biased in how they treat members of the public. One way to assess this is by using data from the police about the outcomes of their interactions with the public.</p>
@@ -1015,7 +1043,7 @@ E-values 2.891988    NA  2.50</code></pre>
 <p>[INSERT FIGURE 2 FROM KNOX]</p>
 
 <img data-src="https://static.cambridge.org/binary/version/id/urn:cambridge.org:id:binary:20200730201026963-0363:S0003055420000039:S0003055420000039_fig2.png" class="r-stretch quarto-figure-center"><p class="caption">Knox et al (2020) FIGURE 2. Principal Strata and Observed Police–Civilian Encounters. Notes: The figure displays the four principal strata that comprise police–civilian encounters based on how the mediator M (whether a civilian is stopped by police) responds to treatment D (whether the civilian is a racial minority). Minorities in the “always stop” and anti-minority racial stop strata, highlighted in red, are stopped by police and, thus, appear in police administrative data. Likewise, white civilians in the “always-stop” and anti-white racial stop strata, highlighted in blue, appear in police data. “Never stop” encounters are unobserved. Because white and nonwhite encounters are drawn from different principal strata, the two groups are incomparable and estimates of causal quantities using observed encounters will be statistically biased absent additional assumptions.</p><p>If you only analyse data that are the result of police stops then your results will be biased. To analyse data on police stops to estimate racial bias, you also need to know the total number of encounters (for each ethnic group) – that is, including encounters that did not lead to a stop.</p>
-<p>Others <span class="citation" data-cites="gaeblerCausalFrameworkObservational2022">[@gaeblerCausalFrameworkObservational2022]</span>suggest that maybe you can identify some aspects of discrimination in administrative data. This would be discrimination at some point in the process, not total discrimination. It’s really important to be clear about what it is you want to know – do you care about total discrimination, or discrimination in a particular part of the process (e.g.&nbsp;court sentencing and not policing?).</p>
+<p>Others <span class="citation" data-cites="gaeblerCausalFrameworkObservational2022">(<a href="#/references" role="doc-biblioref" onclick="">Gaebler et al. 2022</a>)</span>suggest that maybe you can identify some aspects of discrimination in administrative data. This would be discrimination at some point in the process, not total discrimination. It’s really important to be clear about what it is you want to know – do you care about total discrimination, or discrimination in a particular part of the process (e.g.&nbsp;court sentencing and not policing?).</p>
 </section>
 <section id="solutions-1" class="slide level2">
 <h2>Solutions?</h2>
@@ -1040,12 +1068,17 @@ E-values 2.891988    NA  2.50</code></pre>
 </ul></li>
 <li>Write a vignette describing some results and then critique?</li>
 </ul>
+</section></section>
+<section>
+<section id="break-2" class="title-slide slide level1 center" data-background-color="#666666">
+<h1>Break</h1>
+
 </section>
 <section id="simulation" class="slide level2">
 <h2>Simulation</h2>
 <ul>
 <li>In the last session we spent time being skeptical about our model coefficients, and looked at some methods which adjust coefficients to account for possible biases in the data.</li>
-<li>Now we are going to translate coefficients into more interesting and informative quantities. This is a great way to make results more informative and accessible <span class="citation" data-cites="kingMakingMostStatistical2000">[@kingMakingMostStatistical2000]</span>.</li>
+<li>Now we are going to translate coefficients into more interesting and informative quantities. This is a great way to make results more informative and accessible <span class="citation" data-cites="kingMakingMostStatistical2000">(<a href="#/references" role="doc-biblioref" onclick="">King, Tomz, and Wittenberg 2000</a>)</span>.</li>
 </ul>
 </section>
 <section class="slide level2">
@@ -1129,15 +1162,20 @@ E-values 2.891988    NA  2.50</code></pre>
 <div class="columns">
 <div class="column" style="width:66%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>MASS<span class="sc">::</span><span class="fu">mvrnorm</span>(</span>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>cor_data <span class="ot">&lt;-</span> MASS<span class="sc">::</span><span class="fu">mvrnorm</span>(</span>
 <span id="cb12-2"><a></a>  <span class="at">n =</span> <span class="dv">10000</span>,</span>
 <span id="cb12-3"><a></a>  <span class="at">mu =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="co"># mu instead of mean</span></span>
 <span id="cb12-4"><a></a>  <span class="at">Sigma =</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="fl">0.9</span>, <span class="fl">0.9</span>, <span class="dv">1</span>), <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>) <span class="co"># Sigma instead of sd</span></span>
 <span id="cb12-5"><a></a>) <span class="sc">|&gt;</span> </span>
-<span id="cb12-6"><a></a>  <span class="fu">as.data.frame</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb12-7"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> V1, <span class="at">y =</span> V2)) <span class="sc">+</span></span>
-<span id="cb12-8"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb12-9"><a></a>  <span class="fu">geom_density_2d</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-6"><a></a>  <span class="fu">as.data.frame</span>()</span>
+<span id="cb12-7"><a></a></span>
+<span id="cb12-8"><a></a>cor_data <span class="sc">|&gt;</span> </span>
+<span id="cb12-9"><a></a>  tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(V1, V2),</span>
+<span id="cb12-10"><a></a>                      <span class="at">names_to =</span> <span class="st">"variable"</span>,</span>
+<span id="cb12-11"><a></a>               <span class="at">values_to =</span> <span class="st">"value"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb12-12"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> value)) <span class="sc">+</span></span>
+<span id="cb12-13"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> variable) <span class="sc">+</span></span>
+<span id="cb12-14"><a></a>  <span class="fu">geom_histogram</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -1147,10 +1185,25 @@ E-values 2.891988    NA  2.50</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:34%;">
-<p>If we use <code>mvrnorm()</code> the resulting simulations can be correlated.</p>
-<p>Here I set a correlation of 0.9.</p>
+<p>If we use <code>mvrnorm()</code> the resulting simulations can be correlated. Here I set a correlation of 0.9.</p>
+<p><code>V1</code> and <code>V2</code> are both normally distributed…</p>
 </div>
 </div>
+</section>
+<section class="slide level2">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>cor_data <span class="sc">|&gt;</span> </span>
+<span id="cb13-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> V1, <span class="at">y =</span> V2)) <span class="sc">+</span></span>
+<span id="cb13-3"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb13-4"><a></a>  <span class="fu">geom_density_2d</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="statistical_methods_criminology_files/figure-revealjs/cor_graph_2-1.png" width="960" class="r-stretch"><p>:::</p>
+<div class="column" style="width:34%;">
+<p>… but highly correlated. We’ll come back to the importance of this in a second…</p>
+</div>
+<p>::::</p>
 </section>
 <section id="translating-coefficients" class="slide level2">
 <h2>Translating coefficients</h2>
@@ -1167,20 +1220,21 @@ E-values 2.891988    NA  2.50</code></pre>
 <li>A key challenge is propagating the appropriate uncertainty in the results</li>
 <li>But we can use simulation to propagate this uncertainty - and we can apply this approach to any generalized linear model and any Derived Quantity of Interest (DQI)</li>
 <li>The simulation process is described by King et al.&nbsp;(2000) and implemented in the R package clarify (https://github.com/iqss/clarify)</li>
+<li>This approach propagates both the uncertainty in the model’s coefficients, and the correlations between the coefficients</li>
 </ul>
 </section>
 <section id="an-example-victimization-divides" class="slide level2">
 <h2>An example: victimization divides</h2>
 <ul>
-<li><span class="citation" data-cites="hunterEquityJusticeCrime2016">[@hunterEquityJusticeCrime2016]</span> use the results of a fitted regression model to calculate a measure they call ‘Victimization Divide’</li>
-<li>This measure is a way to describe how victimization inequality has changed over time</li>
-<li>This measure is defined as</li>
+<li><span class="citation" data-cites="hunterEquityJusticeCrime2016">(<a href="#/references" role="doc-biblioref" onclick="">Hunter and Tseloni 2016</a>)</span> wanted to describe how victimization inequality had changed over time</li>
+<li>They used the results of a fitted regression model to calculate a measure they call ‘Victimization Divide’</li>
+<li>This measure is defined as:</li>
 </ul>
 <p>(ratio of victimization rates in year 2 - 1) - (ratio of victimization rates in year 2 - 1) / (ratio of victimization rates in year one - 1)</p>
 </section>
 <section id="victimization-divide" class="slide level2">
 <h2>Victimization divide</h2>
-<p>this is analogous to exploring the percentage change in victimization inequality between two comparison years.</p>
+<p>This is analogous to exploring the percentage change in victimization inequality between two comparison years.</p>
 </section>
 <section id="victimization-divides" class="slide level2">
 <h2>Victimization divides</h2>
@@ -1204,7 +1258,7 @@ E-values 2.891988    NA  2.50</code></pre>
 <ul>
 <li>But this analysis used data from CSEW</li>
 <li>So we want to assess the uncertainty in these estimates which come from projecting from sample to population</li>
-<li>We can do this with simulation</li>
+<li>We can do this with the King et al.&nbsp;simulation approach</li>
 </ul>
 </section>
 <section id="simulating-dqis" class="slide level2">
@@ -1218,21 +1272,24 @@ E-values 2.891988    NA  2.50</code></pre>
 <section id="simulating-dqis-1" class="slide level2 scrollable">
 <h2>Simulating DQIs</h2>
 <ul>
-<li>The draws from the variance-covariance matrix gives a set of draws which reflect:</li>
+<li>The draws from the variance-covariance matrix reflect:</li>
 </ul>
 <ol type="1">
 <li>the uncertainty in each of the regression coefficients (as expressed in their standard errors) and</li>
 <li>the correlation between these coefficients (as expressed in the covariance between the coefficients)</li>
 </ol>
+<ul>
+<li>We then just calculate the VD for each draw. This gives us a distribution of VDs which capture the uncertainty in the model’s coefficients</li>
+</ul>
 </section>
 <section id="simulating-dqis-worked-example" class="slide level2">
 <h2>Simulating DQIs: worked example</h2>
 <div class="columns">
 <div class="column" style="width:66%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>victim_divide <span class="ot">&lt;-</span> <span class="cf">function</span>(base_y1, base_y2){</span>
-<span id="cb13-2"><a></a>  ((base_y2 <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">-</span> (base_y1 <span class="sc">-</span> <span class="dv">1</span>)) <span class="sc">/</span> (base_y1 <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb13-3"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>victim_divide <span class="ot">&lt;-</span> <span class="cf">function</span>(base_y1, base_y2){</span>
+<span id="cb14-2"><a></a>  ((base_y2 <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">-</span> (base_y1 <span class="sc">-</span> <span class="dv">1</span>)) <span class="sc">/</span> (base_y1 <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb14-3"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:34%;">
 <p>This is what the VD formula looks like in <code>R</code></p>
@@ -1244,26 +1301,26 @@ E-values 2.891988    NA  2.50</code></pre>
 <div class="columns">
 <div class="column" style="width:66%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="co"># load packages</span></span>
-<span id="cb14-2"><a></a></span>
-<span id="cb14-3"><a></a><span class="fu">library</span>(MASS)</span>
-<span id="cb14-4"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb14-5"><a></a></span>
-<span id="cb14-6"><a></a><span class="co"># reading in data</span></span>
-<span id="cb14-7"><a></a></span>
-<span id="cb14-8"><a></a>dat <span class="ot">&lt;-</span></span>
-<span id="cb14-9"><a></a>  <span class="fu">tribble</span>(</span>
-<span id="cb14-10"><a></a>    <span class="sc">~</span>prev, <span class="sc">~</span>year, <span class="sc">~</span>sex, <span class="sc">~</span>n,</span>
-<span id="cb14-11"><a></a>    <span class="fl">0.167</span>, <span class="st">"2015"</span>, <span class="st">"men"</span>, <span class="dv">15030</span>,</span>
-<span id="cb14-12"><a></a>    <span class="fl">0.153</span>, <span class="st">"2015"</span>, <span class="st">"women"</span>, <span class="dv">18320</span>,</span>
-<span id="cb14-13"><a></a>    <span class="fl">0.197</span>, <span class="st">"2020"</span>, <span class="st">"men"</span>, <span class="dv">15505</span>,</span>
-<span id="cb14-14"><a></a>    <span class="fl">0.189</span>, <span class="st">"2020"</span>, <span class="st">"women"</span>, <span class="dv">18230</span></span>
-<span id="cb14-15"><a></a>  )</span>
-<span id="cb14-16"><a></a></span>
-<span id="cb14-17"><a></a><span class="co"># calculate the number of victims</span></span>
-<span id="cb14-18"><a></a>dat <span class="ot">&lt;-</span></span>
-<span id="cb14-19"><a></a>  dat <span class="sc">|&gt;</span> </span>
-<span id="cb14-20"><a></a>  <span class="fu">mutate</span>(<span class="at">vict =</span> <span class="fu">as.integer</span>(n <span class="sc">*</span> prev))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="co"># load packages</span></span>
+<span id="cb15-2"><a></a></span>
+<span id="cb15-3"><a></a><span class="fu">library</span>(MASS)</span>
+<span id="cb15-4"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb15-5"><a></a></span>
+<span id="cb15-6"><a></a><span class="co"># reading in data</span></span>
+<span id="cb15-7"><a></a></span>
+<span id="cb15-8"><a></a>dat <span class="ot">&lt;-</span></span>
+<span id="cb15-9"><a></a>  <span class="fu">tribble</span>(</span>
+<span id="cb15-10"><a></a>    <span class="sc">~</span>prev, <span class="sc">~</span>year, <span class="sc">~</span>sex, <span class="sc">~</span>n,</span>
+<span id="cb15-11"><a></a>    <span class="fl">0.167</span>, <span class="st">"2015"</span>, <span class="st">"men"</span>, <span class="dv">15030</span>,</span>
+<span id="cb15-12"><a></a>    <span class="fl">0.153</span>, <span class="st">"2015"</span>, <span class="st">"women"</span>, <span class="dv">18320</span>,</span>
+<span id="cb15-13"><a></a>    <span class="fl">0.197</span>, <span class="st">"2020"</span>, <span class="st">"men"</span>, <span class="dv">15505</span>,</span>
+<span id="cb15-14"><a></a>    <span class="fl">0.189</span>, <span class="st">"2020"</span>, <span class="st">"women"</span>, <span class="dv">18230</span></span>
+<span id="cb15-15"><a></a>  )</span>
+<span id="cb15-16"><a></a></span>
+<span id="cb15-17"><a></a><span class="co"># calculate the number of victims</span></span>
+<span id="cb15-18"><a></a>dat <span class="ot">&lt;-</span></span>
+<span id="cb15-19"><a></a>  dat <span class="sc">|&gt;</span> </span>
+<span id="cb15-20"><a></a>  <span class="fu">mutate</span>(<span class="at">vict =</span> <span class="fu">as.integer</span>(n <span class="sc">*</span> prev))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:34%;">
 <p>You can find more info on the data and approach <a href="https://osf.io/k8j9e/">here</a></p>
@@ -1275,16 +1332,16 @@ E-values 2.891988    NA  2.50</code></pre>
 <div class="columns">
 <div class="column" style="width:66%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>model2020 <span class="ot">&lt;-</span> </span>
-<span id="cb15-2"><a></a>  <span class="fu">glm</span>(<span class="fu">cbind</span>(vict, n <span class="sc">-</span> vict) <span class="sc">~</span> <span class="fu">fct_rev</span>(sex),</span>
-<span id="cb15-3"><a></a><span class="at">family =</span> <span class="st">"binomial"</span>,</span>
-<span id="cb15-4"><a></a><span class="at">data =</span> <span class="fu">filter</span>(dat, year <span class="sc">==</span> <span class="st">"2020"</span>))</span>
-<span id="cb15-5"><a></a></span>
-<span id="cb15-6"><a></a></span>
-<span id="cb15-7"><a></a>model2015 <span class="ot">&lt;-</span> </span>
-<span id="cb15-8"><a></a>  <span class="fu">glm</span>(<span class="fu">cbind</span>(vict, n <span class="sc">-</span> vict) <span class="sc">~</span> <span class="fu">fct_rev</span>(sex),</span>
-<span id="cb15-9"><a></a><span class="at">family =</span> <span class="st">"binomial"</span>,</span>
-<span id="cb15-10"><a></a><span class="at">data =</span> <span class="fu">filter</span>(dat, year <span class="sc">==</span> <span class="st">"2015"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>model2020 <span class="ot">&lt;-</span> </span>
+<span id="cb16-2"><a></a>  <span class="fu">glm</span>(<span class="fu">cbind</span>(vict, n <span class="sc">-</span> vict) <span class="sc">~</span> <span class="fu">fct_rev</span>(sex),</span>
+<span id="cb16-3"><a></a><span class="at">family =</span> <span class="st">"binomial"</span>,</span>
+<span id="cb16-4"><a></a><span class="at">data =</span> <span class="fu">filter</span>(dat, year <span class="sc">==</span> <span class="st">"2020"</span>))</span>
+<span id="cb16-5"><a></a></span>
+<span id="cb16-6"><a></a></span>
+<span id="cb16-7"><a></a>model2015 <span class="ot">&lt;-</span> </span>
+<span id="cb16-8"><a></a>  <span class="fu">glm</span>(<span class="fu">cbind</span>(vict, n <span class="sc">-</span> vict) <span class="sc">~</span> <span class="fu">fct_rev</span>(sex),</span>
+<span id="cb16-9"><a></a><span class="at">family =</span> <span class="st">"binomial"</span>,</span>
+<span id="cb16-10"><a></a><span class="at">data =</span> <span class="fu">filter</span>(dat, year <span class="sc">==</span> <span class="st">"2015"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:34%;">
 <p>We can fit a simple regression model to the data in each year to calculate the log-odds of being a victim for men and women. In this example I fit a separate model for 2015 and 2020.</p>
@@ -1297,11 +1354,11 @@ E-values 2.891988    NA  2.50</code></pre>
 <div class="column" style="width:66%;">
 <p>Model1 :</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>results_2015 <span class="ot">&lt;-</span> </span>
-<span id="cb16-2"><a></a>broom<span class="sc">::</span><span class="fu">tidy</span>(model2015) <span class="sc">|&gt;</span> </span>
-<span id="cb16-3"><a></a>  <span class="fu">mutate</span>(<span class="at">est =</span> <span class="fu">exp</span>(estimate))</span>
-<span id="cb16-4"><a></a></span>
-<span id="cb16-5"><a></a>results_2015</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>results_2015 <span class="ot">&lt;-</span> </span>
+<span id="cb17-2"><a></a>broom<span class="sc">::</span><span class="fu">tidy</span>(model2015) <span class="sc">|&gt;</span> </span>
+<span id="cb17-3"><a></a>  <span class="fu">mutate</span>(<span class="at">est =</span> <span class="fu">exp</span>(estimate))</span>
+<span id="cb17-4"><a></a></span>
+<span id="cb17-5"><a></a>results_2015</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 6
   term            estimate std.error statistic  p.value   est
@@ -1312,11 +1369,11 @@ E-values 2.891988    NA  2.50</code></pre>
 </div>
 <p>Model 2:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>results_2020 <span class="ot">&lt;-</span> </span>
-<span id="cb18-2"><a></a>broom<span class="sc">::</span><span class="fu">tidy</span>(model2020) <span class="sc">|&gt;</span> </span>
-<span id="cb18-3"><a></a>  <span class="fu">mutate</span>(<span class="at">est =</span> <span class="fu">exp</span>(estimate))</span>
-<span id="cb18-4"><a></a></span>
-<span id="cb18-5"><a></a>results_2020</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>results_2020 <span class="ot">&lt;-</span> </span>
+<span id="cb19-2"><a></a>broom<span class="sc">::</span><span class="fu">tidy</span>(model2020) <span class="sc">|&gt;</span> </span>
+<span id="cb19-3"><a></a>  <span class="fu">mutate</span>(<span class="at">est =</span> <span class="fu">exp</span>(estimate))</span>
+<span id="cb19-4"><a></a></span>
+<span id="cb19-5"><a></a>results_2020</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 6
   term            estimate std.error statistic p.value   est
@@ -1335,10 +1392,10 @@ E-values 2.891988    NA  2.50</code></pre>
 <div class="columns">
 <div class="column" style="width:66%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="fu">victim_divide</span>(</span>
-<span id="cb20-2"><a></a>  <span class="at">base_y1 =</span> results_2015<span class="sc">$</span>est[[<span class="dv">2</span>]],</span>
-<span id="cb20-3"><a></a>  <span class="at">base_y2 =</span> results_2020<span class="sc">$</span>est[[<span class="dv">2</span>]]</span>
-<span id="cb20-4"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">victim_divide</span>(</span>
+<span id="cb21-2"><a></a>  <span class="at">base_y1 =</span> results_2015<span class="sc">$</span>est[[<span class="dv">2</span>]],</span>
+<span id="cb21-3"><a></a>  <span class="at">base_y2 =</span> results_2020<span class="sc">$</span>est[[<span class="dv">2</span>]]</span>
+<span id="cb21-4"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -0.5223449</code></pre>
 </div>
@@ -1351,10 +1408,303 @@ E-values 2.891988    NA  2.50</code></pre>
 </section>
 <section id="how-much-has-victimization-inequality-changed-1" class="slide level2">
 <h2>How much has victimization inequality changed?</h2>
+<div class="columns">
+<div class="column" style="width:66%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="co"># set seed</span></span>
+<span id="cb23-2"><a></a><span class="fu">set.seed</span>(<span class="fu">nchar</span>(<span class="st">"vict divide"</span>) <span class="sc">^</span> <span class="dv">4</span>)</span>
+<span id="cb23-3"><a></a></span>
+<span id="cb23-4"><a></a>n_sims <span class="ot">&lt;-</span> <span class="fl">1e5</span></span>
+<span id="cb23-5"><a></a></span>
+<span id="cb23-6"><a></a>draws_2020 <span class="ot">&lt;-</span></span>
+<span id="cb23-7"><a></a>  MASS<span class="sc">::</span><span class="fu">mvrnorm</span>(</span>
+<span id="cb23-8"><a></a>    <span class="at">n =</span> n_sims,</span>
+<span id="cb23-9"><a></a>    <span class="at">mu =</span> <span class="fu">coef</span>(model2020),</span>
+<span id="cb23-10"><a></a>    <span class="at">Sigma =</span> <span class="fu">vcov</span>(model2020)</span>
+<span id="cb23-11"><a></a>  )</span>
+<span id="cb23-12"><a></a></span>
+<span id="cb23-13"><a></a>draws_2015 <span class="ot">&lt;-</span></span>
+<span id="cb23-14"><a></a>  MASS<span class="sc">::</span><span class="fu">mvrnorm</span>(</span>
+<span id="cb23-15"><a></a>    <span class="at">n =</span> n_sims,</span>
+<span id="cb23-16"><a></a>    <span class="at">mu =</span> <span class="fu">coef</span>(model2015),</span>
+<span id="cb23-17"><a></a>    <span class="at">Sigma =</span> <span class="fu">vcov</span>(model2015)</span>
+<span id="cb23-18"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:34%;">
+<p>We can pass the models’ coefficients and variance-covariance matrices to <code>mvrnorm</code> from the <code>{MASS}</code> library.</p>
+<p>This gives us a set of 10,000 coefficients for each model.</p>
+</div>
+</div>
+</section>
+<section id="how-much-has-victimization-inequality-changed-2" class="slide level2">
+<h2>How much has victimization inequality changed?</h2>
+<div class="columns">
+<div class="column" style="width:66%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>draws_2015 <span class="ot">&lt;-</span></span>
+<span id="cb24-2"><a></a>  draws_2015 <span class="sc">%&gt;%</span></span>
+<span id="cb24-3"><a></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb24-4"><a></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb24-5"><a></a>  <span class="fu">mutate</span>(<span class="at">est =</span> <span class="fu">exp</span>(<span class="st">`</span><span class="at">fct_rev(sex)men</span><span class="st">`</span>))</span>
+<span id="cb24-6"><a></a></span>
+<span id="cb24-7"><a></a>draws_2020 <span class="ot">&lt;-</span></span>
+<span id="cb24-8"><a></a>  draws_2020 <span class="sc">%&gt;%</span></span>
+<span id="cb24-9"><a></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb24-10"><a></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb24-11"><a></a>  <span class="fu">mutate</span>(<span class="at">est =</span> <span class="fu">exp</span>(<span class="st">`</span><span class="at">fct_rev(sex)men</span><span class="st">`</span>))</span>
+<span id="cb24-12"><a></a></span>
+<span id="cb24-13"><a></a><span class="co"># combine the results</span></span>
+<span id="cb24-14"><a></a>sim_dat <span class="ot">&lt;-</span></span>
+<span id="cb24-15"><a></a>  <span class="fu">tibble</span>(</span>
+<span id="cb24-16"><a></a>    <span class="at">vd =</span> <span class="fu">victim_divide</span>(<span class="at">base_y1 =</span> draws_2015<span class="sc">$</span>est,</span>
+<span id="cb24-17"><a></a>                       <span class="at">base_y2 =</span> draws_2020<span class="sc">$</span>est)</span>
+<span id="cb24-18"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:34%;">
+<p>Once we tidy the results up a bit, we can pass these simulated draws to our <code>victim_divide()</code> function…</p>
+</div>
+</div>
+</section>
+<section id="how-much-has-victimization-inequality-changed-3" class="slide level2">
+<h2>How much has victimization inequality changed?</h2>
+<div class="columns">
+<div class="column" style="width:66%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>sim_dat <span class="sc">|&gt;</span> </span>
+<span id="cb25-2"><a></a>  <span class="fu">reframe</span>(</span>
+<span id="cb25-3"><a></a>    <span class="at">vds =</span> <span class="fu">quantile</span>(vd, <span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.5</span>, <span class="fl">0.975</span>)),</span>
+<span id="cb25-4"><a></a>    <span class="at">centile =</span> <span class="fu">c</span>(<span class="st">"5%"</span>, <span class="st">"50%"</span>, <span class="st">"95%"</span>)</span>
+<span id="cb25-5"><a></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+     vds centile
+   &lt;dbl&gt; &lt;chr&gt;  
+1 -1.03  5%     
+2 -0.523 50%    
+3  0.479 95%    </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a>sim_dat <span class="sc">|&gt;</span> </span>
+<span id="cb27-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> vd)) <span class="sc">+</span></span>
+<span id="cb27-3"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb27-4"><a></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="dv">2</span>)) <span class="sc">+</span></span>
+<span id="cb27-5"><a></a>  <span class="fu">geom_vline</span>(<span class="fu">aes</span>(<span class="at">xintercept =</span> <span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="statistical_methods_criminology_files/figure-revealjs/vd_sim_res-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:34%;">
+<p>We can see the 5 and 95 percentiales of the simulated VDs, as well as the histogram of their distribution.</p>
+<p>These intervals include zero, so the apparent 52% reduction in victimization inequality would not be ‘statistically significant’ at the standard level.</p>
+</div>
+</div>
+</section>
+<section id="simulation-is-great" class="slide level2">
+<h2>Simulation is great</h2>
+<ul>
+<li>The beauty of this simulation approach described by King et al (2000) is that it generalizes to <strong>any DQI</strong> that is a function of the model’s parameters, such as VD, and to <strong>any GLM</strong>.</li>
+<li>Say that instead of the VD were interested in the absolute difference in predicted victimization rates after controlling for other factors (like a marginal effect)</li>
+<li>Or maybe we have fitted a count model and we want to know the number of people reporting 2 or more victimization incidents - we can calculate this from our simulations whilst incorporating the model’s uncertainty into our estimates</li>
+<li>In this example this is good because there are many ways to measure victimization inequality (Matthews and McVie, forthcoming)</li>
+</ul>
+</section>
+<section id="simulation-isn-practice" class="slide level2">
+<h2>Simulation isn practice</h2>
+<ul>
+<li>Here we did the simulation by hand. This is useful as a way to understand the method, but whilst it’s good to know how this works, in practice there are R packages which can do this for us.</li>
+<li>One good option is <a href="https://cran.r-project.org/web/packages/clarify/index.html">clarify</a>.</li>
+<li>There is inherent uncertainty in simulation results, so it’s crucial to set the seed for the random number generator so you get the same results every time.</li>
+<li>You also need to run enough simulation draws to get a good estimate of the uncertainty. The default for clarify is 1000 draws.</li>
+<li>More simulations are always better, but will take longer - so there is a pragmatic aspect to how much time and computer resource you have to run simulations.</li>
+<li>In general I would recommend using a package like clarify if you conduct this kind of simulation. It’s likely that professionally developed and maintained software will be less error-prone and more efficient than writing your own!</li>
+</ul>
+</section>
+<section id="conceptual-limitations" class="slide level2">
+<h2>Conceptual limitations</h2>
+<ul>
+<li>Simulation expresses the uncertainty captured by our model parameters</li>
+<li>But remember that our model is wrong!! (Greenland)</li>
+<li>Our model still makes a load of assumptions - basically that we’ve fit the right model and that we had the right data.</li>
+<li>As we discussed in the previous section, we might also want to be skeptical of our model parameters themselves if we are worried about bias</li>
+</ul>
+</section>
+<section id="practical-3" class="slide level2">
+<h2>Practical</h2>
+<ul>
+<li><p>Fit a regression model, simulate victimization divides with {clarify}</p></li>
+<li><p>maybe do something comparing jsut the standard errors (and not the vcov) with using the correlation too?</p></li>
+</ul>
+</section></section>
+<section>
+<section id="break-3" class="title-slide slide level1 center" data-background-color="#666666">
+<h1>Break</h1>
+
+</section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="ethics" class="title-slide slide level1 center">
+<h1>Ethics</h1>
+
+</section>
+<section id="general-ethical-principles-in-social-science-research" class="slide level2">
+<h2>General ethical principles in social science research</h2>
+<ul>
+<li>In research ethics and governance there is a lot of discussion about informed consent, not disclosing personal information and so on.</li>
+<li>Also specifically in quantitative work, ethical issues around workflow</li>
+<li>See For example, there was some controversy around a recent paper which suggested that ‘de-policing’ in Denver in 2020 led to increases in violent crime (Nix et al https://onlinelibrary.wiley.com/doi/full/10.1111/1745-9125.12363). However, another research who attempted to reproduce their findings - and fair play to Nix and colleagues for making their research reproducible - suggested that their main result was due to a merging error which led to the analytical dataset being scrambled (https://github.com/jkangbrown/when_police_replication).</li>
+</ul>
+</section>
+<section id="our-focus-ethics-of-how-we-tell-the-story-of-our-research" class="slide level2">
+<h2>Our focus: ethics of how we tell the story of our research</h2>
+<ul>
+<li>We’re going to focus on the ethics of framing our research and how we present our results</li>
+</ul>
+</section>
+<section id="framing-the-tyranny-of-the-means" class="slide level2">
+<h2>Framing: The tyranny of the means</h2>
+<ul>
+<li><p>We should avoid essentializing.</p></li>
+<li><p>Typical focus of regression results is group average effect. Even if we have a statiistically significant difference between two groups in their estimated probability (or log-odds) of being convicted of comitting a crime, on its own this doesn’t tell us about how likely any individual member of those groups is to be convicted.</p></li>
+<li><p>By focusing on how people with the same observables vary we can avoid essentializing people? (McCall 2005).</p></li>
+<li><p>This is an added benefit of the simulation approach we discussed in the previous section - we can use these kind of methods to illustrate the variation of outcomes for people <em>with the same observables</em>, not just average differences in outcomes for people with different observables.</p></li>
+<li><p>Focusing only on group averages can imply that all members of the group are the same</p></li>
+<li><p>Causal quartets?</p></li>
+</ul>
+</section>
+<section id="causal-quartets" class="slide level2">
+<h2>CAUSAL QUARTETS</h2>
+
+<img data-src="images/causal-quartets.png" style="width:90.0%" class="r-stretch quarto-figure-center"><p class="caption">From <span class="citation" data-cites="gelmanCausalQuartetsDifferent2023">(<a href="#/references" role="doc-biblioref" onclick=""><strong>gelmanCausalQuartetsDifferent2023?</strong></a>)</span></p></section>
+<section id="causal-quartets-1" class="slide level2">
+<h2>CAUSAL QUARTETS</h2>
+<ul>
+<li>So what? <span class="citation" data-cites="gelmanCausalQuartetsDifferent2023">(<a href="#/references" role="doc-biblioref" onclick=""><strong>gelmanCausalQuartetsDifferent2023?</strong></a>)</span></li>
+<li>“Variation among people is relevant to policy (for example, personalized medicine) and understanding (for example in psychology)”</li>
+<li>“Variation across situations is relevant when deciding what “flavor” of treatment to do, for example with dosing in pharmacology or treatment levels in traditional agricultural experiments.”</li>
+</ul>
+</section>
+<section id="same-observables-different-outcomes" class="slide level2">
+<h2>SAME OBSERVABLES: DIFFERENT OUTCOMES</h2>
+
+<img data-src="images/qlp-results-figure.png" alt="Estimated Adult Conviction Trajectory Probabilities by Sex, Indigenous Status and Childhood System Contact." class="r-stretch"></section>
+<section id="relationship-to-model-fit" class="slide level2">
+<h2>Relationship to model fit</h2>
+<ul>
+<li>Model fit can help with this? How much variation is <strong>not</strong> explained?</li>
+</ul>
+</section>
+<section id="framing-the-importance-of-language" class="slide level2">
+<h2>Framing: the importance of language</h2>
+<p>More conceptually, it’s important to think about how we frame the results of any analysis.</p>
+<p>Three visualizations from <a href="https://data-feminism.mitpress.mit.edu/pub/czq9dfs5/release/3">Data Feminism</a></p>
+<ul>
+<li><p>language use</p></li>
+<li><p>providing necessary context?</p></li>
+<li><p>deficit narrative</p></li>
+</ul>
+</section>
+<section id="stereotyping" class="slide level2">
+<h2>Stereotyping</h2>
+<p>“…a narrative that reduces a social group to negative stereotypes and fails to portray them with creativity and agency.” (https://data-feminism.mitpress.mit.edu/pub/czq9dfs5/release/3)</p>
+<p>https://data-feminism.mitpress.mit.edu/pub/czq9dfs5#ndayi2fa1pk</p>
+<ul>
+<li>the description of your charts is theoretically informed</li>
+</ul>
+<p>The value of this exercise is not to say that any of these framings is ‘right’ (although for the reasons Klein and D’Ignazio outline we might find some preferable to others), but that they reflect different theoretical positions, and give different emphases to contextual factors - factors outside our datasets.</p>
+</section>
+<section id="ethical-responsibilities" class="slide level2">
+<h2>Ethical responsibilities</h2>
+<p>“Placing numbers in context and naming racism or sexism when it is present in those numbers should be a requirement—not only for feminist data communication, but for data communication full stop.”</p>
+<p>Data Feminism is mostly aimed towards data scientists and data journalists, not academics. Does this change how we should view their recommendations?</p>
+<p>(the original study: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4539829/)</p>
+<ul>
+<li>Our analysis exists in a context of (Tilley) durable inequalities</li>
+</ul>
+</section>
+<section id="an-example-of-theoretical-framing-community-loss" class="slide level2">
+<h2>An example of theoretical framing: community loss</h2>
+<ul>
+<li><p>Jessica Simes <span class="citation" data-cites="simesPunishingPlacesGeography2021">(<a href="#/references" role="doc-biblioref" onclick="">Jessica T. Simes 2021</a>)</span> gives a good example of how we may want to come up with theoretically informed measures, or theoretically re-frame measures. Simes analysed imprisonment data from the state of Massachusets in the USA, including spatial regression of prison admission rates and how these relate to “racial demographics, social and economic disadvantage, arrest rates, and violent crime” <span class="citation" data-cites="simesPlacePunishmentSpatial2018a">(<a href="#/references" role="doc-biblioref" onclick="">Jessica T. Simes 2018</a>)</span>.</p></li>
+<li><p>As part of this analysis Simes suggests that the cumulative years sentenced to residents of a particular neighbourhood be thought of as ‘community loss’. This is not (just?) an indicator of individual punishment histories, but reflects the chronic and long-term exposure to loss due to imprisonment in different neighbourhoods. This highlights the effects of imprisonment on the communities in which people who end up in prison lived prior to their imprisonment, rather than just focusing on the people who are currently in prison.</p></li>
+</ul>
+</section>
+<section id="the-story-of-our-results-should-reflect-the-story-of-the-data" class="slide level2">
+<h2>The story of our results should reflect the story of the data</h2>
+<ul>
+<li>Kotze criticises the ‘international crime drop’ literature for being too focused on the Global North</li>
+<li>International Crime Victims Survey has limited international coverage (despite the name)</li>
+<li>The problem is making the link between the small world of the model and the large world</li>
+</ul>
+</section>
+<section class="slide level2">
+
+</section></section>
+<section id="practical-4" class="title-slide slide level1 center">
+<h1>Practical</h1>
+
+</section>
+
+<section>
+<section id="overview" class="title-slide slide level1 center">
+<h1>Overview</h1>
+<ul>
+<li>Whew! We’ve covered a lot of ground today</li>
+<li>The key idea of this workshop is that the data provenance story should influence our analysis and the story we tell about our results</li>
+<li>We looked at common data provenance stories of police recorded crime and victimization surveys</li>
+<li>We talked about GLMs as a common way of telling stories about the small world of our data</li>
+<li>We looked at how we might want to critique the stories our GLMs are telling, using tools from quantitative bias analysis</li>
+<li>And how to use simulation approaches to tell more meaningful stories from our results</li>
+</ul>
+</section>
+<section id="references" class="slide level2 smaller scrollable">
+<h2>References</h2>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
+</div>
+</div>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-carr-hillMissingMillionsMeasuring2013" class="csl-entry" role="listitem">
+Carr-Hill, Roy. 2013. <span>“Missing <span>Millions</span> and <span>Measuring Development Progress</span>.”</span> <em>World Development</em> 46 (June): 30–44. <a href="https://doi.org/10.1016/j.worlddev.2012.12.017">https://doi.org/10.1016/j.worlddev.2012.12.017</a>.
+</div>
+<div id="ref-d.redelingsWhyConfidenceIntervals2012" class="csl-entry" role="listitem">
+D. Redelings, Matthew, Frank Sorvillo, Lisa V. Smith, and Sander Greenland. 2012. <span>“Why <span>Confidence Intervals Should</span> Be <span>Used</span> in <span>Reporting Studies</span> of <span>Complete Populations</span>”</span> 5 (1). <a href="https://doi.org/10.2174/1874944501205010052">https://doi.org/10.2174/1874944501205010052</a>.
+</div>
+<div id="ref-gaeblerCausalFrameworkObservational2022" class="csl-entry" role="listitem">
+Gaebler, Johann, William Cai, Guillaume Basse, Ravi Shroff, Sharad Goel, and Jennifer Hill. 2022. <span>“A <span>Causal Framework</span> for <span>Observational Studies</span> of <span>Discrimination</span>.”</span> <em>Statistics and Public Policy</em> 9 (1): 26–48. <a href="https://doi.org/10.1080/2330443X.2021.2024778">https://doi.org/10.1080/2330443X.2021.2024778</a>.
+</div>
+<div id="ref-greenlandSensitivityAnalysisBias2014" class="csl-entry" role="listitem">
+Greenland, Sander. 2014. <span>“Sensitivity <span>Analysis</span> and <span>Bias Analysis</span>.”</span> In <em>Handbook of <span>Epidemiology</span></em>, edited by Wolfgang Ahrens and Iris Pigeot, 685–706. New York, NY: Springer. <a href="https://doi.org/10.1007/978-0-387-09834-0_60">https://doi.org/10.1007/978-0-387-09834-0_60</a>.
+</div>
+<div id="ref-hilbeModelingCountData2014" class="csl-entry" role="listitem">
+Hilbe, Joseph M. 2014. <em>Modeling <span>Count Data</span></em>. Cambridge: Cambridge University Press. <a href="https://doi.org/10.1017/CBO9781139236065">https://doi.org/10.1017/CBO9781139236065</a>.
+</div>
+<div id="ref-hunterEquityJusticeCrime2016" class="csl-entry" role="listitem">
+Hunter, James, and Andromachi Tseloni. 2016. <span>“Equity, Justice and the Crime Drop: The Case of Burglary in <span>England</span> and <span>Wales</span>.”</span> <em>Crime Science</em> 5 (1): 3. <a href="https://doi.org/10.1186/s40163-016-0051-z">https://doi.org/10.1186/s40163-016-0051-z</a>.
+</div>
+<div id="ref-8347e95e012d4212a5ee429a18ee592e" class="csl-entry" role="listitem">
+Keay, Scott, and Jude Towers. 2024. <span>“The Collection and Understanding of Administrative Data in <span>UK</span> Police Forces.”</span> In <em>The Crime Data Handbook</em>, edited by Laura Huey and David Buil-Gil, 227. United Kingdom: Bristol University Press.
+</div>
+<div id="ref-kingMakingMostStatistical2000" class="csl-entry" role="listitem">
+King, Gary, Michael Tomz, and Jason Wittenberg. 2000. <span>“Making the <span>Most</span> of <span>Statistical Analyses</span>: <span>Improving Interpretation</span> and <span>Presentation</span>.”</span> <em>American Journal of Political Science</em> 44: 341–55.
+</div>
+<div id="ref-simesPunishingPlacesGeography2021" class="csl-entry" role="listitem">
+Simes, Jessica T. 2021. <em>Punishing <span>Places</span>: <span>The Geography</span> of <span>Mass Imprisonment</span></em>. Univ of California Press.
+</div>
+<div id="ref-simesPlacePunishmentSpatial2018a" class="csl-entry" role="listitem">
+Simes, Jessica T. 2018. <span>“Place and <span>Punishment</span>: <span>The Spatial Context</span> of <span>Mass Incarceration</span>.”</span> <em>Journal of Quantitative Criminology</em> 34 (2): 513–33. <a href="https://doi.org/10.1007/s10940-017-9344-y">https://doi.org/10.1007/s10940-017-9344-y</a>.
+</div>
+<div id="ref-spiegelhalterFunnelPlotsComparing2005" class="csl-entry" role="listitem">
+Spiegelhalter, David J. 2005. <span>“Funnel Plots for Comparing Institutional Performance.”</span> <em>Statistics in Medicine</em> 24 (8): 1185–1202. <a href="https://doi.org/10.1002/sim.1970">https://doi.org/10.1002/sim.1970</a>.
+</div>
+<div id="ref-verlaan2024use" class="csl-entry" role="listitem">
+Verlaan, Tim, and Samuel Langton. 2024. <span>“On the Use of Inferential Statistics on Administrative Police Data.”</span> In <em>The Crime Data Handbook</em>, 197–210. Bristol University Press.
 </div>
 </div>
 </section></section>

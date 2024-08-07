@@ -1,14 +1,19 @@
 ---
 title: "Statistical Methods for Criminology"
+title-slide-attributes:
+    data-background-color: "#40666e"
 author: "Ben Matthews"
+bibliography: references.bib
 execute: 
   echo: true
 format:
   revealjs:
-    theme: dark
+    theme: [clean.scss]
     smaller: true
     scrollable: true
 ---
+
+
 
 ## Welcome!
 
@@ -41,7 +46,7 @@ _add this here_
 
 ## Points of order
 
-- __Ask questions whenever__ `r emoji::emoji_find("thumbsup")$emoji` You can do this through the Teams chat facility __{demo this now}__
+- __Ask questions whenever__ :thumbsup: You can do this through the Teams chat facility __{demo this now}__
 - We've structured the sessions with regular breaks, but __if you need to leave just leave__!
 - Materials will live online ([slides](https://benmatthewsed.github.io/statistical-methods-criminology-slides/statistical_methods_criminology.html#/title-slide),) so you can access them any time
 - We want this time to be as useful for you guys as possible, so __please let us know anything we can improve on__ between now and next week's session
@@ -63,11 +68,7 @@ _add this here_
 - What do you want to __achieve__?
 
 
----
-
-class: center, middle, inverse
-
-## Before we begin...
+# Before we begin... {background-color="#40666e"}
 
 ---
 
@@ -245,6 +246,9 @@ But this excludes people, students, people in prison, and those living in refuge
 # Recorded crime and victimization surveys exclude some incidents/population groups by design
 # There are pros and cons of using inferential statistics with recorded crime data
 
+
+
+# Break {background-color="#666666"}
 
 ---
 
@@ -437,6 +441,8 @@ See figure at https://bookdown.org/roback/bookdown-BeyondMLR/ch-poissonreg.html
 
 In this practical we'll fit some count models in R
 
+
+# Break {background-color="#666666"}
 
 ---
 
@@ -661,7 +667,7 @@ Knox et al. (2020) suggest some technical fixes, but emphasise that - if we are 
     -   Omitted variables?
 -   Write a vignette describing some results and then critique?
 
-
+# Break {background-color="#666666"}
 
 ---
 class: center, middle, inverse
@@ -768,29 +774,53 @@ We can see that they are uncorrelated (as we would expect)
 
 
 ```{r mvtnorm_sim}
-MASS::mvrnorm(
+cor_data <- MASS::mvrnorm(
   n = 10000,
   mu = c(0, 0), # mu instead of mean
   Sigma = matrix(c(1, 0.9, 0.9, 1), nrow = 2, ncol = 2) # Sigma instead of sd
 ) |> 
-  as.data.frame() |> 
-  ggplot(aes(x = V1, y = V2)) +
-  geom_point() +
-  geom_density_2d()
+  as.data.frame()
+
+cor_data |> 
+  tidyr::pivot_longer(cols = c(V1, V2),
+                      names_to = "variable",
+               values_to = "value") |> 
+  ggplot(aes(x = value)) +
+  facet_wrap(~ variable) +
+  geom_histogram()
+
 ```
+
 
 :::
 
 ::: {.column width="34%"}
-If we use `mvrnorm()` the resulting simulations can be correlated.
+If we use `mvrnorm()` the resulting simulations can be correlated. Here I set a correlation of 0.9.
 
-Here I set a correlation of 0.9.
+`V1` and `V2` are both normally distributed...
 :::
 
 ::::
 
+---
 
 
+```{r cor_graph_2}
+cor_data |> 
+  ggplot(aes(x = V1, y = V2)) +
+  geom_point() +
+  geom_density_2d()
+
+```
+
+
+:::
+
+::: {.column width="34%"}
+... but highly correlated. We'll come back to the importance of this in a second...
+:::
+
+::::
 
 
 ---
@@ -809,14 +839,15 @@ Here I set a correlation of 0.9.
 - A key challenge is propagating the appropriate uncertainty in the results
 - But we can use simulation to propagate this uncertainty - and we can apply this approach to any generalized linear model and any Derived Quantity of Interest (DQI)
 - The simulation process is described by King et al. (2000) and implemented in the R package clarify (https://github.com/iqss/clarify)
+- This approach propagates both the uncertainty in the model's coefficients, and the correlations between the coefficients
 
 ---
 
 ## An example: victimization divides
 
-- [@hunterEquityJusticeCrime2016] use the results of a fitted regression model to calculate a measure they call 'Victimization Divide'
-- This measure is a way to describe how victimization inequality has changed over time
-- This measure is defined as
+- [@hunterEquityJusticeCrime2016] wanted to describe how victimization inequality had changed over time
+- They used the results of a fitted regression model to calculate a measure they call 'Victimization Divide'
+- This measure is defined as:
 
 (ratio of victimization rates in year 2 - 1) - (ratio of victimization rates in year 2 - 1) / (ratio of victimization rates in year one - 1)
 
@@ -824,7 +855,7 @@ Here I set a correlation of 0.9.
 
 ## Victimization divide
 
-this is analogous to exploring the percentage change in victimization inequality between two comparison years.
+This is analogous to exploring the percentage change in victimization inequality between two comparison years.
 
 ---
 
@@ -851,7 +882,7 @@ To calculate the ratio of victimization rates in years 1 and 2, Hunter and Tselo
 
 - But this analysis used data from CSEW
 - So we want to assess the uncertainty in these estimates which come from projecting from sample to population
-- We can do this with simulation
+- We can do this with the King et al. simulation approach
 
 
 ---
@@ -866,9 +897,10 @@ To calculate the ratio of victimization rates in years 1 and 2, Hunter and Tselo
 
 ## Simulating DQIs
 
-- The draws from the variance-covariance matrix gives a set of draws which reflect:
+- The draws from the variance-covariance matrix reflect:
 1. the uncertainty in each of the regression coefficients (as expressed in their standard errors) and 
 2. the correlation between these coefficients (as expressed in the covariance between the coefficients)
+- We then just calculate the VD for each draw. This gives us a distribution of VDs which capture the uncertainty in the model's coefficients
 
 ---
 
@@ -1035,3 +1067,271 @@ Victimiztion inequality fell by more than half!
 ---
 
 ## How much has victimization inequality changed?
+
+:::: {.columns}
+
+::: {.column width="66%"}
+
+```{r vd_sim}
+#| echo: true
+# set seed
+set.seed(nchar("vict divide") ^ 4)
+
+n_sims <- 1e5
+
+draws_2020 <-
+  MASS::mvrnorm(
+    n = n_sims,
+    mu = coef(model2020),
+    Sigma = vcov(model2020)
+  )
+
+draws_2015 <-
+  MASS::mvrnorm(
+    n = n_sims,
+    mu = coef(model2015),
+    Sigma = vcov(model2015)
+  )
+```
+
+
+:::
+
+::: {.column width="34%"}
+We can pass the models' coefficients and variance-covariance matrices to `mvrnorm` from the `{MASS}` library.
+
+This gives us a set of 10,000 coefficients for each model.
+:::
+
+::::
+
+
+---
+
+## How much has victimization inequality changed?
+
+:::: {.columns}
+
+::: {.column width="66%"}
+
+```{r vd_sim_calc}
+#| echo: true
+draws_2015 <-
+  draws_2015 %>%
+  as.data.frame() %>%
+  as_tibble() %>%
+  mutate(est = exp(`fct_rev(sex)men`))
+
+draws_2020 <-
+  draws_2020 %>%
+  as.data.frame() %>%
+  as_tibble() %>%
+  mutate(est = exp(`fct_rev(sex)men`))
+
+# combine the results
+sim_dat <-
+  tibble(
+    vd = victim_divide(base_y1 = draws_2015$est,
+                       base_y2 = draws_2020$est)
+  )
+
+
+```
+
+
+:::
+
+::: {.column width="34%"}
+Once we tidy the results up a bit, we can pass these simulated draws to our `victim_divide()` function...
+:::
+
+::::
+
+---
+
+## How much has victimization inequality changed?
+
+:::: {.columns}
+
+::: {.column width="66%"}
+
+```{r vd_sim_res}
+#| echo: true
+sim_dat |> 
+  reframe(
+    vds = quantile(vd, c(0.025, 0.5, 0.975)),
+    centile = c("5%", "50%", "95%")
+    )
+
+
+sim_dat |> 
+  ggplot(aes(x = vd)) +
+  geom_histogram(binwidth = 0.1) +
+  scale_x_continuous(limits = c(-2, 2)) +
+  geom_vline(aes(xintercept = 0))
+
+```
+
+
+:::
+
+::: {.column width="34%"}
+We can see the 5 and 95 percentiales of the simulated VDs, as well as the histogram of their distribution.
+
+These intervals include zero, so the apparent 52% reduction in victimization inequality would not be 'statistically significant' at the standard level.
+:::
+
+::::
+
+---
+
+## Simulation is great
+
+- The beauty of this simulation approach described by King et al (2000) is that it generalizes to __any DQI__ that is a function of the model's parameters, such as VD, and to __any GLM__. 
+- Say that instead of the VD were interested in the absolute difference in predicted victimization rates after controlling for other factors (like a marginal effect)
+- Or maybe we have fitted a count model and we want to know the number of people reporting 2 or more victimization incidents - we can calculate this from our simulations whilst incorporating the model's uncertainty into our estimates
+- In this example this is good because there are many ways to measure victimization inequality (Matthews and McVie, forthcoming)
+
+
+---
+
+## Simulation isn practice
+
+- Here we did the simulation by hand. This is useful as a way to understand the method, but whilst it's good to know how this works, in practice there are R packages which can do this for us. 
+- One good option is [clarify](https://cran.r-project.org/web/packages/clarify/index.html).
+- There is inherent uncertainty in simulation results, so it's crucial to set the seed for the random number generator so you get the same results every time. 
+- You also need to run enough simulation draws to get a good estimate of the uncertainty. The default for clarify is 1000 draws.
+- More simulations are always better, but will take longer - so there is a pragmatic aspect to how much time and computer resource you have to run simulations.
+- In general I would recommend using a package like clarify if you conduct this kind of simulation. It's likely that professionally developed and maintained software will be less error-prone and more efficient than writing your own!
+
+---
+
+## Conceptual limitations
+
+- Simulation expresses the uncertainty captured by our model parameters
+- But remember that our model is wrong!! (Greenland)
+- Our model still makes a load of assumptions - basically that we've fit the right model and that we had the right data.
+- As we discussed in the previous section, we might also want to be skeptical of our model parameters themselves if we are worried about bias
+
+
+---
+
+## Practical
+
+
+-   Fit a regression model, simulate victimization divides with {clarify}
+
+- maybe do something comparing jsut the standard errors (and not the vcov) with using the correlation too?
+
+# Break {background-color="#666666"}
+
+---
+
+# Ethics
+
+## General ethical principles in social science research
+
+- In research ethics and governance there is a lot of discussion about informed consent, not disclosing personal information and so on.
+- Also specifically in quantitative work, ethical issues around workflow
+- See For example, there was some controversy around a recent paper which suggested that 'de-policing' in Denver in 2020 led to increases in violent crime (Nix et al https://onlinelibrary.wiley.com/doi/full/10.1111/1745-9125.12363). However, another research who attempted to reproduce their findings - and fair play to Nix and colleagues for making their research reproducible - suggested that their main result was due to a merging error which led to the analytical dataset being scrambled (https://github.com/jkangbrown/when_police_replication).
+
+## Our focus: ethics of how we tell the story of our research
+
+- We're going to focus on the ethics of framing our research and how we present our results
+
+## Framing: The tyranny of the means
+
+- We should avoid essentializing.
+
+- Typical focus of regression results is group average effect. Even if we have a statiistically significant difference between two groups in their estimated probability (or log-odds) of being convicted of comitting a crime, on its own this doesn't tell us about how likely any individual member of those groups is to be convicted.
+
+- By focusing on how people with the same observables vary we can avoid essentializing people? (McCall 2005).
+
+- This is an added benefit of the simulation approach we discussed in the previous section - we can use these kind of methods to illustrate the variation of outcomes for people *with the same observables*, not just average differences in outcomes for people with different observables.
+
+- Focusing only on group averages can imply that all members of the group are the same
+
+- Causal quartets?
+
+## CAUSAL QUARTETS
+
+![From @gelmanCausalQuartetsDifferent2023](images/causal-quartets.png){width="90%"}
+
+## CAUSAL QUARTETS
+
+- So what? [@gelmanCausalQuartetsDifferent2023]
+- "Variation among people is relevant to policy (for example, personalized medicine) and understanding (for example in psychology)"
+- "Variation across situations is relevant when deciding what “flavor” of treatment to do, for example with dosing in pharmacology or treatment levels in traditional agricultural experiments."
+
+
+## SAME OBSERVABLES: DIFFERENT OUTCOMES
+
+![](images/qlp-results-figure.png){fig-alt="Estimated Adult Conviction Trajectory Probabilities by Sex, Indigenous Status and Childhood System Contact."}
+
+## Relationship to model fit
+
+- Model fit can help with this? How much variation is __not__ explained?
+
+## Framing: the importance of language
+
+More conceptually, it's important to think about how we frame the results of any analysis.
+
+Three visualizations from [Data Feminism](https://data-feminism.mitpress.mit.edu/pub/czq9dfs5/release/3)
+
+-   language use
+
+-   providing necessary context?
+
+-   deficit narrative
+
+## Stereotyping
+
+"...a narrative that reduces a social group to negative stereotypes and fails to portray them with creativity and agency." (https://data-feminism.mitpress.mit.edu/pub/czq9dfs5/release/3)
+
+https://data-feminism.mitpress.mit.edu/pub/czq9dfs5#ndayi2fa1pk
+
+-   the description of your charts is theoretically informed
+
+The value of this exercise is not to say that any of these framings is 'right' (although for the reasons Klein and D'Ignazio outline we might find some preferable to others), but that they reflect different theoretical positions, and give different emphases to contextual factors - factors outside our datasets.
+
+## Ethical responsibilities
+
+"Placing numbers in context and naming racism or sexism when it is present in those numbers should be a requirement—not only for feminist data communication, but for data communication full stop."
+
+Data Feminism is mostly aimed towards data scientists and data journalists, not academics. Does this change how we should view their recommendations?
+
+(the original study: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4539829/)
+
+- Our analysis exists in a context of (Tilley) durable inequalities
+
+
+## An example of theoretical framing: community loss
+
+- Jessica Simes [@simesPunishingPlacesGeography2021] gives a good example of how we may want to come up with theoretically informed measures, or theoretically re-frame measures. Simes analysed imprisonment data from the state of Massachusets in the USA, including spatial regression of prison admission rates and how these relate to "racial demographics, social and economic disadvantage, arrest rates, and violent crime" [@simesPlacePunishmentSpatial2018a].
+
+- As part of this analysis Simes suggests that the cumulative years sentenced to residents of a particular neighbourhood be thought of as 'community loss'. This is not (just?) an indicator of individual punishment histories, but reflects the chronic and long-term exposure to loss due to imprisonment in different neighbourhoods. This highlights the effects of imprisonment on the communities in which people who end up in prison lived prior to their imprisonment, rather than just focusing on the people who are currently in prison.
+
+## The story of our results should reflect the story of the data
+
+- Kotze criticises the 'international crime drop' literature for being too focused on the Global North
+- International Crime Victims Survey has limited international coverage (despite the name)
+- The problem is making the link between the small world of the model and the large world
+
+
+---
+
+# Practical
+
+
+# Overview
+
+- Whew! We've covered a lot of ground today
+- The key idea of this workshop is that the data provenance story should influence our analysis and the story we tell about our results
+- We looked at common data provenance stories of police recorded crime and victimization surveys
+- We talked about GLMs as a common way of telling stories about the small world of our data
+- We looked at how we might want to critique the stories our GLMs are telling, using tools from quantitative bias analysis
+- And how to use simulation approaches to tell more meaningful stories from our results
+
+---
+
+## References
