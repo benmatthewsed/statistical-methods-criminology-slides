@@ -62,17 +62,13 @@ $body-bg: #fdf6e3;
   text-align: left;
 
   .title {
-    color: $body-color;
-    font-size: 1.4em;
-    // font-weight: 350;
-    font-weight: lighter;
+    font-size: 4.5em;
+    color: #ffffff;
   }
 
+
   .subtitle {
-    color: $accent;
-    font-style: italic;
-    margin-top: 0em;
-    font-weight: lighter;
+    font-size: 3em;
   }
 
   .institute,
@@ -85,7 +81,7 @@ $body-bg: #fdf6e3;
 
   .author,
   .quarto-title-author-name {
-    color: $body-color;
+    color: #fff;
   }
 
   .quarto-title-authors {

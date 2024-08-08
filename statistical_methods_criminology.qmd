@@ -20,7 +20,7 @@ format:
 - Who we are
 - [workshop outline](https://github.com/benmatthewsed/ui-data-visualization-course/blob/master/course_outline.md)
 - [Code of conduct](https://github.com/benmatthewsed/ui-data-visualization-course/blob/master/code_of_conduct.md)
-- [Reference texts](https://github.com/benmatthewsed/ui-data-visualization-course/blob/master/course_outline.md#course-texts)
+
 
 ---
 
@@ -49,7 +49,6 @@ _add this here_
 - __Ask questions whenever__ :thumbsup: You can do this through the Teams chat facility __{demo this now}__
 - We've structured the sessions with regular breaks, but __if you need to leave just leave__!
 - Materials will live online ([slides](https://benmatthewsed.github.io/statistical-methods-criminology-slides/statistical_methods_criminology.html#/title-slide),) so you can access them any time
-- We want this time to be as useful for you guys as possible, so __please let us know anything we can improve on__ between now and next week's session
 
 
 ---
@@ -82,7 +81,7 @@ _add this here_
 
 ---
 
-class: center, middle, inverse
+
 
 # Session One: Types of criminological data
 
@@ -90,9 +89,9 @@ class: center, middle, inverse
 
 ## Types of criminological data
 
-- Criminology as a 'rendezvous discipline' as David Downes said
+- Criminology as a 'rendezvous discipline' as David Downes once said
 - Criminological data could be
-  - Adminsitrative data from the justice system (police, courts, prisons, probation... etc)
+  - Administrative data from the justice system (police, courts, prisons, probation... etc)
   - Secondary survey data (e.g. victimization, offending, fear of crime... etc)
   - Newspaper reports (e.g. collations of stories on police use of force or homicides)
   - Social media data (e.g. fear of crime)
@@ -151,7 +150,7 @@ class: center, middle, inverse
   - Urban areas have high police recorded crime rates because ...
       - that's where crime is?
       - that's where poverty and disadvantage are?
-      - that's where disproportionate surveilance and punishment are?
+      - that's where disproportionate surveillance and punishment are?
 
 ---   
 
@@ -265,7 +264,7 @@ But this excludes people, students, people in prison, and those living in refuge
 
 
 ---
-class: center, middle, inverse
+
 
 # The general linear model
 
@@ -411,7 +410,7 @@ See figure at https://bookdown.org/roback/bookdown-BeyondMLR/ch-poissonreg.html
 
 ---
 
-### Problems with Poisson: over-dispersion
+## Problems with Poisson: over-dispersion
 
 -   poisson assumes mean and variance are the same (in that there is only one term in the model, $\lambda$, which describes both the average and the variability around the average)
 
@@ -421,9 +420,9 @@ See figure at https://bookdown.org/roback/bookdown-BeyondMLR/ch-poissonreg.html
 
 ---
 
-### Solutions?
+## Solutions?
 
-##### What do to? about over-dispersion
+### What do to? about over-dispersion
 
 - If all you care about is your standard error being too small you can use quasi-poisson
 - This gives same point estimates as poisson but with 'empirical' SEs - similar to using robust standard errors). Francis et al. use this approach to modelling counts of victimization. In my experience it's also faster than the standard alternative...
@@ -441,12 +440,19 @@ See figure at https://bookdown.org/roback/bookdown-BeyondMLR/ch-poissonreg.html
 
 In this practical we'll fit some count models in R
 
+# Morning recap {background-color="#40666e"}
 
-# Break {background-color="#666666"}
+## Morning recap
+
+- The story of how our data came to be influences how we should analyse it
+- GLMs are the most popular way to tell stories about the `small world` of our data
+
+
+# Lunch :sandwich: {background-color="#666666"}
 
 ---
 
-class: center, middle, inverse
+
 
 # Measurement error, selection and confounding
 
@@ -472,7 +478,7 @@ class: center, middle, inverse
 
 ---
 
-class: center, middle, inverse
+
 
 # Act One: Measurement error
 
@@ -512,6 +518,8 @@ Open questions - what about survey data? Models other than linear models? What a
 -   Historically, national victimization surveys (such as the SCJS and CSEW) capped the number of victim forms that victims could complete. In 2019, ONS said that "Since the survey began in 1981, “repeat” incidents have been limited to a total of 5. Historically, including a maximum of 5 repeat incidents for any individual victim had proven to be an effective way of reducing the effects of sample variability from year to year. This approach enabled the publication of incident rates that were not subject to large fluctuation between survey years. This approach yields a more reliable picture of changes in victimisations over time once high order repeat victimisations were treated in this way." (https://doc.ukdataservice.ac.uk/doc/7280/mrdoc/pdf/7280_csew_improving_victimisation_estimates_2019.pdf)
 
 -   However, it also means that people who experienced more than five incidents of a particular 'series' crime type did not have their data accurately recorded
+
+## Impact of capping on analysis
 
 -   This was particularly important for women's reporting of violent victimization (Walby et al. 2015) - women who experienced domestic violence may well report more than five repeat incidents of victimization in a given year. A second measurement error issue came from the '97 code' - the option to report the number of incidents experienced as '96/too many to count'. Instead, based on the domestic violence literature Walby and colleagues propose using an estimate of 60 incidents for those who report the 97 code.
 
@@ -620,20 +628,22 @@ Selection bias arises when there are people who we would have liked to observe i
 [@greenlandSensitivityAnalysisBias2014]
 
 
-In the Knox and colleagues example, this would require knowing the numbers of people who were observed by police but not stopped, in order to calculate the probabilities of selection into the stop dataset. However, we don't know this - and it is hard to imagine a scenario where an analyst of an police administrative dataset *would* know this.
-
-Even if we *do* know this for our particular dataset, there is no guarantee that selection into the data would hold in every case that we might want to generalize our results to. As such we'd need to consider how differences between the study populations may have affected response and selection (e.g. would selection probabilities from a US study map onto a study in Manchester? How about one in Glasgow?)
+## An example of selection bias
 
 
 Imagine that we want to know whether police are racially biased in how they treat members of the public. One way to assess this is by using data from the police about the outcomes of their interactions with the public.
-
-For example, we might want to know if people from minority ethnic backgrounds more likely to be arrested after a stop than people from white backgrounds (Knox et al)
 
 Police collect data on stops - why not just run a regression on these data to see if people from minority ethnic backgrounds are more likely to be stopped?
 
 The problem is we can’t just rely on data about police stops - “if police racially discriminate when choosing whom to investigate, analyses using administrative records to estimate racial discrimination in police behavior are statistically biased, and many quantities of interest are unidentified—even among investigated individuals—absent strong and untestable assumptions.”
 
+In the Knox and colleagues example, this would require knowing the numbers of people who were observed by police but not stopped, in order to calculate the probabilities of selection into the stop dataset. However, we don't know this - and it is hard to imagine a scenario where an analyst of an police administrative dataset *would* know this.
+
+Even if we *do* know this for our particular dataset, there is no guarantee that selection into the data would hold in every case that we might want to generalize our results to. As such we'd need to consider how differences between the study populations may have affected response and selection (e.g. would selection probabilities from a US study map onto a study in Manchester? How about one in Glasgow?)
+
 We're going to hear a lot about 'strong and untestable assumptions'.
+
+## Uh oh
 
 “when there is any racial discrimination in the decision to detain civilians—a decision that determines which encounters appear in police administrative data at all—then estimates of the effect of civilian race on subsequent police behavior are biased absent additional data and/or strong and untestable assumptions.”
 
@@ -647,7 +657,8 @@ Others [@gaeblerCausalFrameworkObservational2022]suggest that maybe you can iden
 
 ## Solutions?
 
-Knox et al. (2020) suggest some technical fixes, but emphasise that - if we are interested in using statistical models to identify *causal* relationships *there is no general solution* that can guarantee that coefficients in a regression model will have valid causal interpretations based on administrative data derived from police records. The key thing is thinking through the process by which the dataset was constructed, and conveying this to your reader.
+- @knoxAdministrativeRecordsMask2020a suggest some technical fixes, but emphasise that - if we are interested in using statistical models to identify *causal* relationships *there is no general solution* that can guarantee that coefficients in a regression model will have valid causal interpretations based on administrative data derived from police records.
+- The key thing is thinking through the process by which the dataset was constructed, and conveying this to your reader.
 
 ---
 
@@ -655,11 +666,23 @@ Knox et al. (2020) suggest some technical fixes, but emphasise that - if we are 
 
 - It depends
 - ... so you only need to bother with this stuff if you 'claim to offer near-definitive conclusions'. Is your study likely to contribute to a meta analysis? Or in other words, when you are moving between the small world and the large world.
-- So the key thing is how we talk about our models - it *us* that moves between the small world and the large world.
+- So the key thing is how we talk about our models - it is *us* that moves between the small world and the large world.
 
----
+# Recap {background-color="#40666e"}
 
-## Practical
+## Recap
+
+- If you are working with observational data (as is common in criminology), coefficients from a GLM may well be biased
+- Quantitative bias analysis describes three secnarios where we may want to be critical about our results:
+    - Measurement error
+    - Selection effects
+    - Unmeasured confounding
+- Measurement error has received attention in criminology when analysis recorded crime and victimization counts
+- So has selection effects in police data on stops and when analysing court data
+- Unmeasured confounding less so
+- The potential impact of these three factors depends on your specific data and analysis - there are no general solutions :shrug:
+
+# Practical {background-color="#40666e"}
 
 -   We're going to revisit the generative stories that you came up with in Section One. Is there possible:
     -   Measurement error?
@@ -670,9 +693,9 @@ Knox et al. (2020) suggest some technical fixes, but emphasise that - if we are 
 # Break {background-color="#666666"}
 
 ---
-class: center, middle, inverse
 
-# Simulation
+
+# Simulation {background-color="#40666e"}
 
 
 ---
@@ -684,7 +707,7 @@ class: center, middle, inverse
 
 ---
 
-# But first
+# But first {background-color="#40666e"}
 
 
 ---
@@ -1117,15 +1140,15 @@ This gives us a set of 10,000 coefficients for each model.
 ```{r vd_sim_calc}
 #| echo: true
 draws_2015 <-
-  draws_2015 %>%
-  as.data.frame() %>%
-  as_tibble() %>%
+  draws_2015 |>
+  as.data.frame() |>
+  as_tibble() |>
   mutate(est = exp(`fct_rev(sex)men`))
 
 draws_2020 <-
-  draws_2020 %>%
-  as.data.frame() %>%
-  as_tibble() %>%
+  draws_2020 |>
+  as.data.frame() |>
+  as_tibble() |>
   mutate(est = exp(`fct_rev(sex)men`))
 
 # combine the results
@@ -1307,7 +1330,7 @@ Data Feminism is mostly aimed towards data scientists and data journalists, not 
 
 ## An example of theoretical framing: community loss
 
-- Jessica Simes [@simesPunishingPlacesGeography2021] gives a good example of how we may want to come up with theoretically informed measures, or theoretically re-frame measures. Simes analysed imprisonment data from the state of Massachusets in the USA, including spatial regression of prison admission rates and how these relate to "racial demographics, social and economic disadvantage, arrest rates, and violent crime" [@simesPlacePunishmentSpatial2018a].
+- @simesPunishingPlacesGeography2021 gives a good example of how we may want to come up with theoretically informed measures, or theoretically re-frame measures. Simes analysed imprisonment data from the state of Massachusets in the USA, including spatial regression of prison admission rates and how these relate to "racial demographics, social and economic disadvantage, arrest rates, and violent crime" [@simesPlacePunishmentSpatial2018a].
 
 - As part of this analysis Simes suggests that the cumulative years sentenced to residents of a particular neighbourhood be thought of as 'community loss'. This is not (just?) an indicator of individual punishment histories, but reflects the chronic and long-term exposure to loss due to imprisonment in different neighbourhoods. This highlights the effects of imprisonment on the communities in which people who end up in prison lived prior to their imprisonment, rather than just focusing on the people who are currently in prison.
 
@@ -1325,12 +1348,23 @@ Data Feminism is mostly aimed towards data scientists and data journalists, not 
 
 # Overview
 
+## Overview
+
 - Whew! We've covered a lot of ground today
 - The key idea of this workshop is that the data provenance story should influence our analysis and the story we tell about our results
 - We looked at common data provenance stories of police recorded crime and victimization surveys
 - We talked about GLMs as a common way of telling stories about the small world of our data
 - We looked at how we might want to critique the stories our GLMs are telling, using tools from quantitative bias analysis
 - And how to use simulation approaches to tell more meaningful stories from our results
+- We discussed some ethical issues that come up when we present our results
+
+## Where next?
+
+- Data provenance: Over to you!
+- GLMs (and beyond): (Statistical Rethinking)[https://github.com/rmcelreath/stat_rethinking_2024]
+- Quantitative Bias Analysis: :shrug: Maybe (_Quantitative Assessment of Systematic Bias: A Guide for Researchers_)[https://journals.sagepub.com/doi/10.1177/00220345231193314] or [@kawabataQuantitativeBiasAnalysis2023]?
+- Simulating meaningful quantities from results: (`{clarify}`)[https://iqss.github.io/clarify/] and (`{marginaleffects}`)[https://marginaleffects.com/]
+- Ethics: (Data Feminism)[https://data-feminism.mitpress.mit.edu/pub/czq9dfs5/release/3]
 
 ---
 

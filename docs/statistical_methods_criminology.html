@@ -429,7 +429,6 @@ Ben Matthews
 <li>Who we are</li>
 <li><a href="https://github.com/benmatthewsed/ui-data-visualization-course/blob/master/course_outline.md">workshop outline</a></li>
 <li><a href="https://github.com/benmatthewsed/ui-data-visualization-course/blob/master/code_of_conduct.md">Code of conduct</a></li>
-<li><a href="https://github.com/benmatthewsed/ui-data-visualization-course/blob/master/course_outline.md#course-texts">Reference texts</a></li>
 </ul>
 </section>
 <section id="learning-outcomes" class="slide level2">
@@ -450,10 +449,9 @@ Ben Matthews
 <section id="points-of-order" class="slide level2">
 <h2>Points of order</h2>
 <ul>
-<li><strong>Ask questions whenever</strong> :thumbsup: You can do this through the Teams chat facility <strong>{demo this now}</strong></li>
+<li><strong>Ask questions whenever</strong> <span class="emoji" data-emoji="thumbsup">👍</span> You can do this through the Teams chat facility <strong>{demo this now}</strong></li>
 <li>We’ve structured the sessions with regular breaks, but <strong>if you need to leave just leave</strong>!</li>
 <li>Materials will live online (<a href="https://benmatthewsed.github.io/statistical-methods-criminology-slides/statistical_methods_criminology.html#/title-slide">slides</a>,) so you can access them any time</li>
-<li>We want this time to be as useful for you guys as possible, so <strong>please let us know anything we can improve on</strong> between now and next week’s session</li>
 </ul>
 </section>
 <section id="r-set-up" class="slide level2">
@@ -489,7 +487,6 @@ Ben Matthews
 </section>
 <section class="slide level2">
 
-<p>class: center, middle, inverse</p>
 </section></section>
 <section>
 <section id="session-one-types-of-criminological-data" class="title-slide slide level1 center">
@@ -499,10 +496,10 @@ Ben Matthews
 <section id="types-of-criminological-data" class="slide level2">
 <h2>Types of criminological data</h2>
 <ul>
-<li>Criminology as a ‘rendezvous discipline’ as David Downes said</li>
+<li>Criminology as a ‘rendezvous discipline’ as David Downes once said</li>
 <li>Criminological data could be
 <ul>
-<li>Adminsitrative data from the justice system (police, courts, prisons, probation… etc)</li>
+<li>Administrative data from the justice system (police, courts, prisons, probation… etc)</li>
 <li>Secondary survey data (e.g.&nbsp;victimization, offending, fear of crime… etc)</li>
 <li>Newspaper reports (e.g.&nbsp;collations of stories on police use of force or homicides)</li>
 <li>Social media data (e.g.&nbsp;fear of crime)</li>
@@ -582,7 +579,7 @@ Ben Matthews
 <ul>
 <li>that’s where crime is?</li>
 <li>that’s where poverty and disadvantage are?</li>
-<li>that’s where disproportionate surveilance and punishment are?</li>
+<li>that’s where disproportionate surveillance and punishment are?</li>
 </ul></li>
 </ul></li>
 </ul>
@@ -725,6 +722,14 @@ Ben Matthews
 <li><p>What’s the story of <em>your</em> crime data?</p></li>
 </ul>
 </section>
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="the-general-linear-model" class="title-slide slide level1 center">
+<h1>The general linear model</h1>
+
+</section>
 <section id="large-worlds-and-small-worlds" class="slide level2">
 <h2>Large worlds and small worlds</h2>
 <ul>
@@ -866,9 +871,8 @@ y_i \sim &amp; {Poisson} (\lambda) \\
 <li><p>The most straightforward way to interpret coefficients from Poisson models is to exponentiate the coefficient value. This converts the beta coefficient into an Incident Rate Ratio (https://stats.oarc.ucla.edu/stata/output/poisson-regression/)</p></li>
 </ul>
 </section>
-<section class="slide level2">
-
-<h3 id="problems-with-poisson-over-dispersion">Problems with Poisson: over-dispersion</h3>
+<section id="problems-with-poisson-over-dispersion" class="slide level2">
+<h2>Problems with Poisson: over-dispersion</h2>
 <ul>
 <li><p>poisson assumes mean and variance are the same (in that there is only one term in the model, <span class="math inline">\(\lambda\)</span>, which describes both the average and the variability around the average)</p></li>
 <li><p>This is quite a brittle assumption though, and there’s no reason that real-life data has to obey it. So what? If your data are over-dispersed (the conditional variance exceeds the conditional mean), you will get standard errors that are too small.</p></li>
@@ -876,10 +880,9 @@ y_i \sim &amp; {Poisson} (\lambda) \\
 <li><p>need some way to account for over-dispersion</p></li>
 </ul>
 </section>
-<section class="slide level2 scrollable">
-
-<h3 id="solutions">Solutions?</h3>
-<h5 id="what-do-to-about-over-dispersion">What do to? about over-dispersion</h5>
+<section id="solutions" class="slide level2 scrollable">
+<h2>Solutions?</h2>
+<h3 id="what-do-to-about-over-dispersion">What do to? about over-dispersion</h3>
 <ul>
 <li><p>If all you care about is your standard error being too small you can use quasi-poisson</p></li>
 <li><p>This gives same point estimates as poisson but with ‘empirical’ SEs - similar to using robust standard errors). Francis et al.&nbsp;use this approach to modelling counts of victimization. In my experience it’s also faster than the standard alternative…</p></li>
@@ -893,13 +896,24 @@ y_i \sim &amp; {Poisson} (\lambda) \\
 <p>In this practical we’ll fit some count models in R</p>
 </section></section>
 <section>
-<section id="break-1" class="title-slide slide level1 center" data-background-color="#666666">
-<h1>Break</h1>
+<section id="morning-recap" class="title-slide slide level1 center" data-background-color="#40666e">
+<h1>Morning recap</h1>
+
+</section>
+<section id="morning-recap-1" class="slide level2">
+<h2>Morning recap</h2>
+<ul>
+<li>The story of how our data came to be influences how we should analyse it</li>
+<li>GLMs are the most popular way to tell stories about the <code>small world</code> of our data</li>
+</ul>
+</section></section>
+<section>
+<section id="lunch" class="title-slide slide level1 center" data-background-color="#666666">
+<h1>Lunch <span class="emoji" data-emoji="sandwich">🥪</span></h1>
 
 </section>
 <section class="slide level2">
 
-<p>class: center, middle, inverse</p>
 </section></section>
 <section>
 <section id="measurement-error-selection-and-confounding" class="title-slide slide level1 center">
@@ -927,7 +941,6 @@ y_i \sim &amp; {Poisson} (\lambda) \\
 </section>
 <section class="slide level2">
 
-<p>class: center, middle, inverse</p>
 </section></section>
 <section>
 <section id="act-one-measurement-error" class="title-slide slide level1 center">
@@ -966,6 +979,11 @@ y_i \sim &amp; {Poisson} (\lambda) \\
 <ul>
 <li><p>Historically, national victimization surveys (such as the SCJS and CSEW) capped the number of victim forms that victims could complete. In 2019, ONS said that “Since the survey began in 1981, “repeat” incidents have been limited to a total of 5. Historically, including a maximum of 5 repeat incidents for any individual victim had proven to be an effective way of reducing the effects of sample variability from year to year. This approach enabled the publication of incident rates that were not subject to large fluctuation between survey years. This approach yields a more reliable picture of changes in victimisations over time once high order repeat victimisations were treated in this way.” (https://doc.ukdataservice.ac.uk/doc/7280/mrdoc/pdf/7280_csew_improving_victimisation_estimates_2019.pdf)</p></li>
 <li><p>However, it also means that people who experienced more than five incidents of a particular ‘series’ crime type did not have their data accurately recorded</p></li>
+</ul>
+</section>
+<section id="impact-of-capping-on-analysis" class="slide level2">
+<h2>Impact of capping on analysis</h2>
+<ul>
 <li><p>This was particularly important for women’s reporting of violent victimization (Walby et al.&nbsp;2015) - women who experienced domestic violence may well report more than five repeat incidents of victimization in a given year. A second measurement error issue came from the ‘97 code’ - the option to report the number of incidents experienced as ‘96/too many to count’. Instead, based on the domestic violence literature Walby and colleagues propose using an estimate of 60 incidents for those who report the 97 code.</p></li>
 <li><p>This would bias estimates of total crimes , but not prevalence (the number of victims)</p></li>
 <li><p>Sometimes it’s possible to use uncapped data</p></li>
@@ -1032,13 +1050,18 @@ E-values 2.891988    NA  2.50</code></pre>
 <h2>Selection effects</h2>
 <p>Selection bias arises when there are people who we would have liked to observe in our study but we don’t observe them, and this lack of observation is related to their characteristics. Put another way, we can think of selection bias as affecting the rows of our dataset - there are some rows that are missing that we would like to see.</p>
 <p><span class="citation" data-cites="greenlandSensitivityAnalysisBias2014">(<a href="#/references" role="doc-biblioref" onclick="">Greenland 2014</a>)</span></p>
-<p>In the Knox and colleagues example, this would require knowing the numbers of people who were observed by police but not stopped, in order to calculate the probabilities of selection into the stop dataset. However, we don’t know this - and it is hard to imagine a scenario where an analyst of an police administrative dataset <em>would</em> know this.</p>
-<p>Even if we <em>do</em> know this for our particular dataset, there is no guarantee that selection into the data would hold in every case that we might want to generalize our results to. As such we’d need to consider how differences between the study populations may have affected response and selection (e.g.&nbsp;would selection probabilities from a US study map onto a study in Manchester? How about one in Glasgow?)</p>
+</section>
+<section id="an-example-of-selection-bias" class="slide level2">
+<h2>An example of selection bias</h2>
 <p>Imagine that we want to know whether police are racially biased in how they treat members of the public. One way to assess this is by using data from the police about the outcomes of their interactions with the public.</p>
-<p>For example, we might want to know if people from minority ethnic backgrounds more likely to be arrested after a stop than people from white backgrounds (Knox et al)</p>
 <p>Police collect data on stops - why not just run a regression on these data to see if people from minority ethnic backgrounds are more likely to be stopped?</p>
 <p>The problem is we can’t just rely on data about police stops - “if police racially discriminate when choosing whom to investigate, analyses using administrative records to estimate racial discrimination in police behavior are statistically biased, and many quantities of interest are unidentified—even among investigated individuals—absent strong and untestable assumptions.”</p>
+<p>In the Knox and colleagues example, this would require knowing the numbers of people who were observed by police but not stopped, in order to calculate the probabilities of selection into the stop dataset. However, we don’t know this - and it is hard to imagine a scenario where an analyst of an police administrative dataset <em>would</em> know this.</p>
+<p>Even if we <em>do</em> know this for our particular dataset, there is no guarantee that selection into the data would hold in every case that we might want to generalize our results to. As such we’d need to consider how differences between the study populations may have affected response and selection (e.g.&nbsp;would selection probabilities from a US study map onto a study in Manchester? How about one in Glasgow?)</p>
 <p>We’re going to hear a lot about ‘strong and untestable assumptions’.</p>
+</section>
+<section id="uh-oh" class="slide level2">
+<h2>Uh oh</h2>
 <p>“when there is any racial discrimination in the decision to detain civilians—a decision that determines which encounters appear in police administrative data at all—then estimates of the effect of civilian race on subsequent police behavior are biased absent additional data and/or strong and untestable assumptions.”</p>
 <p>[INSERT FIGURE 2 FROM KNOX]</p>
 
@@ -1047,18 +1070,42 @@ E-values 2.891988    NA  2.50</code></pre>
 </section>
 <section id="solutions-1" class="slide level2">
 <h2>Solutions?</h2>
-<p>Knox et al.&nbsp;(2020) suggest some technical fixes, but emphasise that - if we are interested in using statistical models to identify <em>causal</em> relationships <em>there is no general solution</em> that can guarantee that coefficients in a regression model will have valid causal interpretations based on administrative data derived from police records. The key thing is thinking through the process by which the dataset was constructed, and conveying this to your reader.</p>
+<ul>
+<li><span class="citation" data-cites="knoxAdministrativeRecordsMask2020a">Knox, Lowe, and Mummolo (<a href="#/references" role="doc-biblioref" onclick="">2020</a>)</span> suggest some technical fixes, but emphasise that - if we are interested in using statistical models to identify <em>causal</em> relationships <em>there is no general solution</em> that can guarantee that coefficients in a regression model will have valid causal interpretations based on administrative data derived from police records.</li>
+<li>The key thing is thinking through the process by which the dataset was constructed, and conveying this to your reader.</li>
+</ul>
 </section>
 <section id="should-i-do-a-quantitative-bias-analysis" class="slide level2">
 <h2>Should I do a quantitative bias analysis?</h2>
 <ul>
 <li>It depends</li>
 <li>… so you only need to bother with this stuff if you ‘claim to offer near-definitive conclusions’. Is your study likely to contribute to a meta analysis? Or in other words, when you are moving between the small world and the large world.</li>
-<li>So the key thing is how we talk about our models - it <em>us</em> that moves between the small world and the large world.</li>
+<li>So the key thing is how we talk about our models - it is <em>us</em> that moves between the small world and the large world.</li>
 </ul>
+</section></section>
+<section>
+<section id="recap-1" class="title-slide slide level1 center" data-background-color="#40666e">
+<h1>Recap</h1>
+
 </section>
-<section id="practical-2" class="slide level2">
-<h2>Practical</h2>
+<section id="recap-2" class="slide level2">
+<h2>Recap</h2>
+<ul>
+<li>If you are working with observational data (as is common in criminology), coefficients from a GLM may well be biased</li>
+<li>Quantitative bias analysis describes three secnarios where we may want to be critical about our results:
+<ul>
+<li>Measurement error</li>
+<li>Selection effects</li>
+<li>Unmeasured confounding</li>
+</ul></li>
+<li>Measurement error has received attention in criminology when analysis recorded crime and victimization counts</li>
+<li>So has selection effects in police data on stops and when analysing court data</li>
+<li>Unmeasured confounding less so</li>
+<li>The potential impact of these three factors depends on your specific data and analysis - there are no general solutions <span class="emoji" data-emoji="shrug">🤷</span></li>
+</ul>
+</section></section>
+<section id="practical-2" class="title-slide slide level1 center" data-background-color="#40666e">
+<h1>Practical</h1>
 <ul>
 <li>We’re going to revisit the generative stories that you came up with in Section One. Is there possible:
 <ul>
@@ -1068,13 +1115,22 @@ E-values 2.891988    NA  2.50</code></pre>
 </ul></li>
 <li>Write a vignette describing some results and then critique?</li>
 </ul>
-</section></section>
+</section>
+
 <section>
-<section id="break-2" class="title-slide slide level1 center" data-background-color="#666666">
+<section id="break-1" class="title-slide slide level1 center" data-background-color="#666666">
 <h1>Break</h1>
 
 </section>
-<section id="simulation" class="slide level2">
+<section class="slide level2">
+
+</section></section>
+<section>
+<section id="simulation" class="title-slide slide level1 center" data-background-color="#40666e">
+<h1>Simulation</h1>
+
+</section>
+<section id="simulation-1" class="slide level2">
 <h2>Simulation</h2>
 <ul>
 <li>In the last session we spent time being skeptical about our model coefficients, and looked at some methods which adjust coefficients to account for possible biases in the data.</li>
@@ -1085,7 +1141,7 @@ E-values 2.891988    NA  2.50</code></pre>
 
 </section></section>
 <section>
-<section id="but-first" class="title-slide slide level1 center">
+<section id="but-first" class="title-slide slide level1 center" data-background-color="#40666e">
 <h1>But first</h1>
 
 </section>
@@ -1442,15 +1498,15 @@ E-values 2.891988    NA  2.50</code></pre>
 <div class="column" style="width:66%;">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>draws_2015 <span class="ot">&lt;-</span></span>
-<span id="cb24-2"><a></a>  draws_2015 <span class="sc">%&gt;%</span></span>
-<span id="cb24-3"><a></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb24-4"><a></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb24-2"><a></a>  draws_2015 <span class="sc">|&gt;</span></span>
+<span id="cb24-3"><a></a>  <span class="fu">as.data.frame</span>() <span class="sc">|&gt;</span></span>
+<span id="cb24-4"><a></a>  <span class="fu">as_tibble</span>() <span class="sc">|&gt;</span></span>
 <span id="cb24-5"><a></a>  <span class="fu">mutate</span>(<span class="at">est =</span> <span class="fu">exp</span>(<span class="st">`</span><span class="at">fct_rev(sex)men</span><span class="st">`</span>))</span>
 <span id="cb24-6"><a></a></span>
 <span id="cb24-7"><a></a>draws_2020 <span class="ot">&lt;-</span></span>
-<span id="cb24-8"><a></a>  draws_2020 <span class="sc">%&gt;%</span></span>
-<span id="cb24-9"><a></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb24-10"><a></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb24-8"><a></a>  draws_2020 <span class="sc">|&gt;</span></span>
+<span id="cb24-9"><a></a>  <span class="fu">as.data.frame</span>() <span class="sc">|&gt;</span></span>
+<span id="cb24-10"><a></a>  <span class="fu">as_tibble</span>() <span class="sc">|&gt;</span></span>
 <span id="cb24-11"><a></a>  <span class="fu">mutate</span>(<span class="at">est =</span> <span class="fu">exp</span>(<span class="st">`</span><span class="at">fct_rev(sex)men</span><span class="st">`</span>))</span>
 <span id="cb24-12"><a></a></span>
 <span id="cb24-13"><a></a><span class="co"># combine the results</span></span>
@@ -1539,7 +1595,7 @@ E-values 2.891988    NA  2.50</code></pre>
 </ul>
 </section></section>
 <section>
-<section id="break-3" class="title-slide slide level1 center" data-background-color="#666666">
+<section id="break-2" class="title-slide slide level1 center" data-background-color="#666666">
 <h1>Break</h1>
 
 </section>
@@ -1579,11 +1635,11 @@ E-values 2.891988    NA  2.50</code></pre>
 <section id="causal-quartets" class="slide level2">
 <h2>CAUSAL QUARTETS</h2>
 
-<img data-src="images/causal-quartets.png" style="width:90.0%" class="r-stretch quarto-figure-center"><p class="caption">From <span class="citation" data-cites="gelmanCausalQuartetsDifferent2023">(<a href="#/references" role="doc-biblioref" onclick=""><strong>gelmanCausalQuartetsDifferent2023?</strong></a>)</span></p></section>
+<img data-src="images/causal-quartets.png" style="width:90.0%" class="r-stretch quarto-figure-center"><p class="caption">From <span class="citation" data-cites="gelmanCausalQuartetsDifferent2023">Gelman, Hullman, and Kennedy (<a href="#/references" role="doc-biblioref" onclick="">2023</a>)</span></p></section>
 <section id="causal-quartets-1" class="slide level2">
 <h2>CAUSAL QUARTETS</h2>
 <ul>
-<li>So what? <span class="citation" data-cites="gelmanCausalQuartetsDifferent2023">(<a href="#/references" role="doc-biblioref" onclick=""><strong>gelmanCausalQuartetsDifferent2023?</strong></a>)</span></li>
+<li>So what? <span class="citation" data-cites="gelmanCausalQuartetsDifferent2023">(<a href="#/references" role="doc-biblioref" onclick="">Gelman, Hullman, and Kennedy 2023</a>)</span></li>
 <li>“Variation among people is relevant to policy (for example, personalized medicine) and understanding (for example in psychology)”</li>
 <li>“Variation across situations is relevant when deciding what “flavor” of treatment to do, for example with dosing in pharmacology or treatment levels in traditional agricultural experiments.”</li>
 </ul>
@@ -1629,7 +1685,7 @@ E-values 2.891988    NA  2.50</code></pre>
 <section id="an-example-of-theoretical-framing-community-loss" class="slide level2">
 <h2>An example of theoretical framing: community loss</h2>
 <ul>
-<li><p>Jessica Simes <span class="citation" data-cites="simesPunishingPlacesGeography2021">(<a href="#/references" role="doc-biblioref" onclick="">Jessica T. Simes 2021</a>)</span> gives a good example of how we may want to come up with theoretically informed measures, or theoretically re-frame measures. Simes analysed imprisonment data from the state of Massachusets in the USA, including spatial regression of prison admission rates and how these relate to “racial demographics, social and economic disadvantage, arrest rates, and violent crime” <span class="citation" data-cites="simesPlacePunishmentSpatial2018a">(<a href="#/references" role="doc-biblioref" onclick="">Jessica T. Simes 2018</a>)</span>.</p></li>
+<li><p><span class="citation" data-cites="simesPunishingPlacesGeography2021">Jessica T. Simes (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span> gives a good example of how we may want to come up with theoretically informed measures, or theoretically re-frame measures. Simes analysed imprisonment data from the state of Massachusets in the USA, including spatial regression of prison admission rates and how these relate to “racial demographics, social and economic disadvantage, arrest rates, and violent crime” <span class="citation" data-cites="simesPlacePunishmentSpatial2018a">(<a href="#/references" role="doc-biblioref" onclick="">Jessica T. Simes 2018</a>)</span>.</p></li>
 <li><p>As part of this analysis Simes suggests that the cumulative years sentenced to residents of a particular neighbourhood be thought of as ‘community loss’. This is not (just?) an indicator of individual punishment histories, but reflects the chronic and long-term exposure to loss due to imprisonment in different neighbourhoods. This highlights the effects of imprisonment on the communities in which people who end up in prison lived prior to their imprisonment, rather than just focusing on the people who are currently in prison.</p></li>
 </ul>
 </section>
@@ -1652,6 +1708,10 @@ E-values 2.891988    NA  2.50</code></pre>
 <section>
 <section id="overview" class="title-slide slide level1 center">
 <h1>Overview</h1>
+
+</section>
+<section id="overview-1" class="slide level2">
+<h2>Overview</h2>
 <ul>
 <li>Whew! We’ve covered a lot of ground today</li>
 <li>The key idea of this workshop is that the data provenance story should influence our analysis and the story we tell about our results</li>
@@ -1659,6 +1719,17 @@ E-values 2.891988    NA  2.50</code></pre>
 <li>We talked about GLMs as a common way of telling stories about the small world of our data</li>
 <li>We looked at how we might want to critique the stories our GLMs are telling, using tools from quantitative bias analysis</li>
 <li>And how to use simulation approaches to tell more meaningful stories from our results</li>
+<li>We discussed some ethical issues that come up when we present our results</li>
+</ul>
+</section>
+<section id="where-next" class="slide level2">
+<h2>Where next?</h2>
+<ul>
+<li>Data provenance: Over to you!</li>
+<li>GLMs (and beyond): (Statistical Rethinking)[https://github.com/rmcelreath/stat_rethinking_2024]</li>
+<li>Quantitative Bias Analysis: <span class="emoji" data-emoji="shrug">🤷</span> Maybe (<em>Quantitative Assessment of Systematic Bias: A Guide for Researchers</em>)[https://journals.sagepub.com/doi/10.1177/00220345231193314] or <span class="citation" data-cites="kawabataQuantitativeBiasAnalysis2023">(<a href="#/references" role="doc-biblioref" onclick="">Kawabata et al. 2023</a>)</span>?</li>
+<li>Simulating meaningful quantities from results: (<code>{clarify}</code>)[https://iqss.github.io/clarify/] and (<code>{marginaleffects}</code>)[https://marginaleffects.com/]</li>
+<li>Ethics: (Data Feminism)[https://data-feminism.mitpress.mit.edu/pub/czq9dfs5/release/3]</li>
 </ul>
 </section>
 <section id="references" class="slide level2 smaller scrollable">
@@ -1679,6 +1750,9 @@ D. Redelings, Matthew, Frank Sorvillo, Lisa V. Smith, and Sander Greenland. 2012
 <div id="ref-gaeblerCausalFrameworkObservational2022" class="csl-entry" role="listitem">
 Gaebler, Johann, William Cai, Guillaume Basse, Ravi Shroff, Sharad Goel, and Jennifer Hill. 2022. <span>“A <span>Causal Framework</span> for <span>Observational Studies</span> of <span>Discrimination</span>.”</span> <em>Statistics and Public Policy</em> 9 (1): 26–48. <a href="https://doi.org/10.1080/2330443X.2021.2024778">https://doi.org/10.1080/2330443X.2021.2024778</a>.
 </div>
+<div id="ref-gelmanCausalQuartetsDifferent2023" class="csl-entry" role="listitem">
+Gelman, Andrew, Jessica Hullman, and Lauren Kennedy. 2023. <span>“Causal Quartets: <span>Different</span> Ways to Attain the Same Average Treatment Effect.”</span> arXiv. <a href="https://doi.org/10.48550/arXiv.2302.12878">https://doi.org/10.48550/arXiv.2302.12878</a>.
+</div>
 <div id="ref-greenlandSensitivityAnalysisBias2014" class="csl-entry" role="listitem">
 Greenland, Sander. 2014. <span>“Sensitivity <span>Analysis</span> and <span>Bias Analysis</span>.”</span> In <em>Handbook of <span>Epidemiology</span></em>, edited by Wolfgang Ahrens and Iris Pigeot, 685–706. New York, NY: Springer. <a href="https://doi.org/10.1007/978-0-387-09834-0_60">https://doi.org/10.1007/978-0-387-09834-0_60</a>.
 </div>
@@ -1688,11 +1762,17 @@ Hilbe, Joseph M. 2014. <em>Modeling <span>Count Data</span></em>. Cambridge: Cam
 <div id="ref-hunterEquityJusticeCrime2016" class="csl-entry" role="listitem">
 Hunter, James, and Andromachi Tseloni. 2016. <span>“Equity, Justice and the Crime Drop: The Case of Burglary in <span>England</span> and <span>Wales</span>.”</span> <em>Crime Science</em> 5 (1): 3. <a href="https://doi.org/10.1186/s40163-016-0051-z">https://doi.org/10.1186/s40163-016-0051-z</a>.
 </div>
+<div id="ref-kawabataQuantitativeBiasAnalysis2023" class="csl-entry" role="listitem">
+Kawabata, Emily, Kate Tilling, Rolf H. H. Groenwold, and Rachael A. Hughes. 2023. <span>“Quantitative Bias Analysis in Practice: Review of Software for Regression with Unmeasured Confounding.”</span> <em>BMC Medical Research Methodology</em> 23 (May): 111. <a href="https://doi.org/10.1186/s12874-023-01906-8">https://doi.org/10.1186/s12874-023-01906-8</a>.
+</div>
 <div id="ref-8347e95e012d4212a5ee429a18ee592e" class="csl-entry" role="listitem">
 Keay, Scott, and Jude Towers. 2024. <span>“The Collection and Understanding of Administrative Data in <span>UK</span> Police Forces.”</span> In <em>The Crime Data Handbook</em>, edited by Laura Huey and David Buil-Gil, 227. United Kingdom: Bristol University Press.
 </div>
 <div id="ref-kingMakingMostStatistical2000" class="csl-entry" role="listitem">
 King, Gary, Michael Tomz, and Jason Wittenberg. 2000. <span>“Making the <span>Most</span> of <span>Statistical Analyses</span>: <span>Improving Interpretation</span> and <span>Presentation</span>.”</span> <em>American Journal of Political Science</em> 44: 341–55.
+</div>
+<div id="ref-knoxAdministrativeRecordsMask2020a" class="csl-entry" role="listitem">
+Knox, Dean, Will Lowe, and Jonathan Mummolo. 2020. <span>“Administrative <span>Records Mask Racially Biased Policing</span>.”</span> <em>American Political Science Review</em> 114 (3): 619–37. <a href="https://doi.org/10.1017/S0003055420000039">https://doi.org/10.1017/S0003055420000039</a>.
 </div>
 <div id="ref-simesPunishingPlacesGeography2021" class="csl-entry" role="listitem">
 Simes, Jessica T. 2021. <em>Punishing <span>Places</span>: <span>The Geography</span> of <span>Mass Imprisonment</span></em>. Univ of California Press.

@@ -1,0 +1,56 @@
+---
+title: 'Statistical Methods for Criminology: Practical One'
+author: "Ben Matthews"
+date: "2024-08-08"
+output: github_document
+---
+
+_The following is an exceprt from my PhD thesis (Criminal careers and the crime drop in Scotland, 1989-2011)[https://era.ed.ac.uk/handle/1842/25810]. Be glad I'm not making you read the whole thing._
+
+_The thesis aimed to explore how patterns of convictions over peoples' lives (criminal careers) had changed during a period of falling crime rates overall. Read the following description of the dataset and then answer our six questions. We will then discuss these as a group. It's fine to conclude that you don't know, or need more information to answer the question!_
+
+- "Why has the data been collected (and collected in this way)?
+- How has the data been collected and/or by whom or by what?
+- What/who is included and what/who is excluded?
+- What is the context for the data collection (routine activity, bespoke intervention, to meet a target)?
+- Has the data been dis/aggregated or manipulated or cleaned in some other way to arrive at its present form?
+- What are the relevant definitions and concepts that govern the data/data collection?"
+
+[@8347e95e012d4212a5ee429a18ee592e, p228-229]
+
+## 4.3 Data Source: Scottish Offenders Index
+The Scottish Offenders Index (SOI) is dataset collated by Scottish Government from court records. It is used to produce a yearly summary of reconviction rates in Scotland, and as such it contains records of convictions linked together by an anonymous personal identifier. The SOI holds data on the convicted person’s age and sex and the details of their offence and
+conviction. Specifically SOI holds data on the date of offence, conviction, sentencing and disposal, the person’s previous convictions (after 1989), the number of days sentenced (if a custodial sentence) and estimated release date.
+
+
+### Data coverage
+With the exception of those convicted for some minor crime types (see below), the SOI contains information on every person convicted in a Scottish court. Consequently SOI forms a census of convictions, or n = _all_ (Connelly et al. 2016). As a result it contains convictions data for the full age distribution of adults in Scotland. 
+
+In Scotland children under the age of 16 are handled by a separate youth justice
+system (McAra and McVie, 2015) and so are not included in SOI. Although it is possible for people under age 16 to receive convictions in adult courts, SOI is a less reliable source regarding convictions for those under age 16 (Scottish Government, 2014 personal communication). 
+
+As well as this wide age coverage, SOI also covers a wide time period. The SOI contains a record of convictions in Scottish courts from January 1st 1989 and is updated each August with convictions data for the previous year. The version used for this analysis covers the period January 1st 1989 to July 31st 2013. As a result, SOI contains cross-sectional data across the full age distribution (over the age of 16). Any cases listed in the SOI which occur before 1989, or when the person was under age 16 at the age of offence were excluded as they are considered unreliable (Scottish Government, 2014 personal correspondence). Cases have been excluded where the person's date of birth, date of offence or the crime type is not known. Convictions relating to offences committed in 2012 were also excluded (see discussion in Section 4.4) leading to total n of 1,644,123 convictions covering 504,090 people. This process excluded 99,294 cases (3.7% of the total). 
+
+As mentioned above, SOI does not cover every type of crime. SOI lists all convictions for serious violence, indecency, dishonesty, fire-raising, malicious mischief and other “serious” offences, but those for crimes against public justice, drunkenness and motor vehicle offences are excluded. A full list of offences covered is included in Appendix Three. This means that SOI, and consequently the scope of this research, does not relate to convictions of every crime type. Because of the volume of these less serious crimes, it is estimated that SOI covers between 52 and 58% of the total number of people convicted in Scottish courts. Of this discrepancy, between 79% and 86% is due to motor vehicle offences. Figures were calculated by comparing the total number of convictions in SOI for each calendar year with the total number of convictions reported in Scottish Government’s Criminal Proceedings in Scotland reports (Scottish Government 2015).However, as this selection of crime types is consistent throughout the period covered by SOI it does not affect comparisons of convictions rates within the dataset. In addition, the crime types omitted by SOI, particularly traffic offences, are not typically considered as part of discussions of the crime drop (see Chapter Three). Whilst interpreting the results of this analysis must bear this feature in mind, the exclusion of these crime types from SOI does not severely hamper the capacity of SOI to explore the crime drop in Scotland
+
+Whilst SOI covers all people convicted it does not cover every conviction served. As is typical of convictions datasets (Aebi and Linde 2012), the SOI only includes one record per conviction; the most serious (or 'index') offence. Thus, if a person is convicted of multiple offences in the same hearing this “principal offence rule” (Aebi and Linde 2012:108) indicates that only the most serious of these will appear in the SOI. This is described by the Scottish Government’s counting rules (2015:41-42) A2 and A4. As a result of this rule, each set of proceedings against a person is included separately in SOI, but if a person is convicted for more than one charge in a set of court proceedings only the most serious of these offences is listed in SOI71. SOI is therefore a census of offenders and of proceedings, but would provide an underestimate of the overall volume of crimes convicted. Again, the principal offence rule is consistent over time it should not impair comparisons made between years in the SOI, but is likely to undercount the frequency of conviction.
+
+Taking these features together, SOI is best understood as a record of all proceedings conducted in Scottish courts for offences other than motor vehicle offences, drunkenness and crimes against public justice between 1989 and August 2013.
+
+
+### SOI and migration - save this for measurement error?
+As SOI is based on court records it does not rely on a list of the registered population, unlike Nordic register data (Lyngstad and Skardhamar 2011). However, changes in the non-resident population due to migration flows, as well as mortality amongst the convicted population, may respectively lead to attrition and right-censoring in the SOI. This is because in SOI it is not possible to tell if a period without a conviction is because a particular person has not committed a criminalizable act, they have not been convicted for any offences they have committed, the person has died or whether they have emigrated.
+
+... Whilst migration flows are not controlled for directly in the longitudinal analysis, examining migration patterns over the period of analysis can help understand their potential effects. Recent migration flows have a distinct age pattern, with large numbers of people moving to Scotland in their late teens to study at Scottish universities and then leave Scotland in their early twenties (National Records of Scotland 2015:45). If there is an increase in desistance transitions due to increased migration should be most prominent at the peak ages when people leave Scotland, between 23 and 25. If there is increased onset it should be seen most people arrive between the ages of 19 and 23. Moreover, migration into Scotland increased particularly after 2005 (NRS 2014:41), and so these trends should be particularly pronounced after this point. If trends in convictions pathways observed in Chapter Nine do not align with the description of migration flows above – concentrated amongst young people after 2005 – it can be assumed that observed trends in convictions pathways are not caused by changes in migration flows.
+
+## 4.4 Research Strategy
+
+### Quantitative Methodology
+Two points should be noted here about the methodological principles underpinning the choice of methods used74. First, the descriptive aims and inductive approach adopted in this thesis make this analysis more exploratory (Tukey 1977) rather than confirmatory75. Consequently, the methods used are influenced by exploratory data analysis, relying on visual analysis of trends76. The exploratory approach is also in line with the lack of previous analysis of change in criminal careers over the crime drop, and the difficulty in precisely specifying how different theories of the crime drop may impact on different dimensions of criminal careers. Such uncertainty makes it difficult to specify testable hypotheses about how the mechanisms suggested different theories of the crime drop would be manifest in criminal careers.
+
+The descriptive approach adopted here also fits with the nature of SOI data. As in the SOI n= _all_, typical inferential concerns about relating parameter estimates from a (random) sample to a population are not of concern here (Connelly et al. 2016) adding value to simple description of trends in the data. Consequently, results are not compared to a particular critical value, or significance tests performed to assess whether change in any of the criminal careers parameters analysed is statistically significant. Instead the focus is on describing the trends that are present in the data. 
+
+## Questions
+
+- How can we critique the assertion that SOI is n = all?
+- What are the potential drawbacks of not performing inferential analysis on SOI? What are the benefits of taking a more descriptive approach?

@@ -2,4 +2,4 @@ project:
   title: "Statistical Methods for Criminology"
   type: website
   output-dir: docs
-  from: markdown+emoji
+from: markdown+emoji

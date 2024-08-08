@@ -4,7 +4,7 @@
     "href": "statistical_methods_criminology.html#welcome",
     "title": "Statistical Methods for Criminology",
     "section": "Welcome!",
-    "text": "Welcome!\n\nWho we are\nworkshop outline\nCode of conduct\nReference texts"
+    "text": "Welcome!\n\nWho we are\nworkshop outline\nCode of conduct"
   },
   {
     "objectID": "statistical_methods_criminology.html#learning-outcomes",
@@ -25,7 +25,7 @@
     "href": "statistical_methods_criminology.html#points-of-order",
     "title": "Statistical Methods for Criminology",
     "section": "Points of order",
-    "text": "Points of order\n\nAsk questions whenever :thumbsup: You can do this through the Teams chat facility {demo this now}\nWe’ve structured the sessions with regular breaks, but if you need to leave just leave!\nMaterials will live online (slides,) so you can access them any time\nWe want this time to be as useful for you guys as possible, so please let us know anything we can improve on between now and next week’s session"
+    "text": "Points of order\n\nAsk questions whenever 👍 You can do this through the Teams chat facility {demo this now}\nWe’ve structured the sessions with regular breaks, but if you need to leave just leave!\nMaterials will live online (slides,) so you can access them any time"
   },
   {
     "objectID": "statistical_methods_criminology.html#r-set-up",
@@ -53,7 +53,7 @@
     "href": "statistical_methods_criminology.html#types-of-criminological-data",
     "title": "Statistical Methods for Criminology",
     "section": "Types of criminological data",
-    "text": "Types of criminological data\n\nCriminology as a ‘rendezvous discipline’ as David Downes said\nCriminological data could be\n\nAdminsitrative data from the justice system (police, courts, prisons, probation… etc)\nSecondary survey data (e.g. victimization, offending, fear of crime… etc)\nNewspaper reports (e.g. collations of stories on police use of force or homicides)\nSocial media data (e.g. fear of crime)\n‘Digital trace’ data from darknet drugs transactions\n…"
+    "text": "Types of criminological data\n\nCriminology as a ‘rendezvous discipline’ as David Downes once said\nCriminological data could be\n\nAdministrative data from the justice system (police, courts, prisons, probation… etc)\nSecondary survey data (e.g. victimization, offending, fear of crime… etc)\nNewspaper reports (e.g. collations of stories on police use of force or homicides)\nSocial media data (e.g. fear of crime)\n‘Digital trace’ data from darknet drugs transactions\n…"
   },
   {
     "objectID": "statistical_methods_criminology.html#key-types-of-criminological-data",
@@ -88,7 +88,7 @@
     "href": "statistical_methods_criminology.html#implications-of-this-story",
     "title": "Statistical Methods for Criminology",
     "section": "Implications of this story",
-    "text": "Implications of this story\n\nReporting on crime levels - incentives to reduce figures?\n\nhttps://osr.statisticsauthority.gov.uk/publication/the-quality-of-police-recorded-crime-statistics-for-england-and-wales/\n\nExcludes incidents not reported (see dark figure of crime)\nFigures represent (unknown?) mix of behavioural and system effects\n\nUrban areas have high police recorded crime rates because …\n\nthat’s where crime is?\nthat’s where poverty and disadvantage are?\nthat’s where disproportionate surveilance and punishment are?"
+    "text": "Implications of this story\n\nReporting on crime levels - incentives to reduce figures?\n\nhttps://osr.statisticsauthority.gov.uk/publication/the-quality-of-police-recorded-crime-statistics-for-england-and-wales/\n\nExcludes incidents not reported (see dark figure of crime)\nFigures represent (unknown?) mix of behavioural and system effects\n\nUrban areas have high police recorded crime rates because …\n\nthat’s where crime is?\nthat’s where poverty and disadvantage are?\nthat’s where disproportionate surveillance and punishment are?"
   },
   {
     "objectID": "statistical_methods_criminology.html#implications-for-analysis-population-or-super-population",
@@ -224,11 +224,32 @@
     "text": "Interpretting coefficients\n\nPer UCLA OARC: “for a one unit change in the predictor variable, the difference in the logs of expected counts is expected to change by the respective regression coefficient, given the other predictor variables in the model are held constant.”\nThe most straightforward way to interpret coefficients from Poisson models is to exponentiate the coefficient value. This converts the beta coefficient into an Incident Rate Ratio (https://stats.oarc.ucla.edu/stata/output/poisson-regression/)"
   },
   {
+    "objectID": "statistical_methods_criminology.html#problems-with-poisson-over-dispersion",
+    "href": "statistical_methods_criminology.html#problems-with-poisson-over-dispersion",
+    "title": "Statistical Methods for Criminology",
+    "section": "Problems with Poisson: over-dispersion",
+    "text": "Problems with Poisson: over-dispersion\n\npoisson assumes mean and variance are the same (in that there is only one term in the model, \\(\\lambda\\), which describes both the average and the variability around the average)\nThis is quite a brittle assumption though, and there’s no reason that real-life data has to obey it. So what? If your data are over-dispersed (the conditional variance exceeds the conditional mean), you will get standard errors that are too small.\np-values are too optimistic\nneed some way to account for over-dispersion"
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#solutions",
+    "href": "statistical_methods_criminology.html#solutions",
+    "title": "Statistical Methods for Criminology",
+    "section": "Solutions?",
+    "text": "Solutions?\nWhat do to? about over-dispersion\n\nIf all you care about is your standard error being too small you can use quasi-poisson\nThis gives same point estimates as poisson but with ‘empirical’ SEs - similar to using robust standard errors). Francis et al. use this approach to modelling counts of victimization. In my experience it’s also faster than the standard alternative…\nThe negative binomial is a flavour of statistical model 1 for count data which has an extra “dispersion” parameter, which allows you to model the over-dispersion directly\nPeople disagree as to which is preferable\nExample of gun violence in Oakland: https://cao-94612.s3.amazonaws.com/documents/Oakland-Ceasefire-Evaluation-Final-Report-May-2019.pdf\n\nokay, strictly speaking there are different varieties of negative binomial model. So… flavours? (Hilbe 2014)"
+  },
+  {
     "objectID": "statistical_methods_criminology.html#practical-1",
     "href": "statistical_methods_criminology.html#practical-1",
     "title": "Statistical Methods for Criminology",
     "section": "Practical",
     "text": "Practical\nIn this practical we’ll fit some count models in R"
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#morning-recap-1",
+    "href": "statistical_methods_criminology.html#morning-recap-1",
+    "title": "Statistical Methods for Criminology",
+    "section": "Morning recap",
+    "text": "Morning recap\n\nThe story of how our data came to be influences how we should analyse it\nGLMs are the most popular way to tell stories about the small world of our data"
   },
   {
     "objectID": "statistical_methods_criminology.html#from-small-world-to-large-world",
@@ -270,7 +291,14 @@
     "href": "statistical_methods_criminology.html#example-two-measurement-error-in-victimizaton-survey-data",
     "title": "Statistical Methods for Criminology",
     "section": "Example Two: Measurement error in victimizaton survey data",
-    "text": "Example Two: Measurement error in victimizaton survey data\n\nHistorically, national victimization surveys (such as the SCJS and CSEW) capped the number of victim forms that victims could complete. In 2019, ONS said that “Since the survey began in 1981, “repeat” incidents have been limited to a total of 5. Historically, including a maximum of 5 repeat incidents for any individual victim had proven to be an effective way of reducing the effects of sample variability from year to year. This approach enabled the publication of incident rates that were not subject to large fluctuation between survey years. This approach yields a more reliable picture of changes in victimisations over time once high order repeat victimisations were treated in this way.” (https://doc.ukdataservice.ac.uk/doc/7280/mrdoc/pdf/7280_csew_improving_victimisation_estimates_2019.pdf)\nHowever, it also means that people who experienced more than five incidents of a particular ‘series’ crime type did not have their data accurately recorded\nThis was particularly important for women’s reporting of violent victimization (Walby et al. 2015) - women who experienced domestic violence may well report more than five repeat incidents of victimization in a given year. A second measurement error issue came from the ‘97 code’ - the option to report the number of incidents experienced as ‘96/too many to count’. Instead, based on the domestic violence literature Walby and colleagues propose using an estimate of 60 incidents for those who report the 97 code.\nThis would bias estimates of total crimes , but not prevalence (the number of victims)\nSometimes it’s possible to use uncapped data"
+    "text": "Example Two: Measurement error in victimizaton survey data\n\nHistorically, national victimization surveys (such as the SCJS and CSEW) capped the number of victim forms that victims could complete. In 2019, ONS said that “Since the survey began in 1981, “repeat” incidents have been limited to a total of 5. Historically, including a maximum of 5 repeat incidents for any individual victim had proven to be an effective way of reducing the effects of sample variability from year to year. This approach enabled the publication of incident rates that were not subject to large fluctuation between survey years. This approach yields a more reliable picture of changes in victimisations over time once high order repeat victimisations were treated in this way.” (https://doc.ukdataservice.ac.uk/doc/7280/mrdoc/pdf/7280_csew_improving_victimisation_estimates_2019.pdf)\nHowever, it also means that people who experienced more than five incidents of a particular ‘series’ crime type did not have their data accurately recorded"
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#impact-of-capping-on-analysis",
+    "href": "statistical_methods_criminology.html#impact-of-capping-on-analysis",
+    "title": "Statistical Methods for Criminology",
+    "section": "Impact of capping on analysis",
+    "text": "Impact of capping on analysis\n\nThis was particularly important for women’s reporting of violent victimization (Walby et al. 2015) - women who experienced domestic violence may well report more than five repeat incidents of victimization in a given year. A second measurement error issue came from the ‘97 code’ - the option to report the number of incidents experienced as ‘96/too many to count’. Instead, based on the domestic violence literature Walby and colleagues propose using an estimate of 60 incidents for those who report the 97 code.\nThis would bias estimates of total crimes , but not prevalence (the number of victims)\nSometimes it’s possible to use uncapped data"
   },
   {
     "objectID": "statistical_methods_criminology.html#adventures-in-measurement-error",
@@ -291,32 +319,46 @@
     "href": "statistical_methods_criminology.html#selection-effects",
     "title": "Statistical Methods for Criminology",
     "section": "Selection effects",
-    "text": "Selection effects\nSelection bias arises when there are people who we would have liked to observe in our study but we don’t observe them, and this lack of observation is related to their characteristics. Put another way, we can think of selection bias as affecting the rows of our dataset - there are some rows that are missing that we would like to see.\n(Greenland 2014)\nIn the Knox and colleagues example, this would require knowing the numbers of people who were observed by police but not stopped, in order to calculate the probabilities of selection into the stop dataset. However, we don’t know this - and it is hard to imagine a scenario where an analyst of an police administrative dataset would know this.\nEven if we do know this for our particular dataset, there is no guarantee that selection into the data would hold in every case that we might want to generalize our results to. As such we’d need to consider how differences between the study populations may have affected response and selection (e.g. would selection probabilities from a US study map onto a study in Manchester? How about one in Glasgow?)\nImagine that we want to know whether police are racially biased in how they treat members of the public. One way to assess this is by using data from the police about the outcomes of their interactions with the public.\nFor example, we might want to know if people from minority ethnic backgrounds more likely to be arrested after a stop than people from white backgrounds (Knox et al)\nPolice collect data on stops - why not just run a regression on these data to see if people from minority ethnic backgrounds are more likely to be stopped?\nThe problem is we can’t just rely on data about police stops - “if police racially discriminate when choosing whom to investigate, analyses using administrative records to estimate racial discrimination in police behavior are statistically biased, and many quantities of interest are unidentified—even among investigated individuals—absent strong and untestable assumptions.”\nWe’re going to hear a lot about ‘strong and untestable assumptions’.\n“when there is any racial discrimination in the decision to detain civilians—a decision that determines which encounters appear in police administrative data at all—then estimates of the effect of civilian race on subsequent police behavior are biased absent additional data and/or strong and untestable assumptions.”\n[INSERT FIGURE 2 FROM KNOX]\n\nKnox et al (2020) FIGURE 2. Principal Strata and Observed Police–Civilian Encounters. Notes: The figure displays the four principal strata that comprise police–civilian encounters based on how the mediator M (whether a civilian is stopped by police) responds to treatment D (whether the civilian is a racial minority). Minorities in the “always stop” and anti-minority racial stop strata, highlighted in red, are stopped by police and, thus, appear in police administrative data. Likewise, white civilians in the “always-stop” and anti-white racial stop strata, highlighted in blue, appear in police data. “Never stop” encounters are unobserved. Because white and nonwhite encounters are drawn from different principal strata, the two groups are incomparable and estimates of causal quantities using observed encounters will be statistically biased absent additional assumptions.If you only analyse data that are the result of police stops then your results will be biased. To analyse data on police stops to estimate racial bias, you also need to know the total number of encounters (for each ethnic group) – that is, including encounters that did not lead to a stop.\nOthers (Gaebler et al. 2022)suggest that maybe you can identify some aspects of discrimination in administrative data. This would be discrimination at some point in the process, not total discrimination. It’s really important to be clear about what it is you want to know – do you care about total discrimination, or discrimination in a particular part of the process (e.g. court sentencing and not policing?)."
+    "text": "Selection effects\nSelection bias arises when there are people who we would have liked to observe in our study but we don’t observe them, and this lack of observation is related to their characteristics. Put another way, we can think of selection bias as affecting the rows of our dataset - there are some rows that are missing that we would like to see.\n(Greenland 2014)"
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#an-example-of-selection-bias",
+    "href": "statistical_methods_criminology.html#an-example-of-selection-bias",
+    "title": "Statistical Methods for Criminology",
+    "section": "An example of selection bias",
+    "text": "An example of selection bias\nImagine that we want to know whether police are racially biased in how they treat members of the public. One way to assess this is by using data from the police about the outcomes of their interactions with the public.\nPolice collect data on stops - why not just run a regression on these data to see if people from minority ethnic backgrounds are more likely to be stopped?\nThe problem is we can’t just rely on data about police stops - “if police racially discriminate when choosing whom to investigate, analyses using administrative records to estimate racial discrimination in police behavior are statistically biased, and many quantities of interest are unidentified—even among investigated individuals—absent strong and untestable assumptions.”\nIn the Knox and colleagues example, this would require knowing the numbers of people who were observed by police but not stopped, in order to calculate the probabilities of selection into the stop dataset. However, we don’t know this - and it is hard to imagine a scenario where an analyst of an police administrative dataset would know this.\nEven if we do know this for our particular dataset, there is no guarantee that selection into the data would hold in every case that we might want to generalize our results to. As such we’d need to consider how differences between the study populations may have affected response and selection (e.g. would selection probabilities from a US study map onto a study in Manchester? How about one in Glasgow?)\nWe’re going to hear a lot about ‘strong and untestable assumptions’."
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#uh-oh",
+    "href": "statistical_methods_criminology.html#uh-oh",
+    "title": "Statistical Methods for Criminology",
+    "section": "Uh oh",
+    "text": "Uh oh\n“when there is any racial discrimination in the decision to detain civilians—a decision that determines which encounters appear in police administrative data at all—then estimates of the effect of civilian race on subsequent police behavior are biased absent additional data and/or strong and untestable assumptions.”\n[INSERT FIGURE 2 FROM KNOX]\n\nKnox et al (2020) FIGURE 2. Principal Strata and Observed Police–Civilian Encounters. Notes: The figure displays the four principal strata that comprise police–civilian encounters based on how the mediator M (whether a civilian is stopped by police) responds to treatment D (whether the civilian is a racial minority). Minorities in the “always stop” and anti-minority racial stop strata, highlighted in red, are stopped by police and, thus, appear in police administrative data. Likewise, white civilians in the “always-stop” and anti-white racial stop strata, highlighted in blue, appear in police data. “Never stop” encounters are unobserved. Because white and nonwhite encounters are drawn from different principal strata, the two groups are incomparable and estimates of causal quantities using observed encounters will be statistically biased absent additional assumptions.If you only analyse data that are the result of police stops then your results will be biased. To analyse data on police stops to estimate racial bias, you also need to know the total number of encounters (for each ethnic group) – that is, including encounters that did not lead to a stop.\nOthers (Gaebler et al. 2022)suggest that maybe you can identify some aspects of discrimination in administrative data. This would be discrimination at some point in the process, not total discrimination. It’s really important to be clear about what it is you want to know – do you care about total discrimination, or discrimination in a particular part of the process (e.g. court sentencing and not policing?)."
   },
   {
     "objectID": "statistical_methods_criminology.html#solutions-1",
     "href": "statistical_methods_criminology.html#solutions-1",
     "title": "Statistical Methods for Criminology",
     "section": "Solutions?",
-    "text": "Solutions?\nKnox et al. (2020) suggest some technical fixes, but emphasise that - if we are interested in using statistical models to identify causal relationships there is no general solution that can guarantee that coefficients in a regression model will have valid causal interpretations based on administrative data derived from police records. The key thing is thinking through the process by which the dataset was constructed, and conveying this to your reader."
+    "text": "Solutions?\n\nKnox, Lowe, and Mummolo (2020) suggest some technical fixes, but emphasise that - if we are interested in using statistical models to identify causal relationships there is no general solution that can guarantee that coefficients in a regression model will have valid causal interpretations based on administrative data derived from police records.\nThe key thing is thinking through the process by which the dataset was constructed, and conveying this to your reader."
   },
   {
     "objectID": "statistical_methods_criminology.html#should-i-do-a-quantitative-bias-analysis",
     "href": "statistical_methods_criminology.html#should-i-do-a-quantitative-bias-analysis",
     "title": "Statistical Methods for Criminology",
     "section": "Should I do a quantitative bias analysis?",
-    "text": "Should I do a quantitative bias analysis?\n\nIt depends\n… so you only need to bother with this stuff if you ‘claim to offer near-definitive conclusions’. Is your study likely to contribute to a meta analysis? Or in other words, when you are moving between the small world and the large world.\nSo the key thing is how we talk about our models - it us that moves between the small world and the large world."
+    "text": "Should I do a quantitative bias analysis?\n\nIt depends\n… so you only need to bother with this stuff if you ‘claim to offer near-definitive conclusions’. Is your study likely to contribute to a meta analysis? Or in other words, when you are moving between the small world and the large world.\nSo the key thing is how we talk about our models - it is us that moves between the small world and the large world."
   },
   {
-    "objectID": "statistical_methods_criminology.html#practical-2",
-    "href": "statistical_methods_criminology.html#practical-2",
+    "objectID": "statistical_methods_criminology.html#recap-2",
+    "href": "statistical_methods_criminology.html#recap-2",
     "title": "Statistical Methods for Criminology",
-    "section": "Practical",
-    "text": "Practical\n\nWe’re going to revisit the generative stories that you came up with in Section One. Is there possible:\n\nMeasurement error?\nSelection effects?\nOmitted variables?\n\nWrite a vignette describing some results and then critique?"
+    "section": "Recap",
+    "text": "Recap\n\nIf you are working with observational data (as is common in criminology), coefficients from a GLM may well be biased\nQuantitative bias analysis describes three secnarios where we may want to be critical about our results:\n\nMeasurement error\nSelection effects\nUnmeasured confounding\n\nMeasurement error has received attention in criminology when analysis recorded crime and victimization counts\nSo has selection effects in police data on stops and when analysing court data\nUnmeasured confounding less so\nThe potential impact of these three factors depends on your specific data and analysis - there are no general solutions 🤷"
   },
   {
-    "objectID": "statistical_methods_criminology.html#simulation",
-    "href": "statistical_methods_criminology.html#simulation",
+    "objectID": "statistical_methods_criminology.html#simulation-1",
+    "href": "statistical_methods_criminology.html#simulation-1",
     "title": "Statistical Methods for Criminology",
     "section": "Simulation",
     "text": "Simulation\n\nIn the last session we spent time being skeptical about our model coefficients, and looked at some methods which adjust coefficients to account for possible biases in the data.\nNow we are going to translate coefficients into more interesting and informative quantities. This is a great way to make results more informative and accessible (King, Tomz, and Wittenberg 2000)."
@@ -452,7 +494,7 @@
     "href": "statistical_methods_criminology.html#how-much-has-victimization-inequality-changed-2",
     "title": "Statistical Methods for Criminology",
     "section": "How much has victimization inequality changed?",
-    "text": "How much has victimization inequality changed?\n\n\n\ndraws_2015 &lt;-\n  draws_2015 %&gt;%\n  as.data.frame() %&gt;%\n  as_tibble() %&gt;%\n  mutate(est = exp(`fct_rev(sex)men`))\n\ndraws_2020 &lt;-\n  draws_2020 %&gt;%\n  as.data.frame() %&gt;%\n  as_tibble() %&gt;%\n  mutate(est = exp(`fct_rev(sex)men`))\n\n# combine the results\nsim_dat &lt;-\n  tibble(\n    vd = victim_divide(base_y1 = draws_2015$est,\n                       base_y2 = draws_2020$est)\n  )\n\n\nOnce we tidy the results up a bit, we can pass these simulated draws to our victim_divide() function…"
+    "text": "How much has victimization inequality changed?\n\n\n\ndraws_2015 &lt;-\n  draws_2015 |&gt;\n  as.data.frame() |&gt;\n  as_tibble() |&gt;\n  mutate(est = exp(`fct_rev(sex)men`))\n\ndraws_2020 &lt;-\n  draws_2020 |&gt;\n  as.data.frame() |&gt;\n  as_tibble() |&gt;\n  mutate(est = exp(`fct_rev(sex)men`))\n\n# combine the results\nsim_dat &lt;-\n  tibble(\n    vd = victim_divide(base_y1 = draws_2015$est,\n                       base_y2 = draws_2020$est)\n  )\n\n\nOnce we tidy the results up a bit, we can pass these simulated draws to our victim_divide() function…"
   },
   {
     "objectID": "statistical_methods_criminology.html#how-much-has-victimization-inequality-changed-3",
@@ -515,14 +557,14 @@
     "href": "statistical_methods_criminology.html#causal-quartets",
     "title": "Statistical Methods for Criminology",
     "section": "CAUSAL QUARTETS",
-    "text": "CAUSAL QUARTETS\n\nFrom (gelmanCausalQuartetsDifferent2023?)"
+    "text": "CAUSAL QUARTETS\n\nFrom Gelman, Hullman, and Kennedy (2023)"
   },
   {
     "objectID": "statistical_methods_criminology.html#causal-quartets-1",
     "href": "statistical_methods_criminology.html#causal-quartets-1",
     "title": "Statistical Methods for Criminology",
     "section": "CAUSAL QUARTETS",
-    "text": "CAUSAL QUARTETS\n\nSo what? (gelmanCausalQuartetsDifferent2023?)\n“Variation among people is relevant to policy (for example, personalized medicine) and understanding (for example in psychology)”\n“Variation across situations is relevant when deciding what “flavor” of treatment to do, for example with dosing in pharmacology or treatment levels in traditional agricultural experiments.”"
+    "text": "CAUSAL QUARTETS\n\nSo what? (Gelman, Hullman, and Kennedy 2023)\n“Variation among people is relevant to policy (for example, personalized medicine) and understanding (for example in psychology)”\n“Variation across situations is relevant when deciding what “flavor” of treatment to do, for example with dosing in pharmacology or treatment levels in traditional agricultural experiments.”"
   },
   {
     "objectID": "statistical_methods_criminology.html#same-observables-different-outcomes",
@@ -564,7 +606,7 @@
     "href": "statistical_methods_criminology.html#an-example-of-theoretical-framing-community-loss",
     "title": "Statistical Methods for Criminology",
     "section": "An example of theoretical framing: community loss",
-    "text": "An example of theoretical framing: community loss\n\nJessica Simes (Jessica T. Simes 2021) gives a good example of how we may want to come up with theoretically informed measures, or theoretically re-frame measures. Simes analysed imprisonment data from the state of Massachusets in the USA, including spatial regression of prison admission rates and how these relate to “racial demographics, social and economic disadvantage, arrest rates, and violent crime” (Jessica T. Simes 2018).\nAs part of this analysis Simes suggests that the cumulative years sentenced to residents of a particular neighbourhood be thought of as ‘community loss’. This is not (just?) an indicator of individual punishment histories, but reflects the chronic and long-term exposure to loss due to imprisonment in different neighbourhoods. This highlights the effects of imprisonment on the communities in which people who end up in prison lived prior to their imprisonment, rather than just focusing on the people who are currently in prison."
+    "text": "An example of theoretical framing: community loss\n\nJessica T. Simes (2021) gives a good example of how we may want to come up with theoretically informed measures, or theoretically re-frame measures. Simes analysed imprisonment data from the state of Massachusets in the USA, including spatial regression of prison admission rates and how these relate to “racial demographics, social and economic disadvantage, arrest rates, and violent crime” (Jessica T. Simes 2018).\nAs part of this analysis Simes suggests that the cumulative years sentenced to residents of a particular neighbourhood be thought of as ‘community loss’. This is not (just?) an indicator of individual punishment histories, but reflects the chronic and long-term exposure to loss due to imprisonment in different neighbourhoods. This highlights the effects of imprisonment on the communities in which people who end up in prison lived prior to their imprisonment, rather than just focusing on the people who are currently in prison."
   },
   {
     "objectID": "statistical_methods_criminology.html#the-story-of-our-results-should-reflect-the-story-of-the-data",
@@ -574,10 +616,24 @@
     "text": "The story of our results should reflect the story of the data\n\nKotze criticises the ‘international crime drop’ literature for being too focused on the Global North\nInternational Crime Victims Survey has limited international coverage (despite the name)\nThe problem is making the link between the small world of the model and the large world"
   },
   {
+    "objectID": "statistical_methods_criminology.html#overview-1",
+    "href": "statistical_methods_criminology.html#overview-1",
+    "title": "Statistical Methods for Criminology",
+    "section": "Overview",
+    "text": "Overview\n\nWhew! We’ve covered a lot of ground today\nThe key idea of this workshop is that the data provenance story should influence our analysis and the story we tell about our results\nWe looked at common data provenance stories of police recorded crime and victimization surveys\nWe talked about GLMs as a common way of telling stories about the small world of our data\nWe looked at how we might want to critique the stories our GLMs are telling, using tools from quantitative bias analysis\nAnd how to use simulation approaches to tell more meaningful stories from our results\nWe discussed some ethical issues that come up when we present our results"
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#where-next",
+    "href": "statistical_methods_criminology.html#where-next",
+    "title": "Statistical Methods for Criminology",
+    "section": "Where next?",
+    "text": "Where next?\n\nData provenance: Over to you!\nGLMs (and beyond): (Statistical Rethinking)[https://github.com/rmcelreath/stat_rethinking_2024]\nQuantitative Bias Analysis: 🤷 Maybe (Quantitative Assessment of Systematic Bias: A Guide for Researchers)[https://journals.sagepub.com/doi/10.1177/00220345231193314] or (Kawabata et al. 2023)?\nSimulating meaningful quantities from results: ({clarify})[https://iqss.github.io/clarify/] and ({marginaleffects})[https://marginaleffects.com/]\nEthics: (Data Feminism)[https://data-feminism.mitpress.mit.edu/pub/czq9dfs5/release/3]"
+  },
+  {
     "objectID": "statistical_methods_criminology.html#references",
     "href": "statistical_methods_criminology.html#references",
     "title": "Statistical Methods for Criminology",
     "section": "References",
-    "text": "References\n\n\n\n\n\n\n\n\nCarr-Hill, Roy. 2013. “Missing Millions and Measuring Development Progress.” World Development 46 (June): 30–44. https://doi.org/10.1016/j.worlddev.2012.12.017.\n\n\nD. Redelings, Matthew, Frank Sorvillo, Lisa V. Smith, and Sander Greenland. 2012. “Why Confidence Intervals Should Be Used in Reporting Studies of Complete Populations” 5 (1). https://doi.org/10.2174/1874944501205010052.\n\n\nGaebler, Johann, William Cai, Guillaume Basse, Ravi Shroff, Sharad Goel, and Jennifer Hill. 2022. “A Causal Framework for Observational Studies of Discrimination.” Statistics and Public Policy 9 (1): 26–48. https://doi.org/10.1080/2330443X.2021.2024778.\n\n\nGreenland, Sander. 2014. “Sensitivity Analysis and Bias Analysis.” In Handbook of Epidemiology, edited by Wolfgang Ahrens and Iris Pigeot, 685–706. New York, NY: Springer. https://doi.org/10.1007/978-0-387-09834-0_60.\n\n\nHilbe, Joseph M. 2014. Modeling Count Data. Cambridge: Cambridge University Press. https://doi.org/10.1017/CBO9781139236065.\n\n\nHunter, James, and Andromachi Tseloni. 2016. “Equity, Justice and the Crime Drop: The Case of Burglary in England and Wales.” Crime Science 5 (1): 3. https://doi.org/10.1186/s40163-016-0051-z.\n\n\nKeay, Scott, and Jude Towers. 2024. “The Collection and Understanding of Administrative Data in UK Police Forces.” In The Crime Data Handbook, edited by Laura Huey and David Buil-Gil, 227. United Kingdom: Bristol University Press.\n\n\nKing, Gary, Michael Tomz, and Jason Wittenberg. 2000. “Making the Most of Statistical Analyses: Improving Interpretation and Presentation.” American Journal of Political Science 44: 341–55.\n\n\nSimes, Jessica T. 2021. Punishing Places: The Geography of Mass Imprisonment. Univ of California Press.\n\n\nSimes, Jessica T. 2018. “Place and Punishment: The Spatial Context of Mass Incarceration.” Journal of Quantitative Criminology 34 (2): 513–33. https://doi.org/10.1007/s10940-017-9344-y.\n\n\nSpiegelhalter, David J. 2005. “Funnel Plots for Comparing Institutional Performance.” Statistics in Medicine 24 (8): 1185–1202. https://doi.org/10.1002/sim.1970.\n\n\nVerlaan, Tim, and Samuel Langton. 2024. “On the Use of Inferential Statistics on Administrative Police Data.” In The Crime Data Handbook, 197–210. Bristol University Press."
+    "text": "References\n\n\n\n\n\n\n\n\nCarr-Hill, Roy. 2013. “Missing Millions and Measuring Development Progress.” World Development 46 (June): 30–44. https://doi.org/10.1016/j.worlddev.2012.12.017.\n\n\nD. Redelings, Matthew, Frank Sorvillo, Lisa V. Smith, and Sander Greenland. 2012. “Why Confidence Intervals Should Be Used in Reporting Studies of Complete Populations” 5 (1). https://doi.org/10.2174/1874944501205010052.\n\n\nGaebler, Johann, William Cai, Guillaume Basse, Ravi Shroff, Sharad Goel, and Jennifer Hill. 2022. “A Causal Framework for Observational Studies of Discrimination.” Statistics and Public Policy 9 (1): 26–48. https://doi.org/10.1080/2330443X.2021.2024778.\n\n\nGelman, Andrew, Jessica Hullman, and Lauren Kennedy. 2023. “Causal Quartets: Different Ways to Attain the Same Average Treatment Effect.” arXiv. https://doi.org/10.48550/arXiv.2302.12878.\n\n\nGreenland, Sander. 2014. “Sensitivity Analysis and Bias Analysis.” In Handbook of Epidemiology, edited by Wolfgang Ahrens and Iris Pigeot, 685–706. New York, NY: Springer. https://doi.org/10.1007/978-0-387-09834-0_60.\n\n\nHilbe, Joseph M. 2014. Modeling Count Data. Cambridge: Cambridge University Press. https://doi.org/10.1017/CBO9781139236065.\n\n\nHunter, James, and Andromachi Tseloni. 2016. “Equity, Justice and the Crime Drop: The Case of Burglary in England and Wales.” Crime Science 5 (1): 3. https://doi.org/10.1186/s40163-016-0051-z.\n\n\nKawabata, Emily, Kate Tilling, Rolf H. H. Groenwold, and Rachael A. Hughes. 2023. “Quantitative Bias Analysis in Practice: Review of Software for Regression with Unmeasured Confounding.” BMC Medical Research Methodology 23 (May): 111. https://doi.org/10.1186/s12874-023-01906-8.\n\n\nKeay, Scott, and Jude Towers. 2024. “The Collection and Understanding of Administrative Data in UK Police Forces.” In The Crime Data Handbook, edited by Laura Huey and David Buil-Gil, 227. United Kingdom: Bristol University Press.\n\n\nKing, Gary, Michael Tomz, and Jason Wittenberg. 2000. “Making the Most of Statistical Analyses: Improving Interpretation and Presentation.” American Journal of Political Science 44: 341–55.\n\n\nKnox, Dean, Will Lowe, and Jonathan Mummolo. 2020. “Administrative Records Mask Racially Biased Policing.” American Political Science Review 114 (3): 619–37. https://doi.org/10.1017/S0003055420000039.\n\n\nSimes, Jessica T. 2021. Punishing Places: The Geography of Mass Imprisonment. Univ of California Press.\n\n\nSimes, Jessica T. 2018. “Place and Punishment: The Spatial Context of Mass Incarceration.” Journal of Quantitative Criminology 34 (2): 513–33. https://doi.org/10.1007/s10940-017-9344-y.\n\n\nSpiegelhalter, David J. 2005. “Funnel Plots for Comparing Institutional Performance.” Statistics in Medicine 24 (8): 1185–1202. https://doi.org/10.1002/sim.1970.\n\n\nVerlaan, Tim, and Samuel Langton. 2024. “On the Use of Inferential Statistics on Administrative Police Data.” In The Crime Data Handbook, 197–210. Bristol University Press."
   }
 ]
