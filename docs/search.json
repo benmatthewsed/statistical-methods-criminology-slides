@@ -263,14 +263,14 @@
     "href": "statistical_methods_criminology.html#are-coefficients-sufficient",
     "title": "Statistical Methods for Criminology",
     "section": "Are coefficients sufficient?",
-    "text": "Are coefficients sufficient?\n\nWe should be skeptical about the numbers in our spreadsheets and the coefficients that summarise them\nThe numbers may be (predictably) inaccurate (measurement error);\nthey may omit some variables that we theoretically think are important (confounding), or;\nthey omit some people/cases we care about (selection effects)\nThese are problems that are hard to solve based on the data we observe alone\nThere is a large literature in epidemiology stu"
+    "text": "Are coefficients sufficient?\n\nWe should be skeptical about the numbers in our spreadsheets and the coefficients that summarise them\nThe numbers may be (predictably) inaccurate (measurement error);\nthey may omit some variables that we theoretically think are important (confounding), or;\nthey omit some people/cases we care about (selection effects)\nThese are problems that are hard to solve based on the data we observe alone\nThere is a large literature in epidemiology study these issues called Quantitative Bias Analysis"
   },
   {
     "objectID": "statistical_methods_criminology.html#measurement-error",
     "href": "statistical_methods_criminology.html#measurement-error",
     "title": "Statistical Methods for Criminology",
     "section": "Measurement error",
-    "text": "Measurement error\n\nMeasurement error is the gap between what we are conceptually interested in and the way that this concept is recorded in our spreadsheet\nGLM assumes no measurement error\nIn practice we know criminological data are likely to be measured with some degree of error. For example, we know that police recorded crime data is not a perfect measure of the amount of crime ‘out there’ in society. As we have discussed already, not all crimes are reported to the police, not all incidents which are reported are recorded as crimes and so on."
+    "text": "Measurement error\n\nMeasurement error is the gap between what we are conceptually interested in and the way that this concept is recorded in our spreadsheet\nGLM assumes no measurement error\nIn practice we know criminological data are likely to be measured with some degree of error.\nPolice recorded crime data is not a perfect measure of the amount of crime ‘out there’ in society. As we have discussed already, not all crimes are reported to the police, not all incidents which are reported are recorded as crimes and so on."
   },
   {
     "objectID": "statistical_methods_criminology.html#measurement-error-in-practice-police-recorded-crime",
@@ -389,14 +389,14 @@
     "href": "statistical_methods_criminology.html#translating-coefficients",
     "title": "Statistical Methods for Criminology",
     "section": "Translating coefficients",
-    "text": "Translating coefficients\n\nIn simple (linear) models it is possible to read off a coefficient directly as the quantities that we are interested in.\nIn more complex models, such as generalized linear models, we often want to convert the coefficients to express results in a more accessible way\nIn poisson regression the model coefficients are also commonly expressed as rate ratios, by exponentiating the coefficients"
+    "text": "Translating coefficients\n\nIn simple (linear) models it is possible to read off a coefficient directly as the quantities that we are interested in.\nIn more complex models, such as generalized linear models, we often want to convert the coefficients to express results in a more accessible way\nIn poisson regression the model coefficients are also commonly expressed as rate ratios, by exponentiating the coefficients (we did this already!)"
   },
   {
     "objectID": "statistical_methods_criminology.html#translating-coefficients-challenges",
     "href": "statistical_methods_criminology.html#translating-coefficients-challenges",
     "title": "Statistical Methods for Criminology",
     "section": "Translating coefficients: challenges",
-    "text": "Translating coefficients: challenges\n\nThese approaches don’t scale well with more complicated models, or complicated transformations (McElreath; Gelman and Pardoe)\nA key challenge is propagating the appropriate uncertainty in the results\nBut we can use simulation to propagate this uncertainty - and we can apply this approach to any generalized linear model and any Derived Quantity of Interest (DQI)\nThe simulation process is described by King et al. (2000) and implemented in the R package clarify (https://github.com/iqss/clarify)\nThis approach propagates both the uncertainty in the model’s coefficients, and the correlations between the coefficients"
+    "text": "Translating coefficients: challenges\n\nThese approaches don’t scale well with more complicated models, or complicated transformations (McElreath; Gelman and Pardoe)\nA common way to translate model coefficients into more meaningful quantities is to use all the coefficients in the model to calculate predicted values of the outcome\nThese are often called ‘marginal effects’ (although this terminology is confusing)\nThe terminology is confusing in part because there are lots of related but subtly different quantities people call marginal effects (see https://marginaleffects.com/vignettes/get_started.html)\nAs a result, I like Gelman and Pardoe’s terminology of ‘adjusted predictive comparisons’"
   },
   {
     "objectID": "statistical_methods_criminology.html#an-example-victimization-divides",
@@ -635,5 +635,61 @@
     "title": "Statistical Methods for Criminology",
     "section": "References",
     "text": "References\n\n\n\n\n\n\n\n\nCarr-Hill, Roy. 2013. “Missing Millions and Measuring Development Progress.” World Development 46 (June): 30–44. https://doi.org/10.1016/j.worlddev.2012.12.017.\n\n\nD. Redelings, Matthew, Frank Sorvillo, Lisa V. Smith, and Sander Greenland. 2012. “Why Confidence Intervals Should Be Used in Reporting Studies of Complete Populations” 5 (1). https://doi.org/10.2174/1874944501205010052.\n\n\nGaebler, Johann, William Cai, Guillaume Basse, Ravi Shroff, Sharad Goel, and Jennifer Hill. 2022. “A Causal Framework for Observational Studies of Discrimination.” Statistics and Public Policy 9 (1): 26–48. https://doi.org/10.1080/2330443X.2021.2024778.\n\n\nGelman, Andrew, Jessica Hullman, and Lauren Kennedy. 2023. “Causal Quartets: Different Ways to Attain the Same Average Treatment Effect.” arXiv. https://doi.org/10.48550/arXiv.2302.12878.\n\n\nGreenland, Sander. 2014. “Sensitivity Analysis and Bias Analysis.” In Handbook of Epidemiology, edited by Wolfgang Ahrens and Iris Pigeot, 685–706. New York, NY: Springer. https://doi.org/10.1007/978-0-387-09834-0_60.\n\n\nHilbe, Joseph M. 2014. Modeling Count Data. Cambridge: Cambridge University Press. https://doi.org/10.1017/CBO9781139236065.\n\n\nHunter, James, and Andromachi Tseloni. 2016. “Equity, Justice and the Crime Drop: The Case of Burglary in England and Wales.” Crime Science 5 (1): 3. https://doi.org/10.1186/s40163-016-0051-z.\n\n\nKawabata, Emily, Kate Tilling, Rolf H. H. Groenwold, and Rachael A. Hughes. 2023. “Quantitative Bias Analysis in Practice: Review of Software for Regression with Unmeasured Confounding.” BMC Medical Research Methodology 23 (May): 111. https://doi.org/10.1186/s12874-023-01906-8.\n\n\nKeay, Scott, and Jude Towers. 2024. “The Collection and Understanding of Administrative Data in UK Police Forces.” In The Crime Data Handbook, edited by Laura Huey and David Buil-Gil, 227. United Kingdom: Bristol University Press.\n\n\nKing, Gary, Michael Tomz, and Jason Wittenberg. 2000. “Making the Most of Statistical Analyses: Improving Interpretation and Presentation.” American Journal of Political Science 44: 341–55.\n\n\nKnox, Dean, Will Lowe, and Jonathan Mummolo. 2020. “Administrative Records Mask Racially Biased Policing.” American Political Science Review 114 (3): 619–37. https://doi.org/10.1017/S0003055420000039.\n\n\nSimes, Jessica T. 2021. Punishing Places: The Geography of Mass Imprisonment. Univ of California Press.\n\n\nSimes, Jessica T. 2018. “Place and Punishment: The Spatial Context of Mass Incarceration.” Journal of Quantitative Criminology 34 (2): 513–33. https://doi.org/10.1007/s10940-017-9344-y.\n\n\nSpiegelhalter, David J. 2005. “Funnel Plots for Comparing Institutional Performance.” Statistics in Medicine 24 (8): 1185–1202. https://doi.org/10.1002/sim.1970.\n\n\nVerlaan, Tim, and Samuel Langton. 2024. “On the Use of Inferential Statistics on Administrative Police Data.” In The Crime Data Handbook, 197–210. Bristol University Press."
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#answering-our-key-questions",
+    "href": "statistical_methods_criminology.html#answering-our-key-questions",
+    "title": "Statistical Methods for Criminology",
+    "section": "Answering our key questions",
+    "text": "Answering our key questions\n\n“Why has the data been collected (and collected in this way)?\n\nData collected as part of government reporting on experiences and attitudes of criminal justice\n\nHow has the data been collected and/or by whom or by what?\n\nCollected by professional survey agencies\n\nWhat/who is included and what/who is excluded?\n\nRandom sample of 12,000ish postcodes in Scotland are contacted to take part​(for 2020/21 survey it was 12,681 addresses)\nFor those who agree, one adult (age 16 or over) in each household is randomly selected for interview​"
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#measurement-error-in-recorded-crime",
+    "href": "statistical_methods_criminology.html#measurement-error-in-recorded-crime",
+    "title": "Statistical Methods for Criminology",
+    "section": "Measurement error in recorded crime",
+    "text": "Measurement error in recorded crime\n\nMeasurement error in recorded crime is proportional to the amount of crime (Pina Sanchez et al 2023)\nThere is a larger gap between the amount of crime recorded and ‘true’ crime levels in areas with large numbers of recorded crimes compared to areas with very low recorded crime\nMeasurement error in crime due to e.g. lack of willingness to report may itself be related to other variables in your analysis (e.g. economic inequality)\nThis is called ‘differential’ measurement error"
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#section",
+    "href": "statistical_methods_criminology.html#section",
+    "title": "Statistical Methods for Criminology",
+    "section": "",
+    "text": "Also - rates!"
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#calculating-a-predicted-value",
+    "href": "statistical_methods_criminology.html#calculating-a-predicted-value",
+    "title": "Statistical Methods for Criminology",
+    "section": "Calculating a predicted value",
+    "text": "Calculating a predicted value\n\nIn the second practical we fit a GLM describing the relationship between violent crime and deprivation which gave us the results\nIntercept = 2.4573632, simd 2020 rank = -0.0003029\nUsing our GLM formula, we know that the log of the expected violent crime for a data zone with an SIMD rank of 0 is 2.4573632\nNB no such datazone will exist by definition, but that’s okay!\nWe can calculate the expected violent crime incidents by exponentiating the intercept, giving us 11.674 violent crimes\nTo calculate violent crime in the most deprived datazone in Scotland, we just add 1 * -0.0003029 (the coefficient for SIMD) to 2.4573632, and then exponentiate: 11.670\nTo calculate violent crime in the least deprived datazone in Scotland, we add 6976 * -0.0003029 (the coefficient for SIMD) to 2.4573632, and then exponentiate: 1.41"
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#calculating-predictions",
+    "href": "statistical_methods_criminology.html#calculating-predictions",
+    "title": "Statistical Methods for Criminology",
+    "section": "Calculating predictions",
+    "text": "Calculating predictions\n\n\n\nlibrary(ggplot2)\n\ndata.frame(\n  simd = seq(1, 6976)\n) |&gt; \n  mutate(pred_vio = exp(2.4573632 + simd * -0.0003029)) |&gt; \n  ggplot(aes(x = simd, y = pred_vio)) +\n  geom_line()\n\n\n\n\n\n\n\n\n\nIn fact, we can calculate these predictions across the whole range of SIMD"
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#uncertainty",
+    "href": "statistical_methods_criminology.html#uncertainty",
+    "title": "Statistical Methods for Criminology",
+    "section": "Uncertainty",
+    "text": "Uncertainty\n\nA key challenge is propagating the appropriate uncertainty in our results - especially in more complicated models when predictions might be a function of multiple parameters\nWe can use simulation to propagate this uncertainty - and we can apply this approach to any generalized linear model and any Derived Quantity of Interest (DQI) - be it a marginal effect or something else\nThe simulation process is described by King et al. (2000) and implemented in the R package clarify (https://github.com/iqss/clarify)\nThis approach propagates both the uncertainty in the model’s coefficients, and the correlations between the coefficients"
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#implications",
+    "href": "statistical_methods_criminology.html#implications",
+    "title": "Statistical Methods for Criminology",
+    "section": "Implications",
+    "text": "Implications\n\nTherefore, by design no:​\n\nChildren​\nHomeless people​\nPeople living in communal establishments (e.g. students, people in prison)\nAlso in practice may exclude those in ‘fragile, disjointed households’ (Carr-Hill 2013)\nFor SCJS to be a measure of crime for all adults, not just all adults in private households, we need to make a key assumption that “the subset of the adult population not captured in the SCJS experience the same level of victimisation as adults in the household resident population”​\n\n\nBut this excludes people, students, people in prison, and those living in refuges. However, “Domestic abuse is the main cause of women’s homelessness in Scotland… All women living in Women’s Aid refuges have experienced domestic abuse and many will have experienced other forms of crime”"
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#implications-for-analysis",
+    "href": "statistical_methods_criminology.html#implications-for-analysis",
+    "title": "Statistical Methods for Criminology",
+    "section": "Implications for analysis",
+    "text": "Implications for analysis\n\nWith surveys we almost always do want to do inferential statistics!\nSurveys are very rarely random samples; most come with weights\nUse the weights for descriptives to gross up to national populations\nDifferent authorities have different perspectives on whether you should use sampling weights when fitting a statistical model - it may depend on the specifics of your survey\nBut, weights will only help adjust the data you see towards the target population in the survey design frame. Weighting cannot adjust for populations who are excluded from the survey by design."
   }
 ]

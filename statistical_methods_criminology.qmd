@@ -197,7 +197,7 @@ _add this here_
 
 ---
 
-### Answering our key questions
+## Answering our key questions
 
 - "Why has the data been collected (and collected in this way)?
     - Data collected as part of government reporting on experiences and attitudes of criminal justice
@@ -206,6 +206,9 @@ _add this here_
 - What/who is included and what/who is excluded?
     - Random sample of 12,000ish postcodes in Scotland are contacted to take part​(for 2020/21 survey it was 12,681 addresses)
   - For those who agree, one adult (age 16 or over) in each household is randomly selected for interview​
+  
+## Implications
+  
 - Therefore, *by design* no:​
   - Children​
   - Homeless people​
@@ -227,9 +230,9 @@ But this excludes people, students, people in prison, and those living in refuge
   
 ---
   
-## Implications for analysis: weighting
+## Implications for analysis
 
-- We almost certainly do want to do inferential statistics!
+- With surveys we almost always do want to do inferential statistics!
 
 - Surveys are very rarely random samples; most come with weights
 - Use the weights for descriptives to gross up to national populations
@@ -433,8 +436,11 @@ See figure at https://bookdown.org/roback/bookdown-BeyondMLR/ch-poissonreg.html
 
 - Example of gun violence in Oakland: https://cao-94612.s3.amazonaws.com/documents/Oakland-Ceasefire-Evaluation-Final-Report-May-2019.pdf
 
-
 ---
+
+##
+
+Also - rates!
 
 ## Practical
 
@@ -474,7 +480,8 @@ In this practical we'll fit some count models in R
 - they may omit some variables that we theoretically think are important (confounding), or;
 - they omit some people/cases we care about (selection effects)
 - These are problems that are hard to solve based on the data we observe alone
-- There is a large literature in epidemiology stu
+- There is a large literature in epidemiology study these issues called __Quantitative Bias Analysis__
+- 
 
 ---
 
@@ -487,8 +494,9 @@ In this practical we'll fit some count models in R
 ## Measurement error
 
 - Measurement error is the gap between what we are conceptually interested in and the way that this concept is recorded in our spreadsheet
--  GLM assumes no measurement error
-- In practice we know criminological data are likely to be measured with some degree of error. For example, we know that police recorded crime data is not a perfect measure of the amount of crime 'out there' in society. As we have discussed already, not all crimes are reported to the police, not all incidents which are reported are recorded as crimes and so on.
+- GLM assumes no measurement error
+- In practice we know criminological data are likely to be measured with some degree of error.
+- Police recorded crime data is not a perfect measure of the amount of crime 'out there' in society. As we have discussed already, not all crimes are reported to the police, not all incidents which are reported are recorded as crimes and so on.
 
 
 ---
@@ -499,7 +507,14 @@ In this practical we'll fit some count models in R
 -   So if we are interested in, for example, how many crimes there were in Scotland in 2023, the number of crimes recorded by police is likely to be an *under* count.
 -   The many years of work comparing crimes recorded to the police with victimization surveys - the 'dark figure of crime' - attests to this.
 
----
+## Measurement error in recorded crime
+
+- Measurement error in recorded crime is _proportional to the amount of crime_ (Pina Sanchez et al 2023)
+- There is a larger gap between the amount of crime recorded and 'true' crime levels in areas with large numbers of recorded crimes compared to areas with very low recorded crime
+
+
+- Measurement error in crime due to e.g. lack of willingness to report may itself be related to other variables in your analysis (e.g. economic inequality)
+- This is called 'differential' measurement error
 
 ## `rcme`
 
@@ -685,6 +700,9 @@ Others [@gaeblerCausalFrameworkObservational2022]suggest that maybe you can iden
 # Practical {background-color="#40666e"}
 
 -   We're going to revisit the generative stories that you came up with in Section One. Is there possible:
+
+- In the SOI story is there:
+
     -   Measurement error?
     -   Selection effects?
     -   Omitted variables?
@@ -704,6 +722,77 @@ Others [@gaeblerCausalFrameworkObservational2022]suggest that maybe you can iden
 
 - In the last session we spent time being skeptical about our model coefficients, and looked at some methods which adjust coefficients to account for possible biases in the data.
 - Now we are going to translate coefficients into more interesting and informative quantities. This is a great way to make results more informative and accessible [@kingMakingMostStatistical2000].
+
+
+
+## Translating coefficients
+
+- In simple (linear) models it is possible to read off a coefficient directly as the quantities that we are interested in. 
+- In more complex models, such as generalized linear models, we often want to convert the coefficients to express results in a more accessible way
+- In poisson regression the model coefficients are also commonly expressed as rate ratios, by exponentiating the coefficients (we did this already!)
+
+
+## Translating coefficients: challenges
+
+- These approaches don't scale well with more complicated models, or complicated transformations (McElreath; Gelman and Pardoe)
+- A common way to translate model coefficients into more meaningful quantities is to use all the coefficients in the model to calculate predicted values of the outcome
+- These are often called ['marginal effects'](https://marginaleffects.com/) (although this terminology is confusing)
+- The terminology is confusing in part because there are lots of related but subtly different quantities people call marginal effects (see https://marginaleffects.com/vignettes/get_started.html)
+- As a result, I like Gelman and Pardoe's terminology of 'adjusted predictive comparisons'
+
+
+
+## Calculating a predicted value
+
+- In the second practical we fit a GLM describing the relationship between violent crime and deprivation which gave us the results
+- Intercept = 2.4573632, simd 2020 rank = -0.0003029
+
+- Using our GLM formula, we know that the log of the expected violent crime for a data zone with an SIMD rank of 0 is 2.4573632
+- NB no such datazone will exist by definition, but that's okay!
+- We can calculate the expected violent crime incidents by exponentiating the intercept, giving us 11.674 violent crimes
+- To calculate violent crime in the most deprived datazone in Scotland, we just add 1 * -0.0003029 (the coefficient for SIMD) to 2.4573632, and then exponentiate: 11.670
+- To calculate violent crime in the least deprived datazone in Scotland, we add 6976 * -0.0003029 (the coefficient for SIMD) to 2.4573632, and then exponentiate: 1.41
+
+## Calculating predictions
+
+:::: {.columns}
+
+::: {.column width="66%"}
+
+
+```{r preds}
+library(ggplot2)
+
+data.frame(
+  simd = seq(1, 6976)
+) |> 
+  mutate(pred_vio = exp(2.4573632 + simd * -0.0003029)) |> 
+  ggplot(aes(x = simd, y = pred_vio)) +
+  geom_line()
+
+
+
+```
+
+
+:::
+
+::: {.column width="34%"}
+In fact, we can calculate these predictions across the whole range of SIMD
+
+:::
+
+::::
+
+
+
+## Uncertainty
+- A key challenge is propagating the appropriate uncertainty in our results - especially in more complicated models when predictions might be a function of multiple parameters
+- We can use simulation to propagate this uncertainty - and we can apply this approach to any generalized linear model and any Derived Quantity of Interest (DQI) - be it a marginal effect or something else
+- The simulation process is described by King et al. (2000) and implemented in the R package clarify (https://github.com/iqss/clarify)
+- This approach propagates both the uncertainty in the model's coefficients, and the correlations between the coefficients
+
+
 
 ---
 
@@ -847,22 +936,6 @@ cor_data |>
 
 
 ---
-
-## Translating coefficients
-
-- In simple (linear) models it is possible to read off a coefficient directly as the quantities that we are interested in. 
-- In more complex models, such as generalized linear models, we often want to convert the coefficients to express results in a more accessible way
-- In poisson regression the model coefficients are also commonly expressed as rate ratios, by exponentiating the coefficients
-
----
-
-## Translating coefficients: challenges
-
-- These approaches don't scale well with more complicated models, or complicated transformations (McElreath; Gelman and Pardoe)
-- A key challenge is propagating the appropriate uncertainty in the results
-- But we can use simulation to propagate this uncertainty - and we can apply this approach to any generalized linear model and any Derived Quantity of Interest (DQI)
-- The simulation process is described by King et al. (2000) and implemented in the R package clarify (https://github.com/iqss/clarify)
-- This approach propagates both the uncertainty in the model's coefficients, and the correlations between the coefficients
 
 ---
 
