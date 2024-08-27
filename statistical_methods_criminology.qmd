@@ -1453,6 +1453,41 @@ https://data-feminism.mitpress.mit.edu/pub/czq9dfs5#ndayi2fa1pk
 
 The value of this exercise is not to say that any of these framings is 'right' (although for the reasons Klein and D'Ignazio outline we might find some preferable to others), but that they reflect different theoretical positions, and give different emphases to contextual factors - factors outside our datasets.
 
+## Framing
+
+
+![](resources/data-feminism-fig-1.jpeg){fig-alt="Portrayals of the same data analysis. Images from Data Feminism (2020) by Catherine D'Ignazio. Data from Fatos Kaba et al. 'Disparities in Mental Health Referral and Diagnosis in the New York City Jail Mental Health Service'."}
+
+## Framing
+
+
+"The study that produced these numbers contains convincing evidence that we should distrust diagnosis numbers due to racial and ethnic discrimination. The first chart does not simply fail to communicate that but also actively undermines that main finding of the research."
+
+
+## Framing
+
+
+![](resources/data-feminism-fig-2.jpeg){fig-alt="Portrayals of the same data analysis. Images from Data Feminism (2020) by Catherine D'Ignazio. Data from Fatos Kaba et al. 'Disparities in Mental Health Referral and Diagnosis in the New York City Jail Mental Health Service'."}
+
+## Which is preferable?
+
+
+- Is this a deficit narrative?
+- "By naming racism and then talking about people of color in the title, the graphic reinforces the idea that race is an issue for people of color only."
+
+
+## Framing
+
+
+![](resources/data-feminism-fig-3.jpeg){fig-alt="Portrayals of the same data analysis. Images from Data Feminism (2020) by Catherine D'Ignazio. Data from Fatos Kaba et al. 'Disparities in Mental Health Referral and Diagnosis in the New York City Jail Mental Health Service'."}
+
+## Framing
+
+- Third framing focuses on advantages of White group
+- The subtitle better fits the researchers' conclusions
+
+
+
 ## Ethical responsibilities
 
 "Placing numbers in context and naming racism or sexism when it is present in those numbers should be a requirement—not only for feminist data communication, but for data communication full stop."
@@ -1464,11 +1499,13 @@ Data Feminism is mostly aimed towards data scientists and data journalists, not 
 - Our analysis exists in a context of (Tilley) durable inequalities
 
 
-## An example of theoretical framing: community loss
+## Framing and interpreting indicators: community loss
 
 - @simesPunishingPlacesGeography2021 gives a good example of how we may want to come up with theoretically informed measures, or theoretically re-frame measures. Simes analysed imprisonment data from the state of Massachusets in the USA, including spatial regression of prison admission rates and how these relate to "racial demographics, social and economic disadvantage, arrest rates, and violent crime" [@simesPlacePunishmentSpatial2018a].
 
-- As part of this analysis Simes suggests that the cumulative years sentenced to residents of a particular neighbourhood be thought of as 'community loss'. This is not (just?) an indicator of individual punishment histories, but reflects the chronic and long-term exposure to loss due to imprisonment in different neighbourhoods. This highlights the effects of imprisonment on the communities in which people who end up in prison lived prior to their imprisonment, rather than just focusing on the people who are currently in prison.
+- As part of this analysis Simes suggests that the cumulative years sentenced to residents of a particular neighbourhood be thought of as 'community loss'.
+- Despite being derived from data on individual punishment histories, this conceptualization reflects the chronic and long-term exposure to loss due to imprisonment in different neighbourhoods. 
+- This terminology highlights the effects of imprisonment on the communities in which people who end up in prison lived prior to their imprisonment, rather than just focusing on the people who are currently in prison.
 
 ## The story of our results should reflect the story of the data
 
