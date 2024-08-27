@@ -699,14 +699,13 @@ Others [@gaeblerCausalFrameworkObservational2022]suggest that maybe you can iden
 
 # Practical {background-color="#40666e"}
 
--   We're going to revisit the generative stories that you came up with in Section One. Is there possible:
-
-- In the SOI story is there:
+- Using either the generative story that you came up with in Session One, or the description of the SOI from the first practical, describe the possible effects of:
 
     -   Measurement error?
     -   Selection effects?
     -   Omitted variables?
--   Write a vignette describing some results and then critique?
+
+Are you concerned about all these? Some more than others? Are there obvious steps you could take to address them?
 
 # Break {background-color="#666666"}
 
@@ -916,6 +915,12 @@ If we use `mvrnorm()` the resulting simulations can be correlated. Here I set a 
 
 ---
 
+## Simulating correlated variables
+
+
+:::: {.columns}
+
+::: {.column width="66%"}
 
 ```{r cor_graph_2}
 cor_data |> 
@@ -929,7 +934,7 @@ cor_data |>
 :::
 
 ::: {.column width="34%"}
-... but highly correlated. We'll come back to the importance of this in a second...
+... but highly correlated. 
 :::
 
 ::::
@@ -937,9 +942,70 @@ cor_data |>
 
 ---
 
+## Back to our example
+
+:::: {.columns}
+
+::: {.column width="66%"}
+
+``` {r clarify}
+
+simd <- readRDS(url("https://github.com/benmatthewsed/statistical-methods-criminology-slides/raw/master/resources/simd_crime_sim.rds"))
+
+
+mod_vio_simd_qp <- glm(vio_integer_sim ~ simd2020_rank, 
+                      family = "quasipoisson",
+                      data = simd)
+
+
+```
+
+
+:::
+
+::: {.column width="34%"}
+If we fit the model from the second practical again...
+:::
+
+::::
+
 ---
 
-## An example: victimization divides
+## Back to our example
+
+
+:::: {.columns}
+
+::: {.column width="66%"}
+
+
+``` {r clarify2}
+
+library(clarify)
+
+sims <- sim(mod_vio_simd_qp, n = 1000) 
+
+sim_res <- sim_setx(sims, x = list(simd2020_rank = seq(1:6976)))
+
+plot(sim_res)
+
+
+```
+
+:::
+
+::: {.column width="34%"}
+We can now get confidence intervals around our predictions.
+
+This approach can also be used when we want to look at the effects of multiple variables, and where we want to describe more complex transformations of coefficients...
+:::
+
+::::
+
+
+---
+
+## An advanced example: victimization divides
 
 - [@hunterEquityJusticeCrime2016] wanted to describe how victimization inequality had changed over time
 - They used the results of a fitted regression model to calculate a measure they call 'Victimization Divide'
@@ -957,33 +1023,33 @@ This is analogous to exploring the percentage change in victimization inequality
 
 ## Victimization divides
 
-To calculate the ratio of victimization rates in years 1 and 2, Hunter and Tseloni fit a regression model (specifically a negative binomial model) to predict the number of burglary victimization incidents experienced by households in England and Wales in 1993 compared to 20089. They use the coefficients from these models as inputs into the Victimization Divide formula. 
+To calculate the ratio of victimization rates in years 1 and 2, Hunter and Tseloni fit a regression model (specifically a count model) to predict the number of burglary victimization incidents experienced by households in England and Wales in 1993 compared to 20089. They use the coefficients from these models as inputs into the Victimization Divide formula. 
 
 ---
 
 ## Victimization divides
 
 - Based on this analysis they conclude that burglary victimization inequality had increased for:
--   single adult households compared to other households
--   social renters compared to owner occupiers
--   households without a car compared to those with one car
--   households leaving their home unoccupied any amount of time on a typical weekday compared to those never leaving the home
--   households in areas without neighbourhood watch compared to those with the scheme
--   households earning at least £50,000 per annum compared to those on a £10,000–£29,999 annual income
--   inner city residents compared to households in rural areas
+  -   single adult households compared to other households
+  -   social renters compared to owner occupiers
+  -   households without a car compared to those with one car
+  -   households leaving their home unoccupied any amount of time on a typical weekday compared to those never leaving the home
+  -   households in areas without neighbourhood watch compared to those with the scheme
+  -   households earning at least £50,000 per annum compared to those on a £10,000–£29,999 annual income
+  -   inner city residents compared to households in rural areas
 
 ---
 
 ## Victimization divides
 
-- But this analysis used data from CSEW
+- But this analysis used data from the Crime Survey for England and Wales
 - So we want to assess the uncertainty in these estimates which come from projecting from sample to population
 - We can do this with the King et al. simulation approach
 
 
 ---
 
-## Simulating DQIs
+## Simulating Victimization Divides
 
 - In this process we:
 - Use a fitted regression model to simulate a set of coefficient values from the regression model's variance-covariance matrix (usually at least 1000)
@@ -991,7 +1057,7 @@ To calculate the ratio of victimization rates in years 1 and 2, Hunter and Tselo
 
 ---
 
-## Simulating DQIs
+## Simulating Victimization Divides
 
 - The draws from the variance-covariance matrix reflect:
 1. the uncertainty in each of the regression coefficients (as expressed in their standard errors) and 
@@ -1256,7 +1322,7 @@ Once we tidy the results up a bit, we can pass these simulated draws to our `vic
 sim_dat |> 
   reframe(
     vds = quantile(vd, c(0.025, 0.5, 0.975)),
-    centile = c("5%", "50%", "95%")
+    centile = c("2.5%", "50%", "97.5%")
     )
 
 
@@ -1286,15 +1352,13 @@ These intervals include zero, so the apparent 52% reduction in victimization ine
 - The beauty of this simulation approach described by King et al (2000) is that it generalizes to __any DQI__ that is a function of the model's parameters, such as VD, and to __any GLM__. 
 - Say that instead of the VD were interested in the absolute difference in predicted victimization rates after controlling for other factors (like a marginal effect)
 - Or maybe we have fitted a count model and we want to know the number of people reporting 2 or more victimization incidents - we can calculate this from our simulations whilst incorporating the model's uncertainty into our estimates
-- In this example this is good because there are many ways to measure victimization inequality (Matthews and McVie, forthcoming)
-
 
 ---
 
 ## Simulation isn practice
 
-- Here we did the simulation by hand. This is useful as a way to understand the method, but whilst it's good to know how this works, in practice there are R packages which can do this for us. 
-- One good option is [clarify](https://cran.r-project.org/web/packages/clarify/index.html).
+- In the second example we did the simulation by hand. This is useful as a way to understand the method, but whilst it's good to know how this works, in practice there are R packages which can do this for us. 
+- One good option is [clarify](https://cran.r-project.org/web/packages/clarify/index.html), as used in the first example
 - There is inherent uncertainty in simulation results, so it's crucial to set the seed for the random number generator so you get the same results every time. 
 - You also need to run enough simulation draws to get a good estimate of the uncertainty. The default for clarify is 1000 draws.
 - More simulations are always better, but will take longer - so there is a pragmatic aspect to how much time and computer resource you have to run simulations.
@@ -1302,9 +1366,17 @@ These intervals include zero, so the apparent 52% reduction in victimization ine
 
 ---
 
+## Practical limitations and alternatives
+
+- Simulations can be very time consuming! Especially if your model is complicated and you are making predictions for a lot of cases
+- There are other ways to do describe this uncertainty:
+  - The ['delta method'])(https://marginaleffects.com/vignettes/uncertainty.html#delta-method) uses calculation, not simulation, but relies on a Normal approximation which may not hold (https://iqss.github.io/clarify/#introduction). This is the default method used by the [marginaleffects](https://marginaleffects.com/) package
+
+---
+
 ## Conceptual limitations
 
-- Simulation expresses the uncertainty captured by our model parameters
+- Simulation expresses the uncertainty captured _by our model parameters_
 - But remember that our model is wrong!! (Greenland)
 - Our model still makes a load of assumptions - basically that we've fit the right model and that we had the right data.
 - As we discussed in the previous section, we might also want to be skeptical of our model parameters themselves if we are worried about bias
@@ -1315,10 +1387,6 @@ These intervals include zero, so the apparent 52% reduction in victimization ine
 ## Practical
 
 
--   Fit a regression model, simulate victimization divides with {clarify}
-
-- maybe do something comparing jsut the standard errors (and not the vcov) with using the correlation too?
-
 # Break {background-color="#666666"}
 
 ---
@@ -1328,45 +1396,40 @@ These intervals include zero, so the apparent 52% reduction in victimization ine
 ## General ethical principles in social science research
 
 - In research ethics and governance there is a lot of discussion about informed consent, not disclosing personal information and so on.
-- Also specifically in quantitative work, ethical issues around workflow
-- See For example, there was some controversy around a recent paper which suggested that 'de-policing' in Denver in 2020 led to increases in violent crime (Nix et al https://onlinelibrary.wiley.com/doi/full/10.1111/1745-9125.12363). However, another research who attempted to reproduce their findings - and fair play to Nix and colleagues for making their research reproducible - suggested that their main result was due to a merging error which led to the analytical dataset being scrambled (https://github.com/jkangbrown/when_police_replication).
-
-## Our focus: ethics of how we tell the story of our research
-
+- Also specifically in quantitative work, ethical issues around workflow and 'questionable research practices'
+- This is not a general treatment of ethics in social science research
 - We're going to focus on the ethics of framing our research and how we present our results
 
 ## Framing: The tyranny of the means
 
-- We should avoid essentializing.
-
-- Typical focus of regression results is group average effect. Even if we have a statiistically significant difference between two groups in their estimated probability (or log-odds) of being convicted of comitting a crime, on its own this doesn't tell us about how likely any individual member of those groups is to be convicted.
-
-- By focusing on how people with the same observables vary we can avoid essentializing people? (McCall 2005).
-
-- This is an added benefit of the simulation approach we discussed in the previous section - we can use these kind of methods to illustrate the variation of outcomes for people *with the same observables*, not just average differences in outcomes for people with different observables.
-
+- The typical focus of regression results is group average effect
+- Even if we have a statistically significant difference between two groups (say, people who live in high deprivation areas versus other areas) in the count of offences recorded by the police, on its own this doesn't necessarily tell us about how likely any individual member of those groups is to offend
 - Focusing only on group averages can imply that all members of the group are the same
 
 - Causal quartets?
 
-## CAUSAL QUARTETS
+## Causal quartets
 
 ![From @gelmanCausalQuartetsDifferent2023](images/causal-quartets.png){width="90%"}
 
-## CAUSAL QUARTETS
+## Causal quartets
 
 - So what? [@gelmanCausalQuartetsDifferent2023]
+- People with the same observable characteristics of your independent variables may have very different values of the outcome
 - "Variation among people is relevant to policy (for example, personalized medicine) and understanding (for example in psychology)"
 - "Variation across situations is relevant when deciding what “flavor” of treatment to do, for example with dosing in pharmacology or treatment levels in traditional agricultural experiments."
 
 
-## SAME OBSERVABLES: DIFFERENT OUTCOMES
+## Same observables, different outcomes
 
 ![](images/qlp-results-figure.png){fig-alt="Estimated Adult Conviction Trajectory Probabilities by Sex, Indigenous Status and Childhood System Contact."}
 
-## Relationship to model fit
+## How we described the figure
 
-- Model fit can help with this? How much variation is __not__ explained?
+"Our results show substantial variation in adult conviction trajectories within sex and Indigenous status groups for people with identical observable characteristics, as well as between our four demographic groups... Even though we see a strong association between Indigenous status, sex and membership of the High/Persistent conviction trajectory (see Appendix 4), it would be wrong to assume that all Indigenous men with multiple childhood system contact end up with High/Persistent adult conviction trajectories—our model estimates that almost half of Indigenous men would _not_ end up with a high-rate, persistent adult conviction trajectory even with this substantial childhood adversity."
+
+https://link.springer.com/article/10.1007/s40865-022-00204-z
+
 
 ## Framing: the importance of language
 

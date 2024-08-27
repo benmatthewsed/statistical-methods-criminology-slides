@@ -417,21 +417,21 @@
     "href": "statistical_methods_criminology.html#victimization-divides",
     "title": "Statistical Methods for Criminology",
     "section": "Victimization divides",
-    "text": "Victimization divides\nTo calculate the ratio of victimization rates in years 1 and 2, Hunter and Tseloni fit a regression model (specifically a negative binomial model) to predict the number of burglary victimization incidents experienced by households in England and Wales in 1993 compared to 20089. They use the coefficients from these models as inputs into the Victimization Divide formula."
+    "text": "Victimization divides\nTo calculate the ratio of victimization rates in years 1 and 2, Hunter and Tseloni fit a regression model (specifically a count model) to predict the number of burglary victimization incidents experienced by households in England and Wales in 1993 compared to 20089. They use the coefficients from these models as inputs into the Victimization Divide formula."
   },
   {
     "objectID": "statistical_methods_criminology.html#victimization-divides-1",
     "href": "statistical_methods_criminology.html#victimization-divides-1",
     "title": "Statistical Methods for Criminology",
     "section": "Victimization divides",
-    "text": "Victimization divides\n\nBased on this analysis they conclude that burglary victimization inequality had increased for:\nsingle adult households compared to other households\nsocial renters compared to owner occupiers\nhouseholds without a car compared to those with one car\nhouseholds leaving their home unoccupied any amount of time on a typical weekday compared to those never leaving the home\nhouseholds in areas without neighbourhood watch compared to those with the scheme\nhouseholds earning at least £50,000 per annum compared to those on a £10,000–£29,999 annual income\ninner city residents compared to households in rural areas"
+    "text": "Victimization divides\n\nBased on this analysis they conclude that burglary victimization inequality had increased for:\n\nsingle adult households compared to other households\nsocial renters compared to owner occupiers\nhouseholds without a car compared to those with one car\nhouseholds leaving their home unoccupied any amount of time on a typical weekday compared to those never leaving the home\nhouseholds in areas without neighbourhood watch compared to those with the scheme\nhouseholds earning at least £50,000 per annum compared to those on a £10,000–£29,999 annual income\ninner city residents compared to households in rural areas"
   },
   {
     "objectID": "statistical_methods_criminology.html#victimization-divides-2",
     "href": "statistical_methods_criminology.html#victimization-divides-2",
     "title": "Statistical Methods for Criminology",
     "section": "Victimization divides",
-    "text": "Victimization divides\n\nBut this analysis used data from CSEW\nSo we want to assess the uncertainty in these estimates which come from projecting from sample to population\nWe can do this with the King et al. simulation approach"
+    "text": "Victimization divides\n\nBut this analysis used data from the Crime Survey for England and Wales\nSo we want to assess the uncertainty in these estimates which come from projecting from sample to population\nWe can do this with the King et al. simulation approach"
   },
   {
     "objectID": "statistical_methods_criminology.html#simulating-dqis",
@@ -501,21 +501,21 @@
     "href": "statistical_methods_criminology.html#how-much-has-victimization-inequality-changed-3",
     "title": "Statistical Methods for Criminology",
     "section": "How much has victimization inequality changed?",
-    "text": "How much has victimization inequality changed?\n\n\n\nsim_dat |&gt; \n  reframe(\n    vds = quantile(vd, c(0.025, 0.5, 0.975)),\n    centile = c(\"5%\", \"50%\", \"95%\")\n    )\n\n# A tibble: 3 × 2\n     vds centile\n   &lt;dbl&gt; &lt;chr&gt;  \n1 -1.03  5%     \n2 -0.523 50%    \n3  0.479 95%    \n\nsim_dat |&gt; \n  ggplot(aes(x = vd)) +\n  geom_histogram(binwidth = 0.1) +\n  scale_x_continuous(limits = c(-2, 2)) +\n  geom_vline(aes(xintercept = 0))\n\n\n\n\n\n\n\n\n\nWe can see the 5 and 95 percentiales of the simulated VDs, as well as the histogram of their distribution.\nThese intervals include zero, so the apparent 52% reduction in victimization inequality would not be ‘statistically significant’ at the standard level."
+    "text": "How much has victimization inequality changed?\n\n\n\nsim_dat |&gt; \n  reframe(\n    vds = quantile(vd, c(0.025, 0.5, 0.975)),\n    centile = c(\"2.5%\", \"50%\", \"97.5%\")\n    )\n\n# A tibble: 3 × 2\n     vds centile\n   &lt;dbl&gt; &lt;chr&gt;  \n1 -1.03  2.5%   \n2 -0.523 50%    \n3  0.479 97.5%  \n\nsim_dat |&gt; \n  ggplot(aes(x = vd)) +\n  geom_histogram(binwidth = 0.1) +\n  scale_x_continuous(limits = c(-2, 2)) +\n  geom_vline(aes(xintercept = 0))\n\n\n\n\n\n\n\n\n\nWe can see the 5 and 95 percentiales of the simulated VDs, as well as the histogram of their distribution.\nThese intervals include zero, so the apparent 52% reduction in victimization inequality would not be ‘statistically significant’ at the standard level."
   },
   {
     "objectID": "statistical_methods_criminology.html#simulation-is-great",
     "href": "statistical_methods_criminology.html#simulation-is-great",
     "title": "Statistical Methods for Criminology",
     "section": "Simulation is great",
-    "text": "Simulation is great\n\nThe beauty of this simulation approach described by King et al (2000) is that it generalizes to any DQI that is a function of the model’s parameters, such as VD, and to any GLM.\nSay that instead of the VD were interested in the absolute difference in predicted victimization rates after controlling for other factors (like a marginal effect)\nOr maybe we have fitted a count model and we want to know the number of people reporting 2 or more victimization incidents - we can calculate this from our simulations whilst incorporating the model’s uncertainty into our estimates\nIn this example this is good because there are many ways to measure victimization inequality (Matthews and McVie, forthcoming)"
+    "text": "Simulation is great\n\nThe beauty of this simulation approach described by King et al (2000) is that it generalizes to any DQI that is a function of the model’s parameters, such as VD, and to any GLM.\nSay that instead of the VD were interested in the absolute difference in predicted victimization rates after controlling for other factors (like a marginal effect)\nOr maybe we have fitted a count model and we want to know the number of people reporting 2 or more victimization incidents - we can calculate this from our simulations whilst incorporating the model’s uncertainty into our estimates"
   },
   {
     "objectID": "statistical_methods_criminology.html#simulation-isn-practice",
     "href": "statistical_methods_criminology.html#simulation-isn-practice",
     "title": "Statistical Methods for Criminology",
     "section": "Simulation isn practice",
-    "text": "Simulation isn practice\n\nHere we did the simulation by hand. This is useful as a way to understand the method, but whilst it’s good to know how this works, in practice there are R packages which can do this for us.\nOne good option is clarify.\nThere is inherent uncertainty in simulation results, so it’s crucial to set the seed for the random number generator so you get the same results every time.\nYou also need to run enough simulation draws to get a good estimate of the uncertainty. The default for clarify is 1000 draws.\nMore simulations are always better, but will take longer - so there is a pragmatic aspect to how much time and computer resource you have to run simulations.\nIn general I would recommend using a package like clarify if you conduct this kind of simulation. It’s likely that professionally developed and maintained software will be less error-prone and more efficient than writing your own!"
+    "text": "Simulation isn practice\n\nIn the second example we did the simulation by hand. This is useful as a way to understand the method, but whilst it’s good to know how this works, in practice there are R packages which can do this for us.\nOne good option is clarify, as used in the first example\nThere is inherent uncertainty in simulation results, so it’s crucial to set the seed for the random number generator so you get the same results every time.\nYou also need to run enough simulation draws to get a good estimate of the uncertainty. The default for clarify is 1000 draws.\nMore simulations are always better, but will take longer - so there is a pragmatic aspect to how much time and computer resource you have to run simulations.\nIn general I would recommend using a package like clarify if you conduct this kind of simulation. It’s likely that professionally developed and maintained software will be less error-prone and more efficient than writing your own!"
   },
   {
     "objectID": "statistical_methods_criminology.html#conceptual-limitations",
@@ -529,14 +529,14 @@
     "href": "statistical_methods_criminology.html#practical-3",
     "title": "Statistical Methods for Criminology",
     "section": "Practical",
-    "text": "Practical\n\nFit a regression model, simulate victimization divides with {clarify}\nmaybe do something comparing jsut the standard errors (and not the vcov) with using the correlation too?"
+    "text": "Practical"
   },
   {
     "objectID": "statistical_methods_criminology.html#general-ethical-principles-in-social-science-research",
     "href": "statistical_methods_criminology.html#general-ethical-principles-in-social-science-research",
     "title": "Statistical Methods for Criminology",
     "section": "General ethical principles in social science research",
-    "text": "General ethical principles in social science research\n\nIn research ethics and governance there is a lot of discussion about informed consent, not disclosing personal information and so on.\nAlso specifically in quantitative work, ethical issues around workflow\nSee For example, there was some controversy around a recent paper which suggested that ‘de-policing’ in Denver in 2020 led to increases in violent crime (Nix et al https://onlinelibrary.wiley.com/doi/full/10.1111/1745-9125.12363). However, another research who attempted to reproduce their findings - and fair play to Nix and colleagues for making their research reproducible - suggested that their main result was due to a merging error which led to the analytical dataset being scrambled (https://github.com/jkangbrown/when_police_replication)."
+    "text": "General ethical principles in social science research\n\nIn research ethics and governance there is a lot of discussion about informed consent, not disclosing personal information and so on.\nAlso specifically in quantitative work, ethical issues around workflow and ‘questionable research practices’\nThis is not a general treatment of ethics in social science research\nWe’re going to focus on the ethics of framing our research and how we present our results"
   },
   {
     "objectID": "statistical_methods_criminology.html#our-focus-ethics-of-how-we-tell-the-story-of-our-research",
@@ -550,28 +550,28 @@
     "href": "statistical_methods_criminology.html#framing-the-tyranny-of-the-means",
     "title": "Statistical Methods for Criminology",
     "section": "Framing: The tyranny of the means",
-    "text": "Framing: The tyranny of the means\n\nWe should avoid essentializing.\nTypical focus of regression results is group average effect. Even if we have a statiistically significant difference between two groups in their estimated probability (or log-odds) of being convicted of comitting a crime, on its own this doesn’t tell us about how likely any individual member of those groups is to be convicted.\nBy focusing on how people with the same observables vary we can avoid essentializing people? (McCall 2005).\nThis is an added benefit of the simulation approach we discussed in the previous section - we can use these kind of methods to illustrate the variation of outcomes for people with the same observables, not just average differences in outcomes for people with different observables.\nFocusing only on group averages can imply that all members of the group are the same\nCausal quartets?"
+    "text": "Framing: The tyranny of the means\n\nThe typical focus of regression results is group average effect\nEven if we have a statistically significant difference between two groups (say, people who live in high deprivation areas versus other areas) in the count of offences recorded by the police, on its own this doesn’t necessarily tell us about how likely any individual member of those groups is to offend\nFocusing only on group averages can imply that all members of the group are the same\nCausal quartets?"
   },
   {
     "objectID": "statistical_methods_criminology.html#causal-quartets",
     "href": "statistical_methods_criminology.html#causal-quartets",
     "title": "Statistical Methods for Criminology",
-    "section": "CAUSAL QUARTETS",
-    "text": "CAUSAL QUARTETS\n\nFrom Gelman, Hullman, and Kennedy (2023)"
+    "section": "Causal quartets",
+    "text": "Causal quartets\n\nFrom Gelman, Hullman, and Kennedy (2023)"
   },
   {
     "objectID": "statistical_methods_criminology.html#causal-quartets-1",
     "href": "statistical_methods_criminology.html#causal-quartets-1",
     "title": "Statistical Methods for Criminology",
-    "section": "CAUSAL QUARTETS",
-    "text": "CAUSAL QUARTETS\n\nSo what? (Gelman, Hullman, and Kennedy 2023)\n“Variation among people is relevant to policy (for example, personalized medicine) and understanding (for example in psychology)”\n“Variation across situations is relevant when deciding what “flavor” of treatment to do, for example with dosing in pharmacology or treatment levels in traditional agricultural experiments.”"
+    "section": "Causal quartets",
+    "text": "Causal quartets\n\nSo what? (Gelman, Hullman, and Kennedy 2023)\nPeople with the same observable characteristics of your independent variables may have very different values of the outcome\n“Variation among people is relevant to policy (for example, personalized medicine) and understanding (for example in psychology)”\n“Variation across situations is relevant when deciding what “flavor” of treatment to do, for example with dosing in pharmacology or treatment levels in traditional agricultural experiments.”"
   },
   {
     "objectID": "statistical_methods_criminology.html#same-observables-different-outcomes",
     "href": "statistical_methods_criminology.html#same-observables-different-outcomes",
     "title": "Statistical Methods for Criminology",
-    "section": "SAME OBSERVABLES: DIFFERENT OUTCOMES",
-    "text": "SAME OBSERVABLES: DIFFERENT OUTCOMES"
+    "section": "Same observables, different outcomes",
+    "text": "Same observables, different outcomes"
   },
   {
     "objectID": "statistical_methods_criminology.html#relationship-to-model-fit",
@@ -691,5 +691,68 @@
     "title": "Statistical Methods for Criminology",
     "section": "Implications for analysis",
     "text": "Implications for analysis\n\nWith surveys we almost always do want to do inferential statistics!\nSurveys are very rarely random samples; most come with weights\nUse the weights for descriptives to gross up to national populations\nDifferent authorities have different perspectives on whether you should use sampling weights when fitting a statistical model - it may depend on the specifics of your survey\nBut, weights will only help adjust the data you see towards the target population in the survey design frame. Weighting cannot adjust for populations who are excluded from the survey by design."
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#back-to-our-example",
+    "href": "statistical_methods_criminology.html#back-to-our-example",
+    "title": "Statistical Methods for Criminology",
+    "section": "Back to our example",
+    "text": "Back to our example\n\n\n\nsimd &lt;- readRDS(url(\"https://github.com/benmatthewsed/statistical-methods-criminology-slides/raw/master/resources/simd_crime_sim.rds\"))\n\n\nmod_vio_simd_qp &lt;- glm(vio_integer_sim ~ simd2020_rank, \n                      family = \"quasipoisson\",\n                      data = simd)\n\n\nIf we fit the model from the second practical again…"
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#back-to-our-example-1",
+    "href": "statistical_methods_criminology.html#back-to-our-example-1",
+    "title": "Statistical Methods for Criminology",
+    "section": "Back to our example",
+    "text": "Back to our example\n\n\n\nlibrary(clarify)\n\nsims &lt;- sim(mod_vio_simd_qp, n = 1000) \n\nsim_res &lt;- sim_setx(sims, x = list(simd2020_rank = seq(1:6976)))\n\nplot(sim_res)\n\n\n\n\n\n\n\n\n\nWe can now get confidence intervals around our predictions.\nThis approach can also be used when we want to look at the effects of multiple variables, and where we want to describe more complex transformations of coefficients…"
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#an-advanced-example-victimization-divides",
+    "href": "statistical_methods_criminology.html#an-advanced-example-victimization-divides",
+    "title": "Statistical Methods for Criminology",
+    "section": "An advanced example: victimization divides",
+    "text": "An advanced example: victimization divides\n\n(Hunter and Tseloni 2016) wanted to describe how victimization inequality had changed over time\nThey used the results of a fitted regression model to calculate a measure they call ‘Victimization Divide’\nThis measure is defined as:\n\n(ratio of victimization rates in year 2 - 1) - (ratio of victimization rates in year 2 - 1) / (ratio of victimization rates in year one - 1)"
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#simulating-correlated-variables-1",
+    "href": "statistical_methods_criminology.html#simulating-correlated-variables-1",
+    "title": "Statistical Methods for Criminology",
+    "section": "Simulating correlated variables",
+    "text": "Simulating correlated variables\n\n\n\ncor_data |&gt; \n  ggplot(aes(x = V1, y = V2)) +\n  geom_point() +\n  geom_density_2d()\n\n\n\n\n\n\n\n\n\n… but highly correlated."
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#we-can-also-use-this",
+    "href": "statistical_methods_criminology.html#we-can-also-use-this",
+    "title": "Statistical Methods for Criminology",
+    "section": "We can also use this",
+    "text": "We can also use this"
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#simulating-victimization-divides",
+    "href": "statistical_methods_criminology.html#simulating-victimization-divides",
+    "title": "Statistical Methods for Criminology",
+    "section": "Simulating Victimization Divides",
+    "text": "Simulating Victimization Divides\n\nIn this process we:\nUse a fitted regression model to simulate a set of coefficient values from the regression model’s variance-covariance matrix (usually at least 1000)\nCalculate the VD for each one these simulated coefficient values"
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#simulating-victimization-divides-1",
+    "href": "statistical_methods_criminology.html#simulating-victimization-divides-1",
+    "title": "Statistical Methods for Criminology",
+    "section": "Simulating Victimization Divides",
+    "text": "Simulating Victimization Divides\n\nThe draws from the variance-covariance matrix reflect:\n\n\nthe uncertainty in each of the regression coefficients (as expressed in their standard errors) and\nthe correlation between these coefficients (as expressed in the covariance between the coefficients)\n\n\nWe then just calculate the VD for each draw. This gives us a distribution of VDs which capture the uncertainty in the model’s coefficients"
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#practical-limitations-and-alternatives",
+    "href": "statistical_methods_criminology.html#practical-limitations-and-alternatives",
+    "title": "Statistical Methods for Criminology",
+    "section": "Practical limitations and alternatives",
+    "text": "Practical limitations and alternatives\n\nSimulations can be very time consuming! Especially if your model is complicated and you are making predictions for a lot of cases\nThere are other ways to do describe this uncertainty:\n\nThe [‘delta method’])(https://marginaleffects.com/vignettes/uncertainty.html#delta-method) uses calculation, not simulation, but relies on a Normal approximation which may not hold (https://iqss.github.io/clarify/#introduction). This is the default method used by the marginaleffects package"
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#how-we-described-the-figure",
+    "href": "statistical_methods_criminology.html#how-we-described-the-figure",
+    "title": "Statistical Methods for Criminology",
+    "section": "How we described the figure",
+    "text": "How we described the figure\n“Our results show substantial variation in adult conviction trajectories within sex and Indigenous status groups for people with identical observable characteristics, as well as between our four demographic groups… Even though we see a strong association between Indigenous status, sex and membership of the High/Persistent conviction trajectory (see Appendix 4), it would be wrong to assume that all Indigenous men with multiple childhood system contact end up with High/Persistent adult conviction trajectories—our model estimates that almost half of Indigenous men would not end up with a high-rate, persistent adult conviction trajectory even with this substantial childhood adversity.”\nhttps://link.springer.com/article/10.1007/s40865-022-00204-z"
   }
 ]

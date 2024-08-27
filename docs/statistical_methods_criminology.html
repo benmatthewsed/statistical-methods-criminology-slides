@@ -1126,15 +1126,14 @@ E-values 2.891988    NA  2.50</code></pre>
 <section id="practical-2" class="title-slide slide level1 center" data-background-color="#40666e">
 <h1>Practical</h1>
 <ul>
-<li><p>We’re going to revisit the generative stories that you came up with in Section One. Is there possible:</p></li>
-<li><p>In the SOI story is there:</p>
+<li><p>Using either the generative story that you came up with in Session One, or the description of the SOI from the first practical, describe the possible effects of:</p>
 <ul>
 <li>Measurement error?</li>
 <li>Selection effects?</li>
 <li>Omitted variables?</li>
 </ul></li>
-<li><p>Write a vignette describing some results and then critique?</p></li>
 </ul>
+<p>Are you concerned about all these? Some more than others? Are there obvious steps you could take to address them?</p>
 </section>
 
 <section>
@@ -1331,26 +1330,73 @@ E-values 2.891988    NA  2.50</code></pre>
 </div>
 </div>
 </section>
-<section class="slide level2">
-
+<section id="simulating-correlated-variables-1" class="slide level2">
+<h2>Simulating correlated variables</h2>
+<div class="columns">
+<div class="column" style="width:66%;">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>cor_data <span class="sc">|&gt;</span> </span>
 <span id="cb14-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> V1, <span class="at">y =</span> V2)) <span class="sc">+</span></span>
 <span id="cb14-3"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb14-4"><a></a>  <span class="fu">geom_density_2d</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="statistical_methods_criminology_files/figure-revealjs/cor_graph_2-1.png" width="960"></p>
+</figure>
 </div>
-<img data-src="statistical_methods_criminology_files/figure-revealjs/cor_graph_2-1.png" width="960" class="r-stretch"><p>:::</p>
-<div class="column" style="width:34%;">
-<p>… but highly correlated. We’ll come back to the importance of this in a second…</p>
 </div>
-<p>::::</p>
+</div>
+</div><div class="column" style="width:34%;">
+<p>… but highly correlated.</p>
+</div>
+</div>
 </section>
-<section class="slide level2">
-
+<section id="back-to-our-example" class="slide level2">
+<h2>Back to our example</h2>
+<div class="columns">
+<div class="column" style="width:66%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>simd <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">url</span>(<span class="st">"https://github.com/benmatthewsed/statistical-methods-criminology-slides/raw/master/resources/simd_crime_sim.rds"</span>))</span>
+<span id="cb15-2"><a></a></span>
+<span id="cb15-3"><a></a></span>
+<span id="cb15-4"><a></a>mod_vio_simd_qp <span class="ot">&lt;-</span> <span class="fu">glm</span>(vio_integer_sim <span class="sc">~</span> simd2020_rank, </span>
+<span id="cb15-5"><a></a>                      <span class="at">family =</span> <span class="st">"quasipoisson"</span>,</span>
+<span id="cb15-6"><a></a>                      <span class="at">data =</span> simd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:34%;">
+<p>If we fit the model from the second practical again…</p>
+</div>
+</div>
 </section>
-<section id="an-example-victimization-divides" class="slide level2">
-<h2>An example: victimization divides</h2>
+<section id="back-to-our-example-1" class="slide level2">
+<h2>Back to our example</h2>
+<div class="columns">
+<div class="column" style="width:66%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">library</span>(clarify)</span>
+<span id="cb16-2"><a></a></span>
+<span id="cb16-3"><a></a>sims <span class="ot">&lt;-</span> <span class="fu">sim</span>(mod_vio_simd_qp, <span class="at">n =</span> <span class="dv">1000</span>) </span>
+<span id="cb16-4"><a></a></span>
+<span id="cb16-5"><a></a>sim_res <span class="ot">&lt;-</span> <span class="fu">sim_setx</span>(sims, <span class="at">x =</span> <span class="fu">list</span>(<span class="at">simd2020_rank =</span> <span class="fu">seq</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6976</span>)))</span>
+<span id="cb16-6"><a></a></span>
+<span id="cb16-7"><a></a><span class="fu">plot</span>(sim_res)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="statistical_methods_criminology_files/figure-revealjs/clarify2-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:34%;">
+<p>We can now get confidence intervals around our predictions.</p>
+<p>This approach can also be used when we want to look at the effects of multiple variables, and where we want to describe more complex transformations of coefficients…</p>
+</div>
+</div>
+</section>
+<section id="an-advanced-example-victimization-divides" class="slide level2">
+<h2>An advanced example: victimization divides</h2>
 <ul>
 <li><span class="citation" data-cites="hunterEquityJusticeCrime2016">(<a href="#/references" role="doc-biblioref" onclick="">Hunter and Tseloni 2016</a>)</span> wanted to describe how victimization inequality had changed over time</li>
 <li>They used the results of a fitted regression model to calculate a measure they call ‘Victimization Divide’</li>
@@ -1364,12 +1410,13 @@ E-values 2.891988    NA  2.50</code></pre>
 </section>
 <section id="victimization-divides" class="slide level2">
 <h2>Victimization divides</h2>
-<p>To calculate the ratio of victimization rates in years 1 and 2, Hunter and Tseloni fit a regression model (specifically a negative binomial model) to predict the number of burglary victimization incidents experienced by households in England and Wales in 1993 compared to 20089. They use the coefficients from these models as inputs into the Victimization Divide formula.</p>
+<p>To calculate the ratio of victimization rates in years 1 and 2, Hunter and Tseloni fit a regression model (specifically a count model) to predict the number of burglary victimization incidents experienced by households in England and Wales in 1993 compared to 20089. They use the coefficients from these models as inputs into the Victimization Divide formula.</p>
 </section>
 <section id="victimization-divides-1" class="slide level2">
 <h2>Victimization divides</h2>
 <ul>
-<li>Based on this analysis they conclude that burglary victimization inequality had increased for:</li>
+<li>Based on this analysis they conclude that burglary victimization inequality had increased for:
+<ul>
 <li>single adult households compared to other households</li>
 <li>social renters compared to owner occupiers</li>
 <li>households without a car compared to those with one car</li>
@@ -1377,26 +1424,27 @@ E-values 2.891988    NA  2.50</code></pre>
 <li>households in areas without neighbourhood watch compared to those with the scheme</li>
 <li>households earning at least £50,000 per annum compared to those on a £10,000–£29,999 annual income</li>
 <li>inner city residents compared to households in rural areas</li>
+</ul></li>
 </ul>
 </section>
 <section id="victimization-divides-2" class="slide level2">
 <h2>Victimization divides</h2>
 <ul>
-<li>But this analysis used data from CSEW</li>
+<li>But this analysis used data from the Crime Survey for England and Wales</li>
 <li>So we want to assess the uncertainty in these estimates which come from projecting from sample to population</li>
 <li>We can do this with the King et al.&nbsp;simulation approach</li>
 </ul>
 </section>
-<section id="simulating-dqis" class="slide level2">
-<h2>Simulating DQIs</h2>
+<section id="simulating-victimization-divides" class="slide level2">
+<h2>Simulating Victimization Divides</h2>
 <ul>
 <li>In this process we:</li>
 <li>Use a fitted regression model to simulate a set of coefficient values from the regression model’s variance-covariance matrix (usually at least 1000)</li>
 <li>Calculate the VD for each one these simulated coefficient values</li>
 </ul>
 </section>
-<section id="simulating-dqis-1" class="slide level2 scrollable">
-<h2>Simulating DQIs</h2>
+<section id="simulating-victimization-divides-1" class="slide level2 scrollable">
+<h2>Simulating Victimization Divides</h2>
 <ul>
 <li>The draws from the variance-covariance matrix reflect:</li>
 </ul>
@@ -1413,9 +1461,9 @@ E-values 2.891988    NA  2.50</code></pre>
 <div class="columns">
 <div class="column" style="width:66%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>victim_divide <span class="ot">&lt;-</span> <span class="cf">function</span>(base_y1, base_y2){</span>
-<span id="cb15-2"><a></a>  ((base_y2 <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">-</span> (base_y1 <span class="sc">-</span> <span class="dv">1</span>)) <span class="sc">/</span> (base_y1 <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb15-3"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>victim_divide <span class="ot">&lt;-</span> <span class="cf">function</span>(base_y1, base_y2){</span>
+<span id="cb17-2"><a></a>  ((base_y2 <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">-</span> (base_y1 <span class="sc">-</span> <span class="dv">1</span>)) <span class="sc">/</span> (base_y1 <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb17-3"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:34%;">
 <p>This is what the VD formula looks like in <code>R</code></p>
@@ -1427,26 +1475,26 @@ E-values 2.891988    NA  2.50</code></pre>
 <div class="columns">
 <div class="column" style="width:66%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="co"># load packages</span></span>
-<span id="cb16-2"><a></a></span>
-<span id="cb16-3"><a></a><span class="fu">library</span>(MASS)</span>
-<span id="cb16-4"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb16-5"><a></a></span>
-<span id="cb16-6"><a></a><span class="co"># reading in data</span></span>
-<span id="cb16-7"><a></a></span>
-<span id="cb16-8"><a></a>dat <span class="ot">&lt;-</span></span>
-<span id="cb16-9"><a></a>  <span class="fu">tribble</span>(</span>
-<span id="cb16-10"><a></a>    <span class="sc">~</span>prev, <span class="sc">~</span>year, <span class="sc">~</span>sex, <span class="sc">~</span>n,</span>
-<span id="cb16-11"><a></a>    <span class="fl">0.167</span>, <span class="st">"2015"</span>, <span class="st">"men"</span>, <span class="dv">15030</span>,</span>
-<span id="cb16-12"><a></a>    <span class="fl">0.153</span>, <span class="st">"2015"</span>, <span class="st">"women"</span>, <span class="dv">18320</span>,</span>
-<span id="cb16-13"><a></a>    <span class="fl">0.197</span>, <span class="st">"2020"</span>, <span class="st">"men"</span>, <span class="dv">15505</span>,</span>
-<span id="cb16-14"><a></a>    <span class="fl">0.189</span>, <span class="st">"2020"</span>, <span class="st">"women"</span>, <span class="dv">18230</span></span>
-<span id="cb16-15"><a></a>  )</span>
-<span id="cb16-16"><a></a></span>
-<span id="cb16-17"><a></a><span class="co"># calculate the number of victims</span></span>
-<span id="cb16-18"><a></a>dat <span class="ot">&lt;-</span></span>
-<span id="cb16-19"><a></a>  dat <span class="sc">|&gt;</span> </span>
-<span id="cb16-20"><a></a>  <span class="fu">mutate</span>(<span class="at">vict =</span> <span class="fu">as.integer</span>(n <span class="sc">*</span> prev))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="co"># load packages</span></span>
+<span id="cb18-2"><a></a></span>
+<span id="cb18-3"><a></a><span class="fu">library</span>(MASS)</span>
+<span id="cb18-4"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb18-5"><a></a></span>
+<span id="cb18-6"><a></a><span class="co"># reading in data</span></span>
+<span id="cb18-7"><a></a></span>
+<span id="cb18-8"><a></a>dat <span class="ot">&lt;-</span></span>
+<span id="cb18-9"><a></a>  <span class="fu">tribble</span>(</span>
+<span id="cb18-10"><a></a>    <span class="sc">~</span>prev, <span class="sc">~</span>year, <span class="sc">~</span>sex, <span class="sc">~</span>n,</span>
+<span id="cb18-11"><a></a>    <span class="fl">0.167</span>, <span class="st">"2015"</span>, <span class="st">"men"</span>, <span class="dv">15030</span>,</span>
+<span id="cb18-12"><a></a>    <span class="fl">0.153</span>, <span class="st">"2015"</span>, <span class="st">"women"</span>, <span class="dv">18320</span>,</span>
+<span id="cb18-13"><a></a>    <span class="fl">0.197</span>, <span class="st">"2020"</span>, <span class="st">"men"</span>, <span class="dv">15505</span>,</span>
+<span id="cb18-14"><a></a>    <span class="fl">0.189</span>, <span class="st">"2020"</span>, <span class="st">"women"</span>, <span class="dv">18230</span></span>
+<span id="cb18-15"><a></a>  )</span>
+<span id="cb18-16"><a></a></span>
+<span id="cb18-17"><a></a><span class="co"># calculate the number of victims</span></span>
+<span id="cb18-18"><a></a>dat <span class="ot">&lt;-</span></span>
+<span id="cb18-19"><a></a>  dat <span class="sc">|&gt;</span> </span>
+<span id="cb18-20"><a></a>  <span class="fu">mutate</span>(<span class="at">vict =</span> <span class="fu">as.integer</span>(n <span class="sc">*</span> prev))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:34%;">
 <p>You can find more info on the data and approach <a href="https://osf.io/k8j9e/">here</a></p>
@@ -1458,16 +1506,16 @@ E-values 2.891988    NA  2.50</code></pre>
 <div class="columns">
 <div class="column" style="width:66%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>model2020 <span class="ot">&lt;-</span> </span>
-<span id="cb17-2"><a></a>  <span class="fu">glm</span>(<span class="fu">cbind</span>(vict, n <span class="sc">-</span> vict) <span class="sc">~</span> <span class="fu">fct_rev</span>(sex),</span>
-<span id="cb17-3"><a></a><span class="at">family =</span> <span class="st">"binomial"</span>,</span>
-<span id="cb17-4"><a></a><span class="at">data =</span> <span class="fu">filter</span>(dat, year <span class="sc">==</span> <span class="st">"2020"</span>))</span>
-<span id="cb17-5"><a></a></span>
-<span id="cb17-6"><a></a></span>
-<span id="cb17-7"><a></a>model2015 <span class="ot">&lt;-</span> </span>
-<span id="cb17-8"><a></a>  <span class="fu">glm</span>(<span class="fu">cbind</span>(vict, n <span class="sc">-</span> vict) <span class="sc">~</span> <span class="fu">fct_rev</span>(sex),</span>
-<span id="cb17-9"><a></a><span class="at">family =</span> <span class="st">"binomial"</span>,</span>
-<span id="cb17-10"><a></a><span class="at">data =</span> <span class="fu">filter</span>(dat, year <span class="sc">==</span> <span class="st">"2015"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>model2020 <span class="ot">&lt;-</span> </span>
+<span id="cb19-2"><a></a>  <span class="fu">glm</span>(<span class="fu">cbind</span>(vict, n <span class="sc">-</span> vict) <span class="sc">~</span> <span class="fu">fct_rev</span>(sex),</span>
+<span id="cb19-3"><a></a><span class="at">family =</span> <span class="st">"binomial"</span>,</span>
+<span id="cb19-4"><a></a><span class="at">data =</span> <span class="fu">filter</span>(dat, year <span class="sc">==</span> <span class="st">"2020"</span>))</span>
+<span id="cb19-5"><a></a></span>
+<span id="cb19-6"><a></a></span>
+<span id="cb19-7"><a></a>model2015 <span class="ot">&lt;-</span> </span>
+<span id="cb19-8"><a></a>  <span class="fu">glm</span>(<span class="fu">cbind</span>(vict, n <span class="sc">-</span> vict) <span class="sc">~</span> <span class="fu">fct_rev</span>(sex),</span>
+<span id="cb19-9"><a></a><span class="at">family =</span> <span class="st">"binomial"</span>,</span>
+<span id="cb19-10"><a></a><span class="at">data =</span> <span class="fu">filter</span>(dat, year <span class="sc">==</span> <span class="st">"2015"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:34%;">
 <p>We can fit a simple regression model to the data in each year to calculate the log-odds of being a victim for men and women. In this example I fit a separate model for 2015 and 2020.</p>
@@ -1480,11 +1528,11 @@ E-values 2.891988    NA  2.50</code></pre>
 <div class="column" style="width:66%;">
 <p>Model1 :</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>results_2015 <span class="ot">&lt;-</span> </span>
-<span id="cb18-2"><a></a>broom<span class="sc">::</span><span class="fu">tidy</span>(model2015) <span class="sc">|&gt;</span> </span>
-<span id="cb18-3"><a></a>  <span class="fu">mutate</span>(<span class="at">est =</span> <span class="fu">exp</span>(estimate))</span>
-<span id="cb18-4"><a></a></span>
-<span id="cb18-5"><a></a>results_2015</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>results_2015 <span class="ot">&lt;-</span> </span>
+<span id="cb20-2"><a></a>broom<span class="sc">::</span><span class="fu">tidy</span>(model2015) <span class="sc">|&gt;</span> </span>
+<span id="cb20-3"><a></a>  <span class="fu">mutate</span>(<span class="at">est =</span> <span class="fu">exp</span>(estimate))</span>
+<span id="cb20-4"><a></a></span>
+<span id="cb20-5"><a></a>results_2015</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 6
   term            estimate std.error statistic  p.value   est
@@ -1495,11 +1543,11 @@ E-values 2.891988    NA  2.50</code></pre>
 </div>
 <p>Model 2:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>results_2020 <span class="ot">&lt;-</span> </span>
-<span id="cb20-2"><a></a>broom<span class="sc">::</span><span class="fu">tidy</span>(model2020) <span class="sc">|&gt;</span> </span>
-<span id="cb20-3"><a></a>  <span class="fu">mutate</span>(<span class="at">est =</span> <span class="fu">exp</span>(estimate))</span>
-<span id="cb20-4"><a></a></span>
-<span id="cb20-5"><a></a>results_2020</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>results_2020 <span class="ot">&lt;-</span> </span>
+<span id="cb22-2"><a></a>broom<span class="sc">::</span><span class="fu">tidy</span>(model2020) <span class="sc">|&gt;</span> </span>
+<span id="cb22-3"><a></a>  <span class="fu">mutate</span>(<span class="at">est =</span> <span class="fu">exp</span>(estimate))</span>
+<span id="cb22-4"><a></a></span>
+<span id="cb22-5"><a></a>results_2020</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 6
   term            estimate std.error statistic p.value   est
@@ -1518,10 +1566,10 @@ E-values 2.891988    NA  2.50</code></pre>
 <div class="columns">
 <div class="column" style="width:66%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="fu">victim_divide</span>(</span>
-<span id="cb22-2"><a></a>  <span class="at">base_y1 =</span> results_2015<span class="sc">$</span>est[[<span class="dv">2</span>]],</span>
-<span id="cb22-3"><a></a>  <span class="at">base_y2 =</span> results_2020<span class="sc">$</span>est[[<span class="dv">2</span>]]</span>
-<span id="cb22-4"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="fu">victim_divide</span>(</span>
+<span id="cb24-2"><a></a>  <span class="at">base_y1 =</span> results_2015<span class="sc">$</span>est[[<span class="dv">2</span>]],</span>
+<span id="cb24-3"><a></a>  <span class="at">base_y2 =</span> results_2020<span class="sc">$</span>est[[<span class="dv">2</span>]]</span>
+<span id="cb24-4"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -0.5223449</code></pre>
 </div>
@@ -1537,24 +1585,24 @@ E-values 2.891988    NA  2.50</code></pre>
 <div class="columns">
 <div class="column" style="width:66%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="co"># set seed</span></span>
-<span id="cb24-2"><a></a><span class="fu">set.seed</span>(<span class="fu">nchar</span>(<span class="st">"vict divide"</span>) <span class="sc">^</span> <span class="dv">4</span>)</span>
-<span id="cb24-3"><a></a></span>
-<span id="cb24-4"><a></a>n_sims <span class="ot">&lt;-</span> <span class="fl">1e5</span></span>
-<span id="cb24-5"><a></a></span>
-<span id="cb24-6"><a></a>draws_2020 <span class="ot">&lt;-</span></span>
-<span id="cb24-7"><a></a>  MASS<span class="sc">::</span><span class="fu">mvrnorm</span>(</span>
-<span id="cb24-8"><a></a>    <span class="at">n =</span> n_sims,</span>
-<span id="cb24-9"><a></a>    <span class="at">mu =</span> <span class="fu">coef</span>(model2020),</span>
-<span id="cb24-10"><a></a>    <span class="at">Sigma =</span> <span class="fu">vcov</span>(model2020)</span>
-<span id="cb24-11"><a></a>  )</span>
-<span id="cb24-12"><a></a></span>
-<span id="cb24-13"><a></a>draws_2015 <span class="ot">&lt;-</span></span>
-<span id="cb24-14"><a></a>  MASS<span class="sc">::</span><span class="fu">mvrnorm</span>(</span>
-<span id="cb24-15"><a></a>    <span class="at">n =</span> n_sims,</span>
-<span id="cb24-16"><a></a>    <span class="at">mu =</span> <span class="fu">coef</span>(model2015),</span>
-<span id="cb24-17"><a></a>    <span class="at">Sigma =</span> <span class="fu">vcov</span>(model2015)</span>
-<span id="cb24-18"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a><span class="co"># set seed</span></span>
+<span id="cb26-2"><a></a><span class="fu">set.seed</span>(<span class="fu">nchar</span>(<span class="st">"vict divide"</span>) <span class="sc">^</span> <span class="dv">4</span>)</span>
+<span id="cb26-3"><a></a></span>
+<span id="cb26-4"><a></a>n_sims <span class="ot">&lt;-</span> <span class="fl">1e5</span></span>
+<span id="cb26-5"><a></a></span>
+<span id="cb26-6"><a></a>draws_2020 <span class="ot">&lt;-</span></span>
+<span id="cb26-7"><a></a>  MASS<span class="sc">::</span><span class="fu">mvrnorm</span>(</span>
+<span id="cb26-8"><a></a>    <span class="at">n =</span> n_sims,</span>
+<span id="cb26-9"><a></a>    <span class="at">mu =</span> <span class="fu">coef</span>(model2020),</span>
+<span id="cb26-10"><a></a>    <span class="at">Sigma =</span> <span class="fu">vcov</span>(model2020)</span>
+<span id="cb26-11"><a></a>  )</span>
+<span id="cb26-12"><a></a></span>
+<span id="cb26-13"><a></a>draws_2015 <span class="ot">&lt;-</span></span>
+<span id="cb26-14"><a></a>  MASS<span class="sc">::</span><span class="fu">mvrnorm</span>(</span>
+<span id="cb26-15"><a></a>    <span class="at">n =</span> n_sims,</span>
+<span id="cb26-16"><a></a>    <span class="at">mu =</span> <span class="fu">coef</span>(model2015),</span>
+<span id="cb26-17"><a></a>    <span class="at">Sigma =</span> <span class="fu">vcov</span>(model2015)</span>
+<span id="cb26-18"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:34%;">
 <p>We can pass the models’ coefficients and variance-covariance matrices to <code>mvrnorm</code> from the <code>{MASS}</code> library.</p>
@@ -1567,24 +1615,24 @@ E-values 2.891988    NA  2.50</code></pre>
 <div class="columns">
 <div class="column" style="width:66%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>draws_2015 <span class="ot">&lt;-</span></span>
-<span id="cb25-2"><a></a>  draws_2015 <span class="sc">|&gt;</span></span>
-<span id="cb25-3"><a></a>  <span class="fu">as.data.frame</span>() <span class="sc">|&gt;</span></span>
-<span id="cb25-4"><a></a>  <span class="fu">as_tibble</span>() <span class="sc">|&gt;</span></span>
-<span id="cb25-5"><a></a>  <span class="fu">mutate</span>(<span class="at">est =</span> <span class="fu">exp</span>(<span class="st">`</span><span class="at">fct_rev(sex)men</span><span class="st">`</span>))</span>
-<span id="cb25-6"><a></a></span>
-<span id="cb25-7"><a></a>draws_2020 <span class="ot">&lt;-</span></span>
-<span id="cb25-8"><a></a>  draws_2020 <span class="sc">|&gt;</span></span>
-<span id="cb25-9"><a></a>  <span class="fu">as.data.frame</span>() <span class="sc">|&gt;</span></span>
-<span id="cb25-10"><a></a>  <span class="fu">as_tibble</span>() <span class="sc">|&gt;</span></span>
-<span id="cb25-11"><a></a>  <span class="fu">mutate</span>(<span class="at">est =</span> <span class="fu">exp</span>(<span class="st">`</span><span class="at">fct_rev(sex)men</span><span class="st">`</span>))</span>
-<span id="cb25-12"><a></a></span>
-<span id="cb25-13"><a></a><span class="co"># combine the results</span></span>
-<span id="cb25-14"><a></a>sim_dat <span class="ot">&lt;-</span></span>
-<span id="cb25-15"><a></a>  <span class="fu">tibble</span>(</span>
-<span id="cb25-16"><a></a>    <span class="at">vd =</span> <span class="fu">victim_divide</span>(<span class="at">base_y1 =</span> draws_2015<span class="sc">$</span>est,</span>
-<span id="cb25-17"><a></a>                       <span class="at">base_y2 =</span> draws_2020<span class="sc">$</span>est)</span>
-<span id="cb25-18"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a>draws_2015 <span class="ot">&lt;-</span></span>
+<span id="cb27-2"><a></a>  draws_2015 <span class="sc">|&gt;</span></span>
+<span id="cb27-3"><a></a>  <span class="fu">as.data.frame</span>() <span class="sc">|&gt;</span></span>
+<span id="cb27-4"><a></a>  <span class="fu">as_tibble</span>() <span class="sc">|&gt;</span></span>
+<span id="cb27-5"><a></a>  <span class="fu">mutate</span>(<span class="at">est =</span> <span class="fu">exp</span>(<span class="st">`</span><span class="at">fct_rev(sex)men</span><span class="st">`</span>))</span>
+<span id="cb27-6"><a></a></span>
+<span id="cb27-7"><a></a>draws_2020 <span class="ot">&lt;-</span></span>
+<span id="cb27-8"><a></a>  draws_2020 <span class="sc">|&gt;</span></span>
+<span id="cb27-9"><a></a>  <span class="fu">as.data.frame</span>() <span class="sc">|&gt;</span></span>
+<span id="cb27-10"><a></a>  <span class="fu">as_tibble</span>() <span class="sc">|&gt;</span></span>
+<span id="cb27-11"><a></a>  <span class="fu">mutate</span>(<span class="at">est =</span> <span class="fu">exp</span>(<span class="st">`</span><span class="at">fct_rev(sex)men</span><span class="st">`</span>))</span>
+<span id="cb27-12"><a></a></span>
+<span id="cb27-13"><a></a><span class="co"># combine the results</span></span>
+<span id="cb27-14"><a></a>sim_dat <span class="ot">&lt;-</span></span>
+<span id="cb27-15"><a></a>  <span class="fu">tibble</span>(</span>
+<span id="cb27-16"><a></a>    <span class="at">vd =</span> <span class="fu">victim_divide</span>(<span class="at">base_y1 =</span> draws_2015<span class="sc">$</span>est,</span>
+<span id="cb27-17"><a></a>                       <span class="at">base_y2 =</span> draws_2020<span class="sc">$</span>est)</span>
+<span id="cb27-18"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:34%;">
 <p>Once we tidy the results up a bit, we can pass these simulated draws to our <code>victim_divide()</code> function…</p>
@@ -1596,24 +1644,24 @@ E-values 2.891988    NA  2.50</code></pre>
 <div class="columns">
 <div class="column" style="width:66%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>sim_dat <span class="sc">|&gt;</span> </span>
-<span id="cb26-2"><a></a>  <span class="fu">reframe</span>(</span>
-<span id="cb26-3"><a></a>    <span class="at">vds =</span> <span class="fu">quantile</span>(vd, <span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.5</span>, <span class="fl">0.975</span>)),</span>
-<span id="cb26-4"><a></a>    <span class="at">centile =</span> <span class="fu">c</span>(<span class="st">"5%"</span>, <span class="st">"50%"</span>, <span class="st">"95%"</span>)</span>
-<span id="cb26-5"><a></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>sim_dat <span class="sc">|&gt;</span> </span>
+<span id="cb28-2"><a></a>  <span class="fu">reframe</span>(</span>
+<span id="cb28-3"><a></a>    <span class="at">vds =</span> <span class="fu">quantile</span>(vd, <span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.5</span>, <span class="fl">0.975</span>)),</span>
+<span id="cb28-4"><a></a>    <span class="at">centile =</span> <span class="fu">c</span>(<span class="st">"2.5%"</span>, <span class="st">"50%"</span>, <span class="st">"97.5%"</span>)</span>
+<span id="cb28-5"><a></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 2
      vds centile
    &lt;dbl&gt; &lt;chr&gt;  
-1 -1.03  5%     
+1 -1.03  2.5%   
 2 -0.523 50%    
-3  0.479 95%    </code></pre>
+3  0.479 97.5%  </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>sim_dat <span class="sc">|&gt;</span> </span>
-<span id="cb28-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> vd)) <span class="sc">+</span></span>
-<span id="cb28-3"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
-<span id="cb28-4"><a></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="dv">2</span>)) <span class="sc">+</span></span>
-<span id="cb28-5"><a></a>  <span class="fu">geom_vline</span>(<span class="fu">aes</span>(<span class="at">xintercept =</span> <span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a>sim_dat <span class="sc">|&gt;</span> </span>
+<span id="cb30-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> vd)) <span class="sc">+</span></span>
+<span id="cb30-3"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb30-4"><a></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="dv">2</span>)) <span class="sc">+</span></span>
+<span id="cb30-5"><a></a>  <span class="fu">geom_vline</span>(<span class="fu">aes</span>(<span class="at">xintercept =</span> <span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -1634,24 +1682,33 @@ E-values 2.891988    NA  2.50</code></pre>
 <li>The beauty of this simulation approach described by King et al (2000) is that it generalizes to <strong>any DQI</strong> that is a function of the model’s parameters, such as VD, and to <strong>any GLM</strong>.</li>
 <li>Say that instead of the VD were interested in the absolute difference in predicted victimization rates after controlling for other factors (like a marginal effect)</li>
 <li>Or maybe we have fitted a count model and we want to know the number of people reporting 2 or more victimization incidents - we can calculate this from our simulations whilst incorporating the model’s uncertainty into our estimates</li>
-<li>In this example this is good because there are many ways to measure victimization inequality (Matthews and McVie, forthcoming)</li>
 </ul>
 </section>
 <section id="simulation-isn-practice" class="slide level2">
 <h2>Simulation isn practice</h2>
 <ul>
-<li>Here we did the simulation by hand. This is useful as a way to understand the method, but whilst it’s good to know how this works, in practice there are R packages which can do this for us.</li>
-<li>One good option is <a href="https://cran.r-project.org/web/packages/clarify/index.html">clarify</a>.</li>
+<li>In the second example we did the simulation by hand. This is useful as a way to understand the method, but whilst it’s good to know how this works, in practice there are R packages which can do this for us.</li>
+<li>One good option is <a href="https://cran.r-project.org/web/packages/clarify/index.html">clarify</a>, as used in the first example</li>
 <li>There is inherent uncertainty in simulation results, so it’s crucial to set the seed for the random number generator so you get the same results every time.</li>
 <li>You also need to run enough simulation draws to get a good estimate of the uncertainty. The default for clarify is 1000 draws.</li>
 <li>More simulations are always better, but will take longer - so there is a pragmatic aspect to how much time and computer resource you have to run simulations.</li>
 <li>In general I would recommend using a package like clarify if you conduct this kind of simulation. It’s likely that professionally developed and maintained software will be less error-prone and more efficient than writing your own!</li>
 </ul>
 </section>
+<section id="practical-limitations-and-alternatives" class="slide level2">
+<h2>Practical limitations and alternatives</h2>
+<ul>
+<li>Simulations can be very time consuming! Especially if your model is complicated and you are making predictions for a lot of cases</li>
+<li>There are other ways to do describe this uncertainty:
+<ul>
+<li>The [‘delta method’])(https://marginaleffects.com/vignettes/uncertainty.html#delta-method) uses calculation, not simulation, but relies on a Normal approximation which may not hold (https://iqss.github.io/clarify/#introduction). This is the default method used by the <a href="https://marginaleffects.com/">marginaleffects</a> package</li>
+</ul></li>
+</ul>
+</section>
 <section id="conceptual-limitations" class="slide level2">
 <h2>Conceptual limitations</h2>
 <ul>
-<li>Simulation expresses the uncertainty captured by our model parameters</li>
+<li>Simulation expresses the uncertainty captured <em>by our model parameters</em></li>
 <li>But remember that our model is wrong!! (Greenland)</li>
 <li>Our model still makes a load of assumptions - basically that we’ve fit the right model and that we had the right data.</li>
 <li>As we discussed in the previous section, we might also want to be skeptical of our model parameters themselves if we are worried about bias</li>
@@ -1659,10 +1716,6 @@ E-values 2.891988    NA  2.50</code></pre>
 </section>
 <section id="practical-3" class="slide level2">
 <h2>Practical</h2>
-<ul>
-<li><p>Fit a regression model, simulate victimization divides with {clarify}</p></li>
-<li><p>maybe do something comparing jsut the standard errors (and not the vcov) with using the correlation too?</p></li>
-</ul>
 </section></section>
 <section>
 <section id="break-2" class="title-slide slide level1 center" data-background-color="#666666">
@@ -1681,48 +1734,41 @@ E-values 2.891988    NA  2.50</code></pre>
 <h2>General ethical principles in social science research</h2>
 <ul>
 <li>In research ethics and governance there is a lot of discussion about informed consent, not disclosing personal information and so on.</li>
-<li>Also specifically in quantitative work, ethical issues around workflow</li>
-<li>See For example, there was some controversy around a recent paper which suggested that ‘de-policing’ in Denver in 2020 led to increases in violent crime (Nix et al https://onlinelibrary.wiley.com/doi/full/10.1111/1745-9125.12363). However, another research who attempted to reproduce their findings - and fair play to Nix and colleagues for making their research reproducible - suggested that their main result was due to a merging error which led to the analytical dataset being scrambled (https://github.com/jkangbrown/when_police_replication).</li>
-</ul>
-</section>
-<section id="our-focus-ethics-of-how-we-tell-the-story-of-our-research" class="slide level2">
-<h2>Our focus: ethics of how we tell the story of our research</h2>
-<ul>
+<li>Also specifically in quantitative work, ethical issues around workflow and ‘questionable research practices’</li>
+<li>This is not a general treatment of ethics in social science research</li>
 <li>We’re going to focus on the ethics of framing our research and how we present our results</li>
 </ul>
 </section>
 <section id="framing-the-tyranny-of-the-means" class="slide level2">
 <h2>Framing: The tyranny of the means</h2>
 <ul>
-<li><p>We should avoid essentializing.</p></li>
-<li><p>Typical focus of regression results is group average effect. Even if we have a statiistically significant difference between two groups in their estimated probability (or log-odds) of being convicted of comitting a crime, on its own this doesn’t tell us about how likely any individual member of those groups is to be convicted.</p></li>
-<li><p>By focusing on how people with the same observables vary we can avoid essentializing people? (McCall 2005).</p></li>
-<li><p>This is an added benefit of the simulation approach we discussed in the previous section - we can use these kind of methods to illustrate the variation of outcomes for people <em>with the same observables</em>, not just average differences in outcomes for people with different observables.</p></li>
+<li><p>The typical focus of regression results is group average effect</p></li>
+<li><p>Even if we have a statistically significant difference between two groups (say, people who live in high deprivation areas versus other areas) in the count of offences recorded by the police, on its own this doesn’t necessarily tell us about how likely any individual member of those groups is to offend</p></li>
 <li><p>Focusing only on group averages can imply that all members of the group are the same</p></li>
 <li><p>Causal quartets?</p></li>
 </ul>
 </section>
 <section id="causal-quartets" class="slide level2">
-<h2>CAUSAL QUARTETS</h2>
+<h2>Causal quartets</h2>
 
 <img data-src="images/causal-quartets.png" style="width:90.0%" class="r-stretch quarto-figure-center"><p class="caption">From <span class="citation" data-cites="gelmanCausalQuartetsDifferent2023">Gelman, Hullman, and Kennedy (<a href="#/references" role="doc-biblioref" onclick="">2023</a>)</span></p></section>
 <section id="causal-quartets-1" class="slide level2">
-<h2>CAUSAL QUARTETS</h2>
+<h2>Causal quartets</h2>
 <ul>
 <li>So what? <span class="citation" data-cites="gelmanCausalQuartetsDifferent2023">(<a href="#/references" role="doc-biblioref" onclick="">Gelman, Hullman, and Kennedy 2023</a>)</span></li>
+<li>People with the same observable characteristics of your independent variables may have very different values of the outcome</li>
 <li>“Variation among people is relevant to policy (for example, personalized medicine) and understanding (for example in psychology)”</li>
 <li>“Variation across situations is relevant when deciding what “flavor” of treatment to do, for example with dosing in pharmacology or treatment levels in traditional agricultural experiments.”</li>
 </ul>
 </section>
 <section id="same-observables-different-outcomes" class="slide level2">
-<h2>SAME OBSERVABLES: DIFFERENT OUTCOMES</h2>
+<h2>Same observables, different outcomes</h2>
 
 <img data-src="images/qlp-results-figure.png" alt="Estimated Adult Conviction Trajectory Probabilities by Sex, Indigenous Status and Childhood System Contact." class="r-stretch"></section>
-<section id="relationship-to-model-fit" class="slide level2">
-<h2>Relationship to model fit</h2>
-<ul>
-<li>Model fit can help with this? How much variation is <strong>not</strong> explained?</li>
-</ul>
+<section id="how-we-described-the-figure" class="slide level2">
+<h2>How we described the figure</h2>
+<p>“Our results show substantial variation in adult conviction trajectories within sex and Indigenous status groups for people with identical observable characteristics, as well as between our four demographic groups… Even though we see a strong association between Indigenous status, sex and membership of the High/Persistent conviction trajectory (see Appendix 4), it would be wrong to assume that all Indigenous men with multiple childhood system contact end up with High/Persistent adult conviction trajectories—our model estimates that almost half of Indigenous men would <em>not</em> end up with a high-rate, persistent adult conviction trajectory even with this substantial childhood adversity.”</p>
+<p>https://link.springer.com/article/10.1007/s40865-022-00204-z</p>
 </section>
 <section id="framing-the-importance-of-language" class="slide level2">
 <h2>Framing: the importance of language</h2>
