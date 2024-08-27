@@ -57,7 +57,7 @@ MASS::mvrnorm(
 
 pred_dat <- 
 simd |> 
-  distinct(council_area) |> 
+  distinct(city_la) |> 
   mutate(simd2020_rank = 6976 / 2)
 
 
@@ -101,43 +101,59 @@ pred_mean_crime_resp <- function(fit, ...){
 
 pred_30_or_more_crime_resp <- function(fit, ...){
   
-  data.frame(
-    fitted =  predict(fit,
+predict(fit,
           type = "response"
-  )) |> 
-    mutate(thirty_or_more = if_else(fitted >= 30, 1, 0)) |> 
-    pull(thirty_or_more)
+    )
   
 }
 
 
+qp_mod |> predict(type = "response")
+
 sims <- clarify::sim(fit = qp_mod,
-                     coefs = coef(qp_mod),
-                     vcov = vcov(qp_mod),
-                     n = 10)
+                     n = 100)
+
+pred_30_or_more_crime_resp(qp_mod)
+
+sims
+
+sims$sim.coefs
 
 res <- clarify::sim_apply(sim = sims, FUN = pred_30_or_more_crime_resp)
 
+res
+
 plot(res)
 
-summary(res, method = "quantile")
+
+
+res
 
 res |> 
   as.data.frame() |> 
   as_tibble() |> 
   t() |> 
-  as_tibble() |> 
-  summarise(mean_V1 = mean(V1),
-            mean_V2 = mean(V2))
+  as.data.frame() |> 
+  mutate(simd = row_number()) |> 
+  pivot_longer(cols = -simd) |> 
+  filter(simd == 1) |> 
+  ggplot(aes(x = value))
 
+# they are all identical and i don't know why?
 
 # probability of 5 or more given SIMD?
+
+
 
 clarify::sim_setx(sims, x = list(simd2020_rank = seq(1:6976), city_la = c(1, 0)),
          verbose = FALSE) |> plot()
 
+
+
 ames <- clarify::sim_ame(sims, var = "city_la", by = ~simd2020_rank,
                  contrast = "diff")
+
+
 
 
 plot(ames)
@@ -152,3 +168,68 @@ predict(
   newdata = data.frame(council_area = c("Shetland Islands", "City of Edinburgh"),
                        simd2020_rank = rep(6976 / 2, 2))
 )
+
+
+
+# using clarify with our own function -------------------------------------
+
+
+library(clarify)
+
+
+
+dat <-
+  tribble(
+    ~prev, ~year, ~sex, ~n,
+    0.167, "2015", "men", 15030,
+    0.153, "2015", "women", 18320,
+    0.197, "2020", "men", 15505,
+    0.189, "2020", "women", 18230
+  )
+# calculate the number of victims
+dat <-
+  dat |> 
+  mutate(vict = as.integer(n * prev))
+
+
+
+victim_divide <- function(base_y1, base_y2){
+  ((base_y2 - 1) - (base_y1 - 1)) / (base_y1 - 1)
+}
+
+
+
+mod1 <- glm(cbind(vict, n - vict) ~ fct_rev(sex) * year,
+            family = "binomial",
+            data = dat)
+
+n_sims <- 1000
+
+s <- sim(mod1,
+         n = n_sims)
+
+# for clarify we need the results to be part of the same model - in the example in the slides
+# we fit two seperate models, to dollow the format of Hunter and Tseloni (2016)
+
+
+sim_victim_divide <- function(coefs) {
+  men_2015 <- unname(coefs["fct_rev(sex)men"])
+  men_interact <- unname(coefs["fct_rev(sex)men:year2020"])
+  
+  men_2020 <- men_2015 + men_interact
+  
+  or_2015 <- exp(men_2015)
+  or_2020 <- exp(men_2020)
+  
+  victim_divide(or_2015, or_2020)
+  
+}
+
+
+est2 <- sim_apply(s, 
+                  FUN = sim_victim_divide)
+
+tibble(x = as.vector(est2)) |> 
+  reframe(vds = quantile(x, c(0.01, 0.025, 0.05, 0.1, 0.25, 0.5, 0.75, 0.9, 0.95, 0.975, 0.99)),
+          vals = c(0.01, 0.025, 0.05, 0.1, 0.25, 0.5, 0.75, 0.9, 0.95, 0.975, 0.99))
+
