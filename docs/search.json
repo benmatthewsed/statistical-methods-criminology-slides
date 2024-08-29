@@ -46,21 +46,21 @@
     "href": "statistical_methods_criminology.html#statistical-analysis-and-stories",
     "title": "Statistical Methods for Criminology",
     "section": "Statistical analysis and stories",
-    "text": "Statistical analysis and stories\n\nThis workshop is also about stories. Specifically:\n\nThe story of how the data in your spreadsheet came to exist\nThe story you tell about these data based on statistical analysis\n\nI want to convince you that the first of these two stories should filter through into every decision you make during analysis, and so should determine the second\nYou need to know how your data came about to be able to analyse it properly"
+    "text": "Statistical analysis and stories\n\nThis workshop is about statistical methods for criminology\nThis workshop is also about stories. Specifically:\n\nThe story of how the data in your spreadsheet came to exist\nThe story you tell about these data based on statistical analysis\n\nI want to convince you that the first of these two stories should filter through into every decision you make during analysis, and so should determine the second\nYou need to know how your data came about to be able to analyse it properly"
   },
   {
     "objectID": "statistical_methods_criminology.html#types-of-criminological-data",
     "href": "statistical_methods_criminology.html#types-of-criminological-data",
     "title": "Statistical Methods for Criminology",
     "section": "Types of criminological data",
-    "text": "Types of criminological data\n\nCriminology as a ‘rendezvous discipline’ as David Downes once said\nCriminological data could be\n\nAdministrative data from the justice system (police, courts, prisons, probation… etc)\nSecondary survey data (e.g. victimization, offending, fear of crime… etc)\nNewspaper reports (e.g. collations of stories on police use of force or homicides)\nSocial media data (e.g. fear of crime)\n‘Digital trace’ data from darknet drugs transactions\n…"
+    "text": "Types of criminological data\n\nCriminological data could be\n\nAdministrative data from the justice system (police, courts, prisons, probation… etc)\nSecondary survey data (e.g. victimization, offending, fear of crime… etc)\nNewspaper reports (e.g. collations of stories on police use of force or homicides)\nSocial media data (e.g. fear of crime)\n‘Digital trace’ data from darknet drugs transactions\n…\n\n\n[add references]"
   },
   {
     "objectID": "statistical_methods_criminology.html#key-types-of-criminological-data",
     "href": "statistical_methods_criminology.html#key-types-of-criminological-data",
     "title": "Statistical Methods for Criminology",
     "section": "Key types of criminological data",
-    "text": "Key types of criminological data\n\nHere we focus on police recorded crime and victimization surveys as common forms of criminological data\nIf you are interested in another form of data, please do ask!"
+    "text": "Key types of criminological data\n\nHere we focus on police recorded crime and victimization surveys as the most common forms of criminological data\nIf you are interested in another form of data, please do ask!"
   },
   {
     "objectID": "statistical_methods_criminology.html#questions-to-ask-any-type-of-data",
@@ -88,35 +88,35 @@
     "href": "statistical_methods_criminology.html#implications-of-this-story",
     "title": "Statistical Methods for Criminology",
     "section": "Implications of this story",
-    "text": "Implications of this story\n\nReporting on crime levels - incentives to reduce figures?\n\nhttps://osr.statisticsauthority.gov.uk/publication/the-quality-of-police-recorded-crime-statistics-for-england-and-wales/\n\nExcludes incidents not reported (see dark figure of crime)\nFigures represent (unknown?) mix of behavioural and system effects\n\nUrban areas have high police recorded crime rates because …\n\nthat’s where crime is?\nthat’s where poverty and disadvantage are?\nthat’s where disproportionate surveillance and punishment are?"
+    "text": "Implications of this story\n\nReporting on crime levels - incentives to reduce figures?\n\nhttps://osr.statisticsauthority.gov.uk/publication/the-quality-of-police-recorded-crime-statistics-for-england-and-wales/\n\nExcludes incidents not reported (see dark figure of crime)\nFigures represent (unknown? unknowable?) mix of behavioural and system effects\n\nFor example, urban areas have high police recorded crime rates because …\n\nthat’s where crime is?\nthat’s where poverty and disadvantage are?\nthat’s where (disproportionate) surveillance and punishment are?"
   },
   {
     "objectID": "statistical_methods_criminology.html#implications-for-analysis-population-or-super-population",
     "href": "statistical_methods_criminology.html#implications-for-analysis-population-or-super-population",
     "title": "Statistical Methods for Criminology",
     "section": "Implications for analysis: Population or super-population?",
-    "text": "Implications for analysis: Population or super-population?\n\nOne reason people use inferential statistical models is to generalize from the data they have to a wider population. With recorded crime data, is this the whole population?\noutline two possible approaches to conceptualizing police recorded crime data: a population or superpopulation approach (Verlaan and Langton 2024)\nPopulation approach: if you have police recorded crime data for Scotland in 2023 the data you have is all you could ever have. You don’t need to fit statistical models to generalize from the data you observe to a wider population because there is no wider population.\nSuperpopulation approach: you can think of Scotland in 2023 as ‘drawn’ from from the population of the UK, or Europe, or the whole planet. Alternatively, data from Scotland from 2023 may be seen as a sample from Scotland from 2023 and 2024, or 2023-2030 and so on. You might also want to construct a counterfactual of what crime would have been like in Scotland in 2023 if unemployment was 5% lower or 5% higher Gelman (2011)"
+    "text": "Implications for analysis: Population or super-population?\n\nOne reason people use statistical models is to generalize from the data they have to a wider population that they care about\nThis is one use of statistical significance testing, p-values and all that good stuff\nWith recorded crime data, is this the whole ‘population’ of crime?\nVerlaan and Langton (2024) outline two possible approaches to conceptualizing police recorded crime data: a population or superpopulation approach\nWARNING there is statistical jargon here!"
   },
   {
     "objectID": "statistical_methods_criminology.html#dangers-of-inferential-statistics-with-recorded-crime-data",
     "href": "statistical_methods_criminology.html#dangers-of-inferential-statistics-with-recorded-crime-data",
     "title": "Statistical Methods for Criminology",
     "section": "Dangers of inferential statistics with recorded crime data",
-    "text": "Dangers of inferential statistics with recorded crime data\n\nIt wrongly leads people to assume that their results are generalizable (Verlaan and Langton 2024)\nIt can lead people to undervalue actual observed differences in their data. For example, researchers may deny that an association between two variables exists in their dataset if it is not statistically significant"
+    "text": "Dangers of inferential statistics with recorded crime data\n\nVerlaan and Langton (2024) outline two compelling problems when using inferential statistics with recorded crime data\n\nIt wrongly leads people to assume that their results are generalizable\n\n\nIt’s a common fallacy that a ‘statistically significant’ result means that a finding is ‘true’\n\n\nIt can lead people to undervalue actual observed differences in their data\n\n\nFor example, researchers may deny that an association between two variables exists in their dataset if it is not statistically significant (Also a common fallacy that a non-statistically significant result means that a finding is not ‘true’)"
   },
   {
     "objectID": "statistical_methods_criminology.html#dangers-of-not-using-inferential-statistics-with-recorded-crime-data",
     "href": "statistical_methods_criminology.html#dangers-of-not-using-inferential-statistics-with-recorded-crime-data",
     "title": "Statistical Methods for Criminology",
     "section": "Dangers of not using inferential statistics with recorded crime data",
-    "text": "Dangers of not using inferential statistics with recorded crime data\n\nconfidence intervals should be reported even when describing statistics from the full population, especially if the results are to be used to make predictions or inform policy. Importantly, even if you are not be interested in prediction or policy-making, you can’t control how others will use your results (D. Redelings et al. 2012)\nDifferent sized populations (e.g. local authorities) have different levels of variability (Spiegelhalter 2005). Crime rates in small places will be more volatile - and so have more uncertainty - year-on-year than those from large areas"
+    "text": "Dangers of not using inferential statistics with recorded crime data\n\nOthers, emphasise dangers of not using inferential statistics with administrative data\nEpidemiologists argue that confidence intervals should be reported even when describing statistics from the full population, especially if the results are to be used to make predictions or inform policy. Importantly, even if you are not be interested in prediction or policy-making, you can’t control how others will use your results (D. Redelings et al. 2012)\nIf we want to make comparisons between different areas, places different sized populations (e.g. local authorities) have different levels of variability (Spiegelhalter 2005). Crime rates in small places will be more volatile - and so have more uncertainty - year-on-year than those from large areas"
   },
   {
     "objectID": "statistical_methods_criminology.html#survey-data",
     "href": "statistical_methods_criminology.html#survey-data",
     "title": "Statistical Methods for Criminology",
     "section": "Survey data",
-    "text": "Survey data\n\nIn response to known issues with measuring levels of crime with administrative data, since the 1980s criminologists in some parts of the world have been surveying the public to ask about their levels of victimization.\nScottish Crime and Justice Survey​\nCrime Survey for England and Wales​\nEquivalents in other countries, primarily in Western Europe, North America and Australasia ​\nSmaller geographical scale surveys such as The Mayor’s Office for Policing And Crime (MOPAC) Survey in London"
+    "text": "Survey data\n\nIn response to known issues with measuring levels of crime with administrative data, since the 1980s criminologists in some parts of the world have been surveying the public to ask about their levels of victimization.\nScottish Crime and Justice Survey​\nCrime Survey for England and Wales​\nEquivalents in other countries, primarily in Western Europe, North America and Australasia - Also smaller geographical scale surveys such as The Mayor’s Office for Policing And Crime (MOPAC) Survey in London"
   },
   {
     "objectID": "statistical_methods_criminology.html#survey-data-benefits",
@@ -137,7 +137,7 @@
     "href": "statistical_methods_criminology.html#large-worlds-and-small-worlds",
     "title": "Statistical Methods for Criminology",
     "section": "Large worlds and small worlds",
-    "text": "Large worlds and small worlds\n\nOur spreadsheets and model coefficients can only summarize the small world for us, and omit some of the complexity of the large world\nIn this session we’ll overview the most common[^3] way in which criminologists understand the ‘small world’ of their spreadsheets: the general linear model (GLM)\nBut be warned, as soon as we want to understand the large world we can run in to problems if all we focus on are the coefficients.."
+    "text": "Large worlds and small worlds\n\nRichard McElreath talks about statistical models as representing a self-contained ‘small world’. This is not the real world!\nThe model is the map, and not the territory\nOur spreadsheets and model coefficients can only summarize the small world for us, and necessarily omit some of the complexity of the large world\nIn this session we’ll overview the most common[^3] way in which criminologists understand the ‘small world’ of their spreadsheets: the general linear model (GLM)\nBut be warned, as soon as we want to understand the large world we can run in to problems if all we focus on are the coefficients (we’ll talk about this later)"
   },
   {
     "objectID": "statistical_methods_criminology.html#a-disclaimer",
@@ -200,7 +200,7 @@
     "href": "statistical_methods_criminology.html#why-not-just-use-a-linear-model",
     "title": "Statistical Methods for Criminology",
     "section": "why not just use a linear model?",
-    "text": "why not just use a linear model?\nIf you really want to you can just use a linear model for count data. This will still give you an accurate model of the mean of your outcome. However, there are two main problems with this approach."
+    "text": "why not just use a linear model?\n\nIf you really want to you can just use a linear model for count data. This will still give you an accurate model of the mean of your outcome. However, there are two main problems with this approach.\nBut this is at odds with the ‘story’ of our data - that we know counts have to be positive integers - you can’t experience -1 victimization incidents, or record six and a half homicides"
   },
   {
     "objectID": "statistical_methods_criminology.html#negative-counts",
@@ -235,7 +235,7 @@
     "href": "statistical_methods_criminology.html#solutions",
     "title": "Statistical Methods for Criminology",
     "section": "Solutions?",
-    "text": "Solutions?\nWhat do to? about over-dispersion\n\nIf all you care about is your standard error being too small you can use quasi-poisson\nThis gives same point estimates as poisson but with ‘empirical’ SEs - similar to using robust standard errors). Francis et al. use this approach to modelling counts of victimization. In my experience it’s also faster than the standard alternative…\nThe negative binomial is a flavour of statistical model 1 for count data which has an extra “dispersion” parameter, which allows you to model the over-dispersion directly\nPeople disagree as to which is preferable\nExample of gun violence in Oakland: https://cao-94612.s3.amazonaws.com/documents/Oakland-Ceasefire-Evaluation-Final-Report-May-2019.pdf\n\nokay, strictly speaking there are different varieties of negative binomial model. So… flavours? (Hilbe 2014)"
+    "text": "Solutions?\nWhat do to about over-dispersion\n\nIf all you care about is your standard error being too small you can use quasi-poisson\nThis gives same point estimates as poisson but with ‘empirical’ SEs - similar to using robust standard errors). Francis et al. use this approach to modelling counts of victimization. In my experience it’s also faster than the standard alternative…\nThe negative binomial is a flavour of statistical model 1 for count data which has an extra “dispersion” parameter, which allows you to model the over-dispersion directly\nPeople disagree as to which is preferable\nExample of gun violence in Oakland: https://cao-94612.s3.amazonaws.com/documents/Oakland-Ceasefire-Evaluation-Final-Report-May-2019.pdf\n\nokay, strictly speaking there are different varieties of negative binomial model. So… flavours? (Hilbe 2014)"
   },
   {
     "objectID": "statistical_methods_criminology.html#practical-1",
@@ -312,7 +312,7 @@
     "href": "statistical_methods_criminology.html#residual-or-unmeasured-confounding",
     "title": "Statistical Methods for Criminology",
     "section": "Residual or unmeasured confounding",
-    "text": "Residual or unmeasured confounding\nConfounding describes a situation where there’s something that we know affects the outcome we’re interested in and/or our independent variables, but we don’t have a measure for this - Famous example of smoking and lung cancer - There are ways you can try to quantify this discussed in the field of quantitative bias analysis. I have not seen these methods used in criminology very much - One informal approach to unmeasured confounding is to claim that your measures are good enough to make it not a problem\n\nbecause we do not see U, we must impute its values using probabilities (bets) about the values of U given what we do see (again, X and Y ).\n\nThe tipr approach is to unmeasured confounding - not just that we have a variable measured inaccurately, but that there is a key variable we haven’t measured, although Peto suggests that these in practice are hard to distinguish\nneed some criminological examples here\nProbably the biggest limitation of our study is that the IPTW modeling approach we adopted assumes no unmeasured covariates linked to both treatment and outcome. In practice, the criterion of having no unobserved confounding is impossible to verify—the data in any observational study provide no definitive information (Robins, Hernán, and Brumback, 2000). As discussed above, however, we tried to counteract this limitation by exploiting what we believe are rich individual baseline data and timevarying covariates over the full life course in order to model the propensity to marriage. It is hard to imagine what the missing time-stable or time-invariant covariates are that would overcome the magnitude and robustness of results. From IQ to the cumulative history of both the outcome and the treatment, we accounted for 20 baseline covariates and approximately a dozen time-varying confounders measured from widely varying sources—many of which predict the course of marriage as theoretically expected (table 1).\nWe thus argue that omitted confounders would have to be implausibly large to overturn the basic results obtained under a number of different model specifications and assumptions.22\n22 A formal sensitivity analysis (see Robins, 1999: 167–73) is beyond the scope of the current paper. Moreover, such analyses require assumptions about the magnitude, direction, and functional form of potential biases that ultimately raise more questions than they answer\n(https://psycnet.apa.org/record/2008-07491-001)\n\nIt’s true that you have to make assumptions about the unmeasured confounding to know the impact on your results, and so it’s necessarily speculative\nBut this is possible!\n\n“However, increasing the number of covariates is hardly a persuasive approach to ruling out potentially important confounders, as it is unlikely that one can adequately measure all such confounders”\n\nfrom their study they find:\n\n\n# from table 2 in Sampson, Laub and Wimer, p 491 \n# https://scholar.harvard.edu/files/sampson/files/2006_criminology_laubwimer_1.pdf\n\nlibrary(EValue)\n\nevalues.RR(est = 0.572, lo = 0.511, hi = 0.640)\n\n            point lower upper\nRR       0.572000 0.511  0.64\nE-values 2.891988    NA  2.50\n\n  bias_plot(0.572, xmax = 10)\n\n\nFrom this, the unmeasured confounder would have to be associated with an almost three-fold increase in the risk of offending, and must be almost three times more prevalent in those married than those not married, to explain the observed risk ratio.\nThe question then becomes… how plausible is this?\nSee https://cran.r-project.org/web/packages/EValue/vignettes/multiple-bias.html\nhttps://link.springer.com/book/10.1007/978-3-030-82673-4\n“The preceding approach assumes that U is a known confounder (e.g., a smoking indicator) that was unmeasured in the study in question but has been previously identified and subject to study in relation to disease if not exposure. If instead U represents an unspecified, unknown confounder, then the entire sensitivity exercise will remain far more speculative. Nonetheless, decomposition of the bias factor can still be successful in demonstrating that only implausibly strong confounder or selection effects can account for a strong observed association. Cornfield et al. (1959) is considered a landmark study in which such an approach was used to examine claims that the smoking-lung cancer relation might be attributable to confounding”\n\nso this is based on the idea tat we can identify an “implausibly strong” confounder, which is reasonable.\nOne approach is to pick a bunch of possible bias parameters and test to see if results are robust to all of them."
+    "text": "Residual or unmeasured confounding\n\nConfounding describes a situation where there’s something that we know affects the outcome we’re interested in and/or our independent variables, but we don’t have a measure for this\nFamous example of smoking and lung cancer\n\nRA Fisher argued that the strong association between smoking and lung cancer “could both be influenced by a [unmeasured confounder, such as] constitutional make-up, perhaps genetic in origin, which predisposes individuals to both of them”\nCornfield and colleagues demonstrated that such a confounder would have to be implausibly large to produce the observed association, and so was implausible\n\n(This matters most if you are using your analysis to make a causal claim)"
   },
   {
     "objectID": "statistical_methods_criminology.html#selection-effects",
@@ -347,7 +347,7 @@
     "href": "statistical_methods_criminology.html#should-i-do-a-quantitative-bias-analysis",
     "title": "Statistical Methods for Criminology",
     "section": "Should I do a quantitative bias analysis?",
-    "text": "Should I do a quantitative bias analysis?\n\nIt depends\n… so you only need to bother with this stuff if you ‘claim to offer near-definitive conclusions’. Is your study likely to contribute to a meta analysis? Or in other words, when you are moving between the small world and the large world.\nSo the key thing is how we talk about our models - it is us that moves between the small world and the large world."
+    "text": "Should I do a quantitative bias analysis?\n\nAfter all this talk… not necessarily!\nEpidemiologists who work in this area suggest you only need to bother with this stuff if you ‘claim to offer near-definitive conclusions’ based on your study\nSo the key thing is how we talk about our models - it is us that moves between the stories in the ‘small world’ of our model to the ‘large world’\nIf you do want to apply a technical fix, the specifics will depend on the problem you are interested in and the data you have (see Knox et al.)"
   },
   {
     "objectID": "statistical_methods_criminology.html#recap-2",
@@ -389,7 +389,7 @@
     "href": "statistical_methods_criminology.html#translating-coefficients",
     "title": "Statistical Methods for Criminology",
     "section": "Translating coefficients",
-    "text": "Translating coefficients\n\nIn simple (linear) models it is possible to read off a coefficient directly as the quantities that we are interested in.\nIn more complex models, such as generalized linear models, we often want to convert the coefficients to express results in a more accessible way\nIn poisson regression the model coefficients are also commonly expressed as rate ratios, by exponentiating the coefficients (we did this already!)"
+    "text": "Translating coefficients\n\nIn some simple (linear) models you read off a coefficient directly as the quantities that we are interested in\nIn more complex models, such as generalized linear models, we often want to convert the coefficients to express results in a more accessible way\nIn poisson regression the model coefficients are also commonly expressed as rate ratios, by exponentiating the coefficients (we did this already in the practical!)"
   },
   {
     "objectID": "statistical_methods_criminology.html#translating-coefficients-challenges",
@@ -417,21 +417,21 @@
     "href": "statistical_methods_criminology.html#victimization-divides",
     "title": "Statistical Methods for Criminology",
     "section": "Victimization divides",
-    "text": "Victimization divides\nTo calculate the ratio of victimization rates in years 1 and 2, Hunter and Tseloni fit a regression model (specifically a count model) to predict the number of burglary victimization incidents experienced by households in England and Wales in 1993 compared to 20089. They use the coefficients from these models as inputs into the Victimization Divide formula."
+    "text": "Victimization divides\nTo calculate the ratio of victimization rates in years 1 and 2, Hunter and Tseloni fit a GLM to predict the number of burglary victimization incidents experienced by households in England and Wales in 1993 compared to 20089. They use the coefficients from these models as inputs into the Victimization Divide formula."
   },
   {
     "objectID": "statistical_methods_criminology.html#victimization-divides-1",
     "href": "statistical_methods_criminology.html#victimization-divides-1",
     "title": "Statistical Methods for Criminology",
     "section": "Victimization divides",
-    "text": "Victimization divides\n\nBased on this analysis they conclude that burglary victimization inequality had increased for:\n\nsingle adult households compared to other households\nsocial renters compared to owner occupiers\nhouseholds without a car compared to those with one car\nhouseholds leaving their home unoccupied any amount of time on a typical weekday compared to those never leaving the home\nhouseholds in areas without neighbourhood watch compared to those with the scheme\nhouseholds earning at least £50,000 per annum compared to those on a £10,000–£29,999 annual income\ninner city residents compared to households in rural areas"
+    "text": "Victimization divides\n\nBased on this analysis Hunter and Tseloni (2016) conclude that burglary victimization inequality had increased for:\n\nsingle adult households compared to other households\nsocial renters compared to owner occupiers\nhouseholds without a car compared to those with one car\nhouseholds leaving their home unoccupied any amount of time on a typical weekday compared to those never leaving the home\nhouseholds in areas without neighbourhood watch compared to those with the scheme\nhouseholds earning at least £50,000 per annum compared to those on a £10,000–£29,999 annual income\ninner city residents compared to households in rural areas"
   },
   {
     "objectID": "statistical_methods_criminology.html#victimization-divides-2",
     "href": "statistical_methods_criminology.html#victimization-divides-2",
     "title": "Statistical Methods for Criminology",
     "section": "Victimization divides",
-    "text": "Victimization divides\n\nBut this analysis used data from the Crime Survey for England and Wales\nSo we want to assess the uncertainty in these estimates which come from projecting from sample to population\nWe can do this with the King et al. simulation approach"
+    "text": "Victimization divides\n\nBut this analysis used data from the Crime Survey for England and Wales\nSo, in line with the generative story of these data, we want to assess the uncertainty in these estimates which come from projecting from sample to population\nWe can do this with the King et al. simulation approach"
   },
   {
     "objectID": "statistical_methods_criminology.html#simulating-dqis",
@@ -459,7 +459,7 @@
     "href": "statistical_methods_criminology.html#simulating-dqis-getting-ready",
     "title": "Statistical Methods for Criminology",
     "section": "Simulating DQIs: Getting ready",
-    "text": "Simulating DQIs: Getting ready\n\n\n\n# load packages\n\nlibrary(MASS)\nlibrary(tidyverse)\n\n# reading in data\n\ndat &lt;-\n  tribble(\n    ~prev, ~year, ~sex, ~n,\n    0.167, \"2015\", \"men\", 15030,\n    0.153, \"2015\", \"women\", 18320,\n    0.197, \"2020\", \"men\", 15505,\n    0.189, \"2020\", \"women\", 18230\n  )\n\n# calculate the number of victims\ndat &lt;-\n  dat |&gt; \n  mutate(vict = as.integer(n * prev))\n\n\nYou can find more info on the data and approach here"
+    "text": "Simulating DQIs: Getting ready\n\n\n\n# load packages\n\nlibrary(MASS)\nlibrary(tidyverse)\n\n# reading in data\n\ndat &lt;-\n  tribble(\n    ~prev, ~year, ~sex, ~n,\n    0.167, \"2015\", \"men\", 15030,\n    0.153, \"2015\", \"women\", 18320,\n    0.197, \"2020\", \"men\", 15505,\n    0.189, \"2020\", \"women\", 18230\n  )\n\n# calculate the number of victims\ndat &lt;-\n  dat |&gt; \n  mutate(vict = as.integer(n * prev))\n\n\nThese are data from the Crime Survey for England and Wales showing victimization for men and women in 2015 and 2020. You can find more info on the data and approach here"
   },
   {
     "objectID": "statistical_methods_criminology.html#calculating-vds",
@@ -480,14 +480,14 @@
     "href": "statistical_methods_criminology.html#how-much-has-victimization-inequality-changed",
     "title": "Statistical Methods for Criminology",
     "section": "How much has victimization inequality changed?",
-    "text": "How much has victimization inequality changed?\n\n\n\nvictim_divide(\n  base_y1 = results_2015$est[[2]],\n  base_y2 = results_2020$est[[2]]\n  )\n\n[1] -0.5223449\n\n\n\nCalculating the VD for these two results, based on the odds ratios from the two models, shows that victimization inequality decreased by 52% between the two years.\nVictimiztion inequality fell by more than half!"
+    "text": "How much has victimization inequality changed?\n\n\n\nvictim_divide(\n  base_y1 = results_2015$est[[2]],\n  base_y2 = results_2020$est[[2]]\n  )\n\n[1] -0.5223449\n\n\n\nCalculating the VD for these two results, based on the odds ratios from the two models, shows that victimization inequality decreased by 52% between the two years.\nBased on the point estimates from the model, we would conclude that victimiztion inequality between men and women fell by more than half!"
   },
   {
     "objectID": "statistical_methods_criminology.html#how-much-has-victimization-inequality-changed-1",
     "href": "statistical_methods_criminology.html#how-much-has-victimization-inequality-changed-1",
     "title": "Statistical Methods for Criminology",
     "section": "How much has victimization inequality changed?",
-    "text": "How much has victimization inequality changed?\n\n\n\n# set seed\nset.seed(nchar(\"vict divide\") ^ 4)\n\nn_sims &lt;- 1e5\n\ndraws_2020 &lt;-\n  MASS::mvrnorm(\n    n = n_sims,\n    mu = coef(model2020),\n    Sigma = vcov(model2020)\n  )\n\ndraws_2015 &lt;-\n  MASS::mvrnorm(\n    n = n_sims,\n    mu = coef(model2015),\n    Sigma = vcov(model2015)\n  )\n\n\nWe can pass the models’ coefficients and variance-covariance matrices to mvrnorm from the {MASS} library.\nThis gives us a set of 10,000 coefficients for each model."
+    "text": "How much has victimization inequality changed?\n\n\n\n# set seed\nset.seed(nchar(\"vict divide\") ^ 4)\n\nn_sims &lt;- 1e4\n\ndraws_2020 &lt;-\n  MASS::mvrnorm(\n    n = n_sims,\n    mu = coef(model2020),\n    Sigma = vcov(model2020)\n  )\n\ndraws_2015 &lt;-\n  MASS::mvrnorm(\n    n = n_sims,\n    mu = coef(model2015),\n    Sigma = vcov(model2015)\n  )\n\n\nWe can pass the models’ coefficients and variance-covariance matrices to mvrnorm from the {MASS} library.\nThis gives us a set of 10,000 coefficients for each model."
   },
   {
     "objectID": "statistical_methods_criminology.html#how-much-has-victimization-inequality-changed-2",
@@ -501,14 +501,14 @@
     "href": "statistical_methods_criminology.html#how-much-has-victimization-inequality-changed-3",
     "title": "Statistical Methods for Criminology",
     "section": "How much has victimization inequality changed?",
-    "text": "How much has victimization inequality changed?\n\n\n\nsim_dat |&gt; \n  reframe(\n    vds = quantile(vd, c(0.025, 0.5, 0.975)),\n    centile = c(\"2.5%\", \"50%\", \"97.5%\")\n    )\n\n# A tibble: 3 × 2\n     vds centile\n   &lt;dbl&gt; &lt;chr&gt;  \n1 -1.03  2.5%   \n2 -0.523 50%    \n3  0.479 97.5%  \n\nsim_dat |&gt; \n  ggplot(aes(x = vd)) +\n  geom_histogram(binwidth = 0.1) +\n  scale_x_continuous(limits = c(-2, 2)) +\n  geom_vline(aes(xintercept = 0))\n\n\n\n\n\n\n\n\n\nWe can see the 5 and 95 percentiales of the simulated VDs, as well as the histogram of their distribution.\nThese intervals include zero, so the apparent 52% reduction in victimization inequality would not be ‘statistically significant’ at the standard level."
+    "text": "How much has victimization inequality changed?\n\n\n\nsim_dat |&gt; \n  reframe(\n    vds = quantile(vd, c(0.025, 0.5, 0.975)),\n    centile = c(\"2.5%\", \"50%\", \"97.5%\")\n    )\n\n# A tibble: 3 × 2\n     vds centile\n   &lt;dbl&gt; &lt;chr&gt;  \n1 -1.04  2.5%   \n2 -0.528 50%    \n3  0.471 97.5%  \n\nsim_dat |&gt; \n  ggplot(aes(x = vd)) +\n  geom_histogram(binwidth = 0.1) +\n  scale_x_continuous(limits = c(-2, 2)) +\n  geom_vline(aes(xintercept = 0))\n\n\n\n\n\n\n\n\n\nWe can see the 2.5 and 97.5 percentiles of the simulated VDs, as well as the histogram of their distribution. We can use these intervals to approximate a statistical significance test - if the interval includes zero the coefficient is not ‘statistically significant’ at the standard level.\nThese intervals include zero, so the apparent 52% reduction in victimization inequality would not be ‘statistically significant’ at the standard level."
   },
   {
     "objectID": "statistical_methods_criminology.html#simulation-is-great",
     "href": "statistical_methods_criminology.html#simulation-is-great",
     "title": "Statistical Methods for Criminology",
     "section": "Simulation is great",
-    "text": "Simulation is great\n\nThe beauty of this simulation approach described by King et al (2000) is that it generalizes to any DQI that is a function of the model’s parameters, such as VD, and to any GLM.\nSay that instead of the VD were interested in the absolute difference in predicted victimization rates after controlling for other factors (like a marginal effect)\nOr maybe we have fitted a count model and we want to know the number of people reporting 2 or more victimization incidents - we can calculate this from our simulations whilst incorporating the model’s uncertainty into our estimates"
+    "text": "Simulation is great\n\nThe beauty of this simulation approach is that it generalizes to any DQI that is a function of the model’s parameters, such as VD, and to any GLM (King, Tomz, and Wittenberg 2000)\nSay that instead of the VD were interested in the absolute difference in predicted victimization rates after controlling for other factors (like a marginal effect)\nOr maybe we have fitted a count model and we want to know the number of people reporting 2 or more victimization incidents - we can calculate this from our simulations whilst incorporating the model’s uncertainty into our estimates"
   },
   {
     "objectID": "statistical_methods_criminology.html#simulation-isn-practice",
@@ -620,7 +620,7 @@
     "href": "statistical_methods_criminology.html#overview-1",
     "title": "Statistical Methods for Criminology",
     "section": "Overview",
-    "text": "Overview\n\nWhew! We’ve covered a lot of ground today\nThe key idea of this workshop is that the data provenance story should influence our analysis and the story we tell about our results\nWe looked at common data provenance stories of police recorded crime and victimization surveys\nWe talked about GLMs as a common way of telling stories about the small world of our data\nWe looked at how we might want to critique the stories our GLMs are telling, using tools from quantitative bias analysis\nAnd how to use simulation approaches to tell more meaningful stories from our results\nWe discussed some ethical issues that come up when we present our results"
+    "text": "Overview\n\nWhew! We’ve covered a lot of ground today\nThe key idea of this workshop is that the story of how our data came to be (‘data provenance’) should influence our analysis and the story we tell about our results\nWe looked at common data provenance stories of police recorded crime and victimization surveys\nWe talked about GLMs as a common way of telling stories about the small world of our data\nWe looked at how we might want to critique the stories our GLMs are telling, using tools from quantitative bias analysis\nAnd how to use simulation approaches to tell more meaningful stories from our results\nWe discussed some ethical issues that come up when we present our results"
   },
   {
     "objectID": "statistical_methods_criminology.html#where-next",
@@ -676,7 +676,7 @@
     "href": "statistical_methods_criminology.html#uncertainty",
     "title": "Statistical Methods for Criminology",
     "section": "Uncertainty",
-    "text": "Uncertainty\n\nA key challenge is propagating the appropriate uncertainty in our results - especially in more complicated models when predictions might be a function of multiple parameters\nWe can use simulation to propagate this uncertainty - and we can apply this approach to any generalized linear model and any Derived Quantity of Interest (DQI) - be it a marginal effect or something else\nThe simulation process is described by King et al. (2000) and implemented in the R package clarify (https://github.com/iqss/clarify)\nThis approach propagates both the uncertainty in the model’s coefficients, and the correlations between the coefficients"
+    "text": "Uncertainty\n\nA key challenge is propagating the appropriate uncertainty in our results - especially in more complicated models when predictions might be a function of multiple parameters\nWe can use simulation to propagate this uncertainty - and we can apply this approach to any generalized linear model and any Derived Quantity of Interest (DQI) - be it a marginal effect or something else\nThe simulation process is described by (King, Tomz, and Wittenberg 2000) and implemented in the R package clarify (https://github.com/iqss/clarify)\nThis approach propagates both the uncertainty in the model’s coefficients, and the correlations between the coefficients (for technical reasons that are beyond me, this is important - see Gayle and Lambert 2007 https://journals.sagepub.com/doi/10.1177/0038038507084830)"
   },
   {
     "objectID": "statistical_methods_criminology.html#implications",
@@ -711,7 +711,7 @@
     "href": "statistical_methods_criminology.html#an-advanced-example-victimization-divides",
     "title": "Statistical Methods for Criminology",
     "section": "An advanced example: victimization divides",
-    "text": "An advanced example: victimization divides\n\n(Hunter and Tseloni 2016) wanted to describe how victimization inequality had changed over time\nThey used the results of a fitted regression model to calculate a measure they call ‘Victimization Divide’\nThis measure is defined as:\n\n(ratio of victimization rates in year 2 - 1) - (ratio of victimization rates in year 2 - 1) / (ratio of victimization rates in year one - 1)"
+    "text": "An advanced example: victimization divides\n\nHunter and Tseloni (2016) wanted to describe how victimization inequality had changed over time\nThey used the results of a fitted regression model to calculate a measure they call ‘Victimization Divide’\nThis measure is defined as:\n\n(ratio of victimization rates in year 2 - 1) - (ratio of victimization rates in year 2 - 1) / (ratio of victimization rates in year one - 1)"
   },
   {
     "objectID": "statistical_methods_criminology.html#simulating-correlated-variables-1",
@@ -732,7 +732,7 @@
     "href": "statistical_methods_criminology.html#simulating-victimization-divides",
     "title": "Statistical Methods for Criminology",
     "section": "Simulating Victimization Divides",
-    "text": "Simulating Victimization Divides\n\nIn this process we:\nUse a fitted regression model to simulate a set of coefficient values from the regression model’s variance-covariance matrix (usually at least 1000)\nCalculate the VD for each one these simulated coefficient values"
+    "text": "Simulating Victimization Divides\n\nIn this process we:\nUse a fitted regression model to simulate a set of coefficient values from the regression model’s variance-covariance matrix (usually at least 1000 draws)\nCalculate the VD for each one these simulated coefficient draws"
   },
   {
     "objectID": "statistical_methods_criminology.html#simulating-victimization-divides-1",
@@ -760,21 +760,21 @@
     "href": "statistical_methods_criminology.html#framing",
     "title": "Statistical Methods for Criminology",
     "section": "Framing",
-    "text": "Framing"
+    "text": "Framing\n\nStudy of (among other things) rates of mental health diagnosis in prisons in New York, broken down by ethnicity (Kaba et al. 2015)\nPeople from Black or Hispanic backgrounds may be more likely to be seen as criminal rather than experiencing mental ill-health, and so may be less likely to be given a mental health diagnosis\nD’Ignazo and Klein (2020) illustrate ways in which one of the findings from this study could be framed:"
   },
   {
     "objectID": "statistical_methods_criminology.html#framing-1",
     "href": "statistical_methods_criminology.html#framing-1",
     "title": "Statistical Methods for Criminology",
     "section": "Framing",
-    "text": "Framing\n“The study that produced these numbers contains convincing evidence that we should distrust diagnosis numbers due to racial and ethnic discrimination. The first chart does not simply fail to communicate that but also actively undermines that main finding of the research.”"
+    "text": "Framing"
   },
   {
     "objectID": "statistical_methods_criminology.html#framing-2",
     "href": "statistical_methods_criminology.html#framing-2",
     "title": "Statistical Methods for Criminology",
     "section": "Framing",
-    "text": "Framing"
+    "text": "Framing\n“The study that produced these numbers contains convincing evidence that we should distrust diagnosis numbers due to racial and ethnic discrimination. The first chart does not simply fail to communicate that but also actively undermines that main finding of the research.”"
   },
   {
     "objectID": "statistical_methods_criminology.html#which-is-preferable",
@@ -795,7 +795,7 @@
     "href": "statistical_methods_criminology.html#framing-4",
     "title": "Statistical Methods for Criminology",
     "section": "Framing",
-    "text": "Framing\n\nThird framing focuses on advantages of White group\nThe subtitle better fits the researchers’ conclusions"
+    "text": "Framing"
   },
   {
     "objectID": "statistical_methods_criminology.html#framing-and-interpreting-indicators-community-loss",
@@ -803,5 +803,180 @@
     "title": "Statistical Methods for Criminology",
     "section": "Framing and interpreting indicators: community loss",
     "text": "Framing and interpreting indicators: community loss\n\nJessica T. Simes (2021) gives a good example of how we may want to come up with theoretically informed measures, or theoretically re-frame measures. Simes analysed imprisonment data from the state of Massachusets in the USA, including spatial regression of prison admission rates and how these relate to “racial demographics, social and economic disadvantage, arrest rates, and violent crime” (Jessica T. Simes 2018).\nAs part of this analysis Simes suggests that the cumulative years sentenced to residents of a particular neighbourhood be thought of as ‘community loss’.\nDespite being derived from data on individual punishment histories, this conceptualization reflects the chronic and long-term exposure to loss due to imprisonment in different neighbourhoods.\nThis terminology highlights the effects of imprisonment on the communities in which people who end up in prison lived prior to their imprisonment, rather than just focusing on the people who are currently in prison."
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#what-this-workshop-is-not",
+    "href": "statistical_methods_criminology.html#what-this-workshop-is-not",
+    "title": "Statistical Methods for Criminology",
+    "section": "What this workshop is not",
+    "text": "What this workshop is not\n\nThis workshop is not an in-depth guide on how to:\n\nfit a particular statistical model,\nselect which kind of statistical model you should fit\nuse particular statistical software\n\nThese are important topics! And there are a wealth of training courses covering them"
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#what-this-workshop-is-not-continued",
+    "href": "statistical_methods_criminology.html#what-this-workshop-is-not-continued",
+    "title": "Statistical Methods for Criminology",
+    "section": "What this workshop is not (continued)",
+    "text": "What this workshop is not (continued)\n\nThis workshop is also not a comprehensive guide to every issue that can arise analysing criminological data\nCriminology as a ‘rendezvous discipline’ as David Downes once said\nYou could plausibly be analysing a randomized control trial, or geographical point data, or attitudinal questions from a survey - all of which have specific considerations for statistical analysis - and still be doing criminology"
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#what-this-workshop-is",
+    "href": "statistical_methods_criminology.html#what-this-workshop-is",
+    "title": "Statistical Methods for Criminology",
+    "section": "What this workshop is",
+    "text": "What this workshop is\n\nInstead, this workshop will give an introduction to a set of issues that are (I hope) general to most (or maybe all) analysis of criminological data\nSome of these issues do not have obvious solutions - but at the end of the workshop you will at least be able to describe and acknowledge them, and the possible impacts they may have on inferences from criminological data\nI will also signpost where you can go to find out more about each of these issues so you can keep exploring those that are most relevant to you"
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#implications-for-analysis-population-or-super-population-1",
+    "href": "statistical_methods_criminology.html#implications-for-analysis-population-or-super-population-1",
+    "title": "Statistical Methods for Criminology",
+    "section": "Implications for analysis: Population or super-population?",
+    "text": "Implications for analysis: Population or super-population?\n\nPopulation approach: if you have police recorded crime data for Scotland in 2023 the data you have is all you could ever have. You don’t need to fit statistical models to generalize from the data you observe to a wider population because there is no wider population.\nSuperpopulation approach: you can think of Scotland in 2023 as ‘drawn’ from from the population of the UK, or Europe, or the whole planet and want to generalize to this wider population. Alternatively, data from Scotland from 2023 may be seen as a sample from Scotland from 2023 and 2024, or 2023-2030 and so on."
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#implications-for-analysis-population-or-super-population-2",
+    "href": "statistical_methods_criminology.html#implications-for-analysis-population-or-super-population-2",
+    "title": "Statistical Methods for Criminology",
+    "section": "Implications for analysis: Population or super-population?",
+    "text": "Implications for analysis: Population or super-population?\n\nThere is no right or wrong answer really - it depends on what the goal of your analysis is\nBut this framing will (or should at least) determine what subsequent analysis you do\nUnfortunately there are pitfalls either way…"
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#dangers-of-not-using-inferential-statistics-with-recorded-crime-data-1",
+    "href": "statistical_methods_criminology.html#dangers-of-not-using-inferential-statistics-with-recorded-crime-data-1",
+    "title": "Statistical Methods for Criminology",
+    "section": "Dangers of not using inferential statistics with recorded crime data",
+    "text": "Dangers of not using inferential statistics with recorded crime data\n\n\n\n\n\nScottish Government funnal plot of reconvictions y local authority, 2018-2019 cohort\n\n\nhttps://www.gov.scot/binaries/content/documents/govscot/publications/statistics/2021/10/reconviction-rates-scotland-2018-19-offender-cohort/documents/reconviction-rates-scotland-2018-19-offender-cohort/reconviction-rates-scotland-2018-19-offender-cohort/govscot%3Adocument/reconviction-rates-scotland-2018-19-offender-cohort.pdf\n\n“Reconviction rates could be used to rank performance across different local authorities. However, there is an inherent problem in using this approach since it implicitly assumes that a difference in reconviction rates reflects a ‘real’ difference between local authorities. In reality, all systems within which these local authorities operate, no matter how stable, will produce variable outcomes in the normal run of events. In particular, outcomes in local authorities with smaller sized populations tend to vary more than those in local authorities with larger populations. The question we need to answer is therefore: Is the observed variation more or less than we would normally expect?”"
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#dangers-of-not-using-inferential-statistics-with-recorded-crime-data-2",
+    "href": "statistical_methods_criminology.html#dangers-of-not-using-inferential-statistics-with-recorded-crime-data-2",
+    "title": "Statistical Methods for Criminology",
+    "section": "Dangers of not using inferential statistics with recorded crime data",
+    "text": "Dangers of not using inferential statistics with recorded crime data\n\n\n\n\n\nScottish Government funnal plot of reconvictions y local authority, 2018-2019 cohort\n\n\nhttps://www.gov.scot/binaries/content/documents/govscot/publications/statistics/2021/10/reconviction-rates-scotland-2018-19-offender-cohort/documents/reconviction-rates-scotland-2018-19-offender-cohort/reconviction-rates-scotland-2018-19-offender-cohort/govscot%3Adocument/reconviction-rates-scotland-2018-19-offender-cohort.pdf\n\n“The funnel plot is a simple statistical method that takes into account the variability of different sized populations and so highlights whether there are differences that may be attributed to some other special cause… The plot takes into account the increased variability of the local authority groups with smaller populations, where a small increase in the number of reconvictions may lead to a large percentage change in the reconviction rate."
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#dangers-of-not-using-inferential-statistics-with-recorded-crime-data-3",
+    "href": "statistical_methods_criminology.html#dangers-of-not-using-inferential-statistics-with-recorded-crime-data-3",
+    "title": "Statistical Methods for Criminology",
+    "section": "Dangers of not using inferential statistics with recorded crime data",
+    "text": "Dangers of not using inferential statistics with recorded crime data\n\n\n\n\n\nScottish Government funnal plot of reconvictions y local authority, 2018-2019 cohort\n\n\nhttps://www.gov.scot/binaries/content/documents/govscot/publications/statistics/2021/10/reconviction-rates-scotland-2018-19-offender-cohort/documents/reconviction-rates-scotland-2018-19-offender-cohort/reconviction-rates-scotland-2018-19-offender-cohort/govscot%3Adocument/reconviction-rates-scotland-2018-19-offender-cohort.pdf\n\n“Rates for local authority groups which lie inside the funnel are not significantly different from the national rate, and we can then usefully focus on possible explanations for rates which deviate significantly from the national figure.\nWhilst this is useful for highlighting that there are practical differences in reconviction rates between each local authority group, even after taking into account differences in population sizes, it does not allow us to identify if this disparity is due to variation in the characteristics of offenders in each area or a variation in practices between different local authority groups. Different offender characteristics between local authority groups could include: age, sex, crime, disposal, deprivation, etc."
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#dangers-of-not-using-inferential-statistics-with-recorded-crime-data-4",
+    "href": "statistical_methods_criminology.html#dangers-of-not-using-inferential-statistics-with-recorded-crime-data-4",
+    "title": "Statistical Methods for Criminology",
+    "section": "Dangers of not using inferential statistics with recorded crime data",
+    "text": "Dangers of not using inferential statistics with recorded crime data\n\n\n\n\n\nScottish Government funnal plot of reconvictions y local authority, 2018-2019 cohort\n\n\nhttps://www.gov.scot/binaries/content/documents/govscot/publications/statistics/2021/10/reconviction-rates-scotland-2018-19-offender-cohort/documents/reconviction-rates-scotland-2018-19-offender-cohort/reconviction-rates-scotland-2018-19-offender-cohort/govscot%3Adocument/reconviction-rates-scotland-2018-19-offender-cohort.pdf\n\n“Chart 12 is standardised to take into account some of the differences between local authority groups attributable to the characteristics of offenders, such as the number of previous offences, sentence, sex, and age. It provides the standardised reconviction rates3 against the observed number of offenders minus expected number of offenders. Since all local authorities groups are within the funnel it suggests that the apparent differences in reconviction rates in Chart 11 are primarily attributable to either the variation in the characteristics of the offenders, the type of crime they committed, or the sentence they received, rather than differences in ‘performance’ between the local authority groups.”"
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#reflections-on-this-example",
+    "href": "statistical_methods_criminology.html#reflections-on-this-example",
+    "title": "Statistical Methods for Criminology",
+    "section": "Reflections on this example",
+    "text": "Reflections on this example\n\nEven though the reconviction cohort could be thought of as ‘full population’ data, Scottish Government use ideas from inferential statistics to interpret the data\nI think this well justified\nThere are two implied counterfactuals\n\nWhat could things have looked like for this cohort given the “variable outcomes” we would expect “in the normal run of events”?\nWhat would reconviction rates have looked like if all local authorities had the same distribution of characteristics of people who offended, convicted for the same offences and receiving the same sentences"
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#example-three-ethnic-disparities-in-covid-fines",
+    "href": "statistical_methods_criminology.html#example-three-ethnic-disparities-in-covid-fines",
+    "title": "Statistical Methods for Criminology",
+    "section": "Example Three: Ethnic disparities in Covid Fines",
+    "text": "Example Three: Ethnic disparities in Covid Fines\n\nhttps://blogs.ed.ac.uk/edinburghlawschool/wp-content/uploads/sites/8261/2023/03/NPCC-Report-March-2023-final-1.pdf\nWanted to calculate disparities in Covid fines issued across England and Wales to people from different ethnic backgrounds\nCovid fines data were from 2020-2021, but the most recent data on ethnicity by Police Force Area was from 2016\n“This may mean that the FPN rates by ethnicity – and so our calculated disparity rates – are inaccurate due to changes in the population denominator used to calculate the rates. This could particularly affect PFAs with small ethnic minority populations, where small changes in the estimated ethnic minority population could lead to large differences in the estimated FPN rates.”"
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#simulation",
+    "href": "statistical_methods_criminology.html#simulation",
+    "title": "Statistical Methods for Criminology",
+    "section": "Simulation",
+    "text": "Simulation\n\nIn the last session we spent time being skeptical about our model coefficients, and looked at some methods which adjust coefficients to account for possible biases in the data.\nNow we are going to translate coefficients into more interesting and informative quantities. This is a great way to make results more informative and accessible (King, Tomz, and Wittenberg 2000)."
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#simulation-in-practice",
+    "href": "statistical_methods_criminology.html#simulation-in-practice",
+    "title": "Statistical Methods for Criminology",
+    "section": "Simulation in practice",
+    "text": "Simulation in practice\n\nIn the second example we did the simulation by hand. This is useful as a way to understand the method, but whilst it’s good to know how this works, in practice there are R packages which can do this for us.\nOne good option is clarify, as used in the first example\nThere is inherent uncertainty in simulation results, so it’s crucial to set the seed for the random number generator so you get the same results every time.\nYou also need to run enough simulation draws to get a good estimate of the uncertainty. The default for clarify is 1000 draws.\nMore simulations are always better, but will take longer - so there is a pragmatic aspect to how much time and computer resource you have to run simulations.\nIn general I would recommend using a package like clarify if you conduct this kind of simulation. It’s likely that professionally developed and maintained software will be less error-prone and more efficient than writing your own!"
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#residual-or-unmeasured-confounding-1",
+    "href": "statistical_methods_criminology.html#residual-or-unmeasured-confounding-1",
+    "title": "Statistical Methods for Criminology",
+    "section": "Residual or unmeasured confounding",
+    "text": "Residual or unmeasured confounding\n\nThere are lots of ways you can try to quantify the potential impact of unmeasured confounding which are discussed in epidemiology, in the sub-field of quantitative bias analysis\nI have not seen these methods used in criminology very much (this is a shame!)\nOne informal approach to unmeasured confounding is just to claim that the measures you do have are sufficient…"
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#talking-about-residual-confounding",
+    "href": "statistical_methods_criminology.html#talking-about-residual-confounding",
+    "title": "Statistical Methods for Criminology",
+    "section": "Talking about residual confounding",
+    "text": "Talking about residual confounding\n[ add screenshots ]\nProbably the biggest limitation of our study is that the IPTW modeling approach we adopted assumes no unmeasured covariates linked to both treatment and outcome. In practice, the criterion of having no unobserved confounding is impossible to verify—the data in any observational study provide no definitive information (Robins, Hernán, and Brumback, 2000). As discussed above, however, we tried to counteract this limitation by exploiting what we believe are rich individual baseline data and timevarying covariates over the full life course in order to model the propensity to marriage. It is hard to imagine what the missing time-stable or time-invariant covariates are that would overcome the magnitude and robustness of results. From IQ to the cumulative history of both the outcome and the treatment, we accounted for 20 baseline covariates and approximately a dozen time-varying confounders measured from widely varying sources—many of which predict the course of marriage as theoretically expected (table 1).\nWe thus argue that omitted confounders would have to be implausibly large to overturn the basic results obtained under a number of different model specifications and assumptions.22\n22 A formal sensitivity analysis (see Robins, 1999: 167–73) is beyond the scope of the current paper. Moreover, such analyses require assumptions about the magnitude, direction, and functional form of potential biases that ultimately raise more questions than they answer\n(https://psycnet.apa.org/record/2008-07491-001)"
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#biased-compared-to-what",
+    "href": "statistical_methods_criminology.html#biased-compared-to-what",
+    "title": "Statistical Methods for Criminology",
+    "section": "Biased compared to what?",
+    "text": "Biased compared to what?\n\nThe coefficients from your model will accurately reflect the ‘small world’ of your dataset\nBut they may not reflect the ‘large world’ that we live in\nThe model is the map, not the territory"
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#is-this-a-good-justification",
+    "href": "statistical_methods_criminology.html#is-this-a-good-justification",
+    "title": "Statistical Methods for Criminology",
+    "section": "Is this a good justification?",
+    "text": "Is this a good justification?\n\nIt’s true that you have to make assumptions about the unmeasured confounding to know the impact on your results, and so it’s necessarily speculative\nBut this is possible!\n\n“However, increasing the number of covariates is hardly a persuasive approach to ruling out potentially important confounders, as it is unlikely that one can adequately measure all such confounders”"
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#calculating-a-predicted-values-from-models",
+    "href": "statistical_methods_criminology.html#calculating-a-predicted-values-from-models",
+    "title": "Statistical Methods for Criminology",
+    "section": "Calculating a predicted values from models",
+    "text": "Calculating a predicted values from models\n\nIn the second practical we fit a GLM describing the relationship between violent crime and deprivation which gave us the results\nIntercept = 2.4573632, simd 2020 rank = -0.0003029\nUsing our GLM formula, we know that the log of the expected violent crime for a data zone with an SIMD rank of 0 is 2.4573632\nNB no such datazone will exist by definition, but that’s okay!\nWe can calculate the expected violent crime incidents by exponentiating the intercept, giving us 11.674 violent crimes\nTo calculate violent crime in the most deprived datazone in Scotland, we just add 1 * -0.0003029 (the coefficient for SIMD) to 2.4573632, and then exponentiate: 11.670\nTo calculate violent crime in the least deprived datazone in Scotland, we add 6976 * -0.0003029 (the coefficient for SIMD) to 2.4573632, and then exponentiate: 1.41"
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#deficit-framing",
+    "href": "statistical_methods_criminology.html#deficit-framing",
+    "title": "Statistical Methods for Criminology",
+    "section": "Deficit framing",
+    "text": "Deficit framing\n\nfocus on problems of minority/minoritized groups in reference to advantaged/majority groups\nrather than, say, the advantage experienced by majority groups due to majority group status"
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#framing-5",
+    "href": "statistical_methods_criminology.html#framing-5",
+    "title": "Statistical Methods for Criminology",
+    "section": "Framing",
+    "text": "Framing\n\nThird framing focuses on advantages of White group\nThe subtitle better fits the researchers’ conclusions"
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#what-are-our-ethical-responsibilities",
+    "href": "statistical_methods_criminology.html#what-are-our-ethical-responsibilities",
+    "title": "Statistical Methods for Criminology",
+    "section": "What are our ethical responsibilities",
+    "text": "What are our ethical responsibilities\n“Placing numbers in context and naming racism or sexism when it is present in those numbers should be a requirement—not only for feminist data communication, but for data communication full stop.”\nData Feminism is mostly aimed towards data scientists and data journalists, not academics. Does this change how we should view their recommendations?\n(the original study: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4539829/)\n\nOur analysis exists in a context of (Tilley) durable inequalities"
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#example-one-deficit-framing",
+    "href": "statistical_methods_criminology.html#example-one-deficit-framing",
+    "title": "Statistical Methods for Criminology",
+    "section": "Example one: Deficit framing",
+    "text": "Example one: Deficit framing\n\nfocus on problems of minority/minoritized groups in reference to advantaged/majority groups\nrather than, say, the advantage experienced by majority groups due to majority group status"
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#example-two-community-loss",
+    "href": "statistical_methods_criminology.html#example-two-community-loss",
+    "title": "Statistical Methods for Criminology",
+    "section": "Example two: community loss",
+    "text": "Example two: community loss\n\nJessica T. Simes (2021) gives a good example of how we may want to come up with theoretically informed measures, or theoretically re-frame measures. Simes analysed imprisonment data from the state of Massachusets in the USA, including spatial regression of prison admission rates and how these relate to “racial demographics, social and economic disadvantage, arrest rates, and violent crime” (Jessica T. Simes 2018).\nAs part of this analysis Simes suggests that the cumulative years sentenced to residents of a particular neighbourhood be thought of as ‘community loss’."
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#example-two-community-loss-1",
+    "href": "statistical_methods_criminology.html#example-two-community-loss-1",
+    "title": "Statistical Methods for Criminology",
+    "section": "Example two: community loss",
+    "text": "Example two: community loss\n\nDespite being derived from data on individual punishment histories, this conceptualization reflects the chronic and long-term exposure to loss due to imprisonment in different neighbourhoods.\nThis terminology highlights the effects of imprisonment on the communities in which people who end up in prison lived prior to their imprisonment, rather than just focusing on the people who are currently in prison."
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#language-and-framing",
+    "href": "statistical_methods_criminology.html#language-and-framing",
+    "title": "Statistical Methods for Criminology",
+    "section": "Language and framing",
+    "text": "Language and framing\n\nThe language we use may depend on the audience and the aims of our analysis\nI might desribe a figure differently in an academic journal article versus writing for a general audience"
   }
 ]
