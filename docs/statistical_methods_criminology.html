@@ -423,6 +423,21 @@ Ben Matthews
 </div>
 
 </section>
+<section id="section" class="slide level2">
+<h2></h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://c2.thirdlight.com/file/8/Tb2SsM4TXyBWQHTblABTsjunye/primary-logo.png"></p>
+<figcaption>UoS logo</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://www.ncrm.ac.uk/site-resources/images/webpage-meta-image.jpg"></p>
+<figcaption>NCRM logo</figcaption>
+</figure>
+</div>
+</section>
 <section id="welcome" class="slide level2">
 <h2>Welcome!</h2>
 <ul>
@@ -526,13 +541,12 @@ Ben Matthews
 <ul>
 <li>Administrative data from the justice system (police, courts, prisons, probation… etc)</li>
 <li>Secondary survey data (e.g.&nbsp;victimization, offending, fear of crime… etc)</li>
-<li>Newspaper reports (e.g.&nbsp;collations of stories on police use of force or homicides)</li>
-<li>Social media data (e.g.&nbsp;fear of crime)</li>
-<li>‘Digital trace’ data from darknet drugs transactions</li>
+<li>Newspaper reports (e.g.&nbsp;collations of stories on police use of force or homicides) <span class="citation" data-cites="roussellDarkFootprintState2022">(<a href="#/references" role="doc-biblioref" onclick="">Roussell et al. 2022</a>)</span></li>
+<li>Social media data (e.g.&nbsp;fear of crime) <span class="citation" data-cites="solymosiCrowdsourcingSubjectivePerceptions2018">(<a href="#/references" role="doc-biblioref" onclick="">Solymosi, Bowers, and Fujiyama 2018</a>)</span></li>
+<li>‘Digital trace’ data from darknet drugs transactions <span class="citation" data-cites="cunliffeNonmedicalPrescriptionPsychiatric2019">(<a href="#/references" role="doc-biblioref" onclick="">Cunliffe, Décary-Hêtu, and Pollak 2019</a>)</span></li>
 <li>…</li>
 </ul></li>
 </ul>
-<p>[add references]</p>
 </section>
 <section id="key-types-of-criminological-data" class="slide level2">
 <h2>Key types of criminological data</h2>
@@ -861,11 +875,11 @@ Ben Matthews
 <section id="large-worlds-and-small-worlds" class="slide level2">
 <h2>Large worlds and small worlds</h2>
 <ul>
-<li>Richard McElreath talks about statistical models as representing a self-contained ‘small world’. This is not the real world!</li>
-<li>The model is the map, and not the territory</li>
-<li>Our spreadsheets and model coefficients can only summarize the <code>small world</code> for us, and necessarily omit some of the complexity of the <code>large world</code></li>
+<li>A statistical model is only every the map, and never the territory</li>
+<li>Richard McElreath describes the statistical models as representing ‘small worlds’ of their own - distinct from the ‘large world’ that we actually live in</li>
+<li>Our spreadsheets and model coefficients can only summarize the small world for us, and necessarily omit some of the complexity of the large world - [this is a good thing]((https://kwarc.info/teaching/TDM/Borges.pdf)!</li>
 <li>In this session we’ll overview the most common[^3] way in which criminologists understand the ‘small world’ of their spreadsheets: the general linear model (GLM)</li>
-<li>But be warned, as soon as we want to understand the large world we can run in to problems if all we focus on are the coefficients (we’ll talk about this later)</li>
+<li>But be warned, as soon as we want to understand the large world we can run in to problems if all we focus on are the coefficients from the small world (we’ll talk about this later)</li>
 </ul>
 </section>
 <section id="a-disclaimer" class="slide level2">
@@ -935,7 +949,7 @@ y_i \sim &amp; {Poisson} (\lambda) \\
 </section>
 <section id="negative-counts" class="slide level2">
 <h2>Negative counts?</h2>
-<p>First, if you have small counts (say, if you were modelling homicides in Scotland) the uncertainty in the mean estimate may give you a confidence interval below zero:</p>
+<p>First, if you have small counts (say, if you were modelling homicides in Scotland by Local Authority) the uncertainty in the mean estimate may give you a confidence interval below zero:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb1-2"><a></a></span>
@@ -984,8 +998,9 @@ y_i \sim &amp; {Poisson} (\lambda) \\
 <section id="non-constant-variance" class="slide level2">
 <h2>Non-constant variance?</h2>
 <p>Second, the standard linear model assumes constant variance. But in practice we probably want more variance for larger counts.</p>
-<p>See figure at https://bookdown.org/roback/bookdown-BeyondMLR/ch-poissonreg.html</p>
-</section>
+<p>(Figure from <span class="citation" data-cites="roback2021beyond">Roback and Legler (<a href="#/references" role="doc-biblioref" onclick="">2021</a>)</span>)</p>
+
+<img data-src="https://bookdown.org/roback/bookdown-BeyondMLR/bookdown-BeyondMLR_files/figure-html/OLSpois-1.png" class="r-stretch quarto-figure-center"><p class="caption">“Figure 4.1: Regression models: Linear regression (left) and Poisson regression (right) from Roback”</p></section>
 <section id="interpretting-coefficients" class="slide level2">
 <h2>Interpretting coefficients</h2>
 <ul>
@@ -993,9 +1008,19 @@ y_i \sim &amp; {Poisson} (\lambda) \\
 <li><p>The most straightforward way to interpret coefficients from Poisson models is to exponentiate the coefficient value. This converts the beta coefficient into an Incident Rate Ratio (https://stats.oarc.ucla.edu/stata/output/poisson-regression/)</p></li>
 </ul>
 </section>
+<section id="good-news-and-bad-news" class="slide level2">
+<h2>Good news and bad news</h2>
+<ul>
+<li>To recap: count data are common in criminology</li>
+<li>The standard linear regression models can run into problems with count data (this is bad)</li>
+<li>Generalized linear models (such as the poisson model) don’t have the same problems (this is good!)</li>
+<li>… but GLMs have their own problems (this is bad)</li>
+</ul>
+</section>
 <section id="problems-with-poisson-over-dispersion" class="slide level2">
 <h2>Problems with Poisson: over-dispersion</h2>
 <ul>
+<li><p>This is quite technical, so I will be brief!</p></li>
 <li><p>poisson assumes mean and variance are the same (in that there is only one term in the model, <span class="math inline">\(\lambda\)</span>, which describes both the average and the variability around the average)</p></li>
 <li><p>This is quite a brittle assumption though, and there’s no reason that real-life data has to obey it. So what? If your data are over-dispersed (the conditional variance exceeds the conditional mean), you will get standard errors that are too small.</p></li>
 <li><p>p-values are too optimistic</p></li>
@@ -1013,7 +1038,7 @@ y_i \sim &amp; {Poisson} (\lambda) \\
 <li><p>Example of gun violence in Oakland: https://cao-94612.s3.amazonaws.com/documents/Oakland-Ceasefire-Evaluation-Final-Report-May-2019.pdf</p></li>
 </ul>
 <aside><ol class="aside-footnotes"><li id="fn1"><p>okay, strictly speaking there are different varieties of negative binomial model. So… flavours? <span class="citation" data-cites="hilbeModelingCountData2014">(<a href="#/references" role="doc-biblioref" onclick="">Hilbe 2014</a>)</span></p></li></ol></aside></section>
-<section id="section" class="slide level2">
+<section id="section-1" class="slide level2">
 <h2></h2>
 <p>Also - rates!</p>
 </section>
@@ -2040,6 +2065,9 @@ y_i \sim &amp; {Poisson} (\lambda) \\
 <div id="ref-carr-hillMissingMillionsMeasuring2013" class="csl-entry" role="listitem">
 Carr-Hill, Roy. 2013. <span>“Missing <span>Millions</span> and <span>Measuring Development Progress</span>.”</span> <em>World Development</em> 46 (June): 30–44. <a href="https://doi.org/10.1016/j.worlddev.2012.12.017">https://doi.org/10.1016/j.worlddev.2012.12.017</a>.
 </div>
+<div id="ref-cunliffeNonmedicalPrescriptionPsychiatric2019" class="csl-entry" role="listitem">
+Cunliffe, Jack, David Décary-Hêtu, and Thomas A. Pollak. 2019. <span>“Nonmedical Prescription Psychiatric Drug Use and the Darknet: <span>A</span> Cryptomarket Analysis.”</span> <em>International Journal of Drug Policy</em>, February, S0955395919300246. <a href="https://doi.org/10.1016/j.drugpo.2019.01.016">https://doi.org/10.1016/j.drugpo.2019.01.016</a>.
+</div>
 <div id="ref-d.redelingsWhyConfidenceIntervals2012" class="csl-entry" role="listitem">
 D. Redelings, Matthew, Frank Sorvillo, Lisa V. Smith, and Sander Greenland. 2012. <span>“Why <span>Confidence Intervals Should</span> Be <span>Used</span> in <span>Reporting Studies</span> of <span>Complete Populations</span>”</span> 5 (1). <a href="https://doi.org/10.2174/1874944501205010052">https://doi.org/10.2174/1874944501205010052</a>.
 </div>
@@ -2070,11 +2098,20 @@ King, Gary, Michael Tomz, and Jason Wittenberg. 2000. <span>“Making the <span>
 <div id="ref-knoxAdministrativeRecordsMask2020a" class="csl-entry" role="listitem">
 Knox, Dean, Will Lowe, and Jonathan Mummolo. 2020. <span>“Administrative <span>Records Mask Racially Biased Policing</span>.”</span> <em>American Political Science Review</em> 114 (3): 619–37. <a href="https://doi.org/10.1017/S0003055420000039">https://doi.org/10.1017/S0003055420000039</a>.
 </div>
+<div id="ref-roback2021beyond" class="csl-entry" role="listitem">
+Roback, Paul, and Julie Legler. 2021. <em>Beyond Multiple Linear Regression: Applied Generalized Linear Models and Multilevel Models in <span>R</span></em>. <span>Chapman and Hall/CRC</span>.
+</div>
+<div id="ref-roussellDarkFootprintState2022" class="csl-entry" role="listitem">
+Roussell, Aaron, Lori Sexton, Paul Deppen, Marisa Omori, and Esther Scheibler. 2022. <span>“The Dark Footprint of State Violence: <span>A</span> Synthetic Approach to the <span>American</span> Crime Decline.”</span> <em>Theoretical Criminology</em> 26 (2): 326–46. <a href="https://doi.org/10.1177/1362480620984233">https://doi.org/10.1177/1362480620984233</a>.
+</div>
 <div id="ref-simesPunishingPlacesGeography2021" class="csl-entry" role="listitem">
 Simes, Jessica T. 2021. <em>Punishing <span>Places</span>: <span>The Geography</span> of <span>Mass Imprisonment</span></em>. Univ of California Press.
 </div>
 <div id="ref-simesPlacePunishmentSpatial2018a" class="csl-entry" role="listitem">
 Simes, Jessica T. 2018. <span>“Place and <span>Punishment</span>: <span>The Spatial Context</span> of <span>Mass Incarceration</span>.”</span> <em>Journal of Quantitative Criminology</em> 34 (2): 513–33. <a href="https://doi.org/10.1007/s10940-017-9344-y">https://doi.org/10.1007/s10940-017-9344-y</a>.
+</div>
+<div id="ref-solymosiCrowdsourcingSubjectivePerceptions2018" class="csl-entry" role="listitem">
+Solymosi, Reka, Kate J Bowers, and Taku Fujiyama. 2018. <span>“Crowdsourcing <span>Subjective Perceptions</span> of <span>Neighbourhood Disorder</span>: <span>Interpreting Bias</span> in <span>Open Data</span>.”</span> <em>The British Journal of Criminology</em> 58 (4): 944–67. <a href="https://doi.org/10.1093/bjc/azx048">https://doi.org/10.1093/bjc/azx048</a>.
 </div>
 <div id="ref-spiegelhalterFunnelPlotsComparing2005" class="csl-entry" role="listitem">
 Spiegelhalter, David J. 2005. <span>“Funnel Plots for Comparing Institutional Performance.”</span> <em>Statistics in Medicine</em> 24 (8): 1185–1202. <a href="https://doi.org/10.1002/sim.1970">https://doi.org/10.1002/sim.1970</a>.

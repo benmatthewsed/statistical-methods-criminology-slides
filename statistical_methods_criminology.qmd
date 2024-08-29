@@ -13,6 +13,13 @@ format:
     scrollable: true
 ---
 
+##
+
+![UoS logo](https://c2.thirdlight.com/file/8/Tb2SsM4TXyBWQHTblABTsjunye/primary-logo.png)
+
+![NCRM logo](https://www.ncrm.ac.uk/site-resources/images/webpage-meta-image.jpg)
+
+
 
 
 ## Welcome!
@@ -113,12 +120,10 @@ _add this here_
 - Criminological data could be
   - Administrative data from the justice system (police, courts, prisons, probation... etc)
   - Secondary survey data (e.g. victimization, offending, fear of crime... etc)
-  - Newspaper reports (e.g. collations of stories on police use of force or homicides)
-  - Social media data (e.g. fear of crime)
-  - 'Digital trace' data from darknet drugs transactions
+  - Newspaper reports (e.g. collations of stories on police use of force or homicides) [@roussellDarkFootprintState2022]
+  - Social media data (e.g. fear of crime) [@solymosiCrowdsourcingSubjectivePerceptions2018]
+  - 'Digital trace' data from darknet drugs transactions [@cunliffeNonmedicalPrescriptionPsychiatric2019]
   - ...
-
-[add references]
 
 ---
 
@@ -140,7 +145,7 @@ _add this here_
 
 [@8347e95e012d4212a5ee429a18ee592e, p228-229]
 
----
+
 
 ## How does an event become a crime statistic?
 
@@ -432,11 +437,11 @@ But this excludes people, students, people in prison, and those living in refuge
 
 ## Large worlds and small worlds
 
-- Richard McElreath talks about statistical models as representing a self-contained 'small world'. This is not the real world!
-- The model is the map, and not the territory
-- Our spreadsheets and model coefficients can only summarize the `small world` for us, and necessarily omit some of the complexity of the `large world`
+- A statistical model is only every the map, and never the territory
+- Richard McElreath describes the statistical models as representing 'small worlds' of their own - distinct from the 'large world' that we actually live in
+- Our spreadsheets and model coefficients can only summarize the small world for us, and necessarily omit some of the complexity of the large world - [this is a good thing]((https://kwarc.info/teaching/TDM/Borges.pdf)!
 - In this session we'll overview the most common[^3] way in which criminologists understand the 'small world' of their spreadsheets: the general linear model (GLM)
-- But be warned, as soon as we want to understand the large world we can run in to problems if all we focus on are the coefficients (we'll talk about this later)
+- But be warned, as soon as we want to understand the large world we can run in to problems if all we focus on are the coefficients from the small world (we'll talk about this later)
 
 ---
 
@@ -508,7 +513,7 @@ The coefficients from Poisson models (which range from $-\infty$ to $\infty$) ar
 
 ## Negative counts?
 
-First, if you have small counts (say, if you were modelling homicides in Scotland) the uncertainty in the mean estimate may give you a confidence interval below zero:
+First, if you have small counts (say, if you were modelling homicides in Scotland by Local Authority) the uncertainty in the mean estimate may give you a confidence interval below zero:
 
 ```{r}
 library(dplyr)
@@ -548,7 +553,9 @@ Here the confidence intervals are not properly expressing what we know to be tru
 
 Second, the standard linear model assumes constant variance. But in practice we probably want more variance for larger counts. 
 
-See figure at https://bookdown.org/roback/bookdown-BeyondMLR/ch-poissonreg.html
+(Figure from @roback2021beyond)
+
+!["Figure 4.1: Regression models: Linear regression (left) and Poisson regression (right) from Roback"](https://bookdown.org/roback/bookdown-BeyondMLR/bookdown-BeyondMLR_files/figure-html/OLSpois-1.png)
 
 
 
@@ -559,10 +566,16 @@ See figure at https://bookdown.org/roback/bookdown-BeyondMLR/ch-poissonreg.html
 - The most straightforward way to interpret coefficients from Poisson models is to exponentiate the coefficient value. This converts the beta coefficient into an Incident Rate Ratio (https://stats.oarc.ucla.edu/stata/output/poisson-regression/)
 
 
----
+## Good news and bad news
+
+- To recap: count data are common in criminology
+- The standard linear regression models can run into problems with count data (this is bad)
+- Generalized linear models (such as the poisson model) don't have the same problems (this is good!)
+- ... but GLMs have their own problems (this is bad)
 
 ## Problems with Poisson: over-dispersion
 
+- This is quite technical, so I will be brief!
 -   poisson assumes mean and variance are the same (in that there is only one term in the model, $\lambda$, which describes both the average and the variability around the average)
 
 - This is quite a brittle assumption though, and there's no reason that real-life data has to obey it. So what? If your data are over-dispersed (the conditional variance exceeds the conditional mean), you will get standard errors that are too small.
