@@ -425,18 +425,8 @@ Ben Matthews
 </section>
 <section id="section" class="slide level2">
 <h2></h2>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="https://c2.thirdlight.com/file/8/Tb2SsM4TXyBWQHTblABTsjunye/primary-logo.png"></p>
-<figcaption>UoS logo</figcaption>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure>
+<p><img data-src="https://c2.thirdlight.com/file/8/Tb2SsM4TXyBWQHTblABTsjunye/primary-logo.png" style="width:80.0%"></p>
 <p><img data-src="https://www.ncrm.ac.uk/site-resources/images/webpage-meta-image.jpg"></p>
-<figcaption>NCRM logo</figcaption>
-</figure>
-</div>
 </section>
 <section id="welcome" class="slide level2">
 <h2>Welcome!</h2>
@@ -500,16 +490,16 @@ Ben Matthews
 <li>These are important topics! And there are a <a href="https://www.ncrm.ac.uk/training/">wealth of training courses</a> covering them</li>
 </ul>
 </section>
-<section id="what-this-workshop-is-not-continued" class="slide level2">
+<section id="what-this-workshop-is-not-continued" class="slide level2 scrollable">
 <h2>What this workshop is not (continued)</h2>
 <ul>
 <li>This workshop is also not a comprehensive guide to every issue that can arise analysing criminological data</li>
-<li>Criminology as a ‘rendezvous discipline’ as David Downes once said</li>
-<li>You could plausibly be analysing a randomized control trial, or geographical point data, or attitudinal questions from a survey - all of which have specific considerations for statistical analysis - and still be doing criminology</li>
+<li>Criminology as a ‘rendezvous discipline’ as David Downes once said<sup>1</sup></li>
+<li>You could plausibly be analysing a <a href="https://link.springer.com/journal/11292">randomized control trial</a>, or <a href="https://www.annualreviews.org/content/journals/10.1146/annurev-criminol-011419-041423">spatial data</a>, or <a href="https://journals.sagepub.com/doi/abs/10.1177/1748895817721273">attitudinal questions from a survey</a> - all of which have specific considerations for statistical analysis - and still be doing criminology</li>
 </ul>
-</section>
+<aside><ol class="aside-footnotes"><li id="fn1"><p>As cited in <span class="citation" data-cites="youngPraiseDangerousThoughts2003">Young (<a href="#/references" role="doc-biblioref" onclick="">2003</a>)</span></p></li></ol></aside></section>
 <section id="what-this-workshop-is" class="slide level2">
-<h2>What this workshop is</h2>
+<h2>What this workshop <em>is</em></h2>
 <ul>
 <li>Instead, this workshop will give an introduction to a set of issues that are (I hope) general to most (or maybe all) analysis of criminological data</li>
 <li>Some of these issues do not have obvious solutions - but at the end of the workshop you will at least be able to describe and acknowledge them, and the possible impacts they may have on inferences from criminological data</li>
@@ -522,10 +512,10 @@ Ben Matthews
 <li>This workshop is about statistical methods for criminology</li>
 <li>This workshop is <em>also</em> about stories. Specifically:
 <ul>
-<li>The story of how the data in your spreadsheet came to exist</li>
-<li>The story you tell about these data based on statistical analysis</li>
+<li>The story of how the data in your spreadsheet came to exist (sometimes called <a href="https://betanalpha.github.io/assets/chapters_html/tree_diameter_growth_analysis.html#sec:provenance">data provenance</a>)</li>
+<li>The story you tell about these data based on a statistical analysis (i.e.&nbsp;your results)</li>
 </ul></li>
-<li>I want to convince you that the first of these two stories should filter through into every decision you make during analysis, and so should determine the second</li>
+<li>I want to convince you that the first of these two stories should filter through into every decision you make during analysis, which determines the story you can tell about your results</li>
 <li>You need to know how your data came about to be able to analyse it properly</li>
 </ul>
 </section></section>
@@ -537,6 +527,7 @@ Ben Matthews
 <section id="types-of-criminological-data" class="slide level2">
 <h2>Types of criminological data</h2>
 <ul>
+<li>Again, criminology is very varied</li>
 <li>Criminological data could be
 <ul>
 <li>Administrative data from the justice system (police, courts, prisons, probation… etc)</li>
@@ -1043,7 +1034,7 @@ y_i \sim &amp; {Poisson} (\lambda) \\
 <li><p>People disagree as to which is preferable</p></li>
 <li><p>Example of gun violence in Oakland: https://cao-94612.s3.amazonaws.com/documents/Oakland-Ceasefire-Evaluation-Final-Report-May-2019.pdf</p></li>
 </ul>
-<aside><ol class="aside-footnotes"><li id="fn1"><p>okay, strictly speaking there are different varieties of negative binomial model. So… flavours? <span class="citation" data-cites="hilbeModelingCountData2014">(<a href="#/references" role="doc-biblioref" onclick="">Hilbe 2014</a>)</span></p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn2"><p>okay, strictly speaking there are different varieties of negative binomial model. So… flavours? <span class="citation" data-cites="hilbeModelingCountData2014">(<a href="#/references" role="doc-biblioref" onclick="">Hilbe 2014</a>)</span></p></li></ol></aside></section>
 <section id="section-1" class="slide level2">
 <h2></h2>
 <p>Also - rates!</p>
@@ -1155,13 +1146,13 @@ y_i \sim &amp; {Poisson} (\lambda) \\
 <section id="impact-of-capping-on-analysis" class="slide level2">
 <h2>Impact of capping on analysis</h2>
 <ul>
-<li><p>This was particularly important for women’s reporting of violent victimization (Walby et al.&nbsp;2015) - women who experienced domestic violence may well report more than five repeat incidents of victimization in a given year. A second measurement error issue came from the ‘97 code’ - the option to report the number of incidents experienced as ‘96/too many to count’. Instead, based on the domestic violence literature Walby and colleagues propose using an estimate of 60 incidents for those who report the 97 code.</p></li>
+<li><p>This was particularly important for women’s reporting of violent victimization <span class="citation" data-cites="walbyViolentCrimeIncreasing2016">(<a href="#/references" role="doc-biblioref" onclick="">Walby, Towers, and Francis 2016</a>)</span> - women who experienced domestic violence may well report more than five repeat incidents of victimization in a given year. A second measurement error issue came from the ‘97 code’ - the option to report the number of incidents experienced as ‘96/too many to count’. Instead, based on the domestic violence literature Walby and colleagues propose using an estimate of 60 incidents for those who report the 97 code.</p></li>
 <li><p>This would bias estimates of total crimes , but not prevalence (the number of victims)</p></li>
 <li><p>Sometimes it’s possible to use uncapped data</p></li>
 </ul>
 </section>
-<section id="example-three-ethnic-disparities-in-covid-fines" class="slide level2">
-<h2>Example Three: Ethnic disparities in Covid Fines</h2>
+<section id="bonus-example-three-ethnic-disparities-in-covid-fines" class="slide level2">
+<h2>(Bonus) Example Three: Ethnic disparities in Covid Fines</h2>
 <ul>
 <li>https://blogs.ed.ac.uk/edinburghlawschool/wp-content/uploads/sites/8261/2023/03/NPCC-Report-March-2023-final-1.pdf</li>
 <li>Wanted to calculate disparities in Covid fines issued across England and Wales to people from different ethnic backgrounds</li>
@@ -2128,6 +2119,12 @@ Spiegelhalter, David J. 2005. <span>“Funnel Plots for Comparing Institutional 
 </div>
 <div id="ref-verlaan2024use" class="csl-entry" role="listitem">
 Verlaan, Tim, and Samuel Langton. 2024. <span>“On the Use of Inferential Statistics on Administrative Police Data.”</span> In <em>The Crime Data Handbook</em>, 197–210. Bristol University Press.
+</div>
+<div id="ref-walbyViolentCrimeIncreasing2016" class="csl-entry" role="listitem">
+Walby, Sylvia, Jude Towers, and Brian Francis. 2016. <span>“Is <span>Violent Crime Increasing</span> or <span>Decreasing</span>? A <span>New Methodology</span> to <span>Measure Repeat Attacks Making Visible</span> the <span>Significance</span> of <span>Gender</span> and <span>Domestic Relations</span>.”</span> <em>The British Journal of Criminology</em> 56 (6): 1203–34. <a href="https://doi.org/10.1093/bjc/azv131">https://doi.org/10.1093/bjc/azv131</a>.
+</div>
+<div id="ref-youngPraiseDangerousThoughts2003" class="csl-entry" role="listitem">
+Young, Jock. 2003. <span>“In Praise of Dangerous Thoughts.”</span> <em>Punishment &amp; Society</em> 5 (1): 97–107. <a href="https://doi.org/10.1177/1462474503005001049">https://doi.org/10.1177/1462474503005001049</a>.
 </div>
 </div>
 </section></section>

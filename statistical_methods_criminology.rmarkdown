@@ -13,6 +13,7 @@ format:
     scrollable: true
 ---
 
+
 ##
 
 ![](https://c2.thirdlight.com/file/8/Tb2SsM4TXyBWQHTblABTsjunye/primary-logo.png){width=80%}
@@ -525,6 +526,7 @@ The coefficients from Poisson models (which range from $-\infty$ to $\infty$) ar
 
 First, if you have small counts (say, if you were modelling homicides in Scotland by Local Authority) the uncertainty in the mean estimate may give you a confidence interval below zero:
 
+
 ```{r}
 library(dplyr)
 
@@ -555,6 +557,7 @@ glm(y ~ 1, # fit intercept only model with poisson outcome
          exp_conf_low = exp(conf_low))
 
 ```
+
 
 Here the confidence intervals are not properly expressing what we know to be true about our data (that it has to be positive). 
 
@@ -927,6 +930,7 @@ Are you concerned about all these? Some more than others? Are there obvious step
 ::: {.column width="66%"}
 
 
+
 ```{r preds}
 library(ggplot2)
 
@@ -940,6 +944,7 @@ data.frame(
 
 
 ```
+
 
 
 :::
@@ -976,6 +981,7 @@ In fact, we can calculate these predictions across the whole range of SIMD
 
 ::: {.column width="66%"}
 
+
 ```{r rnorm_sim_v1}
 library(tibble)
 library(ggplot2)
@@ -995,6 +1001,7 @@ tibble(
 
 ```
 
+
 :::
 
 ::: {.column width="34%"}
@@ -1013,6 +1020,7 @@ Here we simulate a normally distributed random variable and plot its distributio
 :::: {.columns}
 
 ::: {.column width="66%"}
+
 
 ``` {r rnorm_sim_v2}
 var2 <- 
@@ -1034,6 +1042,7 @@ tibble(
 
 ```
 
+
 :::
 
 ::: {.column width="34%"}
@@ -1052,6 +1061,7 @@ We can see that they are uncorrelated (as we would expect)
 :::: {.columns}
 
 ::: {.column width="66%"}
+
 
 
 ```{r mvtnorm_sim}
@@ -1073,6 +1083,7 @@ cor_data |>
 ```
 
 
+
 :::
 
 ::: {.column width="34%"}
@@ -1092,6 +1103,7 @@ If we use `mvrnorm()` the resulting simulations can be correlated. Here I set a 
 
 ::: {.column width="66%"}
 
+
 ```{r cor_graph_2}
 cor_data |> 
   ggplot(aes(x = V1, y = V2)) +
@@ -1099,6 +1111,7 @@ cor_data |>
   geom_density_2d()
 
 ```
+
 
 
 :::
@@ -1118,6 +1131,7 @@ cor_data |>
 
 ::: {.column width="66%"}
 
+
 ``` {r clarify}
 
 simd <- readRDS(url("https://github.com/benmatthewsed/statistical-methods-criminology-slides/raw/master/resources/simd_crime_sim.rds"))
@@ -1129,6 +1143,7 @@ mod_vio_simd_qp <- glm(vio_integer_sim ~ simd2020_rank,
 
 
 ```
+
 
 
 :::
@@ -1149,6 +1164,7 @@ If we fit the model from the second practical again...
 ::: {.column width="66%"}
 
 
+
 ``` {r clarify2}
 
 library(clarify)
@@ -1161,6 +1177,7 @@ plot(sim_res)
 
 
 ```
+
 
 :::
 
@@ -1233,6 +1250,7 @@ To calculate the ratio of victimization rates in years 1 and 2, Hunter and Tselo
 :::: {.columns}
 
 ::: {.column width="66%"}
+
 ```{r vid_fn, fig.show = 'hide'}
 #| echo: true
 
@@ -1241,6 +1259,7 @@ victim_divide <- function(base_y1, base_y2){
 }
 
 ```
+
 :::
 
 ::: {.column width="34%"}
@@ -1256,6 +1275,7 @@ This is what the VD formula looks like in `R`
 :::: {.columns}
 
 ::: {.column width="66%"}
+
 
 ```{r vd_prep}
 #| echo: true
@@ -1282,6 +1302,7 @@ dat <-
   mutate(vict = as.integer(n * prev))
 
 ```
+
 :::
 
 ::: {.column width="34%"}
@@ -1298,6 +1319,7 @@ These are data from the Crime Survey for England and Wales showing victimization
 
 ::: {.column width="66%"}
 
+
 ```{r vd_models}
 #| echo: true
 
@@ -1312,6 +1334,7 @@ model2015 <-
 family = "binomial",
 data = filter(dat, year == "2015"))
 ```
+
 
 :::
 
@@ -1330,6 +1353,7 @@ We can fit a simple regression model to the data in each year to calculate the l
 ::: {.column width="66%"}
 
 Model1 :
+
 ```{r vd_ests_2015}
 #| echo: true
 results_2015 <- 
@@ -1339,7 +1363,9 @@ broom::tidy(model2015) |>
 results_2015
 ```
 
+
 Model 2:
+
 ```{r vd_ests_2020}
 #| echo: true
 
@@ -1350,6 +1376,7 @@ broom::tidy(model2020) |>
 results_2020
 
 ```
+
 
 
 :::
@@ -1369,6 +1396,7 @@ Model 1 shows a statistically significant difference for men (compared to women)
 
 ::: {.column width="66%"}
 
+
 ```{r vd_calc}
 #| echo: true
 victim_divide(
@@ -1376,6 +1404,7 @@ victim_divide(
   base_y2 = results_2020$est[[2]]
   )
 ```
+
 
 
 :::
@@ -1395,6 +1424,7 @@ Based on the point estimates from the model, we would conclude that victimiztion
 :::: {.columns}
 
 ::: {.column width="66%"}
+
 
 ```{r vd_sim}
 #| echo: true
@@ -1419,6 +1449,7 @@ draws_2015 <-
 ```
 
 
+
 :::
 
 ::: {.column width="34%"}
@@ -1437,6 +1468,7 @@ This gives us a set of 10,000 coefficients for each model.
 :::: {.columns}
 
 ::: {.column width="66%"}
+
 
 ```{r vd_sim_calc}
 #| echo: true
@@ -1463,6 +1495,7 @@ sim_dat <-
 ```
 
 
+
 :::
 
 ::: {.column width="34%"}
@@ -1478,6 +1511,7 @@ Once we tidy the results up a bit, we can pass these simulated draws to our `vic
 :::: {.columns}
 
 ::: {.column width="66%"}
+
 
 ```{r vd_sim_res}
 #| echo: true
@@ -1495,6 +1529,7 @@ sim_dat |>
   geom_vline(aes(xintercept = 0))
 
 ```
+
 
 
 :::
