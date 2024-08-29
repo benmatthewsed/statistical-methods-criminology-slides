@@ -425,7 +425,7 @@ But this excludes people, students, people in prison, and those living in refuge
 # Break {background-color="#666666"}
 
 
-# The general linear model
+# The general linear model  {background-color="#40666e"}
 
 
 ---
@@ -608,7 +608,7 @@ In this practical we'll fit some count models in R
 
 
 
-# Measurement error, selection and confounding
+# Measurement error, selection and confounding  {background-color="#40666e"}
 
 
 ---
@@ -639,7 +639,7 @@ In this practical we'll fit some count models in R
 
 
 
-# Act One: Measurement error
+# Act One: Measurement error {background-color="#9a2515"}
 
 ---
 
@@ -1534,7 +1534,7 @@ These intervals include zero, so the apparent 52% reduction in victimization ine
 
 ---
 
-# Ethics
+# Ethics  {background-color="#40666e"}
 
 ## General ethical principles in social science research
 
@@ -1680,7 +1680,7 @@ Data Feminism is mostly aimed towards data scientists and data journalists, not 
 
 
 
-# Overview
+# Overview  {background-color="#40666e"}
 
 ## Overview
 
@@ -1695,7 +1695,10 @@ Data Feminism is mostly aimed towards data scientists and data journalists, not 
 ## Where next?
 
 - Data provenance: Over to you!
-- GLMs (and beyond): (Statistical Rethinking)[https://github.com/rmcelreath/stat_rethinking_2024]
+- GLMs (and beyond)
+  - (Statistical Rethinking)[https://github.com/rmcelreath/stat_rethinking_2024]
+  - (Quantitative Social Science Methods, I (Gov2001 at Harvard), Gary King)[https://www.youtube.com/watch?v=qs2uCuDL2OQ&list=PL0n492lUg2sgSevEQ3bLilGbFph4l92gH]
+
 - Quantitative Bias Analysis: :shrug: Maybe (_Quantitative Assessment of Systematic Bias: A Guide for Researchers_)[https://journals.sagepub.com/doi/10.1177/00220345231193314] or [@kawabataQuantitativeBiasAnalysis2023]?
 - Simulating meaningful quantities from results: (`{clarify}`)[https://iqss.github.io/clarify/] and (`{marginaleffects}`)[https://marginaleffects.com/]
 - Ethics: (Data Feminism)[https://data-feminism.mitpress.mit.edu/pub/czq9dfs5/release/3]
