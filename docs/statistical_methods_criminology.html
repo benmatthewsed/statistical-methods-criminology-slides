@@ -872,6 +872,27 @@ Ben Matthews
 <h1>The general linear model</h1>
 
 </section>
+<section id="a-disclaimer" class="slide level2">
+<h2>A disclaimer</h2>
+<ul>
+<li>If you are taking this course I assume that you have some familiarity with linear/regression models of some description</li>
+<li>This session is partly
+<ul>
+<li>(a brief) refresher of these kinds of models</li>
+<li>Discussion of some problems with regression models applied to count data - a common type of criminological data</li>
+<li></li>
+</ul></li>
+</ul>
+</section>
+<section id="another-disclaimer" class="slide level2">
+<h2>A(nother) disclaimer</h2>
+<ul>
+<li>You could be possible to spend months and months studying GLMs and their various extensions. Some specific flavours of model that we <em>don’t</em> cover, but which may be useful for your own work include:</li>
+<li>Mixed/multilevel/hierarchical/etc (see e.g.&nbsp;https://www.cmm.bris.ac.uk/lemma/)</li>
+<li>Generalized Additive models (GAMs) (which are less common in criminology, but are very useful; https://noamross.github.io/gams-in-r-course/)</li>
+<li>‘Bespoke’ models (very infrequently used in criminology to my knowledge, https://betanalpha.github.io/assets/case_studies/generative_modeling.html, but see e.g.&nbsp;https://josepinasanchez.uk/wp-content/uploads/2018/09/bsc-presentation.pdf)</li>
+</ul>
+</section>
 <section id="large-worlds-and-small-worlds" class="slide level2">
 <h2>Large worlds and small worlds</h2>
 <ul>
@@ -880,21 +901,6 @@ Ben Matthews
 <li>Our spreadsheets and model coefficients can only summarize the small world for us, and necessarily omit some of the complexity of the large world - [this is a good thing]((https://kwarc.info/teaching/TDM/Borges.pdf)!</li>
 <li>In this session we’ll overview the most common[^3] way in which criminologists understand the ‘small world’ of their spreadsheets: the general linear model (GLM)</li>
 <li>But be warned, as soon as we want to understand the large world we can run in to problems if all we focus on are the coefficients from the small world (we’ll talk about this later)</li>
-</ul>
-</section>
-<section id="a-disclaimer" class="slide level2">
-<h2>A disclaimer</h2>
-<ul>
-<li>If you are taking this course I assume that you have some familiarity with linear models of some description. This session is therefore mostly a refresher.</li>
-</ul>
-</section>
-<section id="another-disclaimer" class="slide level2">
-<h2>A(nother) disclaimer</h2>
-<ul>
-<li>You could be possible to spend months and months studying GLMs and their various extensions. Some specific flavours of model that we <em>don’t</em> cover, but which may be useful for your own work include:</li>
-<li>Mixed/multilevel/hierarchical/etc (see e.g.&nbsp;https://www.cmm.bris.ac.uk/lemma/)</li>
-<li>Additive models (GAMs) (which are less common in criminology, but are very useful; https://noamross.github.io/gams-in-r-course/)</li>
-<li>‘bespoke’ models (very infrequently used in criminology to my knowledge, https://betanalpha.github.io/assets/case_studies/generative_modeling.html, but see e.g.&nbsp;https://josepinasanchez.uk/wp-content/uploads/2018/09/bsc-presentation.pdf)</li>
 </ul>
 </section>
 <section id="anatomy-of-a-glm" class="slide level2">
@@ -1071,9 +1077,10 @@ y_i \sim &amp; {Poisson} (\lambda) \\
 <h1>Measurement error, selection and confounding</h1>
 
 </section>
-<section id="from-small-world-to-large-world" class="slide level2">
-<h2>From small world to large world?</h2>
+<section id="going-from-the-smal-world-to-the-large-world" class="slide level2">
+<h2>Going from the smal world to the large world</h2>
 <ul>
+<li>In the last session we talked about GLMs as ‘small worlds’ which summarise the data in our spreadsheets</li>
 <li>There are lots of reasons we may be skeptical about applying conclusions drawn from ‘small world’ of our data and model to the ‘large world’ we live in</li>
 <li>In this section we’ll briefly introduce three ways in which we may want to interrogate our statistical models</li>
 <li>Again, books and books have been written about each topic, so this will only offer a brief overview of each, with links to further reading for those who want to know more.</li>
@@ -1082,21 +1089,17 @@ y_i \sim &amp; {Poisson} (\lambda) \\
 <section id="are-coefficients-sufficient" class="slide level2">
 <h2>Are coefficients sufficient?</h2>
 <ul>
-<li>We should be skeptical about the numbers in our spreadsheets and the coefficients that summarise them</li>
-<li>The numbers may be (predictably) inaccurate (measurement error);</li>
-<li>they may omit some variables that we theoretically think are important (confounding), or;</li>
-<li>they omit some people/cases we care about (selection effects)</li>
-<li>These are problems that are hard to solve based on the data we observe alone</li>
+<li>We should, I think, be skeptical about the numbers in our spreadsheets and the coefficients that summarise them, by default <span class="citation" data-cites="greenlandIntervalEstimationSimulation2004">(<a href="#/references" role="doc-biblioref" onclick="">Greenland 2004</a>)</span></li>
+<li>The coefficients from your model will accurately reflect the ‘small world’ of your dataset, but they may not reflect the ‘large world’ that we live in</li>
+<li>Coefficients from GLMs may:
+<ul>
+<li>be (predictably) inaccurate (measurement error);</li>
+<li>omit some variables that we theoretically think are important (confounding), or;</li>
+<li>omit some people/cases we care about (selection effects)</li>
+</ul></li>
+<li>These are problems that are <em>hard, if not impossible, to solve based on the data we observe alone</em></li>
 <li>There is a large literature in epidemiology study these issues called <strong>Quantitative Bias Analysis</strong></li>
 <li></li>
-</ul>
-</section>
-<section id="biased-compared-to-what" class="slide level2">
-<h2>Biased compared to what?</h2>
-<ul>
-<li>The coefficients from your model will accurately reflect the ‘small world’ of your dataset</li>
-<li>But they may not reflect the ‘large world’ that we live in</li>
-<li>The model is the map, not the territory</li>
 </ul>
 </section></section>
 <section>
@@ -1108,9 +1111,9 @@ y_i \sim &amp; {Poisson} (\lambda) \\
 <h2>Measurement error</h2>
 <ul>
 <li>Measurement error is the gap between what we are conceptually interested in and the way that this concept is recorded in our spreadsheet</li>
-<li>GLM assumes no measurement error</li>
-<li>In practice we know criminological data are likely to be measured with some degree of error.</li>
-<li>Police recorded crime data is not a perfect measure of the amount of crime ‘out there’ in society. As we have discussed already, not all crimes are reported to the police, not all incidents which are reported are recorded as crimes and so on.</li>
+<li>In practice we know criminological data are likely to be measured with some degree of error</li>
+<li>For example, police recorded crime data is not a perfect measure of the amount of crime ‘out there’ in society</li>
+<li>As we have discussed already, not all crimes are reported to the police, not all incidents which are reported are recorded as crimes and so on.</li>
 </ul>
 </section>
 <section id="measurement-error-in-practice-police-recorded-crime" class="slide level2">
@@ -1144,7 +1147,8 @@ y_i \sim &amp; {Poisson} (\lambda) \\
 <section id="example-two-measurement-error-in-victimizaton-survey-data" class="slide level2">
 <h2>Example Two: Measurement error in victimizaton survey data</h2>
 <ul>
-<li><p>Historically, national victimization surveys (such as the SCJS and CSEW) capped the number of victim forms that victims could complete. In 2019, ONS said that “Since the survey began in 1981, “repeat” incidents have been limited to a total of 5. Historically, including a maximum of 5 repeat incidents for any individual victim had proven to be an effective way of reducing the effects of sample variability from year to year. This approach enabled the publication of incident rates that were not subject to large fluctuation between survey years. This approach yields a more reliable picture of changes in victimisations over time once high order repeat victimisations were treated in this way.” (https://doc.ukdataservice.ac.uk/doc/7280/mrdoc/pdf/7280_csew_improving_victimisation_estimates_2019.pdf)</p></li>
+<li><p>Historically, national victimization surveys (such as the SCJS and CSEW) capped the number of victim forms that victims could complete</p></li>
+<li><p>In 2019, ONS said that “Since the survey began in 1981, “repeat” incidents have been limited to a total of 5. Historically, including a maximum of 5 repeat incidents for any individual victim had proven to be an effective way of reducing the effects of sample variability from year to year. This approach enabled the publication of incident rates that were not subject to large fluctuation between survey years. This approach yields a more reliable picture of changes in victimisations over time once high order repeat victimisations were treated in this way.” <span class="citation" data-cites="officefornationalstatisticsImprovingVictimisationEstimates2019">(<a href="#/references" role="doc-biblioref" onclick="">Office for National Statistics 2019</a>)</span></p></li>
 <li><p>However, it also means that people who experienced more than five incidents of a particular ‘series’ crime type did not have their data accurately recorded</p></li>
 </ul>
 </section>
@@ -2077,8 +2081,11 @@ Gaebler, Johann, William Cai, Guillaume Basse, Ravi Shroff, Sharad Goel, and Jen
 <div id="ref-gelmanCausalQuartetsDifferent2023" class="csl-entry" role="listitem">
 Gelman, Andrew, Jessica Hullman, and Lauren Kennedy. 2023. <span>“Causal Quartets: <span>Different</span> Ways to Attain the Same Average Treatment Effect.”</span> arXiv. <a href="https://doi.org/10.48550/arXiv.2302.12878">https://doi.org/10.48550/arXiv.2302.12878</a>.
 </div>
+<div id="ref-greenlandIntervalEstimationSimulation2004" class="csl-entry" role="listitem">
+Greenland, Sander. 2004. <span>“Interval Estimation by Simulation as an Alternative to and Extension of Confidence Intervals.”</span> <em>International Journal of Epidemiology</em> 33 (6): 1389–97. <a href="https://doi.org/10.1093/ije/dyh276">https://doi.org/10.1093/ije/dyh276</a>.
+</div>
 <div id="ref-greenlandSensitivityAnalysisBias2014" class="csl-entry" role="listitem">
-Greenland, Sander. 2014. <span>“Sensitivity <span>Analysis</span> and <span>Bias Analysis</span>.”</span> In <em>Handbook of <span>Epidemiology</span></em>, edited by Wolfgang Ahrens and Iris Pigeot, 685–706. New York, NY: Springer. <a href="https://doi.org/10.1007/978-0-387-09834-0_60">https://doi.org/10.1007/978-0-387-09834-0_60</a>.
+———. 2014. <span>“Sensitivity <span>Analysis</span> and <span>Bias Analysis</span>.”</span> In <em>Handbook of <span>Epidemiology</span></em>, edited by Wolfgang Ahrens and Iris Pigeot, 685–706. New York, NY: Springer. <a href="https://doi.org/10.1007/978-0-387-09834-0_60">https://doi.org/10.1007/978-0-387-09834-0_60</a>.
 </div>
 <div id="ref-hilbeModelingCountData2014" class="csl-entry" role="listitem">
 Hilbe, Joseph M. 2014. <em>Modeling <span>Count Data</span></em>. Cambridge: Cambridge University Press. <a href="https://doi.org/10.1017/CBO9781139236065">https://doi.org/10.1017/CBO9781139236065</a>.
@@ -2097,6 +2104,9 @@ King, Gary, Michael Tomz, and Jason Wittenberg. 2000. <span>“Making the <span>
 </div>
 <div id="ref-knoxAdministrativeRecordsMask2020a" class="csl-entry" role="listitem">
 Knox, Dean, Will Lowe, and Jonathan Mummolo. 2020. <span>“Administrative <span>Records Mask Racially Biased Policing</span>.”</span> <em>American Political Science Review</em> 114 (3): 619–37. <a href="https://doi.org/10.1017/S0003055420000039">https://doi.org/10.1017/S0003055420000039</a>.
+</div>
+<div id="ref-officefornationalstatisticsImprovingVictimisationEstimates2019" class="csl-entry" role="listitem">
+Office for National Statistics. 2019. <span>“Improving <span>Victimisation Estimates Derived</span> from the <span>Crime Survey</span> for <span>England</span> and <span>Wales</span>.”</span>
 </div>
 <div id="ref-roback2021beyond" class="csl-entry" role="listitem">
 Roback, Paul, and Julie Legler. 2021. <em>Beyond Multiple Linear Regression: Applied Generalized Linear Models and Multilevel Models in <span>R</span></em>. <span>Chapman and Hall/CRC</span>.

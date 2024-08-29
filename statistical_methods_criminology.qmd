@@ -435,6 +435,27 @@ But this excludes people, students, people in prison, and those living in refuge
 
 ---
 
+
+
+## A disclaimer
+
+- If you are taking this course I assume that you have some familiarity with linear/regression models of some description
+- This session is partly 
+  - (a brief) refresher of these kinds of models
+  - Discussion of some problems with regression models applied to count data - a common type of criminological data
+  - 
+
+---
+
+
+## A(nother) disclaimer
+
+- You could be possible to spend months and months studying GLMs and their various extensions. Some specific flavours of model that we *don't* cover, but which may be useful for your own work include:
+- Mixed/multilevel/hierarchical/etc (see e.g. https://www.cmm.bris.ac.uk/lemma/)
+- Generalized Additive models (GAMs) (which are less common in criminology, but are very useful; https://noamross.github.io/gams-in-r-course/)
+- 'Bespoke' models (very infrequently used in criminology to my knowledge, https://betanalpha.github.io/assets/case_studies/generative_modeling.html, but see e.g. https://josepinasanchez.uk/wp-content/uploads/2018/09/bsc-presentation.pdf)
+
+
 ## Large worlds and small worlds
 
 - A statistical model is only every the map, and never the territory
@@ -444,20 +465,6 @@ But this excludes people, students, people in prison, and those living in refuge
 - But be warned, as soon as we want to understand the large world we can run in to problems if all we focus on are the coefficients from the small world (we'll talk about this later)
 
 ---
-
-## A disclaimer
-
-- If you are taking this course I assume that you have some familiarity with linear models of some description. This session is therefore mostly a refresher.
-
----
-
-
-## A(nother) disclaimer
-
-- You could be possible to spend months and months studying GLMs and their various extensions. Some specific flavours of model that we *don't* cover, but which may be useful for your own work include:
-- Mixed/multilevel/hierarchical/etc (see e.g. https://www.cmm.bris.ac.uk/lemma/)
-- Additive models (GAMs) (which are less common in criminology, but are very useful; https://noamross.github.io/gams-in-r-course/)
-- 'bespoke' models (very infrequently used in criminology to my knowledge, https://betanalpha.github.io/assets/case_studies/generative_modeling.html, but see e.g. https://josepinasanchez.uk/wp-content/uploads/2018/09/bsc-presentation.pdf)
 
 
 ## Anatomy of a GLM
@@ -626,8 +633,9 @@ In this practical we'll fit some count models in R
 
 ---
 
-## From small world to large world?
+## Going from the smal world to the large world
 
+- In the last session we talked about GLMs as 'small worlds' which summarise the data in our spreadsheets
 - There are lots of reasons we may be skeptical about applying conclusions drawn from 'small world' of our data and model to the 'large world' we live in
 - In this section we'll briefly introduce three ways in which we may want to interrogate our statistical models
 - Again, books and books have been written about each topic, so this will only offer a brief overview of each, with links to further reading for those who want to know more.
@@ -636,32 +644,26 @@ In this practical we'll fit some count models in R
 
 ## Are coefficients sufficient?
 
-- We should be skeptical about the numbers in our spreadsheets and the coefficients that summarise them
-- The numbers may be (predictably) inaccurate (measurement error);
-- they may omit some variables that we theoretically think are important (confounding), or;
-- they omit some people/cases we care about (selection effects)
-- These are problems that are hard to solve based on the data we observe alone
+- We should, I think, be skeptical about the numbers in our spreadsheets and the coefficients that summarise them, by default [@greenlandIntervalEstimationSimulation2004]
+- The coefficients from your model will accurately reflect the 'small world' of your dataset, but they may not reflect the 'large world' that we live in
+- Coefficients from GLMs may:
+  - be (predictably) inaccurate (measurement error);
+  - omit some variables that we theoretically think are important (confounding), or;
+  - omit some people/cases we care about (selection effects)
+- These are problems that are _hard, if not impossible, to solve based on the data we observe alone_
 - There is a large literature in epidemiology study these issues called __Quantitative Bias Analysis__
 - 
-
-## Biased compared to what?
-
-- The coefficients from your model will accurately reflect the 'small world' of your dataset
-- But they may not reflect the 'large world' that we live in
-- The model is the map, not the territory
-
 
 
 # Act One: Measurement error {background-color="#77BF22"}
 
----
 
 ## Measurement error
 
 - Measurement error is the gap between what we are conceptually interested in and the way that this concept is recorded in our spreadsheet
-- GLM assumes no measurement error
-- In practice we know criminological data are likely to be measured with some degree of error.
-- Police recorded crime data is not a perfect measure of the amount of crime 'out there' in society. As we have discussed already, not all crimes are reported to the police, not all incidents which are reported are recorded as crimes and so on.
+- In practice we know criminological data are likely to be measured with some degree of error
+- For example, police recorded crime data is not a perfect measure of the amount of crime 'out there' in society
+- As we have discussed already, not all crimes are reported to the police, not all incidents which are reported are recorded as crimes and so on.
 
 
 ---
@@ -695,7 +697,8 @@ Open questions - what about survey data? Models other than linear models? What a
 
 ## Example Two: Measurement error in victimizaton survey data
 
--   Historically, national victimization surveys (such as the SCJS and CSEW) capped the number of victim forms that victims could complete. In 2019, ONS said that "Since the survey began in 1981, “repeat” incidents have been limited to a total of 5. Historically, including a maximum of 5 repeat incidents for any individual victim had proven to be an effective way of reducing the effects of sample variability from year to year. This approach enabled the publication of incident rates that were not subject to large fluctuation between survey years. This approach yields a more reliable picture of changes in victimisations over time once high order repeat victimisations were treated in this way." (https://doc.ukdataservice.ac.uk/doc/7280/mrdoc/pdf/7280_csew_improving_victimisation_estimates_2019.pdf)
+-   Historically, national victimization surveys (such as the SCJS and CSEW) capped the number of victim forms that victims could complete
+- In 2019, ONS said that "Since the survey began in 1981, “repeat” incidents have been limited to a total of 5. Historically, including a maximum of 5 repeat incidents for any individual victim had proven to be an effective way of reducing the effects of sample variability from year to year. This approach enabled the publication of incident rates that were not subject to large fluctuation between survey years. This approach yields a more reliable picture of changes in victimisations over time once high order repeat victimisations were treated in this way." [@officefornationalstatisticsImprovingVictimisationEstimates2019]
 
 -   However, it also means that people who experienced more than five incidents of a particular 'series' crime type did not have their data accurately recorded
 
