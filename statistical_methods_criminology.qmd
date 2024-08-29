@@ -1,7 +1,7 @@
 ---
 title: "Statistical Methods for Criminology"
 title-slide-attributes:
-    data-background-color: "#40666e"
+    data-background-color: "#006938"
 author: "Ben Matthews"
 bibliography: references.bib
 execute: 
@@ -67,7 +67,7 @@ _add this here_
 - What do you want to __achieve__?
 
 
-# About this workshop {background-color="#40666e"}
+# About this workshop {background-color="#006938"}
 
 ---
 
@@ -104,7 +104,7 @@ _add this here_
 
 
 
-# Session One: Types of criminological data{background-color="#40666e"}
+# Session One: Types of criminological data{background-color="#006938"}
 
 ---
 
@@ -425,7 +425,7 @@ But this excludes people, students, people in prison, and those living in refuge
 # Break {background-color="#666666"}
 
 
-# The general linear model  {background-color="#40666e"}
+# The general linear model  {background-color="#006938"}
 
 
 ---
@@ -594,7 +594,7 @@ Also - rates!
 
 In this practical we'll fit some count models in R
 
-# Morning recap {background-color="#40666e"}
+# Morning recap {background-color="#006938"}
 
 ## Morning recap
 
@@ -608,7 +608,7 @@ In this practical we'll fit some count models in R
 
 
 
-# Measurement error, selection and confounding  {background-color="#40666e"}
+# Measurement error, selection and confounding  {background-color="#006938"}
 
 
 ---
@@ -639,7 +639,7 @@ In this practical we'll fit some count models in R
 
 
 
-# Act One: Measurement error {background-color="#9a2515"}
+# Act One: Measurement error {background-color="#77BF22"}
 
 ---
 
@@ -832,7 +832,7 @@ as it is unlikely that one can adequately measure all such confounders"
 - If you do want to apply a technical fix, the specifics will depend on the problem you are interested in and the data you have (see Knox et al.)
 - 
 
-# Recap {background-color="#40666e"}
+# Recap {background-color="#006938"}
 
 ## Recap
 
@@ -846,7 +846,7 @@ as it is unlikely that one can adequately measure all such confounders"
 - Unmeasured confounding less so
 - The potential impact of these three factors depends on your specific data and analysis - there are no general solutions :shrug:
 
-# Practical {background-color="#40666e"}
+# Practical {background-color="#006938"}
 
 - Using either the generative story that you came up with in Session One, or the description of the SOI from the first practical, describe the possible effects of:
 
@@ -861,7 +861,7 @@ Are you concerned about all these? Some more than others? Are there obvious step
 ---
 
 
-# Turning coefficients into meaningful quantities of interest: Simulation {background-color="#40666e"}
+# Turning coefficients into meaningful quantities of interest: Simulation {background-color="#006938"}
 
 
 ---
@@ -946,7 +946,7 @@ In fact, we can calculate these predictions across the whole range of SIMD
 
 ---
 
-# But first {background-color="#40666e"}
+# But first {background-color="#006938"}
 
 
 ---
@@ -1534,7 +1534,7 @@ These intervals include zero, so the apparent 52% reduction in victimization ine
 
 ---
 
-# Ethics  {background-color="#40666e"}
+# Ethics  {background-color="#006938"}
 
 ## General ethical principles in social science research
 
@@ -1680,7 +1680,7 @@ Data Feminism is mostly aimed towards data scientists and data journalists, not 
 
 
 
-# Overview  {background-color="#40666e"}
+# Overview  {background-color="#006938"}
 
 ## Overview
 
