@@ -2,7 +2,7 @@
 title: "Statistical Methods for Criminology"
 title-slide-attributes:
     data-background-color: "#006938"
-author: "Ben Matthews"
+author: "Ben Matthews | University of Stirling"
 bibliography: references.bib
 execute: 
   echo: true
@@ -25,8 +25,18 @@ format:
 ## Welcome!
 
 - Who we are
-- [workshop outline](https://github.com/benmatthewsed/ui-data-visualization-course/blob/master/course_outline.md)
-- [Code of conduct](https://github.com/benmatthewsed/ui-data-visualization-course/blob/master/code_of_conduct.md)
+- Who you are:
+  - Your __research interests__
+  - __Why__ this course?
+  - What do you want to __achieve__?
+
+
+## Housekeeping
+
+- Code of conduct
+- __Ask questions whenever__ :thumbsup: You can do this through the Teams chat facility __{demo this now}__
+- We've structured the sessions with regular breaks, but __if you need to leave just leave__!
+- Materials will live online ([slides](https://benmatthewsed.github.io/statistical-methods-criminology-slides/statistical_methods_criminology.html#/title-slide),) so you can access them any time
 
 
 ---
@@ -46,32 +56,40 @@ By the end of the workshop you will:
 
 ## Course outline
 
-_add this here_
+![](resources/course-outline.jpg)
+
+
+## Course schedule
+
+10:00 – Welcome
+10:15 – Data provenance: Types of criminological data
+11:15 – Break
+11:30 – Modelling: Telling stories with the general linear model
+12:30 – Lunch
+13:30 – Q&A
+13:40 – Sensitivity analysis and critiquing results: Measurement error, selection and confounding in crime data
+14:40 – Break
+14:55 – Simulation methods and translating results: Making model coefficients meaningful with simulation
+15:55 – Short break
+16:05 – Discussing results and ethics
+16:45 – Recap and Q&A
+17:00 – Depart
 
 
 ---
 
-## Points of order
+## Session structure
 
-- __Ask questions whenever__ :thumbsup: You can do this through the Teams chat facility __{demo this now}__
-- We've structured the sessions with regular breaks, but __if you need to leave just leave__!
-- Materials will live online ([slides](https://benmatthewsed.github.io/statistical-methods-criminology-slides/statistical_methods_criminology.html#/title-slide),) so you can access them any time
+- In each session I'll present for the first half(ish)
+- Then there will be some exercises and group discussion for the second half(ish)
 
-
----
-
-## `R` set-up
+## Practical sessions
 
 - You can follow along with the materials in a local installation of `R` and `RStudio` on your own computer
+- You can find the course materials at https://github.com/benmatthewsed/statistical-methods-criminology-slides/
+- If you don't have an `R` installation, you can follow along in your browser via posit.cloud [Ben post the link in the chat now!]
+- Or you can use the PDFs of the results rather than run them yourself
 
-
----
-
-## Who you are
-
-- Your __research interests__
-- __Why__ this course?
-- What do you want to __achieve__?
 
 
 # About this workshop {background-color="#006938"}
@@ -94,11 +112,18 @@ _add this here_
 
 [^1]: As cited in @youngPraiseDangerousThoughts2003
 
+
 ## What this workshop _is_
 
 - Instead, this workshop will give an introduction to a set of issues that are (I hope) general to most (or maybe all) analysis of criminological data
 - Some of these issues do not have obvious solutions - but at the end of the workshop you will at least be able to describe and acknowledge them, and the possible impacts they may have on inferences from criminological data
 - I will also signpost where you can go to find out more about each of these issues so you can keep exploring those that are most relevant to you
+
+
+## Course outline
+
+![](resources/course-outline.jpg)
+
 
 
 ## Statistical analysis and stories
@@ -119,7 +144,7 @@ _add this here_
 
 ## Types of criminological data
 
-- Again, criminology is very varied
+- Criminology as rendesvouz discipline again - varied questions, varied approaches to answering them using varied data
 - Criminological data could be:
   - Administrative data from the justice system (police, courts, prisons, probation... etc)
   - Secondary survey data (e.g. victimization, offending, fear of crime... etc)
@@ -135,7 +160,11 @@ _add this here_
 - Here we focus on admistrative data (mostly police recorded crime) and victimization surveys as the most common forms of criminological data
 - If you are interested in another form of data, please do mention this in the discussion sessions!
 
----
+## Data provenance as the story of your data
+
+- Data provenance: how specific numbers in your spreadsheet came to be in your spreadsheet
+- Sometimes well documented (in the case of e.g. national surveys)
+- Sometimes not so well documented!
 
 ## Questions to ask any type of data
 
@@ -150,9 +179,33 @@ _add this here_
 
 
 
-## How does an event become a crime statistic?
+## Example One: How does an event become a crime statistic?
 
-![Recorded crime](resources/recorded_crime_flowchart.pdf){style="transform: rotate(90deg);"}
+:::: {.columns}
+
+::: {.column width="66%"}
+
+![Scottish Government funnal plot of reconvictions y local authority, 2018-2019 cohort](resources/sg-reconviction-funnel-plot-01.png)
+
+https://www.gov.scot/binaries/content/documents/govscot/publications/statistics/2021/10/reconviction-rates-scotland-2018-19-offender-cohort/documents/reconviction-rates-scotland-2018-19-offender-cohort/reconviction-rates-scotland-2018-19-offender-cohort/govscot%3Adocument/reconviction-rates-scotland-2018-19-offender-cohort.pdf
+
+:::
+
+::: {.column width="34%"}
+"Reconviction rates could be used to rank performance across different local
+authorities. However, there is an inherent problem in using this approach since
+it implicitly assumes that a difference in reconviction rates reflects a ‘real’
+difference between local authorities. In reality, all systems within which these
+local authorities operate, no matter how stable, will produce variable outcomes
+in the normal run of events. In particular, outcomes in local authorities with
+smaller sized populations tend to vary more than those in local authorities with
+larger populations. The question we need to answer is therefore: Is the
+observed variation more or less than we would normally expect? "
+
+:::
+
+::::
+
 
 ## Questions to ask any type of data
 
@@ -190,18 +243,21 @@ _add this here_
 - This is one use of statistical significance testing, p-values and all that good stuff
 - With recorded crime data, is this the whole 'population' of crime?
 - @verlaan2024use outline two possible approaches to conceptualizing police recorded crime data: a population or superpopulation approach
-- WARNING there is statistical jargon here!
+- WARNING statistical jargon ahead!
 
 
 ## Implications for analysis: Population or super-population?
-- _Population approach_: if you have police recorded crime data for Scotland in 2023 the data you have is all you could ever have. You don't need to fit statistical models to generalize from the data you observe to a wider population because *there is no wider population*.
-- _Superpopulation approach_: you can think of Scotland in 2023 as 'drawn' from from the population of the UK, or Europe, or the whole planet and want to generalize to this wider population. Alternatively, data from Scotland from 2023 may be seen as a sample from Scotland from 2023 and 2024, or 2023-2030 and so on. 
+- _Population approach_: if you have police recorded crime data for Scotland in 2023 the data you have is all you could ever have.
+  - You don't need to fit statistical models to generalize from the data you observe to a wider population because *there is no wider population*.
+  - All you need are descriptive statistics
+- _Superpopulation approach_: you can think of Scotland in 2023 as 'drawn' from from the population of the UK, or Europe, or the whole planet and want to generalize to this wider population. 
+  - Alternatively, data from Scotland from 2023 may be seen as a sample from Scotland from 2023 and 2024, or 2023-2030 and so on. 
 
 ---
 
 ## Implications for analysis: Population or super-population?
 
-- There is no right or wrong answer really - it depends on what the goal of your analysis is
+- There is no right or wrong answer really
 - But this framing will (or should at least) determine what subsequent analysis you do
 - Unfortunately there are pitfalls either way...
 
@@ -443,17 +499,16 @@ But this excludes people, students, people in prison, and those living in refuge
 ## A disclaimer
 
 - If you are taking this course I assume that you have some familiarity with linear/regression models of some description
-- This session is partly 
-  - (a brief) refresher of these kinds of models
-  - Discussion of some problems with regression models applied to count data - a common type of criminological data
-  - 
+- Here we focus on two elements of telling stories with GLMs
+  - Matching the 'family' to the type of data you have
+  - Interpreting coefficients 
 
 ---
 
 
 ## A(nother) disclaimer
 
-- You could be possible to spend months and months studying GLMs and their various extensions. Some specific flavours of model that we *don't* cover, but which may be useful for your own work include:
+- You could spend months and months studying GLMs and their various extensions. Some specific flavours of model that we *don't* cover, but which may be useful for your own work include:
 - Mixed/multilevel/hierarchical/etc (see e.g. https://www.cmm.bris.ac.uk/lemma/)
 - Generalized Additive models (GAMs) (which are less common in criminology, but are very useful; https://noamross.github.io/gams-in-r-course/)
 - 'Bespoke' models (very infrequently used in criminology to my knowledge, https://betanalpha.github.io/assets/case_studies/generative_modeling.html, but see e.g. https://josepinasanchez.uk/wp-content/uploads/2018/09/bsc-presentation.pdf)

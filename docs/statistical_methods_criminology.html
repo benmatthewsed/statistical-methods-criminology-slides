@@ -10,7 +10,7 @@
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.4.555">
 
-  <meta name="author" content="Ben Matthews">
+  <meta name="author" content="Ben Matthews | University of Stirling">
   <title>Statistical Methods for Criminology</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -417,7 +417,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Ben Matthews 
+Ben Matthews | University of Stirling 
 </div>
 </div>
 </div>
@@ -432,8 +432,21 @@ Ben Matthews
 <h2>Welcome!</h2>
 <ul>
 <li>Who we are</li>
-<li><a href="https://github.com/benmatthewsed/ui-data-visualization-course/blob/master/course_outline.md">workshop outline</a></li>
-<li><a href="https://github.com/benmatthewsed/ui-data-visualization-course/blob/master/code_of_conduct.md">Code of conduct</a></li>
+<li>Who you are:
+<ul>
+<li>Your <strong>research interests</strong></li>
+<li><strong>Why</strong> this course?</li>
+<li>What do you want to <strong>achieve</strong>?</li>
+</ul></li>
+</ul>
+</section>
+<section id="housekeeping" class="slide level2">
+<h2>Housekeeping</h2>
+<ul>
+<li>Code of conduct</li>
+<li><strong>Ask questions whenever</strong> <span class="emoji" data-emoji="thumbsup">👍</span> You can do this through the Teams chat facility <strong>{demo this now}</strong></li>
+<li>We’ve structured the sessions with regular breaks, but <strong>if you need to leave just leave</strong>!</li>
+<li>Materials will live online (<a href="https://benmatthewsed.github.io/statistical-methods-criminology-slides/statistical_methods_criminology.html#/title-slide">slides</a>,) so you can access them any time</li>
 </ul>
 </section>
 <section id="learning-outcomes" class="slide level2">
@@ -449,28 +462,26 @@ Ben Matthews
 </section>
 <section id="course-outline" class="slide level2">
 <h2>Course outline</h2>
-<p><em>add this here</em></p>
+
+<img data-src="resources/course-outline.jpg" class="r-stretch"></section>
+<section id="course-schedule" class="slide level2">
+<h2>Course schedule</h2>
+<p>10:00 – Welcome 10:15 – Data provenance: Types of criminological data 11:15 – Break 11:30 – Modelling: Telling stories with the general linear model 12:30 – Lunch 13:30 – Q&amp;A 13:40 – Sensitivity analysis and critiquing results: Measurement error, selection and confounding in crime data 14:40 – Break 14:55 – Simulation methods and translating results: Making model coefficients meaningful with simulation 15:55 – Short break 16:05 – Discussing results and ethics 16:45 – Recap and Q&amp;A 17:00 – Depart</p>
 </section>
-<section id="points-of-order" class="slide level2">
-<h2>Points of order</h2>
+<section id="session-structure" class="slide level2">
+<h2>Session structure</h2>
 <ul>
-<li><strong>Ask questions whenever</strong> <span class="emoji" data-emoji="thumbsup">👍</span> You can do this through the Teams chat facility <strong>{demo this now}</strong></li>
-<li>We’ve structured the sessions with regular breaks, but <strong>if you need to leave just leave</strong>!</li>
-<li>Materials will live online (<a href="https://benmatthewsed.github.io/statistical-methods-criminology-slides/statistical_methods_criminology.html#/title-slide">slides</a>,) so you can access them any time</li>
+<li>In each session I’ll present for the first half(ish)</li>
+<li>Then there will be some exercises and group discussion for the second half(ish)</li>
 </ul>
 </section>
-<section id="r-set-up" class="slide level2">
-<h2><code>R</code> set-up</h2>
+<section id="practical-sessions" class="slide level2">
+<h2>Practical sessions</h2>
 <ul>
 <li>You can follow along with the materials in a local installation of <code>R</code> and <code>RStudio</code> on your own computer</li>
-</ul>
-</section>
-<section id="who-you-are" class="slide level2">
-<h2>Who you are</h2>
-<ul>
-<li>Your <strong>research interests</strong></li>
-<li><strong>Why</strong> this course?</li>
-<li>What do you want to <strong>achieve</strong>?</li>
+<li>You can find the course materials at https://github.com/benmatthewsed/statistical-methods-criminology-slides/</li>
+<li>If you don’t have an <code>R</code> installation, you can follow along in your browser via posit.cloud [Ben post the link in the chat now!]</li>
+<li>Or you can use the PDFs of the results rather than run them yourself</li>
 </ul>
 </section>
 <section>
@@ -506,6 +517,10 @@ Ben Matthews
 <li>I will also signpost where you can go to find out more about each of these issues so you can keep exploring those that are most relevant to you</li>
 </ul>
 </section>
+<section id="course-outline-1" class="slide level2">
+<h2>Course outline</h2>
+
+<img data-src="resources/course-outline.jpg" class="r-stretch"></section>
 <section id="statistical-analysis-and-stories" class="slide level2">
 <h2>Statistical analysis and stories</h2>
 <ul>
@@ -527,7 +542,7 @@ Ben Matthews
 <section id="types-of-criminological-data" class="slide level2">
 <h2>Types of criminological data</h2>
 <ul>
-<li>Again, criminology is very varied</li>
+<li>Criminology as rendesvouz discipline again - varied questions, varied approaches to answering them using varied data</li>
 <li>Criminological data could be:
 <ul>
 <li>Administrative data from the justice system (police, courts, prisons, probation… etc)</li>
@@ -546,6 +561,14 @@ Ben Matthews
 <li>If you are interested in another form of data, please do mention this in the discussion sessions!</li>
 </ul>
 </section>
+<section id="data-provenance-as-the-story-of-your-data" class="slide level2">
+<h2>Data provenance as the story of your data</h2>
+<ul>
+<li>Data provenance: how specific numbers in your spreadsheet came to be in your spreadsheet</li>
+<li>Sometimes well documented (in the case of e.g.&nbsp;national surveys)</li>
+<li>Sometimes not so well documented!</li>
+</ul>
+</section>
 <section id="questions-to-ask-any-type-of-data" class="slide level2">
 <h2>Questions to ask any type of data</h2>
 <ul>
@@ -558,13 +581,20 @@ Ben Matthews
 </ul>
 <p><span class="citation" data-cites="8347e95e012d4212a5ee429a18ee592e">(<a href="#/references" role="doc-biblioref" onclick="">Keay and Towers 2024, p228–229</a>)</span></p>
 </section>
-<section id="how-does-an-event-become-a-crime-statistic" class="slide level2">
-<h2>How does an event become a crime statistic?</h2>
-<div class="quarto-figure quarto-figure-center" style="transform: rotate(90deg);">
+<section id="example-one-how-does-an-event-become-a-crime-statistic" class="slide level2">
+<h2>Example One: How does an event become a crime statistic?</h2>
+<div class="columns">
+<div class="column" style="width:66%;">
+<div class="quarto-figure quarto-figure-center">
 <figure>
-<p><embed data-src="resources/recorded_crime_flowchart.pdf"></p>
-<figcaption>Recorded crime</figcaption>
+<p><img data-src="resources/sg-reconviction-funnel-plot-01.png"></p>
+<figcaption>Scottish Government funnal plot of reconvictions y local authority, 2018-2019 cohort</figcaption>
 </figure>
+</div>
+<p>https://www.gov.scot/binaries/content/documents/govscot/publications/statistics/2021/10/reconviction-rates-scotland-2018-19-offender-cohort/documents/reconviction-rates-scotland-2018-19-offender-cohort/reconviction-rates-scotland-2018-19-offender-cohort/govscot%3Adocument/reconviction-rates-scotland-2018-19-offender-cohort.pdf</p>
+</div><div class="column" style="width:34%;">
+<p>“Reconviction rates could be used to rank performance across different local authorities. However, there is an inherent problem in using this approach since it implicitly assumes that a difference in reconviction rates reflects a ‘real’ difference between local authorities. In reality, all systems within which these local authorities operate, no matter how stable, will produce variable outcomes in the normal run of events. In particular, outcomes in local authorities with smaller sized populations tend to vary more than those in local authorities with larger populations. The question we need to answer is therefore: Is the observed variation more or less than we would normally expect?”</p>
+</div>
 </div>
 </section>
 <section id="questions-to-ask-any-type-of-data-1" class="slide level2">
@@ -622,20 +652,27 @@ Ben Matthews
 <li>This is one use of statistical significance testing, p-values and all that good stuff</li>
 <li>With recorded crime data, is this the whole ‘population’ of crime?</li>
 <li><span class="citation" data-cites="verlaan2024use">Verlaan and Langton (<a href="#/references" role="doc-biblioref" onclick="">2024</a>)</span> outline two possible approaches to conceptualizing police recorded crime data: a population or superpopulation approach</li>
-<li>WARNING there is statistical jargon here!</li>
+<li>WARNING statistical jargon ahead!</li>
 </ul>
 </section>
 <section id="implications-for-analysis-population-or-super-population-1" class="slide level2">
 <h2>Implications for analysis: Population or super-population?</h2>
 <ul>
-<li><em>Population approach</em>: if you have police recorded crime data for Scotland in 2023 the data you have is all you could ever have. You don’t need to fit statistical models to generalize from the data you observe to a wider population because <em>there is no wider population</em>.</li>
-<li><em>Superpopulation approach</em>: you can think of Scotland in 2023 as ‘drawn’ from from the population of the UK, or Europe, or the whole planet and want to generalize to this wider population. Alternatively, data from Scotland from 2023 may be seen as a sample from Scotland from 2023 and 2024, or 2023-2030 and so on.</li>
+<li><em>Population approach</em>: if you have police recorded crime data for Scotland in 2023 the data you have is all you could ever have.
+<ul>
+<li>You don’t need to fit statistical models to generalize from the data you observe to a wider population because <em>there is no wider population</em>.</li>
+<li>All you need are descriptive statistics</li>
+</ul></li>
+<li><em>Superpopulation approach</em>: you can think of Scotland in 2023 as ‘drawn’ from from the population of the UK, or Europe, or the whole planet and want to generalize to this wider population.
+<ul>
+<li>Alternatively, data from Scotland from 2023 may be seen as a sample from Scotland from 2023 and 2024, or 2023-2030 and so on.</li>
+</ul></li>
 </ul>
 </section>
 <section id="implications-for-analysis-population-or-super-population-2" class="slide level2">
 <h2>Implications for analysis: Population or super-population?</h2>
 <ul>
-<li>There is no right or wrong answer really - it depends on what the goal of your analysis is</li>
+<li>There is no right or wrong answer really</li>
 <li>But this framing will (or should at least) determine what subsequent analysis you do</li>
 <li>Unfortunately there are pitfalls either way…</li>
 </ul>
@@ -867,18 +904,17 @@ Ben Matthews
 <h2>A disclaimer</h2>
 <ul>
 <li>If you are taking this course I assume that you have some familiarity with linear/regression models of some description</li>
-<li>This session is partly
+<li>Here we focus on two elements of telling stories with GLMs
 <ul>
-<li>(a brief) refresher of these kinds of models</li>
-<li>Discussion of some problems with regression models applied to count data - a common type of criminological data</li>
-<li></li>
+<li>Matching the ‘family’ to the type of data you have</li>
+<li>Interpreting coefficients</li>
 </ul></li>
 </ul>
 </section>
 <section id="another-disclaimer" class="slide level2">
 <h2>A(nother) disclaimer</h2>
 <ul>
-<li>You could be possible to spend months and months studying GLMs and their various extensions. Some specific flavours of model that we <em>don’t</em> cover, but which may be useful for your own work include:</li>
+<li>You could spend months and months studying GLMs and their various extensions. Some specific flavours of model that we <em>don’t</em> cover, but which may be useful for your own work include:</li>
 <li>Mixed/multilevel/hierarchical/etc (see e.g.&nbsp;https://www.cmm.bris.ac.uk/lemma/)</li>
 <li>Generalized Additive models (GAMs) (which are less common in criminology, but are very useful; https://noamross.github.io/gams-in-r-course/)</li>
 <li>‘Bespoke’ models (very infrequently used in criminology to my knowledge, https://betanalpha.github.io/assets/case_studies/generative_modeling.html, but see e.g.&nbsp;https://josepinasanchez.uk/wp-content/uploads/2018/09/bsc-presentation.pdf)</li>

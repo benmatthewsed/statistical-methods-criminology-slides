@@ -4,7 +4,7 @@
     "href": "statistical_methods_criminology.html#welcome",
     "title": "Statistical Methods for Criminology",
     "section": "Welcome!",
-    "text": "Welcome!\n\nWho we are\nworkshop outline\nCode of conduct"
+    "text": "Welcome!\n\nWho we are\nWho you are:\n\nYour research interests\nWhy this course?\nWhat do you want to achieve?"
   },
   {
     "objectID": "statistical_methods_criminology.html#learning-outcomes",
@@ -18,7 +18,7 @@
     "href": "statistical_methods_criminology.html#course-outline",
     "title": "Statistical Methods for Criminology",
     "section": "Course outline",
-    "text": "Course outline\nadd this here"
+    "text": "Course outline"
   },
   {
     "objectID": "statistical_methods_criminology.html#points-of-order",
@@ -39,7 +39,7 @@
     "href": "statistical_methods_criminology.html#who-you-are",
     "title": "Statistical Methods for Criminology",
     "section": "Who you are",
-    "text": "Who you are\n\nYour research interests\nWhy this course?\nWhat do you want to achieve?"
+    "text": "Who you are"
   },
   {
     "objectID": "statistical_methods_criminology.html#statistical-analysis-and-stories",
@@ -53,7 +53,7 @@
     "href": "statistical_methods_criminology.html#types-of-criminological-data",
     "title": "Statistical Methods for Criminology",
     "section": "Types of criminological data",
-    "text": "Types of criminological data\n\nAgain, criminology is very varied\nCriminological data could be:\n\nAdministrative data from the justice system (police, courts, prisons, probation… etc)\nSecondary survey data (e.g. victimization, offending, fear of crime… etc)\nNewspaper reports (e.g. collations of stories on police use of force or homicides) (Roussell et al. 2022)\nSocial media data (e.g. fear of crime) (Solymosi, Bowers, and Fujiyama 2018)\n‘Digital trace’ data from darknet drugs transactions (Cunliffe, Décary-Hêtu, and Pollak 2019)\n…"
+    "text": "Types of criminological data\n\nCriminology as rendesvouz discipline again - varied questions, varied approaches to answering them using varied data\nCriminological data could be:\n\nAdministrative data from the justice system (police, courts, prisons, probation… etc)\nSecondary survey data (e.g. victimization, offending, fear of crime… etc)\nNewspaper reports (e.g. collations of stories on police use of force or homicides) (Roussell et al. 2022)\nSocial media data (e.g. fear of crime) (Solymosi, Bowers, and Fujiyama 2018)\n‘Digital trace’ data from darknet drugs transactions (Cunliffe, Décary-Hêtu, and Pollak 2019)\n…"
   },
   {
     "objectID": "statistical_methods_criminology.html#key-types-of-criminological-data",
@@ -95,7 +95,7 @@
     "href": "statistical_methods_criminology.html#implications-for-analysis-population-or-super-population",
     "title": "Statistical Methods for Criminology",
     "section": "Implications for analysis: Population or super-population?",
-    "text": "Implications for analysis: Population or super-population?\n\nOne reason people use statistical models is to generalize from the data they have to a wider population that they care about\nThis is one use of statistical significance testing, p-values and all that good stuff\nWith recorded crime data, is this the whole ‘population’ of crime?\nVerlaan and Langton (2024) outline two possible approaches to conceptualizing police recorded crime data: a population or superpopulation approach\nWARNING there is statistical jargon here!"
+    "text": "Implications for analysis: Population or super-population?\n\nOne reason people use statistical models is to generalize from the data they have to a wider population that they care about\nThis is one use of statistical significance testing, p-values and all that good stuff\nWith recorded crime data, is this the whole ‘population’ of crime?\nVerlaan and Langton (2024) outline two possible approaches to conceptualizing police recorded crime data: a population or superpopulation approach\nWARNING statistical jargon ahead!"
   },
   {
     "objectID": "statistical_methods_criminology.html#dangers-of-inferential-statistics-with-recorded-crime-data",
@@ -144,14 +144,14 @@
     "href": "statistical_methods_criminology.html#a-disclaimer",
     "title": "Statistical Methods for Criminology",
     "section": "A disclaimer",
-    "text": "A disclaimer\n\nIf you are taking this course I assume that you have some familiarity with linear/regression models of some description\nThis session is partly\n\n(a brief) refresher of these kinds of models\nDiscussion of some problems with regression models applied to count data - a common type of criminological data"
+    "text": "A disclaimer\n\nIf you are taking this course I assume that you have some familiarity with linear/regression models of some description\nHere we focus on two elements of telling stories with GLMs\n\nMatching the ‘family’ to the type of data you have\nInterpreting coefficients"
   },
   {
     "objectID": "statistical_methods_criminology.html#another-disclaimer",
     "href": "statistical_methods_criminology.html#another-disclaimer",
     "title": "Statistical Methods for Criminology",
     "section": "A(nother) disclaimer",
-    "text": "A(nother) disclaimer\n\nYou could be possible to spend months and months studying GLMs and their various extensions. Some specific flavours of model that we don’t cover, but which may be useful for your own work include:\nMixed/multilevel/hierarchical/etc (see e.g. https://www.cmm.bris.ac.uk/lemma/)\nGeneralized Additive models (GAMs) (which are less common in criminology, but are very useful; https://noamross.github.io/gams-in-r-course/)\n‘Bespoke’ models (very infrequently used in criminology to my knowledge, https://betanalpha.github.io/assets/case_studies/generative_modeling.html, but see e.g. https://josepinasanchez.uk/wp-content/uploads/2018/09/bsc-presentation.pdf)"
+    "text": "A(nother) disclaimer\n\nYou could spend months and months studying GLMs and their various extensions. Some specific flavours of model that we don’t cover, but which may be useful for your own work include:\nMixed/multilevel/hierarchical/etc (see e.g. https://www.cmm.bris.ac.uk/lemma/)\nGeneralized Additive models (GAMs) (which are less common in criminology, but are very useful; https://noamross.github.io/gams-in-r-course/)\n‘Bespoke’ models (very infrequently used in criminology to my knowledge, https://betanalpha.github.io/assets/case_studies/generative_modeling.html, but see e.g. https://josepinasanchez.uk/wp-content/uploads/2018/09/bsc-presentation.pdf)"
   },
   {
     "objectID": "statistical_methods_criminology.html#anatomy-of-a-glm",
@@ -830,14 +830,14 @@
     "href": "statistical_methods_criminology.html#implications-for-analysis-population-or-super-population-1",
     "title": "Statistical Methods for Criminology",
     "section": "Implications for analysis: Population or super-population?",
-    "text": "Implications for analysis: Population or super-population?\n\nPopulation approach: if you have police recorded crime data for Scotland in 2023 the data you have is all you could ever have. You don’t need to fit statistical models to generalize from the data you observe to a wider population because there is no wider population.\nSuperpopulation approach: you can think of Scotland in 2023 as ‘drawn’ from from the population of the UK, or Europe, or the whole planet and want to generalize to this wider population. Alternatively, data from Scotland from 2023 may be seen as a sample from Scotland from 2023 and 2024, or 2023-2030 and so on."
+    "text": "Implications for analysis: Population or super-population?\n\nPopulation approach: if you have police recorded crime data for Scotland in 2023 the data you have is all you could ever have.\n\nYou don’t need to fit statistical models to generalize from the data you observe to a wider population because there is no wider population.\nAll you need are descriptive statistics\n\nSuperpopulation approach: you can think of Scotland in 2023 as ‘drawn’ from from the population of the UK, or Europe, or the whole planet and want to generalize to this wider population.\n\nAlternatively, data from Scotland from 2023 may be seen as a sample from Scotland from 2023 and 2024, or 2023-2030 and so on."
   },
   {
     "objectID": "statistical_methods_criminology.html#implications-for-analysis-population-or-super-population-2",
     "href": "statistical_methods_criminology.html#implications-for-analysis-population-or-super-population-2",
     "title": "Statistical Methods for Criminology",
     "section": "Implications for analysis: Population or super-population?",
-    "text": "Implications for analysis: Population or super-population?\n\nThere is no right or wrong answer really - it depends on what the goal of your analysis is\nBut this framing will (or should at least) determine what subsequent analysis you do\nUnfortunately there are pitfalls either way…"
+    "text": "Implications for analysis: Population or super-population?\n\nThere is no right or wrong answer really\nBut this framing will (or should at least) determine what subsequent analysis you do\nUnfortunately there are pitfalls either way…"
   },
   {
     "objectID": "statistical_methods_criminology.html#dangers-of-not-using-inferential-statistics-with-recorded-crime-data-1",
@@ -1006,5 +1006,54 @@
     "title": "Statistical Methods for Criminology",
     "section": "(Bonus) Example Three: Ethnic disparities in Covid Fines",
     "text": "(Bonus) Example Three: Ethnic disparities in Covid Fines\n\nhttps://blogs.ed.ac.uk/edinburghlawschool/wp-content/uploads/sites/8261/2023/03/NPCC-Report-March-2023-final-1.pdf\nWanted to calculate disparities in Covid fines issued across England and Wales to people from different ethnic backgrounds\nCovid fines data were from 2020-2021, but the most recent data on ethnicity by Police Force Area was from 2016\n“This may mean that the FPN rates by ethnicity – and so our calculated disparity rates – are inaccurate due to changes in the population denominator used to calculate the rates. This could particularly affect PFAs with small ethnic minority populations, where small changes in the estimated ethnic minority population could lead to large differences in the estimated FPN rates.”"
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#housekeeping",
+    "href": "statistical_methods_criminology.html#housekeeping",
+    "title": "Statistical Methods for Criminology",
+    "section": "Housekeeping",
+    "text": "Housekeeping\n\nCode of conduct\nAsk questions whenever 👍 You can do this through the Teams chat facility {demo this now}\nWe’ve structured the sessions with regular breaks, but if you need to leave just leave!\nMaterials will live online (slides,) so you can access them any time"
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#course-schedule",
+    "href": "statistical_methods_criminology.html#course-schedule",
+    "title": "Statistical Methods for Criminology",
+    "section": "Course schedule",
+    "text": "Course schedule\n10:00 – Welcome 10:15 – Data provenance: Types of criminological data 11:15 – Break 11:30 – Modelling: Telling stories with the general linear model 12:30 – Lunch 13:30 – Q&A 13:40 – Sensitivity analysis and critiquing results: Measurement error, selection and confounding in crime data 14:40 – Break 14:55 – Simulation methods and translating results: Making model coefficients meaningful with simulation 15:55 – Short break 16:05 – Discussing results and ethics 16:45 – Recap and Q&A 17:00 – Depart"
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#session-structure",
+    "href": "statistical_methods_criminology.html#session-structure",
+    "title": "Statistical Methods for Criminology",
+    "section": "Session structure",
+    "text": "Session structure\n\nIn each session I’ll present for the first half(ish)\nThen there will be some exercises and group discussion for the second half(ish)"
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#practical-sessions",
+    "href": "statistical_methods_criminology.html#practical-sessions",
+    "title": "Statistical Methods for Criminology",
+    "section": "Practical sessions",
+    "text": "Practical sessions\n\nYou can follow along with the materials in a local installation of R and RStudio on your own computer\nYou can find the course materials at https://github.com/benmatthewsed/statistical-methods-criminology-slides/\nIf you don’t have an R installation, you can follow along in your browser via posit.cloud [Ben post the link in the chat now!]\nOr you can use the PDFs of the results rather than run them yourself"
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#course-outline-1",
+    "href": "statistical_methods_criminology.html#course-outline-1",
+    "title": "Statistical Methods for Criminology",
+    "section": "Course outline",
+    "text": "Course outline"
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#data-provenance-as-the-story-of-your-data",
+    "href": "statistical_methods_criminology.html#data-provenance-as-the-story-of-your-data",
+    "title": "Statistical Methods for Criminology",
+    "section": "Data provenance as the story of your data",
+    "text": "Data provenance as the story of your data\n\nData provenance: how specific numbers in your spreadsheet came to be in your spreadsheet\nSometimes well documented (in the case of e.g. national surveys)\nSometimes not so well documented!"
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#example-one-how-does-an-event-become-a-crime-statistic",
+    "href": "statistical_methods_criminology.html#example-one-how-does-an-event-become-a-crime-statistic",
+    "title": "Statistical Methods for Criminology",
+    "section": "Example One: How does an event become a crime statistic?",
+    "text": "Example One: How does an event become a crime statistic?\n\n\n\n\n\nScottish Government funnal plot of reconvictions y local authority, 2018-2019 cohort\n\n\nhttps://www.gov.scot/binaries/content/documents/govscot/publications/statistics/2021/10/reconviction-rates-scotland-2018-19-offender-cohort/documents/reconviction-rates-scotland-2018-19-offender-cohort/reconviction-rates-scotland-2018-19-offender-cohort/govscot%3Adocument/reconviction-rates-scotland-2018-19-offender-cohort.pdf\n\n“Reconviction rates could be used to rank performance across different local authorities. However, there is an inherent problem in using this approach since it implicitly assumes that a difference in reconviction rates reflects a ‘real’ difference between local authorities. In reality, all systems within which these local authorities operate, no matter how stable, will produce variable outcomes in the normal run of events. In particular, outcomes in local authorities with smaller sized populations tend to vary more than those in local authorities with larger populations. The question we need to answer is therefore: Is the observed variation more or less than we would normally expect?”"
   }
 ]
