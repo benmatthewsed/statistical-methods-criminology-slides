@@ -6,7 +6,7 @@ Ben Matthews
 *The following is an exceprt from my PhD thesis (Criminal careers and
 the crime drop in Scotland,
 1989-2011)\[<https://era.ed.ac.uk/handle/1842/25810>\]. Be glad I’m not
-making you read the whole thing.*
+asking you to read the whole thing!*
 
 *The thesis aimed to explore how patterns of convictions over peoples’
 lives (criminal careers) had changed during a period of falling crime
@@ -26,6 +26,9 @@ the question!*
   data/data collection?”
 
 \[@8347e95e012d4212a5ee429a18ee592e, p228-229\]
+
+Bonus question:
+- If you were analysing these data would you want/expect to see confidence intervals? Why/why not?
 
 ## 4.3 Data Source: Scottish Offenders Index
 
