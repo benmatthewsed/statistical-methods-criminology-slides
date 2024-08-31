@@ -509,6 +509,7 @@ Source: [@justiceanalyticalservicesUserGuideRecorded2016, p57]
 ## Anatomy of a GLM
 
 - GLMs are mathematical ways to summarise the relationship between an outcome you care about and a set of predictors
+- They are _extremely_ useful and very widely used statistical models to answer questions of the kind 'if I have more of X will I also get more of Y'?
 - All GLMs have the following:
   - A systematic component, which describes how the predictors relate to the outcome
   - A stochastic/random component, which describes the [probability distribution](https://www.statisticshowto.com/probability-and-statistics/statistics-definitions/probability-distribution/) of the outcome
@@ -680,60 +681,30 @@ glm(crime_integer_sim ~ overcrowded_rate, # % living in overcrowded housing
 - (How realistic to you think this is?)
 
 
-## Part Two: Interpreting coefficients
+## GLMs aren't all good news
 
-- If you notice, for the Poisson model I had to use the $exp()$ function before interpreting the model coefficients
-- This is because the model uses the $log()$ link function - $exp()$ is the reverse of $log()$
-- For the model's Intercept (the value of the outcome when all the independent variables have value zero), the exponentiated value is the mean of the outcome
-- If we add predictors into the model, we can still $exp()$ the coefficients and then interpret the exponentiated coefficients as the _percentage change_ in the outcome for a one-unit increase in the independent variable
-!
-
-## Good news and bad news
-
-- To recap: count data are common in criminology
-- The standard linear regression models can run into problems with count data (this is bad)
-- Generalized linear models (such as the poisson model) don't have the same problems (this is good!)
-- ... but GLMs have their own problems (this is bad)
-
-## Problems with Poisson: over-dispersion
+- Using a GLM for count data resolves the problem of getting negative estimates and confidence intervals
+- However, interpreting the coefficients gets more complicated
+- And in the specific case of Poisson regression there is another specific problem...
 
 
-
-## Non-constant variance?
-
-Second, the standard linear model assumes constant variance. But in practice we probably want more variance for larger counts. 
-
-(Figure from @roback2021beyond)
-
-!["Figure 4.1: Regression models: Linear regression (left) and Poisson regression (right) from Roback"](https://bookdown.org/roback/bookdown-BeyondMLR/bookdown-BeyondMLR_files/figure-html/OLSpois-1.png)
+## Quasi-poisson models and over dispersion
 
 - This is quite technical, so I will be brief!
--   poisson assumes mean and variance are the same (in that there is only one term in the model, $\lambda$, which describes both the average and the variability around the average)
+- The Poisson distribution assumes mean and variance are the same (in that there is only one term in the model, $\lambda$, which describes both the average and the variability around the average)
+- This is quite a brittle assumption though, and there's no reason that real-life data has to obey it
+- The problem is that if this assumption is not met and your data are [over-dispersed](https://online.stat.psu.edu/stat504/book/export/html/779) all your statistical tests will be over-confident, and you will find statistically significant results when you shouldn't
+- One fix is to use a quasipoisson model, which does not have this assumption. This is what  @walbyViolentCrimeIncreasing2016 used when modelling counts of victimization data, although [other options are available](https://stats.oarc.ucla.edu/r/dae/negative-binomial-regression/)
 
-- This is quite a brittle assumption though, and there's no reason that real-life data has to obey it. So what? If your data are over-dispersed (the conditional variance exceeds the conditional mean), you will get standard errors that are too small.
-- p-values are too optimistic
-- need some way to account for over-dispersion
+# Recap
 
----
-
-## Solutions?
-
-### What do to about over-dispersion
-
-- If all you care about is your standard error being too small you can use quasi-poisson
-- This gives same point estimates as poisson but with 'empirical' SEs - similar to using robust standard errors). Francis et al. use this approach to modelling counts of victimization. In my experience it's also faster than the standard alternative...
-- The negative binomial is a flavour of statistical model ^[okay, strictly speaking there are different varieties of negative binomial model. So... flavours? [@hilbeModelingCountData2014]] for count data which has an extra "dispersion" parameter, which allows you to model the over-dispersion directly
-- People disagree as to which is preferable
+## Recap
+- GLMs are common statistical models used in criminology
+- We should match the type of GLM to the 'story' of our data, commonly (but not exclusively) in criminology this is a count model
+- However, these models can be tricky to interpret, and can have other problems too
 
 
 
-- Example of gun violence in Oakland: https://cao-94612.s3.amazonaws.com/documents/Oakland-Ceasefire-Evaluation-Final-Report-May-2019.pdf
-
----
-
-##
-
-Also - rates!
 
 ## Practical
 
@@ -1975,3 +1946,14 @@ local authority groups."
 - There are two implied counterfactuals
   - What could things have looked like for this cohort given the "variable outcomes" we would expect "in the normal run of events"?
   - What would reconviction rates have looked like if all local authorities had the same distribution of characteristics of people who offended, convicted for the same offences and receiving the same sentences
+
+
+
+
+## Non-constant variance?
+
+Second, the standard linear model assumes constant variance. But in practice we probably want more variance for larger counts. 
+
+(Figure from @roback2021beyond)
+
+!["Figure 4.1: Regression models: Linear regression (left) and Poisson regression (right) from Roback"](https://bookdown.org/roback/bookdown-BeyondMLR/bookdown-BeyondMLR_files/figure-html/OLSpois-1.png)

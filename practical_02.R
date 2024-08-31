@@ -131,21 +131,6 @@ exp(-0.000271)
 # 1 - exp(-0.000271) - 0.027% increase in crime
 
 
-# we can visualize the results:
-
-
-simd |> 
-  mutate(lm_pred = predict(mod_crime_simd_lm), # calculate the predicted values from the lm model
-         p_pred = predict(mod_crime_simd_p, type = "response")) |> # ... and from the poisson model
-  ggplot(aes(x = simd2020_rank, y = crime_integer_sim)) + # plot the raw data
-  geom_point(alpha = 0.1) + # set transparency
-  geom_line(aes(y = lm_pred), colour = "red") +
-  geom_line(aes(y = p_pred), colour = "blue")
-
-# the lines are similar but diverge at the extremes
-# this is because the lm implies linear change, but the poisson model implies multiplicative change
-
-
 
 # modelling violence ------------------------------------------------------
 
@@ -190,61 +175,6 @@ mod_vio_simd_qp |>
          exp_conf_upp = exp(conf_upp))
 
 # the standard error is much larger - this might indicate that we should be worried about over-dispersion
-
-
-# let's visualize the results again
-
-simd |> 
-  mutate(lm_pred = predict(mod_vio_simd_lm), # calculate the predicted values from the lm model
-         p_pred = predict(mod_vio_simd_p, type = "response"),
-         qp_pred = predict(mod_vio_simd_qp, type = "response"),) |> # ... and from the poisson model
-  ggplot(aes(x = simd2020_rank, y = vio_integer_sim)) + # plot the raw data
-  geom_point(alpha = 0.1) + # set transparency
-  geom_line(aes(y = lm_pred), colour = "red") +
-  geom_line(aes(y = p_pred), colour = "blue") +
-  geom_line(aes(y = qp_pred), colour = "pink") 
-
-
-# if we look closely at the models' predictions in low-deprivation areas, we can see something funny with lm
-
-
-predict(mod_vio_simd_lm,
-        newdata = data.frame(simd2020_rank = 6976), # this just gives a prediction for the least deprived datazone
-        se.fit = TRUE) |> 
-  as.data.frame() |> 
-  mutate(conf_low = fit - 1.96 * se.fit, # approximating the 95% confidence interval as 1.96 * the standard error
-         conf_upp = fit + 1.96 * se.fit)
-
-# the model thinks that there will be 0.07 violent crimes in the least deprived neighbourhood,
-# with a lower confidence intervals of -0.27 crimes!
-
-# if we look at the poisson model instead
-
-predict(mod_vio_simd_p,
-        newdata = data.frame(simd2020_rank = 6976), # this just gives a prediction for the least deprived datazone
-        se.fit = TRUE) |> 
-  as.data.frame() |> 
-  mutate(conf_low = fit - 1.96 * se.fit,
-         conf_upp = fit + 1.96 * se.fit,
-         exp_est = exp(fit),
-         exp_conf_low = exp(conf_low),
-         exp_conf_upp = exp(conf_upp))
-
-# the model predicts 1.4 crimes, with a lower confidence interval of 1.37 crimes
-
-# we can do the same for the quasipoisson model too
-
-predict(mod_vio_simd_qp,
-        newdata = data.frame(simd2020_rank = 6976), # this just gives a prediction for the least deprived datazone
-        se.fit = TRUE) |> 
-  as.data.frame() |> 
-  mutate(conf_low = fit - 1.96 * se.fit,
-         conf_upp = fit + 1.96 * se.fit,
-         exp_est = exp(fit),
-         exp_conf_low = exp(conf_low),
-         exp_conf_upp = exp(conf_upp))
-
-# the main estimate is unchanged, but the larger standard error means our confidence intervals are wider - but still positive
 
 
 # over to you -------------------------------------------------------------
