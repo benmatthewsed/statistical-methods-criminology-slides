@@ -158,10 +158,10 @@ mod_vio_simd_p <- glm(vio_integer_sim ~ simd2020_rank,
 
 mod_vio_simd_lm |> 
   broom::tidy() |> 
-  mutate(conf_low = estimate - 1.96 * std.error, # we can calculate confidence intevals for these coefficients
+  mutate(conf_low = estimate - 1.96 * std.error, # we can calculate confidence intervals for these coefficients
          conf_upp = estimate + 1.96 * std.error)
 
-# as before, simd is negatively and statistically significantely related to our crime indicator
+# as before, simd is negatively and statistically significantly related to our crime indicator
 
 # let's see this in the poisson model
 
