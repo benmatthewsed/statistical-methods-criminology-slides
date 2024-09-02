@@ -1513,29 +1513,30 @@ y_i \sim &amp; {Poisson} (\lambda) \\
 
 </section></section>
 <section>
-<section id="turning-coefficients-into-meaningful-quantities-of-interest-simulation" class="title-slide slide level1 center" data-background-color="#006938">
-<h1>Turning coefficients into meaningful quantities of interest: Simulation</h1>
+<section id="turning-coefficients-into-meaningful-quantities-of-interest" class="title-slide slide level1 center" data-background-color="#006938">
+<h1>Turning coefficients into meaningful quantities of interest</h1>
 
 </section>
-<section id="simulation" class="slide level2">
-<h2>Simulation</h2>
+<section id="making-coefficients-useful" class="slide level2">
+<h2>Making coefficients useful</h2>
 <ul>
-<li>In the last session we spent time being skeptical about our model coefficients, and looked at some methods which adjust coefficients to account for possible biases in the data.</li>
-<li>Now we are going to translate coefficients into more interesting and informative quantities. This is a great way to make results more informative and accessible <span class="citation" data-cites="kingMakingMostStatistical2000">(<a href="#/bonus-example-three-ethnic-disparities-in-covid-fines" role="doc-biblioref" onclick="">King, Tomz, and Wittenberg 2000</a>)</span>.</li>
+<li>In the last session discussed reasons to be skeptical about our model coefficients, and looked at some methods which adjust coefficients to account for possible biases in the data</li>
+<li>In this session (and a bit more optimistically!) we are going to focus on how we can turn model coefficients into more meaningful and informative quantities</li>
+<li>This is a great way to make results more informative and accessible <span class="citation" data-cites="kingMakingMostStatistical2000">(<a href="#/bonus-example-three-ethnic-disparities-in-covid-fines" role="doc-biblioref" onclick="">King, Tomz, and Wittenberg 2000</a>)</span></li>
 </ul>
 </section>
-<section id="translating-coefficients" class="slide level2">
-<h2>Translating coefficients</h2>
+<section id="regression-coefficients-a-referesher" class="slide level2">
+<h2>Regression coefficients: a referesher</h2>
 <ul>
-<li>In some simple (linear) models you read off a coefficient directly as the quantities that we are interested in</li>
-<li>In more complex models, such as generalized linear models, we often want to convert the coefficients to express results in a more accessible way</li>
-<li>In poisson regression the model coefficients are also commonly expressed as rate ratios, by exponentiating the coefficients (we did this already in the practical!)</li>
+<li>In simple (linear) models you read off a coefficient directly as the quantities that we are interested in</li>
+<li>In more complex models, such as generalized linear models, we often want to convert the coefficients to express results in a more interpretable way</li>
+<li>In poisson regression the model coefficients are also commonly expressed as rate ratios, by exponentiating the coefficients (we discussed this in Session Two)</li>
 </ul>
 </section>
 <section id="translating-coefficients-challenges" class="slide level2">
 <h2>Translating coefficients: challenges</h2>
 <ul>
-<li>These approaches don’t scale well with more complicated models, or complicated transformations (McElreath; Gelman and Pardoe)</li>
+<li>However, approaches don’t scale well with more complicated models, or complicated transformations (McElreath; Gelman and Pardoe)</li>
 <li>A common way to translate model coefficients into more meaningful quantities is to use all the coefficients in the model to calculate predicted values of the outcome</li>
 <li>These are often called <a href="https://marginaleffects.com/">‘marginal effects’</a> (although this terminology is confusing)</li>
 <li>The terminology is confusing in part because there are lots of related but subtly different quantities people call marginal effects (see https://marginaleffects.com/vignettes/get_started.html)</li>
@@ -1545,13 +1546,16 @@ y_i \sim &amp; {Poisson} (\lambda) \\
 <section id="calculating-a-predicted-values-from-models" class="slide level2">
 <h2>Calculating a predicted values from models</h2>
 <ul>
-<li><p>In the second practical we fit a GLM describing the relationship between violent crime and deprivation which gave us the results</p></li>
-<li><p>Intercept = 2.4573632, simd 2020 rank = -0.0003029</p></li>
-<li><p>Using our GLM formula, we know that the log of the expected violent crime for a data zone with an SIMD rank of 0 is 2.4573632</p></li>
-<li><p>NB no such datazone will exist by definition, but that’s okay!</p></li>
-<li><p>We can calculate the expected violent crime incidents by exponentiating the intercept, giving us 11.674 violent crimes</p></li>
-<li><p>To calculate violent crime in the most deprived datazone in Scotland, we just add 1 * -0.0003029 (the coefficient for SIMD) to 2.4573632, and then exponentiate: 11.670</p></li>
-<li><p>To calculate violent crime in the least deprived datazone in Scotland, we add 6976 * -0.0003029 (the coefficient for SIMD) to 2.4573632, and then exponentiate: 1.41</p></li>
+<li>In the second practical we fit a GLM describing the relationship between violent crime and deprivation which gave us the results
+<ul>
+<li>Intercept = <code>2.4573632</code></li>
+<li>simd 2020 rank = <code>-0.0003029</code></li>
+</ul></li>
+<li>Using our GLM formula, we know that the <span class="math inline">\(log()\)</span> of the expected violent crime count for a data zone with an SIMD rank of <code>0</code> is <code>2.4573632</code></li>
+<li>(NB no such datazone will exist by definition, but that’s okay!)</li>
+<li>We can calculate the expected violent crime incidents for this datazone with SIMD rank <code>0</code> by <span class="math inline">\(exp()\)</span>-ing the intercept, giving us <code>11.674</code> violent crimes</li>
+<li>To an expected violent crime in the most deprived datazone in Scotland, we just add <code>1 * -0.0003029</code> (the coefficient for SIMD) to <code>2.4573632</code>, and then <span class="math inline">\(exp()\)</span> = <code>11.670</code></li>
+<li>To calculate violent crime in the least deprived datazone in Scotland, we add <code>6976 * -0.0003029</code> (the coefficient for SIMD) to <code>2.4573632</code>, and then exponentiate = <code>1.41</code></li>
 </ul>
 </section>
 <section id="calculating-predictions" class="slide level2">
@@ -1570,13 +1574,14 @@ y_i \sim &amp; {Poisson} (\lambda) \\
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="statistical_methods_criminology_files/figure-revealjs/preds-1.png" width="960"></p>
+<p><img data-src="statistical_methods_criminology_files/figure-revealjs/preds_again-1.png" width="960"></p>
 </figure>
 </div>
 </div>
 </div>
 </div><div class="column" style="width:34%;">
-<p>In fact, we can calculate these predictions across the whole range of SIMD</p>
+<p>In fact, we can calculate these predictions across the whole range of SIMD.</p>
+<p>This gives a much more useful summary of the results compared to just the model coefficients.</p>
 </div>
 </div>
 </section>
@@ -1585,8 +1590,8 @@ y_i \sim &amp; {Poisson} (\lambda) \\
 <ul>
 <li>A key challenge is propagating the appropriate uncertainty in our results - especially in more complicated models when predictions might be a function of multiple parameters</li>
 <li>We can use simulation to propagate this uncertainty - and we can apply this approach to any generalized linear model and any Derived Quantity of Interest (DQI) - be it a marginal effect or something else</li>
-<li>The simulation process is described by <span class="citation" data-cites="kingMakingMostStatistical2000">(<a href="#/bonus-example-three-ethnic-disparities-in-covid-fines" role="doc-biblioref" onclick="">King, Tomz, and Wittenberg 2000</a>)</span> and implemented in the R package clarify (https://github.com/iqss/clarify)</li>
-<li>This approach propagates both the uncertainty in the model’s coefficients, and the correlations between the coefficients (for technical reasons that are beyond me, this is important - see Gayle and Lambert 2007 https://journals.sagepub.com/doi/10.1177/0038038507084830)</li>
+<li>The simulation process is described by <span class="citation" data-cites="kingMakingMostStatistical2000">King, Tomz, and Wittenberg (<a href="#/bonus-example-three-ethnic-disparities-in-covid-fines" role="doc-biblioref" onclick="">2000</a>)</span> and implemented in the R package clarify (https://github.com/iqss/clarify)</li>
+<li>This approach propagates both the uncertainty in the model’s coefficients, and the correlations between the coefficients (for technical reasons that are beyond me, this is important [gayleUsingQuasivarianceCommunicate2007])</li>
 </ul>
 </section>
 <section class="slide level2">
@@ -1631,92 +1636,38 @@ y_i \sim &amp; {Poisson} (\lambda) \\
 </div>
 </div>
 </section>
-<section id="simulating-a-second-variable" class="slide level2">
-<h2>Simulating a second variable</h2>
+<section id="simulating-random-variables-a-brief-introduction-1" class="slide level2">
+<h2>Simulating random variables: a brief introduction</h2>
 <div class="columns">
 <div class="column" style="width:66%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>var2 <span class="ot">&lt;-</span> </span>
-<span id="cb11-2"><a></a><span class="fu">rnorm</span>(</span>
-<span id="cb11-3"><a></a>  <span class="at">n =</span> <span class="dv">10000</span>,</span>
-<span id="cb11-4"><a></a>  <span class="at">mean =</span> <span class="dv">1</span>,</span>
-<span id="cb11-5"><a></a>  <span class="at">sd =</span> <span class="dv">1</span></span>
-<span id="cb11-6"><a></a>)</span>
-<span id="cb11-7"><a></a></span>
-<span id="cb11-8"><a></a></span>
-<span id="cb11-9"><a></a><span class="fu">tibble</span>(</span>
-<span id="cb11-10"><a></a>  <span class="at">var1 =</span> var1,</span>
-<span id="cb11-11"><a></a>  <span class="at">var2 =</span> var2</span>
-<span id="cb11-12"><a></a>) <span class="sc">|&gt;</span> </span>
-<span id="cb11-13"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> var1, <span class="at">y =</span> var2)) <span class="sc">+</span></span>
-<span id="cb11-14"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb11-15"><a></a>  <span class="fu">geom_density_2d</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="statistical_methods_criminology_files/figure-revealjs/rnorm_sim_v2-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</div><div class="column" style="width:34%;">
-<p>Now we add a second variable and plot them together.</p>
-<p>We can see that they are uncorrelated (as we would expect)</p>
-</div>
-</div>
-</section>
-<section id="simulating-correlated-variables" class="slide level2">
-<h2>Simulating correlated variables</h2>
-<div class="columns">
-<div class="column" style="width:66%;">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>cor_data <span class="ot">&lt;-</span> MASS<span class="sc">::</span><span class="fu">mvrnorm</span>(</span>
-<span id="cb12-2"><a></a>  <span class="at">n =</span> <span class="dv">10000</span>,</span>
-<span id="cb12-3"><a></a>  <span class="at">mu =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="co"># mu instead of mean</span></span>
-<span id="cb12-4"><a></a>  <span class="at">Sigma =</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="fl">0.9</span>, <span class="fl">0.9</span>, <span class="dv">1</span>), <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>) <span class="co"># Sigma instead of sd</span></span>
-<span id="cb12-5"><a></a>) <span class="sc">|&gt;</span> </span>
-<span id="cb12-6"><a></a>  <span class="fu">as.data.frame</span>()</span>
-<span id="cb12-7"><a></a></span>
-<span id="cb12-8"><a></a>cor_data <span class="sc">|&gt;</span> </span>
-<span id="cb12-9"><a></a>  tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(V1, V2),</span>
-<span id="cb12-10"><a></a>                      <span class="at">names_to =</span> <span class="st">"variable"</span>,</span>
-<span id="cb12-11"><a></a>               <span class="at">values_to =</span> <span class="st">"value"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb12-12"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> value)) <span class="sc">+</span></span>
-<span id="cb12-13"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> variable) <span class="sc">+</span></span>
-<span id="cb12-14"><a></a>  <span class="fu">geom_histogram</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="statistical_methods_criminology_files/figure-revealjs/mvtnorm_sim-1.png" width="960"></p>
-</figure>
-</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">library</span>(tibble)</span>
+<span id="cb11-2"><a></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb11-3"><a></a></span>
+<span id="cb11-4"><a></a>coef_draws <span class="ot">&lt;-</span> </span>
+<span id="cb11-5"><a></a><span class="fu">data.frame</span>(</span>
+<span id="cb11-6"><a></a>  <span class="at">coef_sim  =</span> <span class="fu">rnorm</span>(</span>
+<span id="cb11-7"><a></a>  <span class="at">n =</span> <span class="dv">10000</span>,</span>
+<span id="cb11-8"><a></a>  <span class="at">mean =</span> <span class="sc">-</span><span class="fl">0.000303</span>, <span class="co"># model coefficient</span></span>
+<span id="cb11-9"><a></a>  <span class="at">sd =</span> <span class="fl">0.0000106</span> <span class="co"># coefficient standard error</span></span>
+<span id="cb11-10"><a></a>  )</span>
+<span id="cb11-11"><a></a>)</span>
+<span id="cb11-12"><a></a></span>
+<span id="cb11-13"><a></a>coef_draws <span class="sc">|&gt;</span> </span>
+<span id="cb11-14"><a></a>  <span class="fu">reframe</span>(<span class="at">coef =</span> <span class="fu">quantile</span>(coef_sim,</span>
+<span id="cb11-15"><a></a>                     <span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>)), <span class="co"># these are 95% confidence intervals</span></span>
+<span id="cb11-16"><a></a>            <span class="at">interval =</span> <span class="fu">c</span>(<span class="st">"lower"</span>, <span class="st">"upper"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb11-17"><a></a>  <span class="fu">mutate</span>(<span class="at">exp_coef =</span> <span class="fu">exp</span>(coef))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           coef interval  exp_coef
+1 -0.0003238369    lower 0.9996762
+2 -0.0002824340    upper 0.9997176</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:34%;">
-<p>If we use <code>mvrnorm()</code> the resulting simulations can be correlated. Here I set a correlation of 0.9.</p>
-<p><code>V1</code> and <code>V2</code> are both normally distributed…</p>
-</div>
-</div>
-</section>
-<section id="simulating-correlated-variables-1" class="slide level2">
-<h2>Simulating correlated variables</h2>
-<div class="columns">
-<div class="column" style="width:66%;">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>cor_data <span class="sc">|&gt;</span> </span>
-<span id="cb13-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> V1, <span class="at">y =</span> V2)) <span class="sc">+</span></span>
-<span id="cb13-3"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb13-4"><a></a>  <span class="fu">geom_density_2d</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="statistical_methods_criminology_files/figure-revealjs/cor_graph_2-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</div><div class="column" style="width:34%;">
-<p>… but highly correlated.</p>
+<p>If we plug in the coefficient for SIMD and the standard error of that coefficient, we can calculate confidence intervals for the coefficient.</p>
+<p>The confidence intervals we calculated in the practical were <span class="math inline">\((0.9997178, 0.9996763)\)</span></p>
+<p>Our simulated intervals are the same to six decimal places.</p>
 </div>
 </div>
 </section>
@@ -1725,15 +1676,42 @@ y_i \sim &amp; {Poisson} (\lambda) \\
 <div class="columns">
 <div class="column" style="width:66%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>simd <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">url</span>(<span class="st">"https://github.com/benmatthewsed/statistical-methods-criminology-slides/raw/master/resources/simd_crime_sim.rds"</span>))</span>
-<span id="cb14-2"><a></a></span>
-<span id="cb14-3"><a></a></span>
-<span id="cb14-4"><a></a>mod_vio_simd_qp <span class="ot">&lt;-</span> <span class="fu">glm</span>(vio_integer_sim <span class="sc">~</span> simd2020_rank, </span>
-<span id="cb14-5"><a></a>                      <span class="at">family =</span> <span class="st">"quasipoisson"</span>,</span>
-<span id="cb14-6"><a></a>                      <span class="at">data =</span> simd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>simd <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="fu">url</span>(<span class="st">"https://github.com/benmatthewsed/statistical-methods-criminology-slides/raw/master/resources/simd_crime_sim.rds"</span>))</span>
+<span id="cb13-2"><a></a></span>
+<span id="cb13-3"><a></a></span>
+<span id="cb13-4"><a></a>mod_vio_simd_qp <span class="ot">&lt;-</span> <span class="fu">glm</span>(vio_integer_sim <span class="sc">~</span> simd2020_rank, </span>
+<span id="cb13-5"><a></a>                      <span class="at">family =</span> <span class="st">"quasipoisson"</span>,</span>
+<span id="cb13-6"><a></a>                      <span class="at">data =</span> simd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:34%;">
 <p>If we fit the model from the second practical again…</p>
+</div>
+</div>
+</section>
+<section id="calculating-predictions-1" class="slide level2">
+<h2>Calculating predictions</h2>
+<div class="columns">
+<div class="column" style="width:66%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb14-2"><a></a></span>
+<span id="cb14-3"><a></a><span class="fu">data.frame</span>(</span>
+<span id="cb14-4"><a></a>  <span class="at">simd =</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">6976</span>)</span>
+<span id="cb14-5"><a></a>) <span class="sc">|&gt;</span> </span>
+<span id="cb14-6"><a></a>  <span class="fu">mutate</span>(<span class="at">pred_vio =</span> <span class="fu">exp</span>(<span class="fl">2.4573632</span> <span class="sc">+</span> simd <span class="sc">*</span> <span class="sc">-</span><span class="fl">0.0003029</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb14-7"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> simd, <span class="at">y =</span> pred_vio)) <span class="sc">+</span></span>
+<span id="cb14-8"><a></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="statistical_methods_criminology_files/figure-revealjs/preds-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:34%;">
+<p>When we visualized the results from this model before we only got a point estimate for the expected number of violent crimes at each level of SIMD.</p>
+<p>This doesn’t express the uncertainty in these results as described by the model’s standard errors.</p>
 </div>
 </div>
 </section>
@@ -1758,8 +1736,9 @@ y_i \sim &amp; {Poisson} (\lambda) \\
 </div>
 </div>
 </div><div class="column" style="width:34%;">
-<p>We can now get confidence intervals around our predictions.</p>
-<p>This approach can also be used when we want to look at the effects of multiple variables, and where we want to describe more complex transformations of coefficients…</p>
+<p>But by using the <code>clarify</code> package we can get confidence intervals around our predictions.</p>
+<p>As it turns out in this case the confidence bands are quite small, and don’t change our interpretation much - but we would not know this without calculating them.</p>
+<p>The benefit of this simulation approach can also be used when we want to look at the effects of multiple variables, and where we want to describe more complex transformations of coefficients…</p>
 </div>
 </div>
 </section>
@@ -1770,24 +1749,22 @@ y_i \sim &amp; {Poisson} (\lambda) \\
 <li>They used the results of a fitted regression model to calculate a measure they call ‘Victimization Divide’</li>
 <li>This measure is defined as:</li>
 </ul>
-<p>(ratio of victimization rates in year 2 - 1) - (ratio of victimization rates in year 2 - 1) / (ratio of victimization rates in year one - 1)</p>
-</section>
-<section id="victimization-divide" class="slide level2">
-<h2>Victimization divide</h2>
-<p>This is analogous to exploring the percentage change in victimization inequality between two comparison years.</p>
+<p><span class="math display">\[
+\frac{\left(\text{ratio of victimization rates in year 2} - 1\right) - \left(\text{ratio of victimization rates in year 2} - 1\right)}{\text{ratio of victimization rates in year 1} - 1}
+\]</span> - This is analogous to exploring the percentage change in victimization inequality between two comparison years</p>
 </section>
 <section id="victimization-divides" class="slide level2">
 <h2>Victimization divides</h2>
 <ul>
-<li>To calculate the ratio of victimization rates in years 1 and 2, Hunter and Tseloni fit a GLM to predict the number of burglary victimization incidents experienced by households in England and Wales in 1993 compared to 2008/9</li>
+<li>To calculate the ratio of victimization rates in years 1 and 2, <span class="citation" data-cites="hunterEquityJusticeCrime2016">Hunter and Tseloni (<a href="#/bonus-example-three-ethnic-disparities-in-covid-fines" role="doc-biblioref" onclick="">2016</a>)</span> fit a GLM to predict the number of burglary victimization incidents experienced by households in England and Wales in 1993 compared to 2008/9</li>
 <li>They use the coefficients from these models as inputs into the Victimization Divide formula</li>
-<li>They are going beyond the standard interpretation of the coefficients to calculate something more meaningful!</li>
+<li>This is a nice example of translating model coefficients into a more more theoretically interesting quantity</li>
 </ul>
 </section>
 <section id="victimization-divides-1" class="slide level2">
 <h2>Victimization divides</h2>
 <ul>
-<li>Based on this analysis <span class="citation" data-cites="hunterEquityJusticeCrime2016">Hunter and Tseloni (<a href="#/bonus-example-three-ethnic-disparities-in-covid-fines" role="doc-biblioref" onclick="">2016</a>)</span> conclude that burglary victimization inequality had increased for:
+<li><span class="citation" data-cites="hunterEquityJusticeCrime2016">Hunter and Tseloni (<a href="#/bonus-example-three-ethnic-disparities-in-covid-fines" role="doc-biblioref" onclick="">2016</a>)</span> conclude that burglary victimization inequality had increased for:
 <ul>
 <li>single adult households compared to other households</li>
 <li>social renters compared to owner occupiers</li>
@@ -1802,17 +1779,82 @@ y_i \sim &amp; {Poisson} (\lambda) \\
 <section id="victimization-divides-2" class="slide level2">
 <h2>Victimization divides</h2>
 <ul>
-<li>But this analysis used data from the Crime Survey for England and Wales</li>
+<li>But <span class="citation" data-cites="hunterEquityJusticeCrime2016">Hunter and Tseloni (<a href="#/bonus-example-three-ethnic-disparities-in-covid-fines" role="doc-biblioref" onclick="">2016</a>)</span>’s analysis used data from the <a href="https://www.crimesurvey.co.uk/en/index.html">Crime Survey for England and Wales</a></li>
 <li>So, in line with the story of these data, we should assess the uncertainty in these estimates which come from projecting from sample to population</li>
+<li>Just calculating victimization divides based on the point estimates of the model’s coefficients doesn’t account for this uncertainty</li>
 <li>We can do this with the <span class="citation" data-cites="kingMakingMostStatistical2000">King, Tomz, and Wittenberg (<a href="#/bonus-example-three-ethnic-disparities-in-covid-fines" role="doc-biblioref" onclick="">2000</a>)</span> simulation approach</li>
 </ul>
+</section></section>
+<section>
+<section id="but-first-1" class="title-slide slide level1 center">
+<h1>But first…</h1>
+
+</section>
+<section id="simulating-correlated-variables" class="slide level2">
+<h2>Simulating correlated variables</h2>
+<div class="columns">
+<div class="column" style="width:66%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>cor_data <span class="ot">&lt;-</span> MASS<span class="sc">::</span><span class="fu">mvrnorm</span>(</span>
+<span id="cb16-2"><a></a>  <span class="at">n =</span> <span class="dv">10000</span>,</span>
+<span id="cb16-3"><a></a>  <span class="at">mu =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), <span class="co"># mu instead of mean</span></span>
+<span id="cb16-4"><a></a>  <span class="at">Sigma =</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="fl">0.9</span>, <span class="fl">0.9</span>, <span class="dv">1</span>), <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>) <span class="co"># Sigma instead of sd</span></span>
+<span id="cb16-5"><a></a>) <span class="sc">|&gt;</span> </span>
+<span id="cb16-6"><a></a>  <span class="fu">as.data.frame</span>()</span>
+<span id="cb16-7"><a></a></span>
+<span id="cb16-8"><a></a>cor_data <span class="sc">|&gt;</span> </span>
+<span id="cb16-9"><a></a>  tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(V1, V2),</span>
+<span id="cb16-10"><a></a>                      <span class="at">names_to =</span> <span class="st">"variable"</span>,</span>
+<span id="cb16-11"><a></a>               <span class="at">values_to =</span> <span class="st">"value"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb16-12"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> value)) <span class="sc">+</span></span>
+<span id="cb16-13"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> variable) <span class="sc">+</span></span>
+<span id="cb16-14"><a></a>  <span class="fu">geom_histogram</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="statistical_methods_criminology_files/figure-revealjs/mvtnorm_sim-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:34%;">
+<p>As we said before, we need to account for the correlation between model coefficients when simulating parameters from regression models.</p>
+<p>If we use <code>mvrnorm()</code> the resulting simulations can be correlated. Here I set a correlation of 0.9.</p>
+<p><code>V1</code> and <code>V2</code> are both normally distributed…</p>
+</div>
+</div>
+</section>
+<section id="simulating-correlated-variables-1" class="slide level2">
+<h2>Simulating correlated variables</h2>
+<div class="columns">
+<div class="column" style="width:66%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>cor_data <span class="sc">|&gt;</span> </span>
+<span id="cb17-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> V1, <span class="at">y =</span> V2)) <span class="sc">+</span></span>
+<span id="cb17-3"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb17-4"><a></a>  <span class="fu">geom_density_2d</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="statistical_methods_criminology_files/figure-revealjs/cor_graph_2-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:34%;">
+<p>… but highly correlated.</p>
+</div>
+</div>
 </section>
 <section id="simulating-victimization-divides" class="slide level2">
 <h2>Simulating Victimization Divides</h2>
 <ul>
-<li>In this process we:</li>
-<li>Use a fitted regression model to simulate a set of coefficient values from the regression model’s variance-covariance matrix (usually at least 1000 draws)</li>
-<li>Calculate the VD for each one these simulated coefficient draws</li>
+<li>To illustrate the process of simulating victimization divides we will work through this by hand</li>
+<li>In the exercises (and I would recommend in your own practice) we will use an <code>R</code> package written for this purpose</li>
+<li>First we fit the GLM</li>
+<li>Then we simulate a set of coefficient values from the regression model’s variance-covariance matrix (usually at least 1000 draws)</li>
+<li>We calculate the VD for each one these simulated coefficient draws</li>
+<li>This gives us a distribution of VDs</li>
 </ul>
 </section>
 <section id="simulating-dqis-worked-example" class="slide level2">
@@ -1820,9 +1862,9 @@ y_i \sim &amp; {Poisson} (\lambda) \\
 <div class="columns">
 <div class="column" style="width:66%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>victim_divide <span class="ot">&lt;-</span> <span class="cf">function</span>(base_y1, base_y2){</span>
-<span id="cb16-2"><a></a>  ((base_y2 <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">-</span> (base_y1 <span class="sc">-</span> <span class="dv">1</span>)) <span class="sc">/</span> (base_y1 <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb16-3"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>victim_divide <span class="ot">&lt;-</span> <span class="cf">function</span>(base_y1, base_y2){</span>
+<span id="cb18-2"><a></a>  ((base_y2 <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">-</span> (base_y1 <span class="sc">-</span> <span class="dv">1</span>)) <span class="sc">/</span> (base_y1 <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb18-3"><a></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:34%;">
 <p>This is what the VD formula looks like in <code>R</code></p>
@@ -1834,64 +1876,65 @@ y_i \sim &amp; {Poisson} (\lambda) \\
 <div class="columns">
 <div class="column" style="width:66%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="co"># load packages</span></span>
-<span id="cb17-2"><a></a></span>
-<span id="cb17-3"><a></a><span class="fu">library</span>(MASS)</span>
-<span id="cb17-4"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb17-5"><a></a></span>
-<span id="cb17-6"><a></a><span class="co"># reading in data</span></span>
-<span id="cb17-7"><a></a></span>
-<span id="cb17-8"><a></a>dat <span class="ot">&lt;-</span></span>
-<span id="cb17-9"><a></a>  <span class="fu">tribble</span>(</span>
-<span id="cb17-10"><a></a>    <span class="sc">~</span>prev, <span class="sc">~</span>year, <span class="sc">~</span>sex, <span class="sc">~</span>n,</span>
-<span id="cb17-11"><a></a>    <span class="fl">0.167</span>, <span class="st">"2015"</span>, <span class="st">"men"</span>, <span class="dv">15030</span>,</span>
-<span id="cb17-12"><a></a>    <span class="fl">0.153</span>, <span class="st">"2015"</span>, <span class="st">"women"</span>, <span class="dv">18320</span>,</span>
-<span id="cb17-13"><a></a>    <span class="fl">0.197</span>, <span class="st">"2020"</span>, <span class="st">"men"</span>, <span class="dv">15505</span>,</span>
-<span id="cb17-14"><a></a>    <span class="fl">0.189</span>, <span class="st">"2020"</span>, <span class="st">"women"</span>, <span class="dv">18230</span></span>
-<span id="cb17-15"><a></a>  )</span>
-<span id="cb17-16"><a></a></span>
-<span id="cb17-17"><a></a><span class="co"># calculate the number of victims</span></span>
-<span id="cb17-18"><a></a>dat <span class="ot">&lt;-</span></span>
-<span id="cb17-19"><a></a>  dat <span class="sc">|&gt;</span> </span>
-<span id="cb17-20"><a></a>  <span class="fu">mutate</span>(<span class="at">vict =</span> <span class="fu">as.integer</span>(n <span class="sc">*</span> prev))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="co"># load packages</span></span>
+<span id="cb19-2"><a></a></span>
+<span id="cb19-3"><a></a><span class="fu">library</span>(MASS)</span>
+<span id="cb19-4"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb19-5"><a></a></span>
+<span id="cb19-6"><a></a><span class="co"># reading in data</span></span>
+<span id="cb19-7"><a></a></span>
+<span id="cb19-8"><a></a>dat <span class="ot">&lt;-</span></span>
+<span id="cb19-9"><a></a>  <span class="fu">tribble</span>(</span>
+<span id="cb19-10"><a></a>    <span class="sc">~</span>prev, <span class="sc">~</span>year, <span class="sc">~</span>sex, <span class="sc">~</span>n,</span>
+<span id="cb19-11"><a></a>    <span class="fl">0.167</span>, <span class="st">"2015"</span>, <span class="st">"men"</span>, <span class="dv">15030</span>,</span>
+<span id="cb19-12"><a></a>    <span class="fl">0.153</span>, <span class="st">"2015"</span>, <span class="st">"women"</span>, <span class="dv">18320</span>,</span>
+<span id="cb19-13"><a></a>    <span class="fl">0.197</span>, <span class="st">"2020"</span>, <span class="st">"men"</span>, <span class="dv">15505</span>,</span>
+<span id="cb19-14"><a></a>    <span class="fl">0.189</span>, <span class="st">"2020"</span>, <span class="st">"women"</span>, <span class="dv">18230</span></span>
+<span id="cb19-15"><a></a>  )</span>
+<span id="cb19-16"><a></a></span>
+<span id="cb19-17"><a></a><span class="co"># calculate the number of victims</span></span>
+<span id="cb19-18"><a></a>dat <span class="ot">&lt;-</span></span>
+<span id="cb19-19"><a></a>  dat <span class="sc">|&gt;</span> </span>
+<span id="cb19-20"><a></a>  <span class="fu">mutate</span>(<span class="at">vict =</span> <span class="fu">as.integer</span>(n <span class="sc">*</span> prev))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:34%;">
 <p>These are data from the Crime Survey for England and Wales showing victimization for men and women in 2015 and 2020. You can find more info on the data and approach <a href="https://osf.io/k8j9e/">here</a></p>
 </div>
 </div>
 </section>
-<section id="calculating-vds" class="slide level2">
+<section id="calculating-vds" class="slide level2 scrollable">
 <h2>Calculating VDs</h2>
 <div class="columns">
 <div class="column" style="width:66%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>model2020 <span class="ot">&lt;-</span> </span>
-<span id="cb18-2"><a></a>  <span class="fu">glm</span>(<span class="fu">cbind</span>(vict, n <span class="sc">-</span> vict) <span class="sc">~</span> <span class="fu">fct_rev</span>(sex),</span>
-<span id="cb18-3"><a></a><span class="at">family =</span> <span class="st">"binomial"</span>,</span>
-<span id="cb18-4"><a></a><span class="at">data =</span> <span class="fu">filter</span>(dat, year <span class="sc">==</span> <span class="st">"2020"</span>))</span>
-<span id="cb18-5"><a></a></span>
-<span id="cb18-6"><a></a></span>
-<span id="cb18-7"><a></a>model2015 <span class="ot">&lt;-</span> </span>
-<span id="cb18-8"><a></a>  <span class="fu">glm</span>(<span class="fu">cbind</span>(vict, n <span class="sc">-</span> vict) <span class="sc">~</span> <span class="fu">fct_rev</span>(sex),</span>
-<span id="cb18-9"><a></a><span class="at">family =</span> <span class="st">"binomial"</span>,</span>
-<span id="cb18-10"><a></a><span class="at">data =</span> <span class="fu">filter</span>(dat, year <span class="sc">==</span> <span class="st">"2015"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>model2020 <span class="ot">&lt;-</span> </span>
+<span id="cb20-2"><a></a>  <span class="fu">glm</span>(<span class="fu">cbind</span>(vict, n <span class="sc">-</span> vict) <span class="sc">~</span> <span class="fu">fct_rev</span>(sex),</span>
+<span id="cb20-3"><a></a><span class="at">family =</span> <span class="st">"binomial"</span>,</span>
+<span id="cb20-4"><a></a><span class="at">data =</span> <span class="fu">filter</span>(dat, year <span class="sc">==</span> <span class="st">"2020"</span>))</span>
+<span id="cb20-5"><a></a></span>
+<span id="cb20-6"><a></a></span>
+<span id="cb20-7"><a></a>model2015 <span class="ot">&lt;-</span> </span>
+<span id="cb20-8"><a></a>  <span class="fu">glm</span>(<span class="fu">cbind</span>(vict, n <span class="sc">-</span> vict) <span class="sc">~</span> <span class="fu">fct_rev</span>(sex),</span>
+<span id="cb20-9"><a></a><span class="at">family =</span> <span class="st">"binomial"</span>,</span>
+<span id="cb20-10"><a></a><span class="at">data =</span> <span class="fu">filter</span>(dat, year <span class="sc">==</span> <span class="st">"2015"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:34%;">
-<p>We can fit a simple regression model to the data in each year to calculate the log-odds of being a victim for men and women. In this example I fit a separate model for 2015 and 2020.</p>
+<p>We can fit a <a href="https://r.qcbs.ca/workshop06/book-en/binomial-glm.html"><span class="math inline">\(Binomial\)</span> GLM</a> to calculate the log-odds of being a victim for men and women. This is like fitting a logistic regression to data we have already aggregated<sup>1</sup></p>
+<p>In this example I fit a separate model for 2015 and 2020.</p>
 </div>
 </div>
-</section>
+<aside><ol class="aside-footnotes"><li id="fn5"><p>Except in how the <a href="https://stats.stackexchange.com/a/518934">residual degrees of freedom are calculated</a></p></li></ol></aside></section>
 <section id="calculating-vds-1" class="slide level2">
 <h2>Calculating VDs</h2>
 <div class="columns">
 <div class="column" style="width:66%;">
 <p>Model1 :</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>results_2015 <span class="ot">&lt;-</span> </span>
-<span id="cb19-2"><a></a>broom<span class="sc">::</span><span class="fu">tidy</span>(model2015) <span class="sc">|&gt;</span> </span>
-<span id="cb19-3"><a></a>  <span class="fu">mutate</span>(<span class="at">est =</span> <span class="fu">exp</span>(estimate))</span>
-<span id="cb19-4"><a></a></span>
-<span id="cb19-5"><a></a>results_2015</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>results_2015 <span class="ot">&lt;-</span> </span>
+<span id="cb21-2"><a></a>broom<span class="sc">::</span><span class="fu">tidy</span>(model2015) <span class="sc">|&gt;</span> </span>
+<span id="cb21-3"><a></a>  <span class="fu">mutate</span>(<span class="at">est =</span> <span class="fu">exp</span>(estimate))</span>
+<span id="cb21-4"><a></a></span>
+<span id="cb21-5"><a></a>results_2015</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 6
   term            estimate std.error statistic  p.value   est
@@ -1902,11 +1945,11 @@ y_i \sim &amp; {Poisson} (\lambda) \\
 </div>
 <p>Model 2:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>results_2020 <span class="ot">&lt;-</span> </span>
-<span id="cb21-2"><a></a>broom<span class="sc">::</span><span class="fu">tidy</span>(model2020) <span class="sc">|&gt;</span> </span>
-<span id="cb21-3"><a></a>  <span class="fu">mutate</span>(<span class="at">est =</span> <span class="fu">exp</span>(estimate))</span>
-<span id="cb21-4"><a></a></span>
-<span id="cb21-5"><a></a>results_2020</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>results_2020 <span class="ot">&lt;-</span> </span>
+<span id="cb23-2"><a></a>broom<span class="sc">::</span><span class="fu">tidy</span>(model2020) <span class="sc">|&gt;</span> </span>
+<span id="cb23-3"><a></a>  <span class="fu">mutate</span>(<span class="at">est =</span> <span class="fu">exp</span>(estimate))</span>
+<span id="cb23-4"><a></a></span>
+<span id="cb23-5"><a></a>results_2020</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 6
   term            estimate std.error statistic p.value   est
@@ -1916,6 +1959,7 @@ y_i \sim &amp; {Poisson} (\lambda) \\
 </div>
 </div>
 </div><div class="column" style="width:34%;">
+<p>With a binomial model we can exponentiate the model coefficients to calculate the <a href="https://en.wikipedia.org/wiki/Odds_ratio">Odds Ratio</a> of being a victim for men and women.</p>
 <p>Model 1 shows a statistically significant difference for men (compared to women) in 2015, with men having <strong>11%</strong> greater odds of being a victim of crime. In contrast, Model 2 finds that men had a <strong>5%</strong> greater odds of being a victim of crime than women in 2020 - however this difference does not meet the 95% threshold for statistical significance.</p>
 </div>
 </div>
@@ -1925,17 +1969,18 @@ y_i \sim &amp; {Poisson} (\lambda) \\
 <div class="columns">
 <div class="column" style="width:66%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="fu">victim_divide</span>(</span>
-<span id="cb23-2"><a></a>  <span class="at">base_y1 =</span> results_2015<span class="sc">$</span>est[[<span class="dv">2</span>]],</span>
-<span id="cb23-3"><a></a>  <span class="at">base_y2 =</span> results_2020<span class="sc">$</span>est[[<span class="dv">2</span>]]</span>
-<span id="cb23-4"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="fu">victim_divide</span>(</span>
+<span id="cb25-2"><a></a>  <span class="at">base_y1 =</span> results_2015<span class="sc">$</span>est[[<span class="dv">2</span>]],</span>
+<span id="cb25-3"><a></a>  <span class="at">base_y2 =</span> results_2020<span class="sc">$</span>est[[<span class="dv">2</span>]]</span>
+<span id="cb25-4"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -0.5223449</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:34%;">
-<p>Calculating the VD for these two results, based on the odds ratios from the two models, shows that victimization inequality decreased by <strong>52%</strong> between the two years.</p>
-<p>Based on the point estimates from the model, we would conclude that victimiztion inequality between men and women fell by more than half!</p>
+<p>Calculating the VD for these two results, based just on the odds ratios from the two models, shows that victimization inequality decreased by <em>52%</em> between the two years.</p>
+<p>From the models’ point estimates, we would conclude that victimization inequality between men and women fell by more than half between 2015 and 2020!</p>
+<p>But this doesn’t factor in the uncertainty in the models’ coefficients.</p>
 </div>
 </div>
 </section>
@@ -1944,28 +1989,28 @@ y_i \sim &amp; {Poisson} (\lambda) \\
 <div class="columns">
 <div class="column" style="width:66%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="co"># set seed</span></span>
-<span id="cb25-2"><a></a><span class="fu">set.seed</span>(<span class="fu">nchar</span>(<span class="st">"vict divide"</span>) <span class="sc">^</span> <span class="dv">4</span>)</span>
-<span id="cb25-3"><a></a></span>
-<span id="cb25-4"><a></a>n_sims <span class="ot">&lt;-</span> <span class="fl">1e4</span></span>
-<span id="cb25-5"><a></a></span>
-<span id="cb25-6"><a></a>draws_2020 <span class="ot">&lt;-</span></span>
-<span id="cb25-7"><a></a>  MASS<span class="sc">::</span><span class="fu">mvrnorm</span>(</span>
-<span id="cb25-8"><a></a>    <span class="at">n =</span> n_sims,</span>
-<span id="cb25-9"><a></a>    <span class="at">mu =</span> <span class="fu">coef</span>(model2020),</span>
-<span id="cb25-10"><a></a>    <span class="at">Sigma =</span> <span class="fu">vcov</span>(model2020)</span>
-<span id="cb25-11"><a></a>  )</span>
-<span id="cb25-12"><a></a></span>
-<span id="cb25-13"><a></a>draws_2015 <span class="ot">&lt;-</span></span>
-<span id="cb25-14"><a></a>  MASS<span class="sc">::</span><span class="fu">mvrnorm</span>(</span>
-<span id="cb25-15"><a></a>    <span class="at">n =</span> n_sims,</span>
-<span id="cb25-16"><a></a>    <span class="at">mu =</span> <span class="fu">coef</span>(model2015),</span>
-<span id="cb25-17"><a></a>    <span class="at">Sigma =</span> <span class="fu">vcov</span>(model2015)</span>
-<span id="cb25-18"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="co"># set seed</span></span>
+<span id="cb27-2"><a></a><span class="fu">set.seed</span>(<span class="fu">nchar</span>(<span class="st">"vict divide"</span>) <span class="sc">^</span> <span class="dv">4</span>)</span>
+<span id="cb27-3"><a></a></span>
+<span id="cb27-4"><a></a>n_sims <span class="ot">&lt;-</span> <span class="fl">1e4</span></span>
+<span id="cb27-5"><a></a></span>
+<span id="cb27-6"><a></a>draws_2020 <span class="ot">&lt;-</span></span>
+<span id="cb27-7"><a></a>  MASS<span class="sc">::</span><span class="fu">mvrnorm</span>(</span>
+<span id="cb27-8"><a></a>    <span class="at">n =</span> n_sims,</span>
+<span id="cb27-9"><a></a>    <span class="at">mu =</span> <span class="fu">coef</span>(model2020),</span>
+<span id="cb27-10"><a></a>    <span class="at">Sigma =</span> <span class="fu">vcov</span>(model2020)</span>
+<span id="cb27-11"><a></a>  )</span>
+<span id="cb27-12"><a></a></span>
+<span id="cb27-13"><a></a>draws_2015 <span class="ot">&lt;-</span></span>
+<span id="cb27-14"><a></a>  MASS<span class="sc">::</span><span class="fu">mvrnorm</span>(</span>
+<span id="cb27-15"><a></a>    <span class="at">n =</span> n_sims,</span>
+<span id="cb27-16"><a></a>    <span class="at">mu =</span> <span class="fu">coef</span>(model2015),</span>
+<span id="cb27-17"><a></a>    <span class="at">Sigma =</span> <span class="fu">vcov</span>(model2015)</span>
+<span id="cb27-18"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:34%;">
 <p>We can pass the models’ coefficients and variance-covariance matrices to <code>mvrnorm</code> from the <code>{MASS}</code> library.</p>
-<p>This gives us a set of 10,000 coefficients for each model.</p>
+<p>This gives us a set of 10,000 coefficients for each model which are consistent with the uncertainty in the models’ results.</p>
 </div>
 </div>
 </section>
@@ -1974,27 +2019,28 @@ y_i \sim &amp; {Poisson} (\lambda) \\
 <div class="columns">
 <div class="column" style="width:66%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>draws_2015 <span class="ot">&lt;-</span></span>
-<span id="cb26-2"><a></a>  draws_2015 <span class="sc">|&gt;</span></span>
-<span id="cb26-3"><a></a>  <span class="fu">as.data.frame</span>() <span class="sc">|&gt;</span></span>
-<span id="cb26-4"><a></a>  <span class="fu">as_tibble</span>() <span class="sc">|&gt;</span></span>
-<span id="cb26-5"><a></a>  <span class="fu">mutate</span>(<span class="at">est =</span> <span class="fu">exp</span>(<span class="st">`</span><span class="at">fct_rev(sex)men</span><span class="st">`</span>))</span>
-<span id="cb26-6"><a></a></span>
-<span id="cb26-7"><a></a>draws_2020 <span class="ot">&lt;-</span></span>
-<span id="cb26-8"><a></a>  draws_2020 <span class="sc">|&gt;</span></span>
-<span id="cb26-9"><a></a>  <span class="fu">as.data.frame</span>() <span class="sc">|&gt;</span></span>
-<span id="cb26-10"><a></a>  <span class="fu">as_tibble</span>() <span class="sc">|&gt;</span></span>
-<span id="cb26-11"><a></a>  <span class="fu">mutate</span>(<span class="at">est =</span> <span class="fu">exp</span>(<span class="st">`</span><span class="at">fct_rev(sex)men</span><span class="st">`</span>))</span>
-<span id="cb26-12"><a></a></span>
-<span id="cb26-13"><a></a><span class="co"># combine the results</span></span>
-<span id="cb26-14"><a></a>sim_dat <span class="ot">&lt;-</span></span>
-<span id="cb26-15"><a></a>  <span class="fu">tibble</span>(</span>
-<span id="cb26-16"><a></a>    <span class="at">vd =</span> <span class="fu">victim_divide</span>(<span class="at">base_y1 =</span> draws_2015<span class="sc">$</span>est,</span>
-<span id="cb26-17"><a></a>                       <span class="at">base_y2 =</span> draws_2020<span class="sc">$</span>est)</span>
-<span id="cb26-18"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>draws_2015 <span class="ot">&lt;-</span></span>
+<span id="cb28-2"><a></a>  draws_2015 <span class="sc">|&gt;</span></span>
+<span id="cb28-3"><a></a>  <span class="fu">as.data.frame</span>() <span class="sc">|&gt;</span></span>
+<span id="cb28-4"><a></a>  <span class="fu">as_tibble</span>() <span class="sc">|&gt;</span></span>
+<span id="cb28-5"><a></a>  <span class="fu">mutate</span>(<span class="at">est =</span> <span class="fu">exp</span>(<span class="st">`</span><span class="at">fct_rev(sex)men</span><span class="st">`</span>))</span>
+<span id="cb28-6"><a></a></span>
+<span id="cb28-7"><a></a>draws_2020 <span class="ot">&lt;-</span></span>
+<span id="cb28-8"><a></a>  draws_2020 <span class="sc">|&gt;</span></span>
+<span id="cb28-9"><a></a>  <span class="fu">as.data.frame</span>() <span class="sc">|&gt;</span></span>
+<span id="cb28-10"><a></a>  <span class="fu">as_tibble</span>() <span class="sc">|&gt;</span></span>
+<span id="cb28-11"><a></a>  <span class="fu">mutate</span>(<span class="at">est =</span> <span class="fu">exp</span>(<span class="st">`</span><span class="at">fct_rev(sex)men</span><span class="st">`</span>))</span>
+<span id="cb28-12"><a></a></span>
+<span id="cb28-13"><a></a><span class="co"># combine the results</span></span>
+<span id="cb28-14"><a></a>sim_dat <span class="ot">&lt;-</span></span>
+<span id="cb28-15"><a></a>  <span class="fu">tibble</span>(</span>
+<span id="cb28-16"><a></a>    <span class="at">vd =</span> <span class="fu">victim_divide</span>(<span class="at">base_y1 =</span> draws_2015<span class="sc">$</span>est,</span>
+<span id="cb28-17"><a></a>                       <span class="at">base_y2 =</span> draws_2020<span class="sc">$</span>est)</span>
+<span id="cb28-18"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:34%;">
-<p>Once we tidy the results up a bit, we can pass these simulated draws to our <code>victim_divide()</code> function…</p>
+<p>Once we tidy the results up a bit, we can pass these simulated draws to our <code>victim_divide()</code> function to get a distribution of VDs.</p>
+<p>From these we can calculate confidence intervals to see how sure we can be that victimization inequality between men and women really did fall by 52%.</p>
 </div>
 </div>
 </section>
@@ -2003,11 +2049,11 @@ y_i \sim &amp; {Poisson} (\lambda) \\
 <div class="columns">
 <div class="column" style="width:66%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a>sim_dat <span class="sc">|&gt;</span> </span>
-<span id="cb27-2"><a></a>  <span class="fu">reframe</span>(</span>
-<span id="cb27-3"><a></a>    <span class="at">vds =</span> <span class="fu">quantile</span>(vd, <span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.5</span>, <span class="fl">0.975</span>)),</span>
-<span id="cb27-4"><a></a>    <span class="at">centile =</span> <span class="fu">c</span>(<span class="st">"2.5%"</span>, <span class="st">"50%"</span>, <span class="st">"97.5%"</span>)</span>
-<span id="cb27-5"><a></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a>sim_dat <span class="sc">|&gt;</span> </span>
+<span id="cb29-2"><a></a>  <span class="fu">reframe</span>(</span>
+<span id="cb29-3"><a></a>    <span class="at">vds =</span> <span class="fu">quantile</span>(vd, <span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.5</span>, <span class="fl">0.975</span>)),</span>
+<span id="cb29-4"><a></a>    <span class="at">centile =</span> <span class="fu">c</span>(<span class="st">"2.5%"</span>, <span class="st">"50%"</span>, <span class="st">"97.5%"</span>)</span>
+<span id="cb29-5"><a></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 2
      vds centile
@@ -2016,11 +2062,11 @@ y_i \sim &amp; {Poisson} (\lambda) \\
 2 -0.528 50%    
 3  0.471 97.5%  </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a>sim_dat <span class="sc">|&gt;</span> </span>
-<span id="cb29-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> vd)) <span class="sc">+</span></span>
-<span id="cb29-3"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
-<span id="cb29-4"><a></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="dv">2</span>)) <span class="sc">+</span></span>
-<span id="cb29-5"><a></a>  <span class="fu">geom_vline</span>(<span class="fu">aes</span>(<span class="at">xintercept =</span> <span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a>sim_dat <span class="sc">|&gt;</span> </span>
+<span id="cb31-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> vd)) <span class="sc">+</span></span>
+<span id="cb31-3"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb31-4"><a></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="dv">2</span>)) <span class="sc">+</span></span>
+<span id="cb31-5"><a></a>  <span class="fu">geom_vline</span>(<span class="fu">aes</span>(<span class="at">xintercept =</span> <span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -2030,35 +2076,42 @@ y_i \sim &amp; {Poisson} (\lambda) \\
 </div>
 </div>
 </div><div class="column" style="width:34%;">
-<p>We can see the 2.5 and 97.5 percentiles of the simulated VDs, as well as the histogram of their distribution. We can use these intervals to approximate a statistical significance test - if the interval includes zero the coefficient is not ‘statistically significant’ at the standard level.</p>
+<p>We can see the 2.5 and 97.5 percentiles of the simulated VDs, as well as the histogram of their distribution.</p>
+<p>We can use these intervals to approximate a statistical significance test - if the interval includes zero the coefficient is not ‘statistically significant’ at the standard level.</p>
 <p>These intervals include zero, so the apparent 52% reduction in victimization inequality would not be ‘statistically significant’ at the standard level.</p>
 </div>
 </div>
 </section>
 <section id="simulation-is-great" class="slide level2">
-<h2>Simulation is great</h2>
+<h2>Simulation is great!</h2>
 <ul>
-<li>The beauty of this simulation approach is that it generalizes to <strong>any DQI</strong> that is a function of the model’s parameters, such as VD, and to <strong>any GLM</strong> <span class="citation" data-cites="kingMakingMostStatistical2000">(<a href="#/bonus-example-three-ethnic-disparities-in-covid-fines" role="doc-biblioref" onclick="">King, Tomz, and Wittenberg 2000</a>)</span></li>
+<li>The beauty of this simulation approach is that it generalizes to <em>any DQI</em> that is a function of the model’s parameters, such as VD, and to <em>any GLM</em> <span class="citation" data-cites="kingMakingMostStatistical2000">(<a href="#/bonus-example-three-ethnic-disparities-in-covid-fines" role="doc-biblioref" onclick="">King, Tomz, and Wittenberg 2000</a>)</span></li>
+<li>This can help us match how we present our results to how our data was generated (in this case, by a sample survey)</li>
 <li>Say that instead of the VD were interested in the absolute difference in predicted victimization rates after controlling for other factors (like a marginal effect)</li>
-<li>Or maybe we have fitted a count model and we want to know the number of people reporting 2 or more victimization incidents - we can calculate this from our simulations whilst incorporating the model’s uncertainty into our estimates</li>
+<li>Or maybe we have fitted a count model and we want to know the number of people reporting 2 or more victimization incidents - we can calculate this from our simulations whilst incorporating the model’s uncertainty into our estimates
+<ul>
+<li>This would involve the extra step of simulating from the <span class="math inline">\(Poisson\)</span> distribution to map the simulated coefficients back into counts (a step we don’t cover here)</li>
+</ul></li>
 </ul>
 </section>
 <section id="simulation-in-practice" class="slide level2">
 <h2>Simulation in practice</h2>
 <ul>
 <li>In the second example we did the simulation by hand. This is useful as a way to understand the method, but whilst it’s good to know how this works, in practice there are R packages which can do this for us.</li>
-<li>One good option is <a href="https://cran.r-project.org/web/packages/clarify/index.html">clarify</a>, as used in the first example</li>
-<li>There is inherent uncertainty in simulation results, so it’s crucial to set the seed for the random number generator so you get the same results every time.</li>
+<li>One good option is <a href="https://cran.r-project.org/web/packages/clarify/index.html">clarify</a>, as used in the first example. It’s likely that professionally developed and maintained software will be less error-prone and more efficient than writing your own!</li>
 <li>You also need to run enough simulation draws to get a good estimate of the uncertainty. The default for clarify is 1000 draws.</li>
+<li>Simulations can be very time consuming! Especially if your model is complicated and you are making predictions for a lot of cases
+<ul>
 <li>More simulations are always better, but will take longer - so there is a pragmatic aspect to how much time and computer resource you have to run simulations.</li>
-<li>In general I would recommend using a package like clarify if you conduct this kind of simulation. It’s likely that professionally developed and maintained software will be less error-prone and more efficient than writing your own!</li>
+</ul></li>
 </ul>
 </section>
 <section id="practical-limitations-and-alternatives" class="slide level2">
 <h2>Practical limitations and alternatives</h2>
 <ul>
-<li>Simulations can be very time consuming! Especially if your model is complicated and you are making predictions for a lot of cases</li>
-<li>There are other ways to do describe this uncertainty:
+<li>There is inherent uncertainty in simulation results, so it’s crucial to set the seed for the random number generator so you get the same results every time.</li>
+<li>There are also some subtleties in how you use the simulated results <span class="citation" data-cites="raineyCarefulConsiderationCLARIFY2024">(<a href="#/bonus-example-three-ethnic-disparities-in-covid-fines" role="doc-biblioref" onclick="">Rainey 2024</a>)</span></li>
+<li>There are also other ways to do describe this uncertainty:
 <ul>
 <li>The [‘delta method’])(https://marginaleffects.com/vignettes/uncertainty.html#delta-method) uses calculation, not simulation, but relies on a Normal approximation which may not hold (https://iqss.github.io/clarify/#introduction). This is the default method used by the <a href="https://marginaleffects.com/">marginaleffects</a> package</li>
 </ul></li>
@@ -2067,10 +2120,19 @@ y_i \sim &amp; {Poisson} (\lambda) \\
 <section id="conceptual-limitations" class="slide level2">
 <h2>Conceptual limitations</h2>
 <ul>
-<li>Simulation expresses the uncertainty captured <em>by our model parameters</em></li>
-<li>But remember that our model is wrong!! (Greenland)</li>
-<li>Our model still makes a load of assumptions - basically that we’ve fit the right model and that we had the right data.</li>
-<li>As we discussed in the previous section, we might also want to be skeptical of our model parameters themselves if we are worried about bias</li>
+<li>More broadly, we need to remember that simulation expresses the uncertainty captured <em>by our model parameters</em></li>
+<li>But remember that our model may be wrong <span class="citation" data-cites="greenlandIntervalEstimationSimulation2004">(<a href="#/bonus-example-three-ethnic-disparities-in-covid-fines" role="doc-biblioref" onclick="">Greenland 2004</a>)</span> - we spent all of Session Three discussing this!</li>
+<li>Our model still makes a load of assumptions - basically that we’ve fit the right model and that we had the right data - that are baked into our simulations</li>
+<li>It is possible to incorporate both bias analysis and simulation into the same analysis <span class="citation" data-cites="greenlandIntervalEstimationSimulation2004">Fox, MacLehose, and Lash (<a href="#/bonus-example-three-ethnic-disparities-in-covid-fines" role="doc-biblioref" onclick="">2023</a>)</span>, although this is far from common practice</li>
+</ul>
+</section>
+<section id="recap-6" class="slide level2">
+<h2>Recap</h2>
+<ul>
+<li>Model coefficients can be difficult to interpret</li>
+<li>Combining coefficients to make predictions of the outcome is a powerful way to express quantitative results more meaningfully</li>
+<li>Simulation, such as using the <code>clarify</code> package, offers a powerful and flexible way to describe the uncertainty in these predictions that can be applied to any GLM</li>
+<li>… but our simulations are only as good as the underlying model (and so open to all the criticisms we covered in Session Three)</li>
 </ul>
 </section>
 <section id="practical-3" class="slide level2">
@@ -2384,14 +2446,20 @@ Ding, Peng. 2023. <span>“A <span>First Course</span> in <span>Causal Inference
 <div id="ref-fewellImpactResidualUnmeasured2007" class="csl-entry" role="listitem">
 Fewell, Zoe, George Davey Smith, and Jonathan A. C. Sterne. 2007. <span>“The <span>Impact</span> of <span>Residual</span> and <span>Unmeasured Confounding</span> in <span>Epidemiologic Studies</span>: <span>A Simulation Study</span>.”</span> <em>American Journal of Epidemiology</em> 166 (6): 646–55. <a href="https://doi.org/10.1093/aje/kwm165">https://doi.org/10.1093/aje/kwm165</a>.
 </div>
+<div id="ref-foxSASCodeProbabilistic2023" class="csl-entry" role="listitem">
+Fox, Matthew P, Richard F MacLehose, and Timothy L Lash. 2023. <span>“<span>SAS</span> and <span>R</span> Code for Probabilistic Quantitative Bias Analysis for Misclassified Binary Variables and Binary Unmeasured Confounders.”</span> <em>International Journal of Epidemiology</em> 52 (5): 1624–33. <a href="https://doi.org/10.1093/ije/dyad053">https://doi.org/10.1093/ije/dyad053</a>.
+</div>
 <div id="ref-gaeblerCausalFrameworkObservational2022" class="csl-entry" role="listitem">
 Gaebler, Johann, William Cai, Guillaume Basse, Ravi Shroff, Sharad Goel, and Jennifer Hill. 2022. <span>“A <span>Causal Framework</span> for <span>Observational Studies</span> of <span>Discrimination</span>.”</span> <em>Statistics and Public Policy</em> 9 (1): 26–48. <a href="https://doi.org/10.1080/2330443X.2021.2024778">https://doi.org/10.1080/2330443X.2021.2024778</a>.
 </div>
 <div id="ref-gelmanCausalQuartetsDifferent2023" class="csl-entry" role="listitem">
 Gelman, Andrew, Jessica Hullman, and Lauren Kennedy. 2023. <span>“Causal Quartets: <span>Different</span> Ways to Attain the Same Average Treatment Effect.”</span> arXiv. <a href="https://doi.org/10.48550/arXiv.2302.12878">https://doi.org/10.48550/arXiv.2302.12878</a>.
 </div>
+<div id="ref-greenlandIntervalEstimationSimulation2004" class="csl-entry" role="listitem">
+Greenland, Sander. 2004. <span>“Interval Estimation by Simulation as an Alternative to and Extension of Confidence Intervals.”</span> <em>International Journal of Epidemiology</em> 33 (6): 1389–97. <a href="https://doi.org/10.1093/ije/dyh276">https://doi.org/10.1093/ije/dyh276</a>.
+</div>
 <div id="ref-greenlandSensitivityAnalysisBias2014" class="csl-entry" role="listitem">
-Greenland, Sander. 2014. <span>“Sensitivity <span>Analysis</span> and <span>Bias Analysis</span>.”</span> In <em>Handbook of <span>Epidemiology</span></em>, edited by Wolfgang Ahrens and Iris Pigeot, 685–706. New York, NY: Springer. <a href="https://doi.org/10.1007/978-0-387-09834-0_60">https://doi.org/10.1007/978-0-387-09834-0_60</a>.
+———. 2014. <span>“Sensitivity <span>Analysis</span> and <span>Bias Analysis</span>.”</span> In <em>Handbook of <span>Epidemiology</span></em>, edited by Wolfgang Ahrens and Iris Pigeot, 685–706. New York, NY: Springer. <a href="https://doi.org/10.1007/978-0-387-09834-0_60">https://doi.org/10.1007/978-0-387-09834-0_60</a>.
 </div>
 <div id="ref-hunterEquityJusticeCrime2016" class="csl-entry" role="listitem">
 Hunter, James, and Andromachi Tseloni. 2016. <span>“Equity, Justice and the Crime Drop: The Case of Burglary in <span>England</span> and <span>Wales</span>.”</span> <em>Crime Science</em> 5 (1): 3. <a href="https://doi.org/10.1186/s40163-016-0051-z">https://doi.org/10.1186/s40163-016-0051-z</a>.
@@ -2425,6 +2493,9 @@ Office for National Statistics. 2019. <span>“Improving <span>Victimisation Est
 </div>
 <div id="ref-pina-sanchezImpactMeasurementError2022" class="csl-entry" role="listitem">
 Pina-Sánchez, Jose, David Buil-Gil, Ian Brunton-Smith, and Alexandru Cernat. 2022. <span>“The <span>Impact</span> of <span>Measurement Error</span> in <span>Regression Models Using Police Recorded Crime Rates</span>.”</span> <em>Journal of Quantitative Criminology</em>, August. <a href="https://doi.org/10.1007/s10940-022-09557-6">https://doi.org/10.1007/s10940-022-09557-6</a>.
+</div>
+<div id="ref-raineyCarefulConsiderationCLARIFY2024" class="csl-entry" role="listitem">
+Rainey, Carlisle. 2024. <span>“A Careful Consideration of <span>CLARIFY</span>: Simulation-Induced Bias in Point Estimates of Quantities of Interest.”</span> <em>Political Science Research and Methods</em> 12 (3): 614–23. <a href="https://doi.org/10.1017/psrm.2023.8">https://doi.org/10.1017/psrm.2023.8</a>.
 </div>
 <div id="ref-roback2021beyond" class="csl-entry" role="listitem">
 Roback, Paul, and Julie Legler. 2021. <em>Beyond Multiple Linear Regression: Applied Generalized Linear Models and Multilevel Models in <span>R</span></em>. <span>Chapman and Hall/CRC</span>.

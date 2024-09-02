@@ -21,6 +21,35 @@ library(broom)
 
 simd <- readRDS(url("https://github.com/benmatthewsed/statistical-methods-criminology-slides/raw/master/resources/simd_crime_sim.rds"))
 
+# let's fit the model from the first practical again
+
+
+qp_mod <- 
+  glm(crime_integer_sim ~ simd2020_rank,
+      family = "quasipoisson",
+      data = simd)
+
+# we can use this model to visualize predicted values of expected crime at different
+# levels of SIMD
+
+simd_range <- data.frame(simd2020_rank = seq(1, 6976)) # make a prediction for all SIMD ranks
+
+data.frame(
+  predicted_crime = 
+    predict(qp_mod,
+        newdata = simd_range, # make a prediction for all SIMD ranks
+        type = "response") # gives us predictions on the response scale
+  ) |> 
+  mutate(simd2020_rank = seq(1, 6976)) |> 
+  ggplot(aes(x = simd2020_rank, y = predicted_crime)) +
+  geom_line()
+
+
+
+
+# plotting predictions with two variables ---------------------------------
+
+
 # maybe the overall relationship between deprivation and crime works differently in cities versus other areas?
 # we'll compare SIMD and recorded crime in 'City' local authorities to other local authorities
 
