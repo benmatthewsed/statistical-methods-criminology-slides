@@ -1684,7 +1684,12 @@ These intervals include zero, so the apparent 52% reduction in victimization ine
 
 ---
 
-# Ethics  {background-color="#006938"}
+# Ethics and commuicating statistical resutls  {background-color="#006938"}
+
+## Ethics and model coefficients
+
+- In the past two sessions we've been 
+
 
 ## General ethical principles in social science research
 
@@ -1694,7 +1699,6 @@ These intervals include zero, so the apparent 52% reduction in victimization ine
 - We're going to focus on the ethics of framing our research and how we present our results
 
 ## Framing: The tyranny of the means
-
 - The typical focus of regression results is group average effect
 - Even if we have a statistically significant difference between two groups (say, people who live in high deprivation areas versus other areas) in the count of offences recorded by the police, on its own this doesn't necessarily tell us about how likely any individual member of those groups is to offend
 - Focusing only on group averages can imply that all members of the group are the same

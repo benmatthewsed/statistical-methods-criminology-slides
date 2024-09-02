@@ -1517,5 +1517,12 @@
     "title": "Statistical Methods for Criminology",
     "section": "Recap",
     "text": "Recap\n\nModel coefficients can be difficult to interpret\nCombining coefficients to make predictions of the outcome is a powerful way to express quantitative results more meaningfully\nSimulation, such as using the clarify package, offers a powerful and flexible way to describe the uncertainty in these predictions that can be applied to any GLM\n… but our simulations are only as good as the underlying model (and so open to all the criticisms we covered in Session Three)"
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#ethics-and-model-coefficients",
+    "href": "statistical_methods_criminology.html#ethics-and-model-coefficients",
+    "title": "Statistical Methods for Criminology",
+    "section": "Ethics and model coefficients",
+    "text": "Ethics and model coefficients\n\nIn the past two sessions we’ve been"
   }
 ]
