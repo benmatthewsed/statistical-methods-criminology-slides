@@ -1684,161 +1684,147 @@ These intervals include zero, so the apparent 52% reduction in victimization ine
 
 ---
 
-# Ethics and commuicating statistical resutls  {background-color="#006938"}
+# Ethics and commuicating statistical results  {background-color="#006938"}
 
 ## Ethics and model coefficients
 
-- In the past two sessions we've been 
+- In the past two sessions we've been focusing on telling the story of our analysis by critiquing model coefficients and then translating them into more meaningful quantities
+- In this session we will touch on some ethical or normative issues when presenting quantitative results, specifically looking at:
+  - Essentializing and stereotyping
+  - Ethics and language use describing quantitative results
+- This is not a general primer on ethics when using statistical methods for social research: we don't cover anonymity, confidentiality, no harm to participants and so on
+- There also a particular set of ethical issues around workflow in quantiative social science - or if you like, how we tell the story _of_ our research - which are crucial in any quantitative analysis but that we won't cover [@gayleStarkRealitiesReproducible2022]
 
 
-## General ethical principles in social science research
-
-- In research ethics and governance there is a lot of discussion about informed consent, not disclosing personal information and so on.
-- Also specifically in quantitative work, ethical issues around workflow and 'questionable research practices'
-- This is not a general treatment of ethics in social science research
-- We're going to focus on the ethics of framing our research and how we present our results
-
-## Framing: The tyranny of the means
-- The typical focus of regression results is group average effect
-- Even if we have a statistically significant difference between two groups (say, people who live in high deprivation areas versus other areas) in the count of offences recorded by the police, on its own this doesn't necessarily tell us about how likely any individual member of those groups is to offend
-- Focusing only on group averages can imply that all members of the group are the same
-
-- Causal quartets?
-
-## Causal quartets
-
-![From @gelmanCausalQuartetsDifferent2023](images/causal-quartets.png){width="90%"}
-
-## Causal quartets
-
-- So what? [@gelmanCausalQuartetsDifferent2023]
-- People with the same observable characteristics of your independent variables may have very different values of the outcome
-- "Variation among people is relevant to policy (for example, personalized medicine) and understanding (for example in psychology)"
-- "Variation across situations is relevant when deciding what “flavor” of treatment to do, for example with dosing in pharmacology or treatment levels in traditional agricultural experiments."
+## Essentializing, stereotyping and the tyranny of the means
+- The typical focus of regression results is group average effect, often focusing on whether an average difference between groups in the levels of our outcome is statistically significant [@merloTyrannyAveragesIndiscriminate2017]
+- Focusing only on group averages can imply that all members of the group are the same [@curtisQuantitativeCriticalismGuidelines2022]
+- And, even if we have a statistically significant difference between two groups (say, people who live in high deprivation areas versus other areas) in the count of offences convicted in court, on its own this doesn't tell us much about how likely any individual member of that group is to be convicted
 
 
-## Same observables, different outcomes
 
-![](images/qlp-results-figure.png){fig-alt="Estimated Adult Conviction Trajectory Probabilities by Sex, Indigenous Status and Childhood System Contact."}
+## Tyranny of the means in GLM
 
-## How we described the figure
+- This problem is particularly acute for GLMs, because the 'expected value' of the outcome (as we were calculating earlier) does not capture the variation in the outcome expressed by the GLM family
+- One way to assess this is to plug the expected value calculated through the GLM through the probability distribution we have specified
+- In our $Poisson$ models before, we can use simulation again to describe the distribution of counts associated with a given ($\lambda$)
 
-"Our results show substantial variation in adult conviction trajectories within sex and Indigenous status groups for people with identical observable characteristics, as well as between our four demographic groups... Even though we see a strong association between Indigenous status, sex and membership of the High/Persistent conviction trajectory (see Appendix 4), it would be wrong to assume that all Indigenous men with multiple childhood system contact end up with High/Persistent adult conviction trajectories—our model estimates that almost half of Indigenous men would _not_ end up with a high-rate, persistent adult conviction trajectory even with this substantial childhood adversity."
+## Tyranny of the means in GLMs
 
-https://link.springer.com/article/10.1007/s40865-022-00204-z
+:::: {.columns}
+
+::: {.column width="66%"}
+
+
+```{r outcome_sims}
+
+
+library(ggplot2)
+
+set.seed(nchar("poisson sims"))
+
+data.frame(
+  sims = rpois( # draw from a Poisson distribution
+    n = 10000, # 10,000 simulations
+    lambda = (1 * -0.0003029 + 2.4573632)) # the expected number of crimes for the most deprived neighborhood
+)|> 
+  ggplot(aes(x = sims)) +
+  geom_histogram(binwidth = 1) +
+  scale_x_continuous(breaks = seq(0, 10)) +
+  geom_vline(xintercept = (1 * -0.0003029 + 2.4573632))
+
+
+```
+
+:::
+
+::: {.column width="34%"}
+This code takes the expected value of crimes for the most deprived neighbourhood based on our simple model of SIMD and police recorded crime, and then uses the `rpois` function to simulate from the $Poisson$ distribution at this expected value.
+
+The results show that around 8% of the time we would expect that a neighbourhood with this expected value of crime would actually experience no recorded crimes at all.
+
+:::
+
+::::
+
+## The tyranny of the means continued
+
+- This issue of essentializing is  particularly acute if we want to use a 'risk factor' derived from a quantitative analysis as a diagnostic or predictive tool [@merloTyrannyAveragesIndiscriminate2017]...
+- ... and particularly when we are modelling binary outcomes (so events that either happen or do not)
+- The reasons for this are quite technical, but are well described in @merloTyrannyAveragesIndiscriminate2017
+- When - as is often in criminology - analysis is focusing on comparing demographic groups and their exposure to crime or the criminal justice system, a focus on average differences can unwittingly perpetuate negative stereotypes, as well as only providing a limited picture of the empirical results
+
 
 
 ## Framing: the importance of language
 
-More conceptually, it's important to think about how we frame the results of any analysis.
-
-Three visualizations from [Data Feminism](https://data-feminism.mitpress.mit.edu/pub/czq9dfs5/release/3)
-
--   language use
-
--   providing necessary context?
-
--   deficit narrative
-
-## Stereotyping
-
-"...a narrative that reduces a social group to negative stereotypes and fails to portray them with creativity and agency." (https://data-feminism.mitpress.mit.edu/pub/czq9dfs5/release/3)
-
-https://data-feminism.mitpress.mit.edu/pub/czq9dfs5#ndayi2fa1pk
-
--   the description of your charts is theoretically informed
-
-The value of this exercise is not to say that any of these framings is 'right' (although for the reasons Klein and D'Ignazio outline we might find some preferable to others), but that they reflect different theoretical positions, and give different emphases to contextual factors - factors outside our datasets.
-
-## Example one: Deficit framing
-
-- focus on problems of minority/minoritized groups in reference to advantaged/majority groups
-- rather than, say, the advantage experienced by majority groups due to majority group status
+- More conceptually, it's important to think about how we frame the results of any analysis.
+- We will consider this in the broader societal context of data collection collection, rather than in the context of any particular dataset
+- The key point is that data never speak for themselves [@dignazioDataFeminism2020]
 
 
-## Framing
 
-- Study of (among other things) rates of mental health diagnosis in prisons in New York, broken down by ethnicity (Kaba et al. 2015)
-- People from Black or Hispanic backgrounds may be more likely to be seen as criminal rather than experiencing mental ill-health, and so may be less likely to be given a mental health diagnosis
-- D'Ignazo and Klein (2020) illustrate ways in which one of the findings from this study could be framed:
+## Example one: Ethical issues in describing charts
 
-## Framing
+- @dignazioDataFeminism2020 re-represent some descriptive statistics from a paper by @kabaDisparitiesMentalHealth2015 to illustrate the normative choices faced when visually presenting results
+- The @kabaDisparitiesMentalHealth2015 is a study of (among other things) rates of mental health diagnosis in prisons in New York, broken down by ethnicity
+- @kabaDisparitiesMentalHealth2015 suggest that people from Black or Hispanic backgrounds may be more likely to be seen as criminal rather than experiencing mental ill-health, and so may be less likely to be given a mental health diagnosis
+- @dignazioDataFeminism2020 illustrate ways in which one of the findings from this study could be framed:
+
+## Example one: Ethical issues in describing charts
 
 ![](resources/data-feminism-fig-1.jpeg){fig-alt="Portrayals of the same data analysis. Images from Data Feminism (2020) by Catherine D'Ignazio. Data from Fatos Kaba et al. 'Disparities in Mental Health Referral and Diagnosis in the New York City Jail Mental Health Service'."}
 
-## Framing
+## Example one: Ethical issues in describing charts
 
 
-"The study that produced these numbers contains convincing evidence that we should distrust diagnosis numbers due to racial and ethnic discrimination. The first chart does not simply fail to communicate that but also actively undermines that main finding of the research."
+"The study that produced these numbers contains convincing evidence that we should distrust diagnosis numbers due to racial and ethnic discrimination. The first chart does not simply fail to communicate that but also actively undermines that main finding of the research." @dignazioDataFeminism2020
 
 
-## Framing
+## Example one: Ethical issues in describing charts
 
 
 ![](resources/data-feminism-fig-2.jpeg){fig-alt="Portrayals of the same data analysis. Images from Data Feminism (2020) by Catherine D'Ignazio. Data from Fatos Kaba et al. 'Disparities in Mental Health Referral and Diagnosis in the New York City Jail Mental Health Service'."}
 
-## Which is preferable?
+## Example one: Ethical issues in describing charts
 
-- Is this a deficit narrative?
 - "By naming racism and then talking about people of color in the title, the graphic reinforces the idea that race is an issue for people of color only."
 
 
-## Framing
+## Example one: Ethical issues in describing charts
 
 
 ![](resources/data-feminism-fig-3.jpeg){fig-alt="Portrayals of the same data analysis. Images from Data Feminism (2020) by Catherine D'Ignazio. Data from Fatos Kaba et al. 'Disparities in Mental Health Referral and Diagnosis in the New York City Jail Mental Health Service'."}
 
 ## Framing
 
-- Third framing focuses on advantages of White group
-- The subtitle better fits the researchers' conclusions
+@dignazioDataFeminism2020 propose this third framing to focus on the advantages of White group (rrather than the disadvantages of the Black and Hispanic groups), and contend that the subtile (emphasising this advantage) better fits the researchers' conclusions
 
 
 
-## What are our ethical responsibilities
+## What are our ethical responsibilities?
 
-"Placing numbers in context and naming racism or sexism when it is present in those numbers should be a requirement—not only for feminist data communication, but for data communication full stop."
-
-Data Feminism is mostly aimed towards data scientists and data journalists, not academics. Does this change how we should view their recommendations?
-
-(the original study: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4539829/)
-
-- Our analysis exists in a context of (Tilley) durable inequalities
+- @dignazioDataFeminism2020 argue that "Placing numbers in context and naming racism or sexism when it is present in those numbers should be a requirement... for data communication"
+- [Data Feminism](https://data-feminism.mitpress.mit.edu/) is mostly aimed towards data scientists and data journalists, rather than academics. Does this change how we should view their recommendations?
+- The value of this exercise is not to say that any of these framings is 'right' (although for the reasons @dignazioDataFeminism2020 outline we prefer some to others), but that they reflect different theoretical positions, and give different emphases to contextual factors - factors outside our datasets
 
 
-
-
-## Example two: community loss
-
-- @simesPunishingPlacesGeography2021 gives a good example of how we may want to come up with theoretically informed measures, or theoretically re-frame measures. Simes analysed imprisonment data from the state of Massachusets in the USA, including spatial regression of prison admission rates and how these relate to "racial demographics, social and economic disadvantage, arrest rates, and violent crime" [@simesPlacePunishmentSpatial2018a].
-
-- As part of this analysis Simes suggests that the cumulative years sentenced to residents of a particular neighbourhood be thought of as 'community loss'.
-
-
-## Example two: community loss
-
-- Despite being derived from data on individual punishment histories, this conceptualization reflects the chronic and long-term exposure to loss due to imprisonment in different neighbourhoods. 
-- This terminology highlights the effects of imprisonment on the communities in which people who end up in prison lived prior to their imprisonment, rather than just focusing on the people who are currently in prison.
-
-
-## Language and framing
-
-- The language we use may depend on the audience and the aims of our analysis
-- I might desribe a figure differently in an academic journal article versus writing for a general audience
-
----
 
 # Practical
 
+## Practical
 
-
-
+- Revisit the [three graphs from @dignazioDataFeminism2020](https://data-feminism.mitpress.mit.edu/pub/czq9dfs5/release/3)
+- Which of these would you use to present results to:
+  - An academic conference
+  - A government report
+  - An infographic aimed at the general public
 
 # Overview  {background-color="#006938"}
 
 ## Overview
 
-- Whew! We've covered a lot of ground today
+- Phew! We've covered a lot of ground today
 - The key idea of this workshop is that the story of how our data came to be ('data provenance') should influence our analysis and the story we tell about our results
 - We looked at common data provenance stories of police recorded crime and victimization surveys
 - We talked about GLMs as a common way of telling stories about the small world of our data
@@ -2012,3 +1998,24 @@ ethnicity – and so our calculated disparity rates – are inaccurate due to ch
 PFAs with small ethnic minority populations, where small changes in the estimated
 ethnic minority population could lead to large differences in the estimated FPN rates."
 
+
+
+## Same observables, different outcomes
+
+![](images/qlp-results-figure.png){fig-alt="Estimated Adult Conviction Trajectory Probabilities by Sex, Indigenous Status and Childhood System Contact."}
+
+## How we described the figure
+
+"Our results show substantial variation in adult conviction trajectories within sex and Indigenous status groups for people with identical observable characteristics, as well as between our four demographic groups... Even though we see a strong association between Indigenous status, sex and membership of the High/Persistent conviction trajectory (see Appendix 4), it would be wrong to assume that all Indigenous men with multiple childhood system contact end up with High/Persistent adult conviction trajectories—our model estimates that almost half of Indigenous men would _not_ end up with a high-rate, persistent adult conviction trajectory even with this substantial childhood adversity."
+
+https://link.springer.com/article/10.1007/s40865-022-00204-z
+
+
+
+
+## Example one: community loss
+
+- @simesPunishingPlacesGeography2021 gives a good example of how our theoretical framing affects how we interpret data
+- Simes analysed imprisonment data from the state of Massachusets in the USA, including spatial regression of prison admission rates and how these relate to “racial demographics, social and economic disadvantage, arrest rates, and violent crime” [@simesPlacePunishmentSpatial2018a]
+- A key point of Simes's analysis is that the spatial context of punishment matters - if people live in more 'punishing places', this has effects _at the community level_
+- For Simes, this is key to the story of the data - that 
