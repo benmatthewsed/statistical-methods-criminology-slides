@@ -678,7 +678,8 @@ glm(crime_integer_sim ~ overcrowded_rate, # % living in overcrowded housing
 ```
 
 - Going from 0% overcrowded to 100% would be associated with a 280% increase in crime in a neighbourhood (!)
-- (How realistic to you think this is?)
+- Need to remember the ["fundamental statisical question": compared with what?](https://notstatschat.rbind.io/2022/01/02/per-capita-in-mice/)
+- (NB How realistic to you think this is?)
 
 
 ## GLMs aren't all good news
@@ -729,219 +730,198 @@ In this practical we'll fit some count models in R
 
 ---
 
-## Going from the smal world to the large world
+## Going from the small world to the large world
 
-- In the last session we talked about GLMs as 'small worlds' which summarise the data in our spreadsheets
-- There are lots of reasons we may be skeptical about applying conclusions drawn from 'small world' of our data and model to the 'large world' we live in
+- In the last session we talked about GLMs as 'small worlds' which summarise the data in our spreadsheets, and ended by interpreting coefficients from GLMs
+- In practice there are lots of reasons we may be skeptical about applying conclusions drawn from the 'small world' of our data and model to the 'large world' we live in
 - In this section we'll briefly introduce three ways in which we may want to interrogate our statistical models
-- Again, books and books have been written about each topic, so this will only offer a brief overview of each, with links to further reading for those who want to know more.
+- Each is a whole area of research itself, so we only offer a brief overview of each, with links to further reading for those who want to know more.
 
 ---
 
 ## Are coefficients sufficient?
 
-- We should, I think, be skeptical about the numbers in our spreadsheets and the coefficients that summarise them, by default [@greenlandIntervalEstimationSimulation2004]
-- The coefficients from your model will accurately reflect the 'small world' of your dataset, but they may not reflect the 'large world' that we live in
-- Coefficients from GLMs may:
-  - be (predictably) inaccurate (measurement error);
-  - omit some variables that we theoretically think are important (confounding), or;
-  - omit some people/cases we care about (selection effects)
+- Coefficients from GLMs may biased because:
+  - our data are inaccurate [(measurement error)](https://www.statisticshowto.com/measurement-error/)
+  - our data omits some variables that we theoretically think are important [(confounding)](https://stats.stackexchange.com/a/496387), or;
+  - omit some people/cases we care about [(selection effects)](https://en.wikipedia.org/wiki/Selection_bias)
 - These are problems that are _hard, if not impossible, to solve based on the data we observe alone_
-- There is a large literature in epidemiology study these issues called __Quantitative Bias Analysis__
-- 
+- So in this session we focus on sketching out the issues and pointing to resources to find out more information
 
 
-# Act One: Measurement error {background-color="#77BF22"}
+# Part One: Measurement error {background-color="#77BF22"}
 
 
 ## Measurement error
 
-- Measurement error is the gap between what we are conceptually interested in and the way that this concept is recorded in our spreadsheet
+- [Measurement error](https://www.statisticshowto.com/measurement-error/) is the gap between what we are conceptually interested in and the way that this concept is recorded in our spreadsheet
 - In practice we know criminological data are likely to be measured with some degree of error
-- For example, police recorded crime data is not a perfect measure of the amount of crime 'out there' in society
-- As we have discussed already, not all crimes are reported to the police, not all incidents which are reported are recorded as crimes and so on.
+- In this section we will walk through two examples of measurement error in crime data, again focusing on police recorded crime and victimization surveys
 
 
 ---
 
-## Measurement error in practice: police recorded crime
+## Example One: Measurement error in recorded crime
 
--   From our discussion in Session One, we know that crime data recorded by the police are not a complete record of all crimes experienced in society in a given period - only crimes which are reported and recorded make it into recorded crime data.
--   So if we are interested in, for example, how many crimes there were in Scotland in 2023, the number of crimes recorded by police is likely to be an *under* count.
--   The many years of work comparing crimes recorded to the police with victimization surveys - the 'dark figure of crime' - attests to this.
+-   From our discussion in Session One, we know that crime data recorded by the police are not a complete record of all crimes experienced in society in a given period - only crimes which are reported and recorded make it into recorded crime data [@pina-sanchezImpactMeasurementError2022]
+- As we have discussed already, not all crimes are reported to the police, not all incidents which are reported are recorded as crimes... and so on
+-   So if we want to know, for example, how many crimes there were in Scotland in 2023, the number of crimes recorded by police is likely to be an *under* count
 
 ## Measurement error in recorded crime
 
-- Measurement error in recorded crime is _proportional to the amount of crime_ (Pina Sanchez et al 2023)
+- Measurement error in recorded crime is a particular structure: it is _proportional to the amount of crime_ [@pina-sanchezImpactMeasurementError2022]
 - There is a larger gap between the amount of crime recorded and 'true' crime levels in areas with large numbers of recorded crimes compared to areas with very low recorded crime
+  - The count of crimes recorded in Glasgow will be more of an undercount of 'true' crime in Glasgow than the count of crimes recorded in Shetland will be an undercount of 'true' crime in Shetland
 
 
-- Measurement error in crime due to e.g. lack of willingness to report may itself be related to other variables in your analysis (e.g. economic inequality)
-- This is called 'differential' measurement error
+## Measurement error in recorded crime
+
+![Comparison of property crime and homicide rates using data from the police, a victimisation survey (CSEW) and vital statistics (NCHS), Figure 2 in Pina-Sanchez et al. 2022](https://media.springernature.com/full/springer-static/image/art%3A10.1007%2Fs10940-022-09557-6/MediaObjects/10940_2022_9557_Fig2_HTML.png)
+
 
 ## `rcme`
 
-Pina-Sanchez and colleagues have written an R package that can conduct sensitivity analysis for some types of measurement error common to working with police recorded crime.
+- @pina-sanchezImpactMeasurementError2022 propose some solutions for common forms of statistical analysis using recorded crime
+- They also provide an [`R` package `rcme`](https://github.com/alex-cernat/rcme) which implements some of these methods
+- If you are interested fitting statitsical models to police recorded crime data I would strongly recommend checking this out
 
-> Work through their example here? https://osf.io/preprints/socarxiv/sbc8w
 
-Open questions - what about survey data? Models other than linear models? What about measurement error in independent variables?
-
-- At the moment seems like this focuses on measurement error with recorded crime as the dependent variable
 
 ---
 
 ## Example Two: Measurement error in victimizaton survey data
 
--   Historically, national victimization surveys (such as the SCJS and CSEW) capped the number of victim forms that victims could complete
-- In 2019, ONS said that "Since the survey began in 1981, “repeat” incidents have been limited to a total of 5. Historically, including a maximum of 5 repeat incidents for any individual victim had proven to be an effective way of reducing the effects of sample variability from year to year. This approach enabled the publication of incident rates that were not subject to large fluctuation between survey years. This approach yields a more reliable picture of changes in victimisations over time once high order repeat victimisations were treated in this way." [@officefornationalstatisticsImprovingVictimisationEstimates2019]
+-   Historically, national victimization surveys (such as the SCJS and CSEW) capped the number of victim forms that victims could complete:
+- In 2019, ONS said 
 
--   However, it also means that people who experienced more than five incidents of a particular 'series' crime type did not have their data accurately recorded
+> "Since the survey began in 1981, “repeat” incidents have been limited to a total of 5. Historically, including a maximum of 5 repeat incidents for any individual victim had proven to be an effective way of reducing the effects of sample variability from year to year. This approach enabled the publication of incident rates that were not subject to large fluctuation between survey years. This approach yields a more reliable picture of changes in victimisations over time once high order repeat victimisations were treated in this way."
 
-## Impact of capping on analysis
+[@officefornationalstatisticsImprovingVictimisationEstimates2019]
 
--   This was particularly important for women's reporting of violent victimization [@walbyViolentCrimeIncreasing2016] - women who experienced domestic violence may well report more than five repeat incidents of victimization in a given year. A second measurement error issue came from the '97 code' - the option to report the number of incidents experienced as '96/too many to count'. Instead, based on the domestic violence literature Walby and colleagues propose using an estimate of 60 incidents for those who report the 97 code.
+## Capping and time trends
 
-- This would bias estimates of total crimes , but not prevalence (the number of victims)
-
--   Sometimes it's possible to use uncapped data
-
-## (Bonus) Example Three: Ethnic disparities in Covid Fines
-
-- https://blogs.ed.ac.uk/edinburghlawschool/wp-content/uploads/sites/8261/2023/03/NPCC-Report-March-2023-final-1.pdf
-- Wanted to calculate disparities in Covid fines issued across England and Wales to people from different ethnic backgrounds
-- Covid fines data were from 2020-2021, but the most recent data on ethnicity by Police Force Area was from 2016
-- "This may mean that the FPN rates by
-ethnicity – and so our calculated disparity rates – are inaccurate due to changes in the population denominator used to calculate the rates. This could particularly affect
-PFAs with small ethnic minority populations, where small changes in the estimated
-ethnic minority population could lead to large differences in the estimated FPN rates."
+- The problem is that a small number of people experience a lot of crime, and the estimate of overall crime in the survey is very sensitive to the number of very frequent victims who are sampled
+- And because these very frequent victims are rare in the general population, the number included a national survey fluctuates year-to-year
 
 
+## Capping and measurement error
 
----
+- However, capping also means that people who experienced more than five incidents of a particular 'series' crime type did not have their data accurately recorded
+-   This was particularly important for women's reporting of violent victimization [@walbyViolentCrimeIncreasing2016]
+- Women who experienced domestic violence may well report more than five repeat incidents of victimization in a given year
+- ONS [now caps incident estimates at the 98th percentile of the distribution, rather than at five per series, and makes uncapped data available to estimates volatility over time](https://www.ons.gov.uk/releases/crimeinenglandandwalesyearendingmarch2023)
+- After analysis to assess the effect of capping, SCJS retained the cap at five [@scottishgovernmentMethodologicalNoteCalculating2019]
+
 
 ## Adventures in measurement error
 
-- The two examples we've looked at have focused on measurement error in the outcome (recorded crime and victimization)
-- But it also matters where in your model the measurement error manifests (/manifests more)
-- If you have error in the outcome variable it may not bias your regression coefficients at all but just impact the precision of your results (meaning that they are less likely to be statistically significant).
-- Measurement error in your key independent variable may bias your regression coefficients *downwards*, meaning that your results are valid and in reality there is a stronger association between predictor and outcome that you have observed. 
-- But if there is more noise in a control than in a key independent variable, measurement error in the control variable may lead to 'under controlling' - and finding statistically significant coefficients where there are none. 
-- It's quite context dependent - so you need to know the likely source of error in your specific dataset
-- Other than in simple scenarios *we may not know what impact it is having*. Uh oh!
+- The two examples we've looked at have focused on measurement error in two specific applications
+- In general it's hard to predict the impact measurement error may have on any particular analysis
+- If you have error in the outcome variable it may not bias your regression coefficients at all but just impact the precision of your results [(meaning that they are less likely to be statistically significant)](https://stats.stackexchange.com/a/129993)
+- Measurement error in a key independent variable may bias your regression coefficients *downwards*, meaning that your results are valid and in reality there is a stronger association between predictor and outcome that you have observed [(sometimes called 'regression dilution')](https://en.wikipedia.org/wiki/Regression_dilution)...
+- But if there is more noise in a control than in a key independent variable, measurement error in the control variable may lead to 'under controlling' - and finding statistically significant coefficients where there are none [@fewellImpactResidualUnmeasured2007]
+- So it's quite context dependent - so you need to know the likely source of error in your specific dataset
 
 
 
 
-# Act Two: Selection effects
+# Part Two: Selection effects
 
 ## Selection effects
 
-Selection bias arises when there are people who we would have liked to observe in our study but we don't observe them, and this lack of observation is related to their characteristics. Put another way, we can think of selection bias as affecting the rows of our dataset - there are some rows that are missing that we would like to see.
+- Selection effects (or selection bias) arises when there are people who we would have liked to observe in our study but we don't observe them, and this lack of observation is related to their characteristics [@greenlandSensitivityAnalysisBias2014]
+- It's a kind of non-representativeness of the data we have, compared to the 'real world'
+- I like to this of this as selection bias affecting the rows of our dataset - there are some rows that are missing that we would like to see
+- In this section we'll focus on an example of identifying selection bias in police data
 
-[@greenlandSensitivityAnalysisBias2014]
+## Example: Selection bias in police administrative data
 
+- [@knoxAdministrativeRecordsMask2020] wanted to assess whether police were biased in their interactions with the public based on the ethnicity of the person they were interacting with
+- They had data on people who had been stopped by the police - but they can't just fit a statistical model to these data to see if people from minority ethnic backgrounds were more likely to be stopped
+- The problem is we can’t just rely on data about police stops - “if police racially discriminate when choosing whom to investigate, analyses using administrative records to estimate racial discrimination in police behavior are statistically biased” [@knoxAdministrativeRecordsMask2020]
 
-## An example of selection bias
+## Example: Selection bias in police administrative data
 
-
-Imagine that we want to know whether police are racially biased in how they treat members of the public. One way to assess this is by using data from the police about the outcomes of their interactions with the public.
-
-Police collect data on stops - why not just run a regression on these data to see if people from minority ethnic backgrounds are more likely to be stopped?
-
-The problem is we can’t just rely on data about police stops - “if police racially discriminate when choosing whom to investigate, analyses using administrative records to estimate racial discrimination in police behavior are statistically biased, and many quantities of interest are unidentified—even among investigated individuals—absent strong and untestable assumptions.”
-
-In the Knox and colleagues example, this would require knowing the numbers of people who were observed by police but not stopped, in order to calculate the probabilities of selection into the stop dataset. However, we don't know this - and it is hard to imagine a scenario where an analyst of an police administrative dataset *would* know this.
-
-Even if we *do* know this for our particular dataset, there is no guarantee that selection into the data would hold in every case that we might want to generalize our results to. As such we'd need to consider how differences between the study populations may have affected response and selection (e.g. would selection probabilities from a US study map onto a study in Manchester? How about one in Glasgow?)
-
-We're going to hear a lot about 'strong and untestable assumptions'.
+- To just rely on the observed data, @knoxAdministrativeRecordsMask2020 would need to know the numbers of people _who were observed by police but not stopped_, in order to calculate the probabilities of selection into the stop dataset
+- If you only analyse data that are the result of police stops then your results will be biased. To analyse data on police stops to estimate racial bias, you also need to know the total number of encounters (for each ethnic group) – that is, including encounters that did not lead to a stop
+- However, we don't know this - and it is hard to imagine a scenario where an analyst of an police administrative dataset *would* know this
+- “when there is any racial discrimination in the decision to detain civilians—a decision that determines which encounters appear in police administrative data at all—then estimates of the effect of civilian race on subsequent police behavior are biased absent additional data and/or strong and untestable assumptions.” [@@knoxAdministrativeRecordsMask2020]
 
 ## Uh oh
-
-“when there is any racial discrimination in the decision to detain civilians—a decision that determines which encounters appear in police administrative data at all—then estimates of the effect of civilian race on subsequent police behavior are biased absent additional data and/or strong and untestable assumptions.”
 
 \[INSERT FIGURE 2 FROM KNOX\]
 
 ![Knox et al (2020) FIGURE 2. Principal Strata and Observed Police–Civilian Encounters. Notes: The figure displays the four principal strata that comprise police–civilian encounters based on how the mediator M (whether a civilian is stopped by police) responds to treatment D (whether the civilian is a racial minority). Minorities in the “always stop” and anti-minority racial stop strata, highlighted in red, are stopped by police and, thus, appear in police administrative data. Likewise, white civilians in the “always-stop” and anti-white racial stop strata, highlighted in blue, appear in police data. “Never stop” encounters are unobserved. Because white and nonwhite encounters are drawn from different principal strata, the two groups are incomparable and estimates of causal quantities using observed encounters will be statistically biased absent additional assumptions.](https://static.cambridge.org/binary/version/id/urn:cambridge.org:id:binary:20200730201026963-0363:S0003055420000039:S0003055420000039_fig2.png)
 
-If you only analyse data that are the result of police stops then your results will be biased. To analyse data on police stops to estimate racial bias, you also need to know the total number of encounters (for each ethnic group) – that is, including encounters that did not lead to a stop.
+## What can we do?
 
-Others [@gaeblerCausalFrameworkObservational2022]suggest that maybe you can identify some aspects of discrimination in administrative data. This would be discrimination at some point in the process, not total discrimination. It’s really important to be clear about what it is you want to know – do you care about total discrimination, or discrimination in a particular part of the process (e.g. court sentencing and not policing?).
+- @knoxAdministrativeRecordsMask2020a suggest some technical fixes in their specific case, but emphasise that *there is no general solution* that can guarantee that coefficients in a regression model will have valid causal interpretations based on administrative data derived from police records
+- The key thing is thinking through the process by which the dataset was constructed, and conveying this to your reader
 
-## Solutions?
-
-- @knoxAdministrativeRecordsMask2020a suggest some technical fixes, but emphasise that - if we are interested in using statistical models to identify *causal* relationships *there is no general solution* that can guarantee that coefficients in a regression model will have valid causal interpretations based on administrative data derived from police records.
-- The key thing is thinking through the process by which the dataset was constructed, and conveying this to your reader.
+## What can we do?
+- Another possibility suggested by @gaeblerCausalFrameworkObservational2022 is that it may be possible to identify some aspects of discrimination in administrative data
+- This would be discrimination at some point in the process, not total discrimination. It’s really important to be clear about what it is you want to know – do you care about total discrimination, or discrimination in a particular part of the process (e.g. court sentencing and not policing?)
+- This basically involves changing the question you are asking - which might be fine, but is not a very satisfactory solution
 
 ---
 
 
-# Act Three: Confounding
+# Part Three: Confounding
 
-## Residual or unmeasured confounding
+## Unmeasured confounding
 
-- Confounding describes a situation where there's something that we know affects the outcome we're interested in and/or our independent variables, but we _don't have a measure for this_
+- Confounding describes a situation where there's something that we know affects the outcome we're interested in and/or our independent variables, but we _don't have a measure for this in our data_
+- I like to think of this as affecting the _columns_ of our dataset: there are variables we wish we had, but in practice we don't
+- This issue is more commonly discussed in epidemiology and health fields as opposed to social sciences [@dingFirstCourseCausal2023]
+
+
+## An example of unmeasured confounding
 - Famous example of smoking and lung cancer
-  - RA Fisher argued that the strong association between smoking and lung cancer "could both be influenced by a [unmeasured confounder, such as] constitutional make-up, perhaps genetic in origin, which predisposes individuals to both of them"
+  - RA Fisher argued that the strong association between smoking and lung cancer "could both be influenced by a [unmeasured confounder, such as] constitutional make-up, perhaps genetic in origin, which predisposes individuals to both of them" [@daveysmithSmokingLungCancer2009]
   - Cornfield and colleagues demonstrated that such a confounder would have to be implausibly large to produce the observed association, and so was implausible
 - (This matters most if you are using your analysis to make a causal claim)
 
-## Residual or unmeasured confounding
-- There are lots of ways you can try to quantify the potential impact of unmeasured confounding which are discussed in epidemiology, in the sub-field of [quantitative bias analysis](https://link.springer.com/book/10.1007/978-3-030-82673-4)
-- I have not seen these methods used in criminology very much (this is a shame!)
+## A sort-of criminological example
+
+- As per @dingFirstCourseCausal2023 in general I haven't come across that many criminological papers which discuss unmeasured confounding (if you have done, please let me know!)
 - One informal approach to unmeasured confounding is just to claim that the measures you _do_ have are sufficient...
 
 ## Talking about residual confounding
 
+- @sampsonDoesMarriageReduce2006 wanted to assess the causal effect of marriage on crime - does getting married reduce a person's propensity to commit crime?
+- They carry out some sophisticated statistical modelling, and conclude that yes marriage does reduce offending
+- In caveating their analysis they say that:
 
-[ add screenshots ]
+> Probably the biggest limitation of our study is that the ... modeling approach we adopted assumes no _unmeasured covariates linked to both treatment and outcome_ [emphasis added]. In practice, the criterion of having no unobserved confounding is impossible to verify... however, we tried to counteract this limitation by exploiting ... [rich] data ... It is hard to imagine what the missing time-stable or time-invariant covariates are that would overcome the magnitude and robustness of results.
 
-Probably the biggest limitation of our study is that the IPTW modeling
-approach we adopted assumes no unmeasured covariates linked to both
-treatment and outcome. In practice, the criterion of having no unobserved
-confounding is impossible to verify—the data in any observational study
-provide no definitive information (Robins, Hernán, and Brumback, 2000).
-As discussed above, however, we tried to counteract this limitation by
-exploiting what we believe are rich individual baseline data and timevarying covariates over the full life course in order to model the
-propensity to marriage. It is hard to imagine what the missing time-stable
-or time-invariant covariates are that would overcome the magnitude and
-robustness of results. From IQ to the cumulative history of both the
-outcome and the treatment, we accounted for 20 baseline covariates and
-approximately a dozen time-varying confounders measured from widely
-varying sources—many of which predict the course of marriage as
-theoretically expected (table 1). 
+## Talking about residual confounding
 
+> We thus argue that omitted confounders would have to be implausibly large to overturn the basic results
 
-
-We thus argue that omitted confounders would have to be implausibly
-large to overturn the basic results obtained under a number of different
-model specifications and assumptions.22
-
-22 A formal sensitivity analysis (see Robins, 1999: 167–73) is beyond the scope of the
-current paper. Moreover, such analyses require assumptions about the magnitude,
-direction, and functional form of potential biases that ultimately raise more
-questions than they answer
-
-(https://psycnet.apa.org/record/2008-07491-001)
+And they continue in a footnote that formally assessing the possibility of bias from omitted confounders was "beyond the scope of the current paper" and would require assumptions about the magnitude, direction, and functional form of potential biases that ultimately raise more questions than they answer" [@@sampsonDoesMarriageReduce2006, p499]
 
 ## Is this a good justification?
 
+- There is disagreement about whether this justification is sufficient:
+- "However, increasing the number of covariates is hardly a persuasive approach to ruling out potentially important confounders, as it is unlikely that one can adequately measure all such confounders" [@skardhamarDoesMarriageReduce2015]
 - It's true that you have to make assumptions about the unmeasured confounding to know the impact on your results, and so it's necessarily speculative
-
-- But this is possible!
-
-"However, increasing the number of covariates is hardly
-a persuasive approach to ruling out potentially important confounders,
-as it is unlikely that one can adequately measure all such confounders"
+- It may be possible to identify any such confounders in your particular study though
 
 
-## Should I do a quantitative bias analysis?
+## Methods for measurement error, selection and confounding
 
-- After all this talk... not necessarily!
-- Epidemiologists who work in this area suggest you only need to bother with this stuff if you 'claim to offer near-definitive conclusions' based on your study
-- So the key thing is how we talk about our models - it is *us* that moves between the stories in the 'small world' of our model to the 'large world'
-- If you do want to apply a technical fix, the specifics will depend on the problem you are interested in and the data you have (see Knox et al.)
+- In general there aren't 'solutions' to these problems
+- But the field of [quantitative bias analysis](https://link.springer.com/book/10.1007/978-3-030-82673-4) offers ways to describe the possible impacts of factors such as measurement error, selection effects and confounding on the results that you do have
+- For example, these kinds of methods can show how large an effect of an unmeasured confounder would have to be to turn a statistically significant result to a non-significant one [(see e.g. the `tipr` `R` package for an implementation)](https://github.com/r-causal/tipr)
+
+
+## So I should do a quantitative bias analysis?
+
+- After all this discussion... maybe not!
+- Epidemiologists who work in this area suggest you only need to conduct a full quantitative bias analysis if you 'claim to offer near-definitive conclusions' based on your study [@greenlandSensitivityAnalysisBias2014]
+- I think the key thing is how we talk about our models and results - it is *us* that moves between the stories in the 'small world' of our model to the 'large world'
+- We should have humility when describing our results, and draw readers' attention to the possible limitations of factors like those we have described
+- For any particular problem technical fixes maybe be possible, the specifics will depend on the problem you are interested in, the data you have and the provenance of that data [@knoxAdministrativeRecordsMask2020a]
 - 
 
 # Recap {background-color="#006938"}
@@ -953,9 +933,6 @@ as it is unlikely that one can adequately measure all such confounders"
     - Measurement error
     - Selection effects
     - Unmeasured confounding
-- Measurement error has received attention in criminology when analysis recorded crime and victimization counts
-- So has selection effects in police data on stops and when analysing court data
-- Unmeasured confounding less so
 - The potential impact of these three factors depends on your specific data and analysis - there are no general solutions :shrug:
 
 # Practical {background-color="#006938"}
@@ -1957,3 +1934,17 @@ Second, the standard linear model assumes constant variance. But in practice we 
 (Figure from @roback2021beyond)
 
 !["Figure 4.1: Regression models: Linear regression (left) and Poisson regression (right) from Roback"](https://bookdown.org/roback/bookdown-BeyondMLR/bookdown-BeyondMLR_files/figure-html/OLSpois-1.png)
+
+
+
+
+## (Bonus) Example Three: Ethnic disparities in Covid Fines
+
+- https://blogs.ed.ac.uk/edinburghlawschool/wp-content/uploads/sites/8261/2023/03/NPCC-Report-March-2023-final-1.pdf
+- Wanted to calculate disparities in Covid fines issued across England and Wales to people from different ethnic backgrounds
+- Covid fines data were from 2020-2021, but the most recent data on ethnicity by Police Force Area was from 2016
+- "This may mean that the FPN rates by
+ethnicity – and so our calculated disparity rates – are inaccurate due to changes in the population denominator used to calculate the rates. This could particularly affect
+PFAs with small ethnic minority populations, where small changes in the estimated
+ethnic minority population could lead to large differences in the estimated FPN rates."
+
