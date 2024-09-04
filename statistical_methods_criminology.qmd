@@ -312,10 +312,10 @@ Source: [@justiceanalyticalservicesUserGuideRecorded2016]
 - Has the data been dis/aggregated or manipulated or cleaned in some other way to arrive at its present form?
     - If it's data from the recorded crime data bulletin - yes, cleaned and standardized
 - What are the relevant definitions and concepts that govern the data/data collection?"
-  - The current [Scottish Crime Recording Standard](https://www.gov.scot/publications/scottish-crime-recording-standard-crime-recording-counting-rules-2/) is 550 pages long (!). I have not read it...
+  - The current [Scottish Crime Recording Standard](https://www.gov.scot/publications/scottish-crime-recording-standard-crime-recording-counting-rules-2/) is 550 pages long (!). I have not read it[^10].
     - Of course, these [aren't the same crime recording rules as in England and Wales...](https://reshare.ukdataservice.ac.uk/852854/)
 
----
+[^10:] In the words of a colleague "I have read sections of the Scottish Crime Recording Standard and it is a DREAM, if your dream is extensively documented micro considerations of scenarios that often seem the same BUT AREN’T."
 
 ## Some implications of data provenance
 
@@ -1831,12 +1831,16 @@ The results show that around 8% of the time we would expect that a neighbourhood
 
 - Data provenance: Over to you!
 - GLMs (and beyond)
-  - (Statistical Rethinking)[https://github.com/rmcelreath/stat_rethinking_2024]
-  - (Quantitative Social Science Methods, I (Gov2001 at Harvard), Gary King)[https://www.youtube.com/watch?v=qs2uCuDL2OQ&list=PL0n492lUg2sgSevEQ3bLilGbFph4l92gH]
+  - [Statistical Rethinking](https://github.com/rmcelreath/stat_rethinking_2024)
+  - [Quantitative Social Science Methods, I (Gov2001 at Harvard), Gary King](https://www.youtube.com/watch?v=qs2uCuDL2OQ&list=PL0n492lUg2sgSevEQ3bLilGbFph4l92gH)
 
-- Quantitative Bias Analysis: :shrug: Maybe (_Quantitative Assessment of Systematic Bias: A Guide for Researchers_)[https://journals.sagepub.com/doi/10.1177/00220345231193314] or [@kawabataQuantitativeBiasAnalysis2023]?
-- Simulating meaningful quantities from results: (`{clarify}`)[https://iqss.github.io/clarify/] and (`{marginaleffects}`)[https://marginaleffects.com/]
-- Ethics: (Data Feminism)[https://data-feminism.mitpress.mit.edu/pub/czq9dfs5/release/3]
+- Quantitative Bias Analysis: 
+  - Maybe [_Quantitative Assessment of Systematic Bias: A Guide for Researchers_](https://journals.sagepub.com/doi/10.1177/00220345231193314) or [@kawabataQuantitativeBiasAnalysis2023]?
+- Simulating meaningful quantities from results
+  - [`{clarify}`(https://iqss.github.io/clarify/) and [`{marginaleffects}`](https://marginaleffects.com/) `R` packages
+- Ethics
+  - [Data Feminism](https://data-feminism.mitpress.mit.edu/pub/czq9dfs5/release/3)
+  - [@walterIndigenousStatisticsQuantitative2013]
 
 
 ## Course Feedback
