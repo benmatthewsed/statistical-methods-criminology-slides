@@ -3,6 +3,7 @@ title: "Statistical Methods for Criminology"
 title-slide-attributes:
     data-background-color: "#006938"
 author: "Ben Matthews | University of Stirling"
+date: "5 September 2024"
 bibliography: references.bib
 execute: 
   echo: true
@@ -36,7 +37,7 @@ format:
 - [Code of conduct](https://github.com/benmatthewsed/statistical-methods-criminology-slides/blob/master/resources/ncrm-general-code-of-conduct.pdf)
 - __Ask questions whenever__ :thumbsup: You can do this through the Zoom chat facility __{demo this now}__
 - We've structured the sessions with regular breaks, but __if you need to leave just leave__!
-- Materials will live online ([slides](https://benmatthewsed.github.io/statistical-methods-criminology-slides/statistical_methods_criminology.html#/title-slide),) so you can access them any time
+- Materials will [live online here](https://benmatthewsed.github.io/statistical-methods-criminology-slides/statistical_methods_criminology.html#/title-slide) so you can access them any time
 
 
 ---
@@ -53,11 +54,6 @@ By the end of the workshop you will:
 
 
 ---
-
-## Course outline
-
-![](resources/course-outline.jpg){fig-alt="Course outline schematic"}
-
 
 ## Course schedule
 
@@ -86,8 +82,8 @@ By the end of the workshop you will:
 ## Practical sessions
 
 - You can follow along with the materials in a local installation of `R` and `RStudio` on your own computer
-- You can find the course materials at https://github.com/benmatthewsed/statistical-methods-criminology-slides/
-- If you don't have an `R` installation, you can follow along in your browser via posit.cloud (free account required) [Ben post the link in the chat now]
+- You can find the course materials at [https://github.com/benmatthewsed/statistical-methods-criminology-slides/](https://github.com/benmatthewsed/statistical-methods-criminology-slides/)
+- If you don't have an `R` installation, you can follow along in your browser via [posit.cloud](posit.cloud) (free account required) [Ben post the link in the chat now]
 - Or you can use the PDFs of the results rather than run them yourself
 
 

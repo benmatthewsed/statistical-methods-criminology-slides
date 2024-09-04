@@ -1,0 +1,261 @@
+---
+title: 'Statistical Methods for Criminology: Practical One'
+author: "Ben Matthews"
+date: "2024-09-04"
+output: github_document
+---
+
+# getting started ---------------------------------------------------------
+
+the following lines will install packages on your computer if you don't have them already
+
+```{r}
+
+
+if(!require(tidyverse)){
+  install.packages("tidyverse")
+  library(tidyverse)
+}
+
+if(!require(broom)){
+  install.packages("broom")
+  library(broom)
+}
+
+```
+
+# data --------------------------------------------------------------------
+
+
+
+ see pages 58-63 at https://www.gov.scot/binaries/content/documents/govscot/publications/statistics/2020/09/simd-2020-technical-notes/documents/simd-2020-technical-notes/simd-2020-technical-notes/govscot%3Adocument/SIMD%2B2020%2Btechnical%2Bnotes.pdf
+
+ because counts smaller than three were suppressed due to disclosure control, i have simulated crime counts
+ for datazones with fewer than three crimes, allocating them 0, 1 or 2 crimes with equal probability
+
+ i also created a simulated violent crime variable by multiplying the total crime count for the
+ datazone by 0.24 (as non-sexual crimes of violence make up 24% of recorded crime
+ see # from https://www.gov.scot/publications/recorded-crime-scotland-2023-24/pages/4/)
+ these variables are just intended to illustrate the methods discussed in this course - they won't tell us
+ anything informative about crime in Scotland (unless by accident)
+
+ all other data comes from the Scottish Index of Multiple Deprivation ranks and indicators
+
+
+# read in the data --------------------------------------------------------
+
+```{r}
+
+simd <- readRDS(url("https://github.com/benmatthewsed/statistical-methods-criminology-slides/raw/master/resources/simd_crime_sim.rds"))
+```
+
+# descriptives ------------------------------------------------------------
+
+ our key outcome is crime_integer_sim
+
+```{r}
+
+simd |> 
+  ggplot(aes(x = crime_integer_sim)) +
+  geom_histogram(binwidth = 1)
+
+```
+
+ very skewed!
+ the average crime count is just over 22
+ but there is a lot of variability around this (sd of 32), and no datazones with less than zero crimes
+ ... which makes sense!
+
+```{r}
+
+simd |> 
+  summarise(mean_crime = mean(crime_integer_sim),
+            sd_crime = sd(crime_integer_sim),
+            min_crime = min(crime_integer_sim),
+            max_crime = max(crime_integer_sim))
+
+```
+ lets do the same for violent crime
+
+
+```{r}
+simd |> 
+  summarise(mean_vio = mean(vio_integer_sim),
+            sd_vio = sd(vio_integer_sim),
+            min_vio = min(vio_integer_sim),
+            max_vio = max(vio_integer_sim))
+
+```
+
+
+ we will use overall SIMD (simd2020v2_rank) as our main independent variable
+ this ranks all 6976 datazones from most (1) to least (6976) deprived
+ so it is uniformly distributed with a mean halfway from 1 to 6976
+
+```{r}
+
+simd |> 
+  summarise(mean_simd = mean(simd2020_rank),
+            sd_simd = sd(simd2020_rank),
+            min_simd = min(simd2020_rank),
+            max_simd = max(simd2020_rank))
+
+```
+
+
+
+# regression modelling ----------------------------------------------------
+
+ we will compare linear and count models for overall crime and violence
+
+# linear model
+
+```{r}
+
+lm(crime_integer_sim ~ 1, data = simd) |> 
+  broom::tidy()
+
+```
+
+ the intercept is the same as the mean crime count we calculated manually - that's good!
+
+```{r}
+
+glm(crime_integer_sim ~ 1, 
+    family = "poisson",
+    data = simd) |> 
+  broom::tidy()
+
+```
+
+ the estimate is 3.10. we need to exp() this to get the estimate on the outcome scale
+ this is because the poisson model uses the log link function to link the coefficients
+ to the observed data
+
+```{r}
+
+glm(crime_integer_sim ~ 1, 
+    family = "poisson",
+    data = simd) |> 
+  broom::tidy() |> 
+  mutate(exp_est = exp(estimate))
+
+```
+ exp_est is 22.3 - same as that we calculated already
+
+# now let's try a quasipoisson
+
+
+```{r}
+glm(crime_integer_sim ~ 1, 
+    family = "quasipoisson",
+    data = simd) |> 
+  broom::tidy() |> 
+  mutate(exp_est = exp(estimate))
+
+```
+ the results are the same! but note the std.error column - this is now
+ much larger (0.0176) than in the previous model (0.00254)
+ this reflects the quasi poisson correcting for over-dispersion
+
+
+# crime and SIMD ----------------------------------------------------------
+
+ let's look at the relationship between crime and SIMD
+
+```{r}
+
+mod_crime_simd_lm <- lm(crime_integer_sim ~ simd2020_rank, data = simd)
+
+mod_crime_simd_lm |> 
+  broom::tidy()
+
+```
+
+ SIMD is negative and statistically significant - with less deprivation (i.e. as SIMD increases)
+ we would expect less crime
+
+```{r}
+mod_crime_simd_p <- glm(crime_integer_sim ~ simd2020_rank, family = "poisson", data = simd)
+
+mod_crime_simd_p |> 
+  broom::tidy() |> 
+  mutate(exp_est = exp(estimate))
+
+```
+ the poisson model tells us the same, although the exp_est is rounded to 1.00
+ if we calculate this directly we see it is 0.9997
+
+```{r}
+exp(-0.000271)
+
+```
+
+ for every increase in SIMD you have 99.97% as much crime, or if you like, a 
+ 1 - exp(-0.000271) - 0.027% increase in crime
+
+
+
+# modelling violence ------------------------------------------------------
+
+```{r}
+mod_vio_simd_lm <- lm(vio_integer_sim ~ simd2020_rank, 
+                      data = simd)
+
+mod_vio_simd_p <- glm(vio_integer_sim ~ simd2020_rank, 
+                      family = "poisson",
+                      data = simd)
+
+mod_vio_simd_lm |> 
+  broom::tidy() |> 
+  mutate(conf_low = estimate - 1.96 * std.error, # we can calculate confidence intervals for these coefficients
+         conf_upp = estimate + 1.96 * std.error)
+
+```
+
+ as before, simd is negatively and statistically significantly related to our crime indicator
+
+# let's see this in the poisson model
+
+```{r}
+
+mod_vio_simd_p |> 
+  broom::tidy() |> 
+  mutate(exp_est = exp(estimate),
+         conf_low = estimate - 1.96 * std.error,
+         conf_upp = estimate + 1.96 * std.error,
+         exp_conf_low = exp(conf_low),
+         exp_conf_upp = exp(conf_upp))
+
+```
+
+ we might want to look at a quasipoisson model in case the the standard errors in the poisson
+ are too small
+
+```{r}
+
+mod_vio_simd_qp <- glm(vio_integer_sim ~ simd2020_rank, 
+                      family = "quasipoisson",
+                      data = simd)
+
+mod_vio_simd_qp |> 
+  broom::tidy() |> 
+  mutate(exp_est = exp(estimate),
+         conf_low = estimate - 1.96 * std.error,
+         conf_upp = estimate + 1.96 * std.error,
+         exp_conf_low = exp(conf_low),
+         exp_conf_upp = exp(conf_upp))
+```
+ the standard error is much larger - this might indicate that we should be worried about over-dispersion
+
+
+# over to you -------------------------------------------------------------
+
+ using either the models above, or by using the additional variables in the SIMD data to fit your own model,
+ write a summary of what this analysis can and can't tell us about the relationship between deprivation
+ and crime in Scotland
+ what are the pros and cons of the different modelling approaches?
+ what are the limitations of the data used?
+
+
+
