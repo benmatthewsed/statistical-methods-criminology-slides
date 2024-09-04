@@ -33,8 +33,8 @@ format:
 
 ## Housekeeping
 
-- Code of conduct
-- __Ask questions whenever__ :thumbsup: You can do this through the Teams chat facility __{demo this now}__
+- [Code of conduct](https://github.com/benmatthewsed/statistical-methods-criminology-slides/blob/master/resources/ncrm-general-code-of-conduct.pdf)
+- __Ask questions whenever__ :thumbsup: You can do this through the Zoom chat facility __{demo this now}__
 - We've structured the sessions with regular breaks, but __if you need to leave just leave__!
 - Materials will live online ([slides](https://benmatthewsed.github.io/statistical-methods-criminology-slides/statistical_methods_criminology.html#/title-slide),) so you can access them any time
 
@@ -49,7 +49,7 @@ By the end of the workshop you will:
 - Understand how data about crime and victimization can be understood using the General Linear Model (GLM)
 - Be aware of issues that can arise in interpreting GLM coefficients due to measurement error, selection bias and omitted variables
 - Be aware of ways to transform GLM coefficients into meaningful Derived Quantities of Interest (DQI)
-- Understand ethical issues around how results from statistical methods fit to criminological data are discussed
+- Understand ethical issues around the discussion of quantitative results
 
 
 ---
@@ -61,19 +61,19 @@ By the end of the workshop you will:
 
 ## Course schedule
 
-10:00 – Welcome
-10:15 – Data provenance: Types of criminological data
-11:15 – Break
-11:30 – Modelling: Telling stories with the general linear model
-12:30 – Lunch
-13:30 – Q&A
-13:40 – Sensitivity analysis and critiquing results: Measurement error, selection and confounding in crime data
-14:40 – Break
-14:55 – Simulation methods and translating results: Making model coefficients meaningful with simulation
-15:55 – Short break
-16:05 – Discussing results and ethics
-16:45 – Recap and Q&A
-17:00 – Depart
+- 10:00 – Welcome
+- 10:15 – Data provenance: Types of criminological data
+- 11:15 – Break
+- 11:30 – Modelling: Telling stories with the general linear model
+- 12:30 – Lunch
+- 13:30 – Q&A
+- 13:40 – Sensitivity analysis and critiquing results: Measurement error, selection and - confounding in crime data
+- 14:40 – Break
+- 14:55 – Simulation methods and translating results: Making model coefficients meaningful with simulation
+- 15:55 – Short break
+- 16:05 – Discussing results and ethics
+- 16:45 – Recap and Q&A
+- 17:00 – Depart
 
 
 ---
@@ -319,7 +319,7 @@ Source: [@justiceanalyticalservicesUserGuideRecorded2016]
 
 ## Some implications of data provenance
 
-- Requirements to report on on crime levels mean there are incentives to reduce figures?
+- Requirements to report on crime levels mean there are incentives to reduce figures?
     - There is a [complicated recent history of recorded crime quality in England and Wales](https://osr.statisticsauthority.gov.uk/publication/the-quality-of-police-recorded-crime-statistics-for-england-and-wales/)
 - Excludes incidents not reported (see ['dark figure of crime'](https://www.adruk.org/our-mission/our-impact/measuring-the-dark-figure-of-crime-479/) - the gap between police recorded crime and estimates from victimization surveys)
 - Recorded crime figures represent (unknown? unknowable?) mix of 'behavioural' and 'system' effects [@kitsuseNoteUsesOfficial1963]
@@ -390,7 +390,7 @@ Source: [@justiceanalyticalservicesUserGuideRecorded2016]
 
 ---
 
-## Data provenance: victiization surveys
+## Data provenance: victimization surveys
 
 - "Why has the data been collected (and collected in this way)?
     - Data collected as part of government reporting on experiences and attitudes of criminal justice
@@ -432,19 +432,19 @@ Source: [@justiceanalyticalservicesUserGuideRecorded2016]
   
 ## Analysing survey data
 
-- Survey data are definitely a sample, and so surveys we almost always do want to do inferential statistics/adjust the data we see in the spreadsheet to better match the target population
+- Survey data are definitely a sample, so we almost always want to perform inferential statistics or adjust the data in the spreadsheet to better match the target population
 - Surveys are very rarely random samples; most come with weights - use the weights for descriptives to gross up to national populations!
 - Different authorities have different perspectives on whether you should use sampling weights when fitting a statistical model - it may depend on the specifics of your survey
 - But, weights will only help adjust the data you see _towards the target population in the survey design frame_. Weighting cannot adjust for populations who are excluded from the survey by design.
 
 ## Comparing police recorded crime and victimization survey data
 
-![Stengths of recorded crime and victimization surveys](resources/sg-strenghts-limitations-01.png)
+![Stengths of recorded crime and victimization surveys](resources/sg-strengths-limitations-01.png)
 Source: [@justiceanalyticalservicesUserGuideRecorded2016, p57]
 
 ## Comparing police recorded crime and victimization survey data
 
-![Stengths of recorded crime and victimization surveys](resources/sg-strenghts-limitations-02.png)
+![Stengths of recorded crime and victimization surveys](resources/sg-strengths-limitations-02.png)
 
 Source: [@justiceanalyticalservicesUserGuideRecorded2016, p57]
 
@@ -500,9 +500,9 @@ Source: [@justiceanalyticalservicesUserGuideRecorded2016, p57]
 
 ## Disclaimer Three
 
-- A statistical model is only every the map and never the territory
+- A statistical model is only ever the map and never the territory
 - The statistical models are 'small worlds' of their own - distinct from the 'large world' that we actually live in
-- Our spreadsheets and the coefficients produced by our models necessarily omit some of the complexity of the large world - [this is a good thing]((https://kwarc.info/teaching/TDM/Borges.pdf)!
+- Our spreadsheets and the coefficients produced by our models necessarily omit some of the complexity of the large world - [this is a good thing](https://kwarc.info/teaching/TDM/Borges.pdf)!
 - But be warned, using the small world to understand the large world is fraught with challenges (we'll talk about this more later)
 
 
@@ -709,7 +709,9 @@ glm(crime_integer_sim ~ overcrowded_rate, # % living in overcrowded housing
 
 ## Practical
 
-In this practical we'll fit some count models in R
+In this practical we'll fit some count models in `R` and interpet the results.
+
+You can [download the `R` script here](https://github.com/benmatthewsed/statistical-methods-criminology-slides/blob/master/practical_02.R)
 
 # Morning recap {background-color="#006938"}
 
@@ -743,8 +745,8 @@ In this practical we'll fit some count models in R
 
 - Coefficients from GLMs may biased because:
   - our data are inaccurate [(measurement error)](https://www.statisticshowto.com/measurement-error/)
-  - our data omits some variables that we theoretically think are important [(confounding)](https://stats.stackexchange.com/a/496387), or;
-  - omit some people/cases we care about [(selection effects)](https://en.wikipedia.org/wiki/Selection_bias)
+    - omit some people/cases we care about [(selection effects)](https://en.wikipedia.org/wiki/Selection_bias), or;
+  - our data omits some variables that we theoretically think are important [(confounding)](https://stats.stackexchange.com/a/496387)
 - These are problems that are _hard, if not impossible, to solve based on the data we observe alone_
 - So in this session we focus on sketching out the issues and pointing to resources to find out more information
 
@@ -831,7 +833,7 @@ In this practical we'll fit some count models in R
 
 - Selection effects (or selection bias) arises when there are people who we would have liked to observe in our study but we don't observe them, and this lack of observation is related to their characteristics [@greenlandSensitivityAnalysisBias2014]
 - It's a kind of non-representativeness of the data we have, compared to the 'real world'
-- I like to this of this as selection bias affecting the rows of our dataset - there are some rows that are missing that we would like to see
+- I like to think of this as selection bias affecting the rows of our dataset - there are some rows that are missing that we would like to see
 - In this section we'll focus on an example of identifying selection bias in police data
 
 ## Example: Selection bias in police administrative data
@@ -848,8 +850,6 @@ In this practical we'll fit some count models in R
 - “when there is any racial discrimination in the decision to detain civilians—a decision that determines which encounters appear in police administrative data at all—then estimates of the effect of civilian race on subsequent police behavior are biased absent additional data and/or strong and untestable assumptions.” [@@knoxAdministrativeRecordsMask2020]
 
 ## Uh oh
-
-\[INSERT FIGURE 2 FROM KNOX\]
 
 ![Knox et al (2020) FIGURE 2. Principal Strata and Observed Police–Civilian Encounters. Notes: The figure displays the four principal strata that comprise police–civilian encounters based on how the mediator M (whether a civilian is stopped by police) responds to treatment D (whether the civilian is a racial minority). Minorities in the “always stop” and anti-minority racial stop strata, highlighted in red, are stopped by police and, thus, appear in police administrative data. Likewise, white civilians in the “always-stop” and anti-white racial stop strata, highlighted in blue, appear in police data. “Never stop” encounters are unobserved. Because white and nonwhite encounters are drawn from different principal strata, the two groups are incomparable and estimates of causal quantities using observed encounters will be statistically biased absent additional assumptions.](https://static.cambridge.org/binary/version/id/urn:cambridge.org:id:binary:20200730201026963-0363:S0003055420000039:S0003055420000039_fig2.png)
 
@@ -922,7 +922,6 @@ And they continue in a footnote that formally assessing the possibility of bias 
 - I think the key thing is how we talk about our models and results - it is *us* that moves between the stories in the 'small world' of our model to the 'large world'
 - We should have humility when describing our results, and draw readers' attention to the possible limitations of factors like those we have described
 - For any particular problem technical fixes maybe be possible, the specifics will depend on the problem you are interested in, the data you have and the provenance of that data [@knoxAdministrativeRecordsMask2020a]
-- 
 
 # Recap {background-color="#006938"}
 
@@ -972,10 +971,10 @@ Are you concerned about all these? Some more than others? Are there obvious step
 
 ## Translating coefficients: challenges
 
-- However, approaches don't scale well with more complicated models, or complicated transformations (McElreath; Gelman and Pardoe)
+- However, approaches don't scale well with more complicated models, or complicated transformations [@mcelreathStatisticalRethinkingBayesian2020; @gelmanAveragePredictiveComparisons2007]
 - A common way to translate model coefficients into more meaningful quantities is to use all the coefficients in the model to calculate predicted values of the outcome
 - These are often called ['marginal effects'](https://marginaleffects.com/) (although this terminology is confusing)
-- The terminology is confusing in part because there are lots of related but subtly different quantities people call marginal effects (see https://marginaleffects.com/vignettes/get_started.html)
+- The terminology is confusing in part because there are [lots of related but subtly different quantities people call marginal effects](https://marginaleffects.com/vignettes/get_started.html)
 - As a result, I like Gelman and Pardoe's terminology of 'adjusted predictive comparisons'
 
 
@@ -1030,14 +1029,10 @@ This gives a much more useful summary of the results compared to just the model 
 ## Uncertainty
 - A key challenge is propagating the appropriate uncertainty in our results - especially in more complicated models when predictions might be a function of multiple parameters
 - We can use simulation to propagate this uncertainty - and we can apply this approach to any generalized linear model and any Derived Quantity of Interest (DQI) - be it a marginal effect or something else
-- The simulation process is described by @kingMakingMostStatistical2000 and implemented in the R package clarify (https://github.com/iqss/clarify)
-- This approach propagates both the uncertainty in the model's coefficients, and the correlations between the coefficients (for technical reasons that are beyond me, this is important [gayleUsingQuasivarianceCommunicate2007])
+- The simulation process is described by @kingMakingMostStatistical2000 and implemented in the R package [clarify](https://github.com/iqss/clarify)
+- This approach propagates both the uncertainty in the model's coefficients, and the correlations between the coefficients (for technical reasons that are beyond me, this is important [@gayleUsingQuasivarianceCommunicate2007])
 
 
-
-
-
----
 
 # But first {background-color="#006938"}
 
@@ -1658,7 +1653,7 @@ These intervals include zero, so the apparent 52% reduction in victimization ine
 - There is inherent uncertainty in simulation results, so it's crucial to set the seed for the random number generator so you get the same results every time. 
 - There are also some subtleties in how you use the simulated results [@raineyCarefulConsiderationCLARIFY2024]
 - There are also other ways to do describe this uncertainty:
-  - The ['delta method'])(https://marginaleffects.com/vignettes/uncertainty.html#delta-method) uses calculation, not simulation, but relies on a Normal approximation which may not hold (https://iqss.github.io/clarify/#introduction). This is the default method used by the [marginaleffects](https://marginaleffects.com/) package
+  - The ['delta method'](https://marginaleffects.com/vignettes/uncertainty.html#delta-method) uses calculation, not simulation, but relies on a [Normal approximation which may not hold](https://iqss.github.io/clarify/#introduction). This is the default method used by the [marginaleffects](https://marginaleffects.com/) `R` package
 
 ---
 
@@ -1843,10 +1838,13 @@ The results show that around 8% of the time we would expect that a neighbourhood
 - Simulating meaningful quantities from results: (`{clarify}`)[https://iqss.github.io/clarify/] and (`{marginaleffects}`)[https://marginaleffects.com/]
 - Ethics: (Data Feminism)[https://data-feminism.mitpress.mit.edu/pub/czq9dfs5/release/3]
 
----
 
-## References
+## Course Feedback
 
+- Please take a few minutes to fill in the course evaluation form: https://www.ncrm.ac.uk/surveys/edin
+
+
+# Thank you!
 
 ## Bonus slides
 
@@ -1975,19 +1973,6 @@ local authority groups."
   - What would reconviction rates have looked like if all local authorities had the same distribution of characteristics of people who offended, convicted for the same offences and receiving the same sentences
 
 
-
-
-## Non-constant variance?
-
-Second, the standard linear model assumes constant variance. But in practice we probably want more variance for larger counts. 
-
-(Figure from @roback2021beyond)
-
-!["Figure 4.1: Regression models: Linear regression (left) and Poisson regression (right) from Roback"](https://bookdown.org/roback/bookdown-BeyondMLR/bookdown-BeyondMLR_files/figure-html/OLSpois-1.png)
-
-
-
-
 ## (Bonus) Example Three: Ethnic disparities in Covid Fines
 
 - https://blogs.ed.ac.uk/edinburghlawschool/wp-content/uploads/sites/8261/2023/03/NPCC-Report-March-2023-final-1.pdf
@@ -2012,10 +1997,4 @@ https://link.springer.com/article/10.1007/s40865-022-00204-z
 
 
 
-
-## Example one: community loss
-
-- @simesPunishingPlacesGeography2021 gives a good example of how our theoretical framing affects how we interpret data
-- Simes analysed imprisonment data from the state of Massachusets in the USA, including spatial regression of prison admission rates and how these relate to “racial demographics, social and economic disadvantage, arrest rates, and violent crime” [@simesPlacePunishmentSpatial2018a]
-- A key point of Simes's analysis is that the spatial context of punishment matters - if people live in more 'punishing places', this has effects _at the community level_
-- For Simes, this is key to the story of the data - that 
+## References

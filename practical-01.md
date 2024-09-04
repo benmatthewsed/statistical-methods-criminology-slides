@@ -6,7 +6,7 @@ Ben Matthews
 *The following is an exceprt from my PhD thesis (Criminal careers and
 the crime drop in Scotland,
 1989-2011)\[<https://era.ed.ac.uk/handle/1842/25810>\]. Be glad I’m not
-asking you to read the whole thing!*
+making you read the whole thing.*
 
 *The thesis aimed to explore how patterns of convictions over peoples’
 lives (criminal careers) had changed during a period of falling crime
@@ -25,10 +25,7 @@ the question!*
 - What are the relevant definitions and concepts that govern the
   data/data collection?”
 
-\[@8347e95e012d4212a5ee429a18ee592e, p228-229\]
-
-Bonus question:
-- If you were analysing these data would you want/expect to see confidence intervals? Why/why not?
+(Keay and Towers, 2024:228-229)
 
 ## 4.3 Data Source: Scottish Offenders Index
 
@@ -117,7 +114,7 @@ all proceedings conducted in Scottish courts for offences other than
 motor vehicle offences, drunkenness and crimes against public justice
 between 1989 and August 2013.
 
-### SOI and migration - save this for measurement error?
+### SOI and migration
 
 As SOI is based on court records it does not rely on a list of the
 registered population, unlike Nordic register data (Lyngstad and
@@ -165,11 +162,25 @@ testable hypotheses about how the mechanisms suggested different
 theories of the crime drop would be manifest in criminal careers.
 
 The descriptive approach adopted here also fits with the nature of SOI
-data. As in the SOI n=all, typical inferential concerns about relating
-parameter estimates from a (random) sample to a population are not of
-concern here (Connelly et al. 2016) adding value to simple description
-of trends in the data. Consequently, results are not compared to a
-particular critical value, or significance tests performed to assess
-whether change in any of the criminal careers parameters analysed is
-statistically significant. Instead the focus is on describing the trends
-that are present in the data.
+data. As in the SOI n= *all*, typical inferential concerns about
+relating parameter estimates from a (random) sample to a population are
+not of concern here (Connelly et al. 2016) adding value to simple
+description of trends in the data. Consequently, results are not
+compared to a particular critical value, or significance tests performed
+to assess whether change in any of the criminal careers parameters
+analysed is statistically significant. Instead the focus is on
+describing the trends that are present in the data.
+
+## Questions
+
+- How can we critique the assertion that SOI is n = all?
+- What are the potential drawbacks of not performing inferential
+  analysis on SOI? What are the benefits of taking a more descriptive
+  approach?
+
+## References
+
+Keay, Scott, and Jude Towers. 2024. “The Collection and Understanding of
+Administrative Data in UK Police Forces.” In The Crime Data Handbook,
+edited by Laura Huey and David Buil-Gil, 227. United Kingdom: Bristol
+University Press.

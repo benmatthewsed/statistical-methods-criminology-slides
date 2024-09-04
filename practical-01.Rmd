@@ -16,7 +16,7 @@ _The thesis aimed to explore how patterns of convictions over peoples' lives (cr
 - Has the data been dis/aggregated or manipulated or cleaned in some other way to arrive at its present form?
 - What are the relevant definitions and concepts that govern the data/data collection?"
 
-[@8347e95e012d4212a5ee429a18ee592e, p228-229]
+(Keay and Towers, 2024:228-229)
 
 ## 4.3 Data Source: Scottish Offenders Index
 The Scottish Offenders Index (SOI) is dataset collated by Scottish Government from court records. It is used to produce a yearly summary of reconviction rates in Scotland, and as such it contains records of convictions linked together by an anonymous personal identifier. The SOI holds data on the convicted person’s age and sex and the details of their offence and
@@ -54,3 +54,7 @@ The descriptive approach adopted here also fits with the nature of SOI data. As 
 
 - How can we critique the assertion that SOI is n = all?
 - What are the potential drawbacks of not performing inferential analysis on SOI? What are the benefits of taking a more descriptive approach?
+
+
+## References
+Keay, Scott, and Jude Towers. 2024. “The Collection and Understanding of Administrative Data in UK Police Forces.” In The Crime Data Handbook, edited by Laura Huey and David Buil-Gil, 227. United Kingdom: Bristol University Press.
