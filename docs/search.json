@@ -4,7 +4,7 @@
     "href": "statistical_methods_criminology.html#welcome",
     "title": "Statistical Methods for Criminology",
     "section": "Welcome!",
-    "text": "Welcome!\n\nWho we are\nWho you are:\n\nYour research interests\nWhy this course?\nWhat do you want to achieve?"
+    "text": "Welcome!\n\nWho we are\nWho you are"
   },
   {
     "objectID": "statistical_methods_criminology.html#learning-outcomes",
@@ -242,7 +242,7 @@
     "href": "statistical_methods_criminology.html#practical-1",
     "title": "Statistical Methods for Criminology",
     "section": "Practical",
-    "text": "Practical\nIn this practical we’ll fit some count models in R and interpet the results.\nYou can download the R script here"
+    "text": "Practical\n\nSee description of Scottish Offenders Index here\nAnswer our six questions\nWe’ll meet back at [time] to discuss"
   },
   {
     "objectID": "statistical_methods_criminology.html#morning-recap-1",
@@ -333,7 +333,7 @@
     "href": "statistical_methods_criminology.html#uh-oh",
     "title": "Statistical Methods for Criminology",
     "section": "Uh oh",
-    "text": "Uh oh\n{fig-alt: “Knox et al (2020) FIGURE 2. Principal Strata and Observed Police–Civilian Encounters. Notes: The figure displays the four principal strata that comprise police–civilian encounters based on how the mediator M (whether a civilian is stopped by police) responds to treatment D (whether the civilian is a racial minority). Minorities in the “always stop” and anti-minority racial stop strata, highlighted in red, are stopped by police and, thus, appear in police administrative data. Likewise, white civilians in the “always-stop” and anti-white racial stop strata, highlighted in blue, appear in police data. “Never stop” encounters are unobserved. Because white and nonwhite encounters are drawn from different principal strata, the two groups are incomparable and estimates of causal quantities using observed encounters will be statistically biased absent additional assumptions.”}"
+    "text": "Uh oh\n{width=90% fig-alt= “Knox et al (2020) FIGURE 2. Principal Strata and Observed Police–Civilian Encounters. Notes: The figure displays the four principal strata that comprise police–civilian encounters based on how the mediator M (whether a civilian is stopped by police) responds to treatment D (whether the civilian is a racial minority). Minorities in the “always stop” and anti-minority racial stop strata, highlighted in red, are stopped by police and, thus, appear in police administrative data. Likewise, white civilians in the “always-stop” and anti-white racial stop strata, highlighted in blue, appear in police data. “Never stop” encounters are unobserved. Because white and nonwhite encounters are drawn from different principal strata, the two groups are incomparable and estimates of causal quantities using observed encounters will be statistically biased absent additional assumptions.”}"
   },
   {
     "objectID": "statistical_methods_criminology.html#solutions-1",
@@ -480,7 +480,7 @@
     "href": "statistical_methods_criminology.html#how-much-has-victimization-inequality-changed",
     "title": "Statistical Methods for Criminology",
     "section": "How much has victimization inequality changed?",
-    "text": "How much has victimization inequality changed?\n\n\n\nvictim_divide(\n  base_y1 = results_2015$est[[2]],\n  base_y2 = results_2020$est[[2]]\n  )\n\n[1] -0.5223449\n\n\n\nCalculating the Victimization Divide for these two results, based just on the odds ratios from the two models, shows that victimization inequality decreased by 52% between the two years.\nFrom the models’ point estimates, we would conclude that victimization inequality between men and women fell by more than half between 2015 and 2020!\nBut this doesn’t factor in the uncertainty in the models’ coefficients."
+    "text": "How much has victimization inequality changed?\n\n\n\nvictim_divide(\n  base_y1 = results_2015$est[[2]],\n  base_y2 = results_2020$est[[2]]\n  )\n\n[1] -0.5223449\n\n\n\nCalculating the Victimization Divide for these two results, based just on the odds ratios from the two models, shows that victimization inequality decreased by 52% between the two years.\nFrom the models’ point estimates, we would conclude that victimization inequality between men and women fell by more than half between 2015 and 2020… but this doesn’t factor in the uncertainty in the models’ coefficients."
   },
   {
     "objectID": "statistical_methods_criminology.html#how-much-has-victimization-inequality-changed-1",
@@ -529,7 +529,7 @@
     "href": "statistical_methods_criminology.html#practical-3",
     "title": "Statistical Methods for Criminology",
     "section": "Practical",
-    "text": "Practical"
+    "text": "Practical\nIn this practical we’ll fit some count models in R and interpet the results.\nR script: practical-02.R R answers: practical-02-answers.md"
   },
   {
     "objectID": "statistical_methods_criminology.html#general-ethical-principles-in-social-science-research",
@@ -1033,7 +1033,7 @@
     "href": "statistical_methods_criminology.html#practical-sessions",
     "title": "Statistical Methods for Criminology",
     "section": "Practical sessions",
-    "text": "Practical sessions\n\nYou can follow along with the materials in a local installation of R and RStudio on your own computer\nYou can find the course materials at https://github.com/benmatthewsed/statistical-methods-criminology-slides/\nIf you don’t have an R installation, you can follow along in your browser via posit.cloud (free account required) [Ben post the link in the chat now]\nOr you can use the PDFs of the results rather than run them yourself"
+    "text": "Practical sessions\n\nYou can follow along with the materials in a local installation of R and RStudio on your own computer\nYou can find the course materials at https://github.com/benmatthewsed/statistical-methods-criminology-slides/\nIf you don’t have an R installation, you can follow along in your browser via posit.cloud (free account required) [Ben post the link in the chat now]\nOr you can use the completed of the results rather than run them yourself (there will be links for each practical)"
   },
   {
     "objectID": "statistical_methods_criminology.html#course-outline-1",
@@ -1418,14 +1418,14 @@
     "href": "statistical_methods_criminology.html#example-selection-bias-in-police-administrative-data",
     "title": "Statistical Methods for Criminology",
     "section": "Example: Selection bias in police administrative data",
-    "text": "Example: Selection bias in police administrative data\n\n(Knox, Lowe, and Mummolo 2020a) wanted to assess whether police were biased in their interactions with the public based on the ethnicity of the person they were interacting with\nThey had data on people who had been stopped by the police - but they can’t just fit a statistical model to these data to see if people from minority ethnic backgrounds were more likely to be stopped\nThe problem is we can’t just rely on data about police stops - “if police racially discriminate when choosing whom to investigate, analyses using administrative records to estimate racial discrimination in police behavior are statistically biased” (Knox, Lowe, and Mummolo 2020a)"
+    "text": "Example: Selection bias in police administrative data\n\nKnox, Lowe, and Mummolo (2020a) wanted to assess whether police were biased in their interactions with the public based on the ethnicity of the person they were interacting with\nThey had data on people who had been stopped by the police - but they can’t just fit a statistical model to these data to see if people from minority ethnic backgrounds were more likely to be stopped\nThe problem is we can’t just rely on data about police stops - “if police racially discriminate when choosing whom to investigate, analyses using administrative records to estimate racial discrimination in police behavior are statistically biased” (Knox, Lowe, and Mummolo 2020a)"
   },
   {
     "objectID": "statistical_methods_criminology.html#example-selection-bias-in-police-administrative-data-1",
     "href": "statistical_methods_criminology.html#example-selection-bias-in-police-administrative-data-1",
     "title": "Statistical Methods for Criminology",
     "section": "Example: Selection bias in police administrative data",
-    "text": "Example: Selection bias in police administrative data\n\nTo just rely on the observed data, Knox, Lowe, and Mummolo (2020a) would need to know the numbers of people who were observed by police but not stopped, in order to calculate the probabilities of selection into the stop dataset\nIf you only analyse data that are the result of police stops then your results will be biased. To analyse data on police stops to estimate racial bias, you also need to know the total number of encounters (for each ethnic group) – that is, including encounters that did not lead to a stop\nHowever, we don’t know this - and it is hard to imagine a scenario where an analyst of an police administrative dataset would know this\n“when there is any racial discrimination in the decision to detain civilians—a decision that determines which encounters appear in police administrative data at all—then estimates of the effect of civilian race on subsequent police behavior are biased absent additional data and/or strong and untestable assumptions.” (@ Knox, Lowe, and Mummolo 2020a)"
+    "text": "Example: Selection bias in police administrative data\n\nTo just rely on the observed data, Knox, Lowe, and Mummolo (2020a) would need to know the numbers of people who were observed by police but not stopped, in order to calculate the probabilities of selection into the stop dataset\nIf you only analyse data that are the result of police stops then your results will be biased. To analyse data on police stops to estimate racial bias, you also need to know the total number of encounters (for each ethnic group) – that is, including encounters that did not lead to a stop\nHowever, we don’t know this - and it is hard to imagine a scenario where an analyst of an police administrative dataset would know this\n“when there is any racial discrimination in the decision to detain civilians—a decision that determines which encounters appear in police administrative data at all—then estimates of the effect of civilian race on subsequent police behavior are biased absent additional data and/or strong and untestable assumptions.” (Knox, Lowe, and Mummolo 2020a)"
   },
   {
     "objectID": "statistical_methods_criminology.html#what-can-we-do",
@@ -1467,7 +1467,7 @@
     "href": "statistical_methods_criminology.html#talking-about-residual-confounding-1",
     "title": "Statistical Methods for Criminology",
     "section": "Talking about residual confounding",
-    "text": "Talking about residual confounding\n\nWe thus argue that omitted confounders would have to be implausibly large to overturn the basic results\n\nAnd they continue in a footnote that formally assessing the possibility of bias from omitted confounders was “beyond the scope of the current paper” and would require assumptions about the magnitude, direction, and functional form of potential biases that ultimately raise more questions than they answer” (@ Sampson, Laub, and Wimer 2006, p499)"
+    "text": "Talking about residual confounding\n\nWe thus argue that omitted confounders would have to be implausibly large to overturn the basic results\n\nAnd they continue in a footnote that formally assessing the possibility of bias from omitted confounders was “beyond the scope of the current paper” and would require assumptions about the magnitude, direction, and functional form of potential biases that ultimately raise more questions than they answer” (Sampson, Laub, and Wimer 2006, p499)"
   },
   {
     "objectID": "statistical_methods_criminology.html#methods-for-measurement-error-selection-and-confounding",
@@ -1614,7 +1614,7 @@
     "href": "statistical_methods_criminology.html#practical-5",
     "title": "Statistical Methods for Criminology",
     "section": "Practical",
-    "text": "Practical\n\nRevisit the three graphs from D’Ignazio and Klein (2020)\nWhich of these would you use to present results to:\n\nAn academic conference\nA government report\nAn infographic aimed at the general public"
+    "text": "Practical\n\nUsing either the generative story that you came up with in Session One, or the description of the Scottish Offenders Index from the first practical, describe the possible effects of:\n\nMeasurement error?\nSelection effects?\nUnmeasured confounding?\n\n\nAre you concerned about all these? Some more than others? Are there obvious steps you could take to address them?"
   },
   {
     "objectID": "statistical_methods_criminology.html#data-provenance-victimization-surveys",
@@ -1650,5 +1650,82 @@
     "title": "Statistical Methods for Criminology",
     "section": "Calculating Victimization Divides",
     "text": "Calculating Victimization Divides\n\n\nModel1 :\n\nresults_2015 &lt;- \nbroom::tidy(model2015) |&gt; \n  mutate(est = exp(estimate))\n\nresults_2015\n\n# A tibble: 2 × 6\n  term            estimate std.error statistic  p.value   est\n  &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;\n1 (Intercept)       -1.71     0.0205    -83.4  0        0.181\n2 fct_rev(sex)men    0.105    0.0300      3.49 0.000486 1.11 \n\n\nModel 2:\n\nresults_2020 &lt;- \nbroom::tidy(model2020) |&gt; \n  mutate(est = exp(estimate))\n\nresults_2020\n\n# A tibble: 2 × 6\n  term            estimate std.error statistic p.value   est\n  &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;\n1 (Intercept)      -1.46      0.0189    -77.0   0      0.233\n2 fct_rev(sex)men   0.0513    0.0277      1.86  0.0635 1.05 \n\n\n\nWith a binomial model we can exponentiate the model coefficients to calculate the Odds Ratio of being a victim for men and women.\nModel 1 shows a statistically significant difference for men (compared to women) in 2015, with men having 11% greater odds of being a victim of crime. In contrast, Model 2 finds that men had a 5% greater odds of being a victim of crime than women in 2020 - however this difference does not meet the 95% threshold for statistical significance."
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#recap-8",
+    "href": "statistical_methods_criminology.html#recap-8",
+    "title": "Statistical Methods for Criminology",
+    "section": "Recap",
+    "text": "Recap\n\nPhew! We’ve covered a lot of ground today\nThe key idea of this workshop is that the story of how our data came to be (‘data provenance’) should influence our analysis and the story we tell about our results\nWe looked at common data provenance stories of police recorded crime and victimization surveys\nWe talked about GLMs as a common way of telling stories about the small world of our data\nWe looked at how we might want to critique the stories our GLMs are telling, using tools from quantitative bias analysis\nAnd how to use simulation approaches to tell more meaningful stories from our results\nWe discussed some ethical issues that come up when we present our results"
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#welcome-1",
+    "href": "statistical_methods_criminology.html#welcome-1",
+    "title": "Statistical Methods for Criminology",
+    "section": "Welcome!",
+    "text": "Welcome!\n\nWho we are\nWho you are"
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#course-statisticalness",
+    "href": "statistical_methods_criminology.html#course-statisticalness",
+    "title": "Statistical Methods for Criminology",
+    "section": "Course statisticalness",
+    "text": "Course statisticalness"
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#measurement-error-1",
+    "href": "statistical_methods_criminology.html#measurement-error-1",
+    "title": "Statistical Methods for Criminology",
+    "section": "Measurement error",
+    "text": "Measurement error"
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#measurement-error-2",
+    "href": "statistical_methods_criminology.html#measurement-error-2",
+    "title": "Statistical Methods for Criminology",
+    "section": "Measurement error",
+    "text": "Measurement error"
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#selection-effects-1",
+    "href": "statistical_methods_criminology.html#selection-effects-1",
+    "title": "Statistical Methods for Criminology",
+    "section": "Selection effects",
+    "text": "Selection effects"
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#selection-effects-2",
+    "href": "statistical_methods_criminology.html#selection-effects-2",
+    "title": "Statistical Methods for Criminology",
+    "section": "Selection effects",
+    "text": "Selection effects"
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#unmeasured-confounding-1",
+    "href": "statistical_methods_criminology.html#unmeasured-confounding-1",
+    "title": "Statistical Methods for Criminology",
+    "section": "Unmeasured confounding",
+    "text": "Unmeasured confounding"
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#unmeasured-confounding-2",
+    "href": "statistical_methods_criminology.html#unmeasured-confounding-2",
+    "title": "Statistical Methods for Criminology",
+    "section": "Unmeasured confounding",
+    "text": "Unmeasured confounding"
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#practical-6",
+    "href": "statistical_methods_criminology.html#practical-6",
+    "title": "Statistical Methods for Criminology",
+    "section": "Practical",
+    "text": "Practical\nIn this practical we’ll translate coefficients into more meaningful descriptions:\nR code: practical-04.R Answers: practical-04-answers.md"
+  },
+  {
+    "objectID": "statistical_methods_criminology.html#practical-8",
+    "href": "statistical_methods_criminology.html#practical-8",
+    "title": "Statistical Methods for Criminology",
+    "section": "Practical",
+    "text": "Practical\n\nRevisit the three graphs from D’Ignazio and Klein (2020)\nWhich of these would you use to present results to:\n\nAn academic conference\nA government report\nAn infographic aimed at the general public"
   }
 ]

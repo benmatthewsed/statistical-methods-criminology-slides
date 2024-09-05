@@ -20,16 +20,18 @@ format:
 
 ![](https://www.ncrm.ac.uk/site-resources/images/webpage-meta-image.jpg){width=90% fig-alt="National Centre for Research Methods logo"}
 
+## Welcome!
 
+- Who we are
+- [Who you are](https://www.menti.com/aloosdgvnebw)
 
 
 ## Welcome!
 
 - Who we are
-- Who you are:
-  - Your __research interests__
-  - __Why__ this course?
-  - What do you want to __achieve__?
+- [Who you are](https://www.menti.com/aloosdgvnebw)
+
+![](resources/mentimeter_qr_code.png)
 
 
 ## Housekeeping
@@ -58,16 +60,16 @@ By the end of the workshop you will:
 ## Course schedule
 
 - 10:00 – Welcome
-- 10:15 – Data provenance: Types of criminological data
+- 10:15 – [Data provenance: Types of criminological data](https://benmatthewsed.github.io/statistical-methods-criminology-slides/statistical_methods_criminology.html#/session-one-types-of-criminological-data)
 - 11:15 – Break
-- 11:30 – Modelling: Telling stories with the general linear model
+- 11:30 – [Modelling: Telling stories with the general linear model](https://benmatthewsed.github.io/statistical-methods-criminology-slides/statistical_methods_criminology.html#/the-general-linear-model)
 - 12:30 – Lunch
 - 13:30 – Q&A
-- 13:40 – Sensitivity analysis and critiquing results: Measurement error, selection and - confounding in crime data
+- 13:40 – [Sensitivity analysis and critiquing results: Measurement error, selection and - confounding in crime data](https://benmatthewsed.github.io/statistical-methods-criminology-slides/statistical_methods_criminology.html#/measurement-error-selection-and-confounding)
 - 14:40 – Break
-- 14:55 – Simulation methods and translating results: Making model coefficients meaningful with simulation
+- 14:55 – [Simulation methods and translating results: Making model coefficients meaningful with simulation](https://benmatthewsed.github.io/statistical-methods-criminology-slides/statistical_methods_criminology.html#/turning-coefficients-into-meaningful-quantities-of-interest)
 - 15:55 – Short break
-- 16:05 – Discussing results and ethics
+- 16:05 – [Discussing results and ethics](https://benmatthewsed.github.io/statistical-methods-criminology-slides/statistical_methods_criminology.html#/ethics-and-commuicating-statistical-results)
 - 16:45 – Recap and Q&A
 - 17:00 – Depart
 
@@ -84,7 +86,7 @@ By the end of the workshop you will:
 - You can follow along with the materials in a local installation of `R` and `RStudio` on your own computer
 - You can find the course materials at [https://github.com/benmatthewsed/statistical-methods-criminology-slides/](https://github.com/benmatthewsed/statistical-methods-criminology-slides/)
 - If you don't have an `R` installation, you can follow along in your browser via [posit.cloud](posit.cloud) (free account required) [Ben post the link in the chat now]
-- Or you can use the PDFs of the results rather than run them yourself
+- Or you can use the completed of the results rather than run them yourself (there will be links for each practical)
 
 
 
@@ -120,7 +122,9 @@ By the end of the workshop you will:
 
 ![](resources/course-outline.jpg)
 
+## Course statisticalness
 
+![](resources/course-statisticalness.jpg)
 
 ## Statistical analysis and stories
 
@@ -448,7 +452,7 @@ Source: [@justiceanalyticalservicesUserGuideRecorded2016, p57]
 
 Source: [@justiceanalyticalservicesUserGuideRecorded2016, p57]
 
---- 
+
 
 # Recap
 
@@ -461,11 +465,13 @@ Source: [@justiceanalyticalservicesUserGuideRecorded2016, p57]
 
 
 
-# Practical
+# Practical {background-color="#006938"}
+
+## Practical
 
 - See description of [Scottish Offenders Index here](https://github.com/benmatthewsed/statistical-methods-criminology-slides/blob/master/practical-01.md)
 - Answer our six questions
-- We'll meet back at [time] to feed back
+- We'll meet back at [time] to discuss
 
 
 # Break {background-color="#666666"}
@@ -701,13 +707,15 @@ glm(crime_integer_sim ~ overcrowded_rate, # % living in overcrowded housing
 - However, these models can be tricky to interpret, and can have other problems too
 
 
-
+# Practical {background-color="#006938"}
 
 ## Practical
 
 In this practical we'll fit some count models in `R` and interpet the results.
 
-You can [download the `R` script here](https://github.com/benmatthewsed/statistical-methods-criminology-slides/blob/master/practical_02.R)
+R script: [practical-02.R](https://github.com/benmatthewsed/statistical-methods-criminology-slides/blob/master/practical_02.R)
+R answers: [practical-02-answers.md](https://github.com/benmatthewsed/statistical-methods-criminology-slides/blob/master/practical-02-answers.md)
+
 
 # Morning recap {background-color="#006938"}
 
@@ -719,9 +727,7 @@ You can [download the `R` script here](https://github.com/benmatthewsed/statisti
 
 # Lunch :sandwich: {background-color="#666666"}
 
----
-
-
+# Q&A  {background-color="#006938"}
 
 # Measurement error, selection and confounding  {background-color="#006938"}
 
@@ -747,7 +753,7 @@ You can [download the `R` script here](https://github.com/benmatthewsed/statisti
 - So in this session we focus on sketching out the issues and pointing to resources to find out more information
 
 
-# Part One: Measurement error {background-color="#77BF22"}
+# Part One: Measurement error
 
 
 ## Measurement error
@@ -757,7 +763,13 @@ You can [download the `R` script here](https://github.com/benmatthewsed/statisti
 - In this section we will walk through two examples of measurement error in crime data, again focusing on police recorded crime and victimization surveys
 
 
----
+## Measurement error
+
+![](resources/fake-data.jpg)
+
+## Measurement error
+
+![](resources/measurement-error.jpg)
 
 ## Example One: Measurement error in recorded crime
 
@@ -832,9 +844,17 @@ You can [download the `R` script here](https://github.com/benmatthewsed/statisti
 - I like to think of this as selection bias affecting the rows of our dataset - there are some rows that are missing that we would like to see
 - In this section we'll focus on an example of identifying selection bias in police data
 
+## Selection effects
+
+![](resources/fake-data.jpg)
+
+## Selection effects
+
+![](resources/selection-bias.jpg)
+
 ## Example: Selection bias in police administrative data
 
-- [@knoxAdministrativeRecordsMask2020] wanted to assess whether police were biased in their interactions with the public based on the ethnicity of the person they were interacting with
+- @knoxAdministrativeRecordsMask2020 wanted to assess whether police were biased in their interactions with the public based on the ethnicity of the person they were interacting with
 - They had data on people who had been stopped by the police - but they can't just fit a statistical model to these data to see if people from minority ethnic backgrounds were more likely to be stopped
 - The problem is we can’t just rely on data about police stops - “if police racially discriminate when choosing whom to investigate, analyses using administrative records to estimate racial discrimination in police behavior are statistically biased” [@knoxAdministrativeRecordsMask2020]
 
@@ -843,11 +863,11 @@ You can [download the `R` script here](https://github.com/benmatthewsed/statisti
 - To just rely on the observed data, @knoxAdministrativeRecordsMask2020 would need to know the numbers of people _who were observed by police but not stopped_, in order to calculate the probabilities of selection into the stop dataset
 - If you only analyse data that are the result of police stops then your results will be biased. To analyse data on police stops to estimate racial bias, you also need to know the total number of encounters (for each ethnic group) – that is, including encounters that did not lead to a stop
 - However, we don't know this - and it is hard to imagine a scenario where an analyst of an police administrative dataset *would* know this
-- “when there is any racial discrimination in the decision to detain civilians—a decision that determines which encounters appear in police administrative data at all—then estimates of the effect of civilian race on subsequent police behavior are biased absent additional data and/or strong and untestable assumptions.” [@@knoxAdministrativeRecordsMask2020]
+- “when there is any racial discrimination in the decision to detain civilians—a decision that determines which encounters appear in police administrative data at all—then estimates of the effect of civilian race on subsequent police behavior are biased absent additional data and/or strong and untestable assumptions.” [@knoxAdministrativeRecordsMask2020]
 
 ## Uh oh
 
-![Knox et al (2020) FIGURE 2. Principal Strata and Observed Police–Civilian Encounters](https://static.cambridge.org/binary/version/id/urn:cambridge.org:id:binary:20200730201026963-0363:S0003055420000039:S0003055420000039_fig2.png){fig-alt: "Knox et al (2020) FIGURE 2. Principal Strata and Observed Police–Civilian Encounters. Notes: The figure displays the four principal strata that comprise police–civilian encounters based on how the mediator M (whether a civilian is stopped by police) responds to treatment D (whether the civilian is a racial minority). Minorities in the “always stop” and anti-minority racial stop strata, highlighted in red, are stopped by police and, thus, appear in police administrative data. Likewise, white civilians in the “always-stop” and anti-white racial stop strata, highlighted in blue, appear in police data. “Never stop” encounters are unobserved. Because white and nonwhite encounters are drawn from different principal strata, the two groups are incomparable and estimates of causal quantities using observed encounters will be statistically biased absent additional assumptions."}
+![Knox et al (2020) FIGURE 2. Principal Strata and Observed Police–Civilian Encounters](https://static.cambridge.org/binary/version/id/urn:cambridge.org:id:binary:20200730201026963-0363:S0003055420000039:S0003055420000039_fig2.png){width=90% fig-alt= "Knox et al (2020) FIGURE 2. Principal Strata and Observed Police–Civilian Encounters. Notes: The figure displays the four principal strata that comprise police–civilian encounters based on how the mediator M (whether a civilian is stopped by police) responds to treatment D (whether the civilian is a racial minority). Minorities in the “always stop” and anti-minority racial stop strata, highlighted in red, are stopped by police and, thus, appear in police administrative data. Likewise, white civilians in the “always-stop” and anti-white racial stop strata, highlighted in blue, appear in police data. “Never stop” encounters are unobserved. Because white and nonwhite encounters are drawn from different principal strata, the two groups are incomparable and estimates of causal quantities using observed encounters will be statistically biased absent additional assumptions."}
 
 ## What can we do?
 
@@ -869,6 +889,14 @@ You can [download the `R` script here](https://github.com/benmatthewsed/statisti
 - Confounding describes a situation where there's something that we know affects the outcome we're interested in and/or our independent variables, but we _don't have a measure for this in our data_
 - I like to think of this as affecting the _columns_ of our dataset: there are variables we wish we had, but in practice we don't
 - This issue is more commonly discussed in epidemiology and health fields as opposed to social sciences [@dingFirstCourseCausal2023]
+
+## Unmeasured confounding
+
+![](resources/fake-data.jpg)
+
+## Unmeasured confounding
+
+![](resources/unmeasured-confounding.jpg)
 
 
 ## An example of unmeasured confounding
@@ -894,7 +922,7 @@ You can [download the `R` script here](https://github.com/benmatthewsed/statisti
 
 > We thus argue that omitted confounders would have to be implausibly large to overturn the basic results
 
-And they continue in a footnote that formally assessing the possibility of bias from omitted confounders was "beyond the scope of the current paper" and would require assumptions about the magnitude, direction, and functional form of potential biases that ultimately raise more questions than they answer" [@@sampsonDoesMarriageReduce2006, p499]
+And they continue in a footnote that formally assessing the possibility of bias from omitted confounders was "beyond the scope of the current paper" and would require assumptions about the magnitude, direction, and functional form of potential biases that ultimately raise more questions than they answer" [@sampsonDoesMarriageReduce2006, p499]
 
 ## Is this a good justification?
 
@@ -932,7 +960,9 @@ And they continue in a footnote that formally assessing the possibility of bias 
 
 # Practical {background-color="#006938"}
 
-- Using either the generative story that you came up with in Session One, or the description of the SOI from the first practical, describe the possible effects of:
+## Practical
+
+- Using either the generative story that you came up with in Session One, or the [description of the Scottish Offenders Index from the first practical](https://github.com/benmatthewsed/statistical-methods-criminology-slides/blob/master/practical-01.md), describe the possible effects of:
 
     -   Measurement error?
     -   Selection effects?
@@ -942,7 +972,6 @@ Are you concerned about all these? Some more than others? Are there obvious step
 
 # Break {background-color="#666666"}
 
----
 
 
 # Turning coefficients into meaningful quantities of interest {background-color="#006938"}
@@ -1491,9 +1520,7 @@ victim_divide(
 ::: {.column width="34%"}
 Calculating the Victimization Divide for these two results, based just on the odds ratios from the two models, shows that victimization inequality decreased by _52%_ between the two years. 
 
-From the models' point estimates, we would conclude that victimization inequality between men and women fell by more than half between 2015 and 2020!
-
-But this doesn't factor in the uncertainty in the models' coefficients.
+From the models' point estimates, we would conclude that victimization inequality between men and women fell by more than half between 2015 and 2020... but this doesn't factor in the uncertainty in the models' coefficients.
 :::
 
 ::::
@@ -1527,7 +1554,6 @@ draws_2015 <-
     Sigma = vcov(model2015)
   )
 ```
-
 
 :::
 
@@ -1670,10 +1696,13 @@ These intervals include zero, so the apparent 52% reduction in victimization ine
 
 ## Practical
 
+In this practical we'll translate coefficients into more meaningful descriptions:
+
+R code: [practical-04.R](https://github.com/benmatthewsed/statistical-methods-criminology-slides/blob/master/practical_04.R)
+Answers: [practical-04-answers.md](https://github.com/benmatthewsed/statistical-methods-criminology-slides/blob/master/practical-04-answers.md)
 
 # Break {background-color="#666666"}
 
----
 
 # Ethics and commuicating statistical results  {background-color="#006938"}
 
@@ -1801,7 +1830,7 @@ The results show that around 8% of the time we would expect that a neighbourhood
 
 
 
-# Practical
+# Practical {background-color="#006938"}
 
 ## Practical
 
@@ -1811,9 +1840,9 @@ The results show that around 8% of the time we would expect that a neighbourhood
   - A government report
   - An infographic aimed at the general public
 
-# Overview  {background-color="#006938"}
+# Recap  {background-color="#006938"}
 
-## Overview
+## Recap
 
 - Phew! We've covered a lot of ground today
 - The key idea of this workshop is that the story of how our data came to be ('data provenance') should influence our analysis and the story we tell about our results
@@ -1822,6 +1851,8 @@ The results show that around 8% of the time we would expect that a neighbourhood
 - We looked at how we might want to critique the stories our GLMs are telling, using tools from quantitative bias analysis
 - And how to use simulation approaches to tell more meaningful stories from our results
 - We discussed some ethical issues that come up when we present our results
+
+# Q&A  {background-color="#006938"}
 
 ## Where next?
 
@@ -1841,10 +1872,10 @@ The results show that around 8% of the time we would expect that a neighbourhood
 
 ## Course Feedback
 
-- Please take a few minutes to fill in the course evaluation form: https://www.ncrm.ac.uk/surveys/edin
+- Please take a few minutes to fill in the course evaluation form: [https://www.ncrm.ac.uk/surveys/edin](https://www.ncrm.ac.uk/surveys/edin)
 
 
-# Thank you!
+# Thank you! {background-color="#006938"}
 
 ## Bonus slides
 
