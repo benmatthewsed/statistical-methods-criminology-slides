@@ -208,7 +208,7 @@ crime rates
 # questions —————————————————————
 
 based on the description of the SIMD crime data at see pages 58-63 at
-<https://www.gov.scot/binaries/content/documents/govscot/publications/statistics/2020/09/sim-2020-technical-notes/documents/simd-2020-technical-notes/simd-2020-technical-notes/govscot%3Adocument/SIMD%2B220%2Btechnical%2Bnotes.pdf>
+<https://www.gov.scot/binaries/content/documents/govscot/publications/statistics/2020/09/simd-2020-technical-notes/documents/simd-2020-technical-notes/simd-2020-technical-notes/govscot%3Adocument/SIMD%2B2020%2Btechnical%2Bnotes.pdf>
 and the discussion in sessions three and four write a brief description
 of the figure produced by the code above, and reflect on the value of
 the prediction and simulation approach to translating the coefficients
