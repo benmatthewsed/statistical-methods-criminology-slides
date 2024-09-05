@@ -333,7 +333,7 @@
     "href": "statistical_methods_criminology.html#uh-oh",
     "title": "Statistical Methods for Criminology",
     "section": "Uh oh",
-    "text": "Uh oh\n{width=90% fig-alt= “Knox et al (2020) FIGURE 2. Principal Strata and Observed Police–Civilian Encounters. Notes: The figure displays the four principal strata that comprise police–civilian encounters based on how the mediator M (whether a civilian is stopped by police) responds to treatment D (whether the civilian is a racial minority). Minorities in the “always stop” and anti-minority racial stop strata, highlighted in red, are stopped by police and, thus, appear in police administrative data. Likewise, white civilians in the “always-stop” and anti-white racial stop strata, highlighted in blue, appear in police data. “Never stop” encounters are unobserved. Because white and nonwhite encounters are drawn from different principal strata, the two groups are incomparable and estimates of causal quantities using observed encounters will be statistically biased absent additional assumptions.”}"
+    "text": "Uh oh\n\nKnox et al (2020) FIGURE 2. Principal Strata and Observed Police–Civilian Encounters"
   },
   {
     "objectID": "statistical_methods_criminology.html#solutions-1",
