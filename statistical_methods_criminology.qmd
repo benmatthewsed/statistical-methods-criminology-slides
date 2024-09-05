@@ -727,6 +727,12 @@ R answers: [practical-02-answers.md](https://github.com/benmatthewsed/statistica
 
 # Lunch :sandwich: {background-color="#666666"}
 
+# Things we talked about in the morning session
+
+- [Jon Bannister and team's data science work](https://e-space.mmu.ac.uk/624291/1/2-5_Insights-from-Data-Science_Vulnerability.pdf)
+- [Jess Phoenix's Phd thesis](https://www.research.lancs.ac.uk/portal/en/publications/measuring-the-repetition-of-domestic-violence-and-abuse-in-police-data(7ba6ea8f-cf0f-4024-908a-287de3125c70).html)
+- [Introduction to R](https://r4ds.hadley.nz/)
+
 # Q&A  {background-color="#006938"}
 
 # Measurement error, selection and confounding  {background-color="#006938"}
